@@ -41,51 +41,33 @@ class ScanCommand extends BaseUserInterfaceCommand {
 			'id' => $arguments['robot_id'],
 			'for' => $options['for']
 		));
-		return $this->{'executeFor'.$options['for']}($response['results']);
+		return $this->{'executeFor'.$options['for']}($response);
 	}
 	
-	public function executeForRobots(array $results) {
-		$info = array();
-        $minX = null;
-        $minY = null;
-        $maxX = null;
-        $maxY = null;
-		foreach ($results as $i => $result) {
-			$x = $result['x'];
-            $y = $result['y'];
-            $stance = $result['stance'] ?: 'own';
-            $robot_id = $result['robot_id'];
-            if ($x > $maxX || is_null($maxX)) {
-                $maxX = $x;
-            }
-            if ($x < $minX || is_null($minX)) {
-                $minX = $x;
-            }
-            if ($y > $maxY || is_null($maxY)) {
-                $maxY = $y;
-            }
-            if ($y < $minY || is_null($minY)) {
-                $minY = $y;
-            }
-			if (empty($info[$y])) {
-				$info[$y] = array();
-			}
-			if (empty($info[$y][$x])) {
-				$info[$y][$x] = $this->empty_cell_placeholder;
-			}
-			if (empty($robot_id)) {
+	public function executeForRobots(array $response) {
+        $borders = $response['borders'];
+        $xfill = array_fill($borders['blX'], $borders['trX']-$borders['blX']+1, $this->empty_cell_placeholder);
+        $info = array_fill($borders['blY'], $borders['trY']-$borders['blY']+1, $xfill);
+        $info = array_reverse($info, true);
+		foreach ($response['results'] as $sector) {
+			$x = $sector['x'];
+            $y = $sector['y'];
+			if (empty($sector['Robots'])) {
 				continue;
 			}
-            if ($info[$y][$x] == $this->empty_cell_placeholder) {
-				$info[$y][$x] = 0;
-			}
-			$info[$y][$x] = $info[$y][$x] | $this->stance_values[$stance];
+            foreach ($sector['Robots'] as $robot) {
+                if ($info[$y][$x] == $this->empty_cell_placeholder) {
+				    $info[$y][$x] = 0;
+                }
+                $stancesFrom = $robot['User']['StancesFrom'];
+                $info[$y][$x] = $info[$y][$x] | $this->stance_values[($stancesFrom? $stancesFrom[0]['type'] : 'own')];
+            }
 		}
         foreach ($info as &$row) {
             array_unshift($row, '');
         }
-        $upperCoordinatesRow = array_merge(array($this->coords($minX, $maxY)), array_fill(0, $maxX-$minX+1, ''), array($this->coords($maxX, $maxY)));
-        $lowerCoordinatesRow = array_merge(array($this->coords($minX, $minY)), array_fill(0, $maxX-$minX+1, ''), array($this->coords($maxX, $minY)));
+        $upperCoordinatesRow = array_merge(array($this->coords($borders['blX'], $borders['trY'])), array_fill(0, $borders['trX']-$borders['blX']+1, ''), array($this->coords($borders['trX'], $borders['trY'])));
+        $lowerCoordinatesRow = array_merge(array($this->coords($borders['blX'], $borders['blY'])), array_fill(0, $borders['trX']-$borders['blX']+1, ''), array($this->coords($borders['trX'], $borders['blY'])));
         array_unshift($info, $upperCoordinatesRow);
         $info[] = $lowerCoordinatesRow;
 		$this->table($info);

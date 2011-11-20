@@ -33,7 +33,7 @@ class SectorTable extends Doctrine_Table {
 	
 	public function getBaseScanQuery($blX, $blY, $trX, $trY) {
 		return $this->createQuery('s')
-			->select('s.x, s.y')
+			->select('s.id, s.x, s.y')
 			->andWhere('s.x >= ?', $blX)
 			->andWhere('s.y >= ?', $blY)
 			->andWhere('s.x <= ?', $trX)
@@ -43,10 +43,11 @@ class SectorTable extends Doctrine_Table {
 	
 	public function getScanQueryForRobots($blX, $blY, $trX, $trY, $userId) {
 		return $this->getBaseScanQuery($blX, $blY, $trX, $trY)
-			->addSelect('r.id AS robot_id, u.id AS user_id, sfr.type AS stance')
+			->addSelect('r.id, u.id, sfr.id, sfr.type')
             ->leftJoin('s.Robots r')
             ->leftJoin('r.User u')
 			->leftJoin('u.StancesFrom sfr WITH sfr.to_id = ?', $userId)
+                ->andWhere('u.id IS NOT NULL')
 	;}
 	
 	public function getScanResultsForRobots($blX, $blY, $trX, $trY, $userId) {

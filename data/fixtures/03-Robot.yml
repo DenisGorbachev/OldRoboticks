@@ -9,12 +9,12 @@ Robot:
     name:			"PEAR"
     Word:			PEAR
     User:				Alice
-    Sector:			Sector_246
+    Sector:			Sector_227
   Rear:
     name:			"REAR"
     Word:			REAR
     User:				Alice
-    Sector:			Sector_305
+    Sector:			Sector_246
   Sea:
     name:			"SEA"
     Word:			SEA
@@ -39,12 +39,12 @@ Robot:
     name:			"LAKE"
     Word:			LAKE
     User:				Friend
-    Sector:			Sector_246
+    Sector:			Sector_232
   Drake:
     name:			"DRAKE"
     Word:			DRAKE
     User:				Friend
-    Sector:			Sector_305
+    Sector:			Sector_246
   Fuel:
     name:			"FUEL"
     Word:			FUEL
