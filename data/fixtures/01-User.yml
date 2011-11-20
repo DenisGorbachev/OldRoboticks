@@ -1,0 +1,35 @@
+User:
+  Alice:
+    username:			"alice"
+    password:			"asdf"
+  Mob:
+    username:			"mob"
+    password:			"asdf"
+  Friend:
+    username:			"friend"
+    password:			"asdf"
+  Foe:
+    username:			"foe"
+    password:			"asdf"
+
+Stance:
+  -
+    From:				Mob
+    To:					Alice
+    type:					enemy
+  -
+    From:				Alice
+    To:					Friend
+    type:					ally
+  -
+    From:				Friend
+    To:					Alice
+    type:					ally
+  -
+    From:				Alice
+    To:					Foe
+    type:					enemy
+  -
+    From:				Foe
+    To:					Alice
+    type:					enemy

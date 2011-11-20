@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+	define('VERSION', '0.1a');
+	define('BASEDIR', dirname(__FILE__));
+	define('LIBDIR', BASEDIR.'/lib');
+	try {
+		require_once LIBDIR.'/util/config.php';
+		Config::load(BASEDIR.'/config');
+		require_once LIBDIR.'/util/runner.php';
+	} catch (RoboticksException $e) {
+		if (!Config::get('generic/debug') || $e instanceOf RoboticksException) {
+			echo PHP_EOL.'>> '.$e->getMessage().PHP_EOL;
+			exit($e->getCode());
+		} else {
+			throw $e;
+		}
+	}

@@ -1,0 +1,22 @@
+Robot:
+  Tea:
+    name:			"TEA"
+    cargo:			"M"
+    Word:			TEA
+    User:				Alice
+    Sector:			Sector_190
+  Grunt:
+    name:			"GRUNT"
+    Word:			GRUNT
+    User:				Alice
+    Sector:			Sector_100
+  Stake:
+    name:			"STAKE"
+    Word:			STAKE
+    User:				Friend
+    Sector:			Sector_170
+  Fuel:
+    name:			"FUEL"
+    Word:			FUEL
+    User:				Foe
+    Sector:			Sector_189

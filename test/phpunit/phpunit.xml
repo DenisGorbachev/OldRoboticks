@@ -1,0 +1,7 @@
+<phpunit 
+         colors="true"
+         stopOnFailure="true"
+         strict="true"
+         verbose="true">
+</phpunit>
+

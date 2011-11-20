@@ -1,0 +1,76 @@
+detect_relations: true
+actAs:
+  Timestampable:		~
+
+Word:
+  columns:
+    name:				{ type: string(255), unique: true, readonly: true }
+  actAs:					[]
+
+User:
+  columns:
+    username:			{ type: string(255), unique: true, readonly: true }
+    password:			{ type: string(255) }
+    last_login: 			{ type: timestamp }
+    current_login: 	{ type: timestamp }
+    remember_key:	{ type: string(255) }
+
+Stance:
+  columns:
+    from_id:			{ type: integer }
+    to_id:				{ type: integer }
+    type:				{ type: enum, values: [ally, enemy] }
+  relations:
+    From:
+      class:				User
+      foreign:			id
+      local:				from_id
+      foreignAlias:		StancesFrom
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
+    To:
+      class:				User
+      foreign:			id
+      local:				to_id
+      foreignAlias:		StancesTo
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
+
+Sector:
+  columns:
+    x:						{ type: integer, readonly: true }
+    y:						{ type: integer, readonly: true }
+    letter:				{ type: string(1), fixed: true, readonly: true, default: "_" }
+    cargo:				{ type: string(255) }
+  indexes:
+    coordinates:
+      fields:				[x, y]
+  actAs:					[]
+
+Robot:
+  columns:
+    name:				{ type: string(255), default: "TEA" }
+    speed:				{ type: integer }
+    cargo:				{ type: string(5) }
+    word_id:				{ type: integer, notnull: false }
+    user_id:				{ type: integer }
+    sector_id:			{ type: integer }
+  relations:
+    Word:
+      foreignAlias:		Robots
+      local:				word_id
+      foreign:			id
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
+    User:
+      foreignAlias:		Robots
+      local:				user_id
+      foreign:			id
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
+    Sector:
+      foreignAlias:		Robots
+      local:				sector_id
+      foreign:			id
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
