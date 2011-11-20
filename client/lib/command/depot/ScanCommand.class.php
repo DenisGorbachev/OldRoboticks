@@ -45,8 +45,9 @@ class ScanCommand extends BaseServerCommand {
 	public function executeForRobots(array $results) {
 		$info = array();
 		foreach ($results as $result) {
-			vd($result);
-			extract($result);
+			$x = $result['x'];
+            $y = $result['y'];
+            $stance = $result['stance'];
 			if (empty($info[$y])) {
 				$info[$y] = array();
 			}
