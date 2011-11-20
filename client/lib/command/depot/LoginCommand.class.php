@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/../BaseServerCommand.class.php';
+require_once dirname(__FILE__).'/../BaseUserInterfaceCommand.class.php';
 
-class LoginCommand extends BaseServerCommand {
+class LoginCommand extends BaseUserInterfaceCommand {
 	public function getParserConfig() {
 		return array(
 			'description' => 'Authenticate yourself'

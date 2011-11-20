@@ -5,6 +5,21 @@ Robot:
     Word:			TEA
     User:				Alice
     Sector:			Sector_190
+  Pear:
+    name:			"PEAR"
+    Word:			PEAR
+    User:				Alice
+    Sector:			Sector_246
+  Rear:
+    name:			"REAR"
+    Word:			REAR
+    User:				Alice
+    Sector:			Sector_305
+  Sea:
+    name:			"SEA"
+    Word:			SEA
+    User:				Alice
+    Sector:			Sector_232
   Grunt:
     name:			"GRUNT"
     Word:			GRUNT
@@ -15,8 +30,43 @@ Robot:
     Word:			STAKE
     User:				Friend
     Sector:			Sector_170
+  Wake:
+    name:			"WAKE"
+    Word:			WAKE
+    User:				Friend
+    Sector:			Sector_208
+  Lake:
+    name:			"LAKE"
+    Word:			LAKE
+    User:				Friend
+    Sector:			Sector_246
+  Drake:
+    name:			"DRAKE"
+    Word:			DRAKE
+    User:				Friend
+    Sector:			Sector_305
   Fuel:
     name:			"FUEL"
     Word:			FUEL
     User:				Foe
     Sector:			Sector_189
+  Rush:
+    name:			"RUSH"
+    Word:			RUSH
+    User:				Foe
+    Sector:			Sector_208
+  Push:
+    name:			"PUSH"
+    Word:			PUSH
+    User:				Foe
+    Sector:			Sector_227
+  Mushroom:
+    name:			"MUSHROOM"
+    Word:			MUSHROOM
+    User:				Foe
+    Sector:			Sector_246
+  Plush:
+    name:			"PLUSH"
+    Word:			PLUSH
+    User:				Foe
+    Sector:			Sector_305

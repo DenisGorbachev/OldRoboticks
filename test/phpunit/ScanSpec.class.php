@@ -10,18 +10,20 @@ class ScanSpec extends BaseSpec {
 			->when('Exec', 'scan '.$this->getRobotId('tea'))
 			->then('Success')
 				->and('Contains', '4,14')
-				->and('Contains', '9,14')
 				->and('Contains', '14,14')
 				
-				->and('Contains', '4,9')
-				->and('Contains', '14,9')
-				
 				->and('Contains', '4,4')
-				->and('Contains', '9,4')
 				->and('Contains', '14,4')
 				
-				->and('Contains', '-----------') // ___________
-				->and('Contains', 'X')
+				->and('Contains', '-  -  -  -  -  -  -  -  -  -  -')
+
+				->and('Contains', ' 1 ') // enemy
+                ->and('Contains', ' 2 ') // ally
+                ->and('Contains', ' 3 ') // enemy+ally
+                ->and('Contains', ' 4 ') // own
+                ->and('Contains', ' 5 ') // own+enemy
+                ->and('Contains', ' 6 ') // own+ally
+                ->and('Contains', ' 7 ') // own+ally+enemy
 	;}
 
 	public function testRobotsAfterMove() {

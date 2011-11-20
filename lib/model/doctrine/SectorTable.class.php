@@ -9,7 +9,7 @@ class SectorTable extends Doctrine_Table {
     /**
      * Retrieves a table.
      *
-     * @return Doctrine_Table
+     * @return SectorTable
      */
 	public static function getInstance() {
 		return Doctrine_Core::getTable('Sector');
@@ -38,14 +38,14 @@ class SectorTable extends Doctrine_Table {
 			->andWhere('s.y >= ?', $blY)
 			->andWhere('s.x <= ?', $trX)
 			->andWhere('s.y <= ?', $trY)
-			->orderBy('s.x, s.y')
+			->orderBy('s.x, s.y DESC')
 	;}
 	
 	public function getScanQueryForRobots($blX, $blY, $trX, $trY, $userId) {
 		return $this->getBaseScanQuery($blX, $blY, $trX, $trY)
 			->addSelect('r.id AS robot_id, u.id AS user_id, sfr.type AS stance')
-			->leftJoin('s.Robots r')
-			->leftJoin('r.User u')
+            ->leftJoin('s.Robots r')
+            ->leftJoin('r.User u')
 			->leftJoin('u.StancesFrom sfr WITH sfr.to_id = ?', $userId)
 	;}
 	

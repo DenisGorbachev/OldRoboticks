@@ -1,9 +1,29 @@
 Word:
   TEA:
     name:					"TEA"
+  PEAR:
+    name:					"PEAR"
+  REAR:
+    name:					"REAR"
+  SEA:
+    name:					"SEA"
   GRUNT:
     name:					"GRUNT"
   STAKE:
     name:					"STAKE"
+  WAKE:
+    name:					"WAKE"
+  LAKE:
+    name:					"LAKE"
+  DRAKE:
+    name:					"DRAKE"
   FUEL:
     name:					"FUEL"
+  RUSH:
+    name:					"RUSH"
+  PUSH:
+    name:					"PUSH"
+  MUSHROOM:
+    name:					"MUSHROOM"
+  PLUSH:
+    name:					"PLUSH"

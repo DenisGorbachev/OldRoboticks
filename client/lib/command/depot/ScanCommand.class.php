@@ -1,10 +1,12 @@
 <?php
 
-require_once dirname(__FILE__).'/../BaseServerCommand.class.php';
+require_once dirname(__FILE__).'/../BaseUserInterfaceCommand.class.php';
 
-class ScanCommand extends BaseServerCommand {
-	public $colors = array(
-		'own' => 'red'
+class ScanCommand extends BaseUserInterfaceCommand {
+	public $stance_values = array(
+		'enemy' => 1,
+        'ally' => 2,
+        'own' => 4
 	);
 	
 	public function getParserConfig() {
@@ -44,32 +46,49 @@ class ScanCommand extends BaseServerCommand {
 	
 	public function executeForRobots(array $results) {
 		$info = array();
-		foreach ($results as $result) {
+        $minX = null;
+        $minY = null;
+        $maxX = null;
+        $maxY = null;
+		foreach ($results as $i => $result) {
 			$x = $result['x'];
             $y = $result['y'];
-            $stance = $result['stance'];
+            $stance = $result['stance'] ?: 'own';
+            $robot_id = $result['robot_id'];
+            if ($x > $maxX || is_null($maxX)) {
+                $maxX = $x;
+            }
+            if ($x < $minX || is_null($minX)) {
+                $minX = $x;
+            }
+            if ($y > $maxY || is_null($maxY)) {
+                $maxY = $y;
+            }
+            if ($y < $minY || is_null($minY)) {
+                $minY = $y;
+            }
 			if (empty($info[$y])) {
 				$info[$y] = array();
 			}
 			if (empty($info[$y][$x])) {
-				$info[$y][$x] = array(
-					'own' => 0,
-					'ally' => 0,
-					'enemy' => 0
-				);
+				$info[$y][$x] = $this->empty_cell_placeholder;
 			}
 			if (empty($robot_id)) {
 				continue;
 			}
-			$stance = $stance ?: 'own';
-			$info[$y][$x][$stance]++;
-		}
-		foreach ($info as $row) {
-			foreach ($row as $cell) {
-				echo ' ';
+            if ($info[$y][$x] == $this->empty_cell_placeholder) {
+				$info[$y][$x] = 0;
 			}
-			echo PHP_EOL;
+			$info[$y][$x] = $info[$y][$x] | $this->stance_values[$stance];
 		}
+        foreach ($info as &$row) {
+            array_unshift($row, '');
+        }
+        $upperCoordinatesRow = array_merge(array($this->coords($minX, $maxY)), array_fill(0, $maxX-$minX+1, ''), array($this->coords($maxX, $maxY)));
+        $lowerCoordinatesRow = array_merge(array($this->coords($minX, $minY)), array_fill(0, $maxX-$minX+1, ''), array($this->coords($maxX, $minY)));
+        array_unshift($info, $upperCoordinatesRow);
+        $info[] = $lowerCoordinatesRow;
+		$this->table($info);
 	}
 	
 }

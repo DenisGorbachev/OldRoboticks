@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/../BaseServerCommand.class.php';
+require_once dirname(__FILE__).'/../BaseUserInterfaceCommand.class.php';
 
-class RegisterCommand extends BaseServerCommand {
+class RegisterCommand extends BaseUserInterfaceCommand {
 	public function getParserConfig() {
 		return array(
 			'description' => 'Register new user'
