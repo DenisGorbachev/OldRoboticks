@@ -4,7 +4,7 @@ require_once dirname(__FILE__).'/../BaseServerCommand.class.php';
 
 class ScanCommand extends BaseServerCommand {
 	public $colors = array(
-		'own' =>
+		'own' => 'red'
 	);
 	
 	public function getParserConfig() {

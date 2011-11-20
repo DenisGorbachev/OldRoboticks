@@ -1,7 +1,12 @@
-<phpunit 
-         colors="true"
-         stopOnFailure="true"
-         strict="true"
-         verbose="true">
+<phpunit
+        colors="true"
+        stopOnFailure="true"
+        strict="true"
+        verbose="true">
+    <testsuites>
+        <testsuite name="All">
+            <directory suffix=".php">.</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>
 

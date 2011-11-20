@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__.'/../lib/symfony/lib/yaml/sfYaml.php';
+
 class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	public $robots = array(null, 'tea', 'grunt');
 	protected $world = array(
@@ -31,7 +33,15 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 
 	public function givenGenesis() {
 		$dump = __DIR__.'/dump.sql';
-		`mysql -u root roboticks < $dump`;
+        $databases = sfYaml::load(__DIR__.'/../config/databases.yml');
+        $param = $databases['all']['doctrine']['param'];
+        $dsn = $param['dsn'];
+        $username = $param['username'];
+        $password = $param['password'];
+        preg_match('/dbname=(.*)/', $dsn, $match);
+        $dbname = $match[1];
+        $cmd = "mysql -u $username ".($password? "-p$password" : "")." $dbname < $dump";
+        `$cmd`;
 		file_put_contents($this->getClientDir().'/cache/cookie.jar', '');
 	}
 	
@@ -72,5 +82,9 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	public function thenContains($needle, $message = '', $ignoreCase = false) {
 		return $this->assertContains($needle, $this->world['lastResult'], $message, $ignoreCase);
 	}
-	
+
+    public function testDummy() {
+        $this->assertTrue(true);
+    }
+    
 }

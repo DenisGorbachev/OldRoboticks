@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -u
+set -e
+
+copy_sample ()
+{
+	if [ ! -f $1 ];
+	then
+		cp $1.sample $1
+	fi 
+	return 0;
+}
+
+mkdir cache || echo "Cache directory already exists"
+git submodule update --init --recursive
+sudo ./symfony project:permissions
+copy_sample "config/databases.yml"
+#copy_sample "config/app.yml"
+#copy_sample "config/factories.yml"
+echo "[INFO] You may need to edit config/databases.yml"

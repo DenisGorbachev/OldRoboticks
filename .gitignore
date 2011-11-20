@@ -14,3 +14,4 @@ lib/filter/doctrine/*/base/*
 data/sql/schema.sql
 web/uploads/*
 test/dump.sql
+client/cache/*
