@@ -15,7 +15,25 @@ abstract class Base<?php echo $this->table->getOption('name') ?>FormFilter exten
     $this->setWidgets(array(
 <?php foreach ($this->getColumns() as $column): ?>
 <?php if ($column->isPrimaryKey()) continue ?>
+<?php switch ($column->getForeignClassName()) : ?>
+<?php case 'User': ?>
+      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new tfWidgetFormExtUserComboBox(),
+<?php break; ?>
+<?php case 'msBrBranch': ?>
+      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new tfWidgetFormExtBranchComboBox(),
+<?php break; ?>
+<?php default: ?>
+<?php   switch ($column->getDoctrineType()) : ?>
+<?php     case 'date': ?>
+      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormI18nDateRu(), 'to_date' => new sfWidgetFormI18nDateRu(), 'template' => 'от %from_date%<br />до %to_date%')),
+<?php     break; ?>
+<?php     case 'timestamp': ?>
+      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormI18nDateTimeRu(), 'to_date' => new sfWidgetFormI18nDateTimeRu(), 'template' => 'от %from_date%<br />до %to_date%')),
+<?php     break; ?>
+<?php     default: ?>
       '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new <?php echo $this->getWidgetClassForColumn($column) ?>(<?php echo $this->getWidgetOptionsForColumn($column) ?>),
+<?php   endswitch ?>
+<?php endswitch ?>
 <?php endforeach; ?>
 <?php foreach ($this->getManyToManyRelations() as $relation): ?>
       '<?php echo $this->underscore($relation['alias']) ?>_list'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($this->underscore($relation['alias']).'_list')) ?> => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => '<?php echo $relation['table']->getOption('name') ?>')),

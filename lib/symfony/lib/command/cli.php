@@ -21,15 +21,8 @@ try
 }
 catch (Exception $e)
 {
-  if (!isset($application))
-  {
-    throw $e;
-  }
-
   $application->renderException($e);
-  $statusCode = $e->getCode();
-
-  exit(is_numeric($statusCode) && $statusCode ? $statusCode : 1);
+  throw $e;
 }
 
 exit(is_numeric($statusCode) ? $statusCode : 0);

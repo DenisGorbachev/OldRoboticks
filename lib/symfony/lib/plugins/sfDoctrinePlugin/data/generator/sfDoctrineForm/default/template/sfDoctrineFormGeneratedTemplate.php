@@ -15,20 +15,50 @@ abstract class Base<?php echo $this->modelName ?>Form extends <?php echo $this->
   public function setup()
   {
     $this->setWidgets(array(
-<?php foreach ($this->getColumns() as $column): ?>
+<?php foreach ($this->getColumns() as $column) : ?>
+<?php switch ($column->getForeignClassName()) : ?>
+<?php case 'User': ?>
+      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new tfWidgetFormExtUserComboBox(),
+<?php break; ?>
+<?php case 'msBrBranch': ?>
+      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new tfWidgetFormExtBranchComboBox(),
+<?php break; ?>
+<?php default: ?>
+<?php   switch ($column->getDoctrineType()) : ?>
+<?php     case 'date': ?>
+      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new sfWidgetFormI18nDateRu(),
+<?php     break; ?>
+<?php     case 'timestamp': ?>
+      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new sfWidgetFormI18nDateTimeRu(),
+<?php     break; ?>
+<?php     default: ?>
       '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new <?php echo $this->getWidgetClassForColumn($column) ?>(<?php echo $this->getWidgetOptionsForColumn($column) ?>),
+<?php   endswitch ?>
+<?php endswitch ?>
 <?php endforeach; ?>
 <?php foreach ($this->getManyToManyRelations() as $relation): ?>
+<?php if ($relation['table']->getOption('name') == 'User') : ?>
+      '<?php echo $this->underscore($relation['alias']) ?>_list'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($this->underscore($relation['alias']).'_list')) ?> => new msWidgetTreeChoice(array('tree' => GroupTable::getInstance()->getUserGroupTreeForTfWidgetTreeChoice())),
+<?php else : ?>
       '<?php echo $this->underscore($relation['alias']) ?>_list'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($this->underscore($relation['alias']).'_list')) ?> => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => '<?php echo $relation['table']->getOption('name') ?>')),
+<?php endif ?>
 <?php endforeach; ?>
     ));
 
     $this->setValidators(array(
 <?php foreach ($this->getColumns() as $column): ?>
+<?php if (in_array($column->getFieldName(), array('created_at', 'updated_at'))) : ?>
+      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new sfValidatorDateTime(array('required' => false)),
+<?php else : ?>
       '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new <?php echo $this->getValidatorClassForColumn($column) ?>(<?php echo $this->getValidatorOptionsForColumn($column) ?>),
+<?php endif ?>
 <?php endforeach; ?>
 <?php foreach ($this->getManyToManyRelations() as $relation): ?>
+<?php if ($relation['table']->getOption('name') == 'User') : ?>
+      '<?php echo $this->underscore($relation['alias']) ?>_list'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($this->underscore($relation['alias']).'_list')) ?> => new tfValidatorDoctrineUniqueChoice(array('multiple' => true, 'model' => 'User', 'required' => false), array('required' => 'user.users_needed')),
+<?php else : ?>
       '<?php echo $this->underscore($relation['alias']) ?>_list'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($this->underscore($relation['alias']).'_list')) ?> => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => '<?php echo $relation['table']->getOption('name') ?>', 'required' => false)),
+<?php endif ?>
 <?php endforeach; ?>
     ));
 

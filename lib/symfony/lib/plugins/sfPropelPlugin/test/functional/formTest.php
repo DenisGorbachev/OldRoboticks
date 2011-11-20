@@ -124,7 +124,7 @@ $b->
   end()->
   with('response')->begin()->
     checkElement('td[colspan="2"] .error_list li', 0)->
-    checkElement('.error_list li', 'An object with the same "name" already exists.')->
+    checkElement('.error_list li', 'An object with the same "name" already exist.')->
     checkElement('.error_list li', 1)->
   end()
 ;
@@ -144,7 +144,7 @@ $b->
     isError('name', false)->
   end()->
   with('response')->begin()->
-    checkElement('td[colspan="2"] .error_list li', 'An object with the same "name" already exists.')->
+    checkElement('td[colspan="2"] .error_list li', 'An object with the same "name" already exist.')->
     checkElement('td[colspan="2"] .error_list li', 1)->
   end()
 ;
@@ -213,7 +213,7 @@ $b->
   end()->
   with('response')->isStatusCode(200)->
   click('submit', array('article' => array('title' => 'foo', 'category_id' => 1)))->
-  with('response')->checkElement('.error_list li', 'An object with the same "title, category_id" already exists.')
+  with('response')->checkElement('.error_list li', 'An object with the same "title, category_id" already exist.')
 ;
 
 // update the category from the article form

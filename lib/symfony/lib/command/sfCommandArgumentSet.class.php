@@ -72,7 +72,7 @@ class sfCommandArgumentSet
   {
     if (isset($this->arguments[$argument->getName()]))
     {
-      throw new sfCommandException(sprintf('An argument with name "%s" already exists.', $argument->getName()));
+      throw new sfCommandException(sprintf('An argument with name "%s" already exist.', $argument->getName()));
     }
 
     if ($this->hasAnArrayArgument)

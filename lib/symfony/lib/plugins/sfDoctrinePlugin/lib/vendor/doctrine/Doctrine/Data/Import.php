@@ -83,7 +83,7 @@ class Doctrine_Data_Import extends Doctrine_Data
                 } else if (is_dir($dir)) {
                     $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir),
                                                             RecursiveIteratorIterator::LEAVES_ONLY);
-                    $filesOrdered = array();                                        
+                    $filesOrdered = array();
                     foreach ($it as $file) {
                         $filesOrdered[] = $file;
                     }
@@ -328,25 +328,30 @@ class Doctrine_Data_Import extends Doctrine_Data
         }
 
         // save natural nested set fixture data and unset from _importedObjects
-        foreach ($nestedSets as $className => $sets) {
+
+        $processedNestedSets = array();
+        foreach ($this->_importedObjects as $obj) {
+            $objClass = get_class($obj);
+            if (in_array($objClass, $processedNestedSets)) {
+                continue;
+            }
+
+            if ( ! in_array($objClass, array_keys($nestedSets))) {
+                $obj->save();
+            } else {
+                foreach ($nestedSets[$objClass] as $data) {
+                    $this->_loadNestedSetData($objClass, $data);
+                }
+                $processedNestedSets[] = $objClass;
+            }
+        }
+
+/*        foreach ($nestedSets as $className => $sets) {
             foreach ($sets as $data) {
                 $this->_loadNestedSetData($className, $data);
             }
-        }
+        }*/
 
-        $manager = Doctrine_Manager::getInstance();
-        foreach ($manager as $connection) {
-            $tree = $connection->unitOfWork->buildFlushTree(array_keys($array));
-
-            foreach ($tree as $model) {
-                foreach ($this->_importedObjects as $obj) {
-
-                    if ($obj instanceof $model) {
-                        $obj->save();
-                    }
-                }
-            }
-        }
 
     }
 

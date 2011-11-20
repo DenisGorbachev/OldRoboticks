@@ -610,4 +610,11 @@ class sfContext implements ArrayAccess
       $this->getLogger()->shutdown();
     }
   }
+
+  public static function renameContext($oldName, $newName) {
+    if (self::hasInstance($oldName)) {
+      self::$instances[$newName] = self::$instances[$oldName];
+      unset(self::$instances[$oldName]);
+    }
+  }
 }

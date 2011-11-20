@@ -33,7 +33,8 @@
 class Doctrine_Task_GenerateMigrationsDb extends Doctrine_Task
 {
     public $description          =   'Generate migration classes for an existing database',
-           $requiredArguments    =   array('migrations_path' => 'Specify the complete path to your migration classes folder.'),
+           $requiredArguments    =   array('migrations_path' => 'Specify the complete path to your migration classes folder.',
+                                           'yaml_schema_path' => 'Specify the path to your yaml schema files folder.'),
            $optionalArguments    =   array();
     
     public function execute()
@@ -50,6 +51,7 @@ class Doctrine_Task_GenerateMigrationsDb extends Doctrine_Task
             foreach (Doctrine_Manager::getInstance() as $connection) {
                 $connections[] = $connection->getName();
             }
+
             $changes = Doctrine_Core::generateMigrationsFromDiff($migrationsPath, $connections, $yamlSchemaPath);
             $numChanges = count($changes, true) - count($changes);
             $result = ($result1 || $numChanges) ? true:false;

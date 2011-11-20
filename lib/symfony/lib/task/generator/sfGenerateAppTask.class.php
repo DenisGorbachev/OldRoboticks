@@ -146,10 +146,7 @@ EOF;
       'IS_DEBUG'    => 'true',
       'IP_CHECK'    => '// this check prevents access to debug front controllers that are deployed by accident to production servers.'.PHP_EOL.
                        '// feel free to remove this, extend it or make something more sophisticated.'.PHP_EOL.
-                       'if (!in_array(@$_SERVER[\'REMOTE_ADDR\'], array(\'127.0.0.1\', \'::1\')))'.PHP_EOL.
-                       '{'.PHP_EOL.
-                       '  die(\'You are not allowed to access this file. Check \'.basename(__FILE__).\' for more information.\');'.PHP_EOL.
-                       '}'.PHP_EOL,
+                       'require dirname(__FILE__).\'/../protection.php\';'.PHP_EOL
     ));
 
     $this->getFilesystem()->rename($appDir.'/config/ApplicationConfiguration.class.php', $appDir.'/config/'.$app.'Configuration.class.php');

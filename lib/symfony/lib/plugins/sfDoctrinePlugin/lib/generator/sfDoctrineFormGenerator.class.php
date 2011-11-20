@@ -309,6 +309,7 @@ class sfDoctrineFormGenerator extends sfGenerator
       case 'timestamp':
         $widgetSubclass = 'DateTime';
         break;
+      case 'set':
       case 'enum':
         $widgetSubclass = 'Choice';
         break;
@@ -343,9 +344,26 @@ class sfDoctrineFormGenerator extends sfGenerator
     {
       $options[] = sprintf('\'model\' => $this->getRelatedModelName(\'%s\'), \'add_empty\' => %s', $column->getRelationKey('alias'), $column->isNotNull() ? 'false' : 'true');
     }
-    else if ('enum' == $column->getDoctrineType() && is_subclass_of($this->getWidgetClassForColumn($column), 'sfWidgetFormChoiceBase'))
+    else if (in_array($column->getDoctrineType(), array('enum', 'set')) && is_subclass_of($this->getWidgetClassForColumn($column), 'sfWidgetFormChoiceBase'))
     {
-      $options[] = '\'choices\' => '.$this->arrayExport(array_combine($column['values'], $column['values']));
+      // forced obtaining context instance.
+      if ( ! sfContext::hasInstance()) {
+        $configuration = ProjectConfiguration::getApplicationConfiguration('frontend', 'prod', true);
+        sfContext::createInstance($configuration, 'default');
+	    sfContext::renameContext('default', 'temporary');
+       }
+
+      // I18n mode.
+      $values = $column['values'];
+      array_walk($values, function (&$value, $key) {
+        $value = sfContext::getInstance('temporary')->getI18N()->__($value, array(), 'messages');
+      });
+
+      $options[] = '\'choices\' => '.$this->arrayExport(array_combine($column['values'], $values));
+    }
+    if ($column->getDoctrineType() == 'set') {
+    	$options[] = '\'multiple\' => true';
+    	$options[] = '\'expanded\' => true';
     }
 
     return count($options) ? sprintf('array(%s)', implode(', ', $options)) : '';

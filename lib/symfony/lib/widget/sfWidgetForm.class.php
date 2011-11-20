@@ -253,6 +253,7 @@ abstract class sfWidgetForm extends sfWidget
     }
 
     // remove illegal characters
+    $name = translit($name); // Denis.Gorbachev, refs #660, "Москва" => "______", "Самара" => "______"
     $name = preg_replace(array('/^[^A-Za-z]+/', '/[^A-Za-z0-9\:_\.\-]/'), array('', '_'), $name);
 
     return $name;

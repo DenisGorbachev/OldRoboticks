@@ -41,7 +41,7 @@ class sfObjectRouteCollection extends sfRouteCollection
       'prefix_path'          => '/'.$this->options['name'],
       'column'               => isset($this->options['column']) ? $this->options['column'] : 'id',
       'with_show'            => true,
-      'segment_names'        => array('edit' => 'edit', 'new' => 'new'),
+      'segment_names'        => array('edit' => 'edit', 'new' => 'new', 'delete' => 'delete', 'update' => 'update', 'create' => 'create'),
       'model_methods'        => array(),
       'requirements'         => array(),
       'with_wildcard_routes' => false,
@@ -137,7 +137,7 @@ class sfObjectRouteCollection extends sfRouteCollection
     return new $this->routeClass(
       sprintf('%s.:sf_format', $this->options['prefix_path']),
       array_merge(array('module' => $this->options['module'], 'action' => $this->getActionMethod('list'), 'sf_format' => 'html'), $this->options['default_params']),
-      array_merge($this->options['requirements'], array('sf_method' => 'get')),
+      array_merge($this->options['requirements'], array('sf_method' => array('get', 'post'))),
       array('model' => $this->options['model'], 'type' => 'list', 'method' => $this->options['model_methods']['list'])
     );
   }
@@ -147,7 +147,7 @@ class sfObjectRouteCollection extends sfRouteCollection
     return new $this->routeClass(
       sprintf('%s/%s.:sf_format', $this->options['prefix_path'], $this->options['segment_names']['new']),
       array_merge(array('module' => $this->options['module'], 'action' => $this->getActionMethod('new'), 'sf_format' => 'html'), $this->options['default_params']),
-      array_merge($this->options['requirements'], array('sf_method' => 'get')),
+      array_merge($this->options['requirements'], array('sf_method' => array('get', 'post'))),
       array('model' => $this->options['model'], 'type' => 'object')
     );
   }
@@ -155,7 +155,7 @@ class sfObjectRouteCollection extends sfRouteCollection
   protected function getRouteForCreate()
   {
     return new $this->routeClass(
-      sprintf('%s.:sf_format', $this->options['prefix_path']),
+      sprintf('%s/%s.:sf_format', $this->options['prefix_path'], $this->options['segment_names']['create']),
       array_merge(array('module' => $this->options['module'], 'action' => $this->getActionMethod('create'), 'sf_format' => 'html'), $this->options['default_params']),
       array_merge($this->options['requirements'], array('sf_method' => 'post')),
       array('model' => $this->options['model'], 'type' => 'object')
@@ -167,7 +167,7 @@ class sfObjectRouteCollection extends sfRouteCollection
     return new $this->routeClass(
       sprintf('%s/:%s.:sf_format', $this->options['prefix_path'], $this->options['column']),
       array_merge(array('module' => $this->options['module'], 'action' => $this->getActionMethod('show'), 'sf_format' => 'html'), $this->options['default_params']),
-      array_merge($this->options['requirements'], array('sf_method' => 'get')),
+      array_merge($this->options['requirements'], array('sf_method' => array('get', 'post'))),
       array('model' => $this->options['model'], 'type' => 'object', 'method' => $this->options['model_methods']['object'])
     );
   }
@@ -177,7 +177,7 @@ class sfObjectRouteCollection extends sfRouteCollection
     return new $this->routeClass(
       sprintf('%s/:%s/%s.:sf_format', $this->options['prefix_path'], $this->options['column'], $this->options['segment_names']['edit']),
       array_merge(array('module' => $this->options['module'], 'action' => $this->getActionMethod('edit'), 'sf_format' => 'html'), $this->options['default_params']),
-      array_merge($this->options['requirements'], array('sf_method' => 'get')),
+      array_merge($this->options['requirements'], array('sf_method' => array('get', 'post'))),
       array('model' => $this->options['model'], 'type' => 'object', 'method' => $this->options['model_methods']['object'])
     );
   }
@@ -185,7 +185,7 @@ class sfObjectRouteCollection extends sfRouteCollection
   protected function getRouteForUpdate()
   {
     return new $this->routeClass(
-      sprintf('%s/:%s.:sf_format', $this->options['prefix_path'], $this->options['column']),
+      sprintf('%s/:%s/%s.:sf_format', $this->options['prefix_path'], $this->options['column'], $this->options['segment_names']['update']),
       array_merge(array('module' => $this->options['module'], 'action' => $this->getActionMethod('update'), 'sf_format' => 'html'), $this->options['default_params']),
       array_merge($this->options['requirements'], array('sf_method' => 'put')),
       array('model' => $this->options['model'], 'type' => 'object', 'method' => $this->options['model_methods']['object'])
@@ -195,7 +195,7 @@ class sfObjectRouteCollection extends sfRouteCollection
   protected function getRouteForDelete()
   {
     return new $this->routeClass(
-      sprintf('%s/:%s.:sf_format', $this->options['prefix_path'], $this->options['column']),
+      sprintf('%s/:%s/%s.:sf_format', $this->options['prefix_path'], $this->options['column'], $this->options['segment_names']['delete']),
       array_merge(array('module' => $this->options['module'], 'action' => $this->getActionMethod('delete'), 'sf_format' => 'html'), $this->options['default_params']),
       array_merge($this->options['requirements'], array('sf_method' => 'delete')),
       array('model' => $this->options['model'], 'type' => 'object', 'method' => $this->options['model_methods']['object'])

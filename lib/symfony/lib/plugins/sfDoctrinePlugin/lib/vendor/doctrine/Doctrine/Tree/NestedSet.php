@@ -34,7 +34,7 @@
 class Doctrine_Tree_NestedSet extends Doctrine_Tree implements Doctrine_Tree_Interface
 {
     private $_baseQuery;
-    private $_baseAlias = "base";
+    public $_baseAlias = "base";
 
     /**
      * constructor, creates tree with reference to table and sets default root options
@@ -282,7 +282,7 @@ class Doctrine_Tree_NestedSet extends Doctrine_Tree implements Doctrine_Tree_Int
      * Enter description here...
      *
      */
-    private function _createBaseQuery()
+    public function _createBaseQuery()
     {
         $this->_baseAlias = "base";
         $q = Doctrine_Core::getTable($this->getBaseComponent())

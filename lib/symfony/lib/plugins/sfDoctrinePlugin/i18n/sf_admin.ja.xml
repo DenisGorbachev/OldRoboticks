@@ -286,7 +286,7 @@
         <target>"%value%" は %min% より大きい値を指定してください</target>
       </trans-unit>
       <trans-unit>
-        <source>An object with the same "%column%" already exists.</source>
+        <source>An object with the same "%column%" already exist.</source>
         <target>既に登録されています</target>
       </trans-unit>
     </body>

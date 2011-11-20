@@ -211,6 +211,7 @@ abstract class Doctrine_Record_Generator extends Doctrine_Record_Abstract
             $this->_table->setTableName($this->_options['tableName']);
         }
 
+
         // Maintain some options from the parent table
         $options = $this->_options['table']->getOptions();
 
@@ -222,7 +223,12 @@ abstract class Doctrine_Record_Generator extends Doctrine_Record_Abstract
             }
         }
 
-        $this->_table->setOptions($newOptions);
+	    $this->_table->setOptions($newOptions);
+
+	    // maintain "symfony" option.
+	    if (isset($this->_options['symfony'])) {
+	        $this->_table->setOption('symfony', $this->_options['symfony']);
+	    }
 
         $conn->addTable($this->_table);
     }
