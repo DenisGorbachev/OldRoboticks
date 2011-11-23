@@ -4,7 +4,7 @@ class tfSanityException extends sfException {
 	public $text;
 	public $arguments;
 	
-	public function __construct($text, $arguments) {
+	public function __construct($text, $arguments = array()) {
 		$this->text = $text;
 		$this->arguments = $arguments;
 		parent::__construct($text);

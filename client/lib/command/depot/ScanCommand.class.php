@@ -21,9 +21,8 @@ class ScanCommand extends BaseUserInterfaceCommand {
 				'short_name' => '-f',
 				'long_name' => '--for',
 				'description' => 'Type of scan to perform',
-				'action' => 'StoreArray',
-				'action_params' => array('choices' => array('r' => 'robots', 'l' => 'letters', 'd' => 'drops')),
-				'default' => 'robots'
+				'action' => 'StoreString',
+				'default' => 'robots' // choices: robots, letters, cargo
 			)
 		);
 	}
@@ -41,36 +40,50 @@ class ScanCommand extends BaseUserInterfaceCommand {
 			'id' => $arguments['robot_id'],
 			'for' => $options['for']
 		));
-		return $this->{'executeFor'.$options['for']}($response);
+        if ($response) {
+		    $borders = $response['borders'];
+            $xfill = array_fill($borders['blX'], $borders['trX']-$borders['blX']+1, $this->empty_cell_placeholder);
+            $info = array_fill($borders['blY'], $borders['trY']-$borders['blY']+1, $xfill);
+            $info = array_reverse($info, true);
+            $info = $this->{'executeFor'.$options['for']}($response, $info);
+            foreach ($info as &$row) {
+                array_unshift($row, '');
+            }
+            $upperCoordinatesRow = array_merge(array($this->coords($borders['blX'], $borders['trY'])), array_fill(0, $borders['trX']-$borders['blX']+1, ''), array($this->coords($borders['trX'], $borders['trY'])));
+            $lowerCoordinatesRow = array_merge(array($this->coords($borders['blX'], $borders['blY'])), array_fill(0, $borders['trX']-$borders['blX']+1, ''), array($this->coords($borders['trX'], $borders['blY'])));
+            array_unshift($info, $upperCoordinatesRow);
+            $info[] = $lowerCoordinatesRow;
+            $this->table($info);
+        }
 	}
 	
-	public function executeForRobots(array $response) {
-        $borders = $response['borders'];
-        $xfill = array_fill($borders['blX'], $borders['trX']-$borders['blX']+1, $this->empty_cell_placeholder);
-        $info = array_fill($borders['blY'], $borders['trY']-$borders['blY']+1, $xfill);
-        $info = array_reverse($info, true);
-		foreach ($response['results'] as $sector) {
-			$x = $sector['x'];
+    public function executeForRobots($response, $info)
+    {
+        foreach ($response['results'] as $sector) {
+            $x = $sector['x'];
             $y = $sector['y'];
-			if (empty($sector['Robots'])) {
-				continue;
-			}
+            if (empty($sector['Robots'])) {
+                continue;
+            }
             foreach ($sector['Robots'] as $robot) {
                 if ($info[$y][$x] == $this->empty_cell_placeholder) {
-				    $info[$y][$x] = 0;
+                    $info[$y][$x] = 0;
                 }
                 $stancesFrom = $robot['User']['StancesFrom'];
-                $info[$y][$x] = $info[$y][$x] | $this->stance_values[($stancesFrom? $stancesFrom[0]['type'] : 'own')];
+                $info[$y][$x] = $info[$y][$x] | $this->stance_values[($stancesFrom ? $stancesFrom[0]['type'] : 'own')];
             }
-		}
-        foreach ($info as &$row) {
-            array_unshift($row, '');
         }
-        $upperCoordinatesRow = array_merge(array($this->coords($borders['blX'], $borders['trY'])), array_fill(0, $borders['trX']-$borders['blX']+1, ''), array($this->coords($borders['trX'], $borders['trY'])));
-        $lowerCoordinatesRow = array_merge(array($this->coords($borders['blX'], $borders['blY'])), array_fill(0, $borders['trX']-$borders['blX']+1, ''), array($this->coords($borders['trX'], $borders['blY'])));
-        array_unshift($info, $upperCoordinatesRow);
-        $info[] = $lowerCoordinatesRow;
-		$this->table($info);
+        return $info;
+    }
+
+    public function executeForLetters($response, $info)
+    {
+        foreach ($response['results'] as $sector) {
+            $x = $sector['x'];
+            $y = $sector['y'];
+            $info[$y][$x] = empty($sector['letter'])? $this->empty_cell_placeholder : $sector['letter'];
+        }
+        return $info;
 	}
-	
+
 }

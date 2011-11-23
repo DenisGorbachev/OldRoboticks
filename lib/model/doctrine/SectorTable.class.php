@@ -49,11 +49,20 @@ class SectorTable extends Doctrine_Table {
 			->leftJoin('u.StancesFrom sfr WITH sfr.to_id = ?', $userId)
                 ->andWhere('u.id IS NOT NULL')
 	;}
-	
+
+    public function getScanQueryForLetters($blX, $blY, $trX, $trY) {
+		return $this->getBaseScanQuery($blX, $blY, $trX, $trY)
+			->addSelect('s.letter')
+	;}
+
 	public function getScanResultsForRobots($blX, $blY, $trX, $trY, $userId) {
 		return $this->getScanQueryForRobots($blX, $blY, $trX, $trY, $userId)->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
 	}
-	
+
+    public function getScanResultsForLetters($blX, $blY, $trX, $trY) {
+		return $this->getScanQueryForLetters($blX, $blY, $trX, $trY)->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
+	}
+
 	public function getEffectiveCoordinates($x1, $y1, $x2, $y2, $speed) {
 		if ($x1 == $x2) {
 			if ($y1 == $y2) {

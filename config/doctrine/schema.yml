@@ -40,7 +40,7 @@ Sector:
   columns:
     x:						{ type: integer, readonly: true }
     y:						{ type: integer, readonly: true }
-    letter:				{ type: string(1), fixed: true, readonly: true, default: "_" }
+    letter:				{ type: string(1), fixed: true, readonly: true, default: "" }
     cargo:				{ type: string(255) }
   indexes:
     coordinates:

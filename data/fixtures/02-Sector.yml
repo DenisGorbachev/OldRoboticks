@@ -518,6 +518,7 @@ Sector:
   Sector_172:
     x: '8'
     y: '11'
+    letter: 'A'
   Sector_173:
     x: '8'
     y: '12'
@@ -563,6 +564,7 @@ Sector:
   Sector_187:
     x: '9'
     y: '6'
+    letter: 'E'
   Sector_188:
     x: '9'
     y: '7'
@@ -574,6 +576,7 @@ Sector:
   Sector_190:
     x: '9'
     y: '9'
+    letter: 'T'
 <?php /* Data load performance boosters */ ?>
   Sector_191:
     x: '9'
@@ -704,6 +707,7 @@ Sector:
   Sector_233:
     x: '11'
     y: '12'
+    letter: 'S'
   Sector_234:
     x: '11'
     y: '13'
@@ -821,6 +825,7 @@ Sector:
   Sector_272:
     x: '13'
     y: '11'
+    letter: 'D'
   Sector_273:
     x: '13'
     y: '12'
