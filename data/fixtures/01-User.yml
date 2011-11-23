@@ -11,6 +11,9 @@ User:
   Foe:
     username:			"foe"
     password:			"asdf"
+  Stranger:
+    username:			"stranger"
+    password:			"asdf"
 
 Stance:
   -

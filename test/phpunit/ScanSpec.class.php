@@ -17,6 +17,7 @@ class ScanSpec extends BaseSpec {
                 ->and('Contains', ' 5 ') // own+enemy
                 ->and('Contains', ' 6 ') // own+ally
                 ->and('Contains', ' 7 ') // own+ally+enemy
+            ->markTestIncomplete('Test for neutral stance, or get rid of it')
 	;}
 
 	public function testRobotsAfterMove() {

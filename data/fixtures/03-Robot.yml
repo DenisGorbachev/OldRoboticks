@@ -70,3 +70,8 @@ Robot:
     Word:			PLUSH
     User:				Foe
     Sector:			Sector_305
+  Mouse:
+    name:			"MOUSE"
+    Word:			MOUSE
+    User:				Stranger
+    Sector:			Sector_248

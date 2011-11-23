@@ -20,9 +20,9 @@ class ScanCommand extends BaseUserInterfaceCommand {
 			'for' => array(
 				'short_name' => '-f',
 				'long_name' => '--for',
-				'description' => 'Type of scan to perform',
+				'description' => 'Type of scan to perform. Possible values are: robots, letters, cargo',
 				'action' => 'StoreString',
-				'default' => 'robots' // choices: robots, letters, cargo
+				'default' => 'robots'
 			)
 		);
 	}
