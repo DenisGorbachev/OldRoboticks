@@ -39,12 +39,14 @@ class tfUser extends sfBasicSecurityUser {
 		$this->user = $user;
 		$this->user->last_login = $this->user->current_login;
 		$this->user->current_login = date('Y-m-d H:i:s'); // Updating
+        $response = sfContext::getInstance()->getResponse();
 		if($remember) {
 			$remember_key = $remember_key ? $remember_key : md5($this->generateRandomKey());
 			$this->user->remember_key = $remember_key;
 			$remember_cookie_name = sfConfig::get('app_user_remember_cookie_name', 'rmbr_key');
-			sfContext::getInstance()->getResponse()->setCookie($remember_cookie_name, $remember_key, time() + sfConfig::get('app_user_remember_cookie_expire', 365*24*3600*5));
+            $response->setCookie($remember_cookie_name, $remember_key, time() + sfConfig::get('app_user_remember_cookie_expire', 365*24*3600*5));
 		}
+        $response->setCookie('user_id', $this->user->getId(), strtotime('+1year'));
 		$this->user->save();
 	}
 

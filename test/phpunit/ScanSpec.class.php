@@ -9,7 +9,7 @@ class ScanSpec extends BaseSpec {
 				->and('User', 'Alice')
 			->when('Exec', 'scan '.$this->getRobotId('tea'))
 			->then('Success')
-				->and('HasCoordinatesWithMesh')
+				->and('HasDefaultCoordinatesWithMesh')
 				->and('Contains', ' 1 ') // enemy
                 ->and('Contains', ' 2 ') // ally
                 ->and('Contains', ' 3 ') // enemy+ally
@@ -17,11 +17,20 @@ class ScanSpec extends BaseSpec {
                 ->and('Contains', ' 5 ') // own+enemy
                 ->and('Contains', ' 6 ') // own+ally
                 ->and('Contains', ' 7 ') // own+ally+enemy
-            ->markTestIncomplete('Test for neutral stance, or get rid of it')
+                ->and('Contains', ' 3  -  1 ') // the second sector contains a neutral robot, which is marked as enemy
+
+                ->and('Contains', ' 2  4 ') // Alice's robot is near her ally
 	;}
 
 	public function testRobotsAfterMove() {
-		
+		return $this
+			->given('Genesis')
+				->and('User', 'Alice')
+			->when('Exec', 'mv --relative '.$this->getRobotId('tea').' 3,0')
+                ->and('Exec', 'scan '.$this->getRobotId('tea'))
+			->then('Success')
+				->and('HasCoordinatesWithMesh', '7,14', '17,14', '7,4', '17,4')
+                ->and('Contains', ' 2  -  -  -  4 ') // Alice's robot is three sectors away from ally
 	;}
 	
 	public function testRobotsReport() {
@@ -34,7 +43,7 @@ class ScanSpec extends BaseSpec {
 				->and('User', 'Alice')
 			->when('Exec', 'scan --for letters '.$this->getRobotId('tea'))
 			->then('Success')
-				->and('HasCoordinatesWithMesh')
+				->and('HasDefaultCoordinatesWithMesh')
 				->and('Contains', ' T ')
                 ->and('Contains', ' E ')
                 ->and('Contains', ' A ')
@@ -65,12 +74,17 @@ class ScanSpec extends BaseSpec {
 			->then('Failure')
 	;}	
 
-    public function thenHasCoordinatesWithMesh() {
+    public function thenHasDefaultCoordinatesWithMesh() {
         return $this
-            ->and('Contains', '4,14')
-            ->and('Contains', '14,14')
-            ->and('Contains', '4,4')
-            ->and('Contains', '14,4')
+            ->and('HasCoordinatesWithMesh', '4,14', '14,14', '4,4', '14,4')
+    ;}
+
+    public function thenHasCoordinatesWithMesh($tl, $tr, $bl, $br) {
+        return $this
+            ->and('Contains', $tl)
+            ->and('Contains', $tr)
+            ->and('Contains', $bl)
+            ->and('Contains', $br)
             ->and('Contains', '-  -  -  -  -  -  -  -  -  -  -')
     ;}
 

@@ -18,7 +18,12 @@ class Robot extends BaseRobot {
 	public function getCanonicalName() {
 		return mb_strtolower($this->name);
 	}
-	
+
+    public function hasDenotative($denotative) {
+        return mb_strpos($this->name, $denotative);
+    }
+
+
 	public function toListItem() {
 		return array(
 			'name' => $this->getCanonicalName(),
@@ -30,12 +35,16 @@ class Robot extends BaseRobot {
 	public function getFunctions() {
 		$functions = array();
 		foreach ($this->getTable()->getFunctions() as $meaning=>$denotative) {
-			if (mb_strpos($this->name, $denotative)) {
+			if ($this->hasDenotative($denotative)) {
 				$functions[$meaning] = $denotative;
 			}
 		}
 		return $functions;
 	}
+
+    public function hasFunction($meaning) {
+        return $this->hasDenotative($this->getTable()->getFunctionDenotative($meaning));
+    }
 
 	public function calculateSpeed() {
 		preg_match_all('/'.implode('|', $this->getTable()->getVowels()).'/u', $this->name, $matches, PREG_SET_ORDER);
@@ -51,7 +60,12 @@ class Robot extends BaseRobot {
 			'trY' => $base->y + sfConfig::get('app_scan_size'),
 		);
 	}
-	
+
+    public function doExtract() {
+        $sector = $this->getSector();
+        $sector->setDrops($sector->getDrops().$sector->getLetter());
+    }
+
 	public function preSave($event) {
 		$this->speed = $this->calculateSpeed();
 	}

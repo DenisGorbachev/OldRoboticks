@@ -41,7 +41,7 @@ Sector:
     x:						{ type: integer, readonly: true }
     y:						{ type: integer, readonly: true }
     letter:				{ type: string(1), fixed: true, readonly: true, default: "" }
-    cargo:				{ type: string(255) }
+    drops:				{ type: string(255) }
   indexes:
     coordinates:
       fields:				[x, y]

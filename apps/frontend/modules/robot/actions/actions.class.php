@@ -50,5 +50,19 @@ class robotActions extends rbActions {
 		$this->add('results', call_user_func_array(array(SectorTable::getInstance(), $this->method), $arguments));
 		return $this->success('scanned surroundings');
 	}
-	
+
+	public function prepareExtract() {
+		return $this->prepareAutoObject();
+	}
+
+	public function validateExtract() {
+		return $this->validateAutoObject();
+    }
+
+	public function executeExtract(sfWebRequest $request) {
+		$this->object->doExtract();
+        $this->object->save();
+		return $this->success('extracted letter "'.$this->object->getSector()->getLetter().'"');
+	}
+
 }

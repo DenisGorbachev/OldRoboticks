@@ -1,5 +1,4 @@
 Sector:
-<?php /* Data load performance boosters */ ?>
   Sector_1:
     x: '0'
     y: '0'
@@ -297,11 +296,10 @@ Sector:
   Sector_99:
     x: '4'
     y: '18'
-<?php // */?>
   Sector_100:
     x: '4'
     y: '19'
-<?php /* Data load performance boosters */ ?>
+    letter: 'T'
   Sector_101:
     x: '5'
     y: '0'
@@ -571,13 +569,11 @@ Sector:
   Sector_189:
     x: '9'
     y: '8'
-    cargo: 'K'
-<?php // */?>
+    drops: 'K'
   Sector_190:
     x: '9'
     y: '9'
     letter: 'T'
-<?php /* Data load performance boosters */ ?>
   Sector_191:
     x: '9'
     y: '10'
@@ -1210,4 +1206,3 @@ Sector:
   Sector_400:
     x: '19'
     y: '19'
-<?php // */?>

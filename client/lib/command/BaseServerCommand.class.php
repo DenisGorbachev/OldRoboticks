@@ -3,6 +3,20 @@
 require_once dirname(__FILE__).'/BaseCommand.class.php';
 
 abstract class BaseServerCommand extends BaseCommand {
+    public $user_id = null;
+
+    public function run() {
+        $options = $this->getCurlOptions();
+        $filename = $options[CURLOPT_COOKIEFILE];
+        $contents = file_get_contents($filename);
+        preg_match('/user_id\t(.*)/u', $contents, $matches);
+        if (isset($matches[1])) {
+            $this->setUserId($matches[1]);
+        }
+
+        return parent::run();
+    }
+
 	public function rawRequest($controller, $parameters = array(), $method = 'GET', $options = array()) {
 		$method = strtoupper($method);
 		$host = Config::get('generic/server/host');
@@ -43,8 +57,8 @@ abstract class BaseServerCommand extends BaseCommand {
 		curl_close($ch);
 		return $json;
 	}
-	
-	public function getCurlOptions() {
+
+    public function getCurlOptions() {
 		return array(
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_FOLLOWLOCATION => true,
@@ -100,5 +114,15 @@ abstract class BaseServerCommand extends BaseCommand {
 		}
 		return $reformed;
 	}
-	
+
+    public function setUserId($user_id)
+    {
+        $this->user_id = $user_id;
+    }
+
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
 }
