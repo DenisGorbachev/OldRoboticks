@@ -43,7 +43,7 @@ class SectorTable extends Doctrine_Table {
 	
 	public function getScanQueryForRobots($blX, $blY, $trX, $trY, $userId) {
 		return $this->getBaseScanQuery($blX, $blY, $trX, $trY)
-			->addSelect('r.id, u.id, sfr.id, sfr.type')
+			->addSelect('r.id, r.user_id, u.id, sfr.id, sfr.type')
             ->leftJoin('s.Robots r')
             ->leftJoin('r.User u')
 			->leftJoin('u.StancesFrom sfr WITH sfr.to_id = ?', $userId)

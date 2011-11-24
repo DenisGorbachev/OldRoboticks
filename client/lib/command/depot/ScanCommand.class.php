@@ -66,11 +66,19 @@ class ScanCommand extends BaseUserInterfaceCommand {
                 continue;
             }
             foreach ($sector['Robots'] as $robot) {
-                if ($info[$y][$x] == $this->empty_cell_placeholder) {
+				if ($info[$y][$x] == $this->empty_cell_placeholder) {
                     $info[$y][$x] = 0;
                 }
+                $stance = 'enemy';
                 $stancesFrom = $robot['User']['StancesFrom'];
-                $info[$y][$x] = $info[$y][$x] | $this->stance_values[($stancesFrom ? $stancesFrom[0]['type'] : 'own')];
+                if ($stancesFrom) {
+					if ($stancesFrom[0]['type']) {
+						$stance = $stancesFrom[0]['type'];
+					} else if ($robot['user_id'] == /*TODO: this->getUserId*/42) {
+						$stance = 'own';
+					}
+				}
+                $info[$y][$x] = $info[$y][$x] | $this->stance_values[$stance];
             }
         }
         return $info;
