@@ -1,45 +1,24 @@
 <?php
 
-require_once dirname(__FILE__).'/../BaseUserInterfaceCommand.class.php';
+require_once dirname(__FILE__).'/BaseScanCommand.class.php';
 
-class ScanCommand extends BaseUserInterfaceCommand {
-	public $stance_values = array(
-		'enemy' => 1,
-        'ally' => 2,
-        'own' => 4
-	);
-	
+class ReportCommand extends BaseScanCommand {
 	public function getParserConfig() {
 		return array(
-			'description' => 'Scan sectors surrounding a robot'
+			'description' => 'Show a report of robots surroundings'
 		) + parent::getParserConfig();
 	}
 
 	public function getOptionConfigs() {
-		return array(
-			'for' => array(
-				'short_name' => '-f',
-				'long_name' => '--for',
-				'description' => 'Type of scan to perform. Possible values are: robots, letters, cargo',
-				'action' => 'StoreString',
-				'default' => 'robots'
-			)
-		);
+		return parent::getOptionConfigs();
 	}
 	
 	public function getArgumentConfigs() {
-		return array(
-			'robot_id' => array(
-				'description' => 'ID of scan executor (example: 1)'
-			)
-		);
+		return parent::getArgumentConfigs();
 	}
 	
 	public function execute($options, $arguments) {
-		$response = $this->get('robot/scan', array(
-			'id' => $arguments['robot_id'],
-			'for' => $options['for']
-		));
+		$response = parent::execute($options, $arguments);
         if ($response) {
 		    $borders = $response['borders'];
             $xfill = array_fill($borders['blX'], $borders['trX']-$borders['blX']+1, $this->empty_cell_placeholder);
