@@ -2,14 +2,13 @@
 
 require_once __DIR__.'/../BaseSpec.class.php';
 
-class MapSpec extends BaseSpec {
+class ReportSpec extends BaseSpec {
 	public function testRobots() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'map '.$this->getRobotId('tea'))
+			->when('Exec', 'report '.$this->getRobotId('tea'))
 			->then('Success')
-				->and('HasDefaultCoordinatesWithMesh')
 				->and('Contains', ' 1 ') // enemy
                 ->and('Contains', ' 2 ') // ally
                 ->and('Contains', ' 3 ') // enemy+ally
@@ -27,9 +26,8 @@ class MapSpec extends BaseSpec {
 			->given('Genesis')
 				->and('User', 'Alice')
 			->when('Exec', 'mv --relative '.$this->getRobotId('tea').' 3,0')
-                ->and('Exec', 'map '.$this->getRobotId('tea'))
+                ->and('Exec', 'report '.$this->getRobotId('tea'))
 			->then('Success')
-				->and('HasCoordinatesWithMesh', '7,14', '17,14', '7,4', '17,4')
                 ->and('Contains', ' 2  -  -  -  4 ') // Alice's robot is three sectors away from ally
 	;}
 	
@@ -37,7 +35,7 @@ class MapSpec extends BaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'map --for letters '.$this->getRobotId('tea'))
+			->when('Exec', 'report --for letters '.$this->getRobotId('tea'))
 			->then('Success')
 				->and('HasDefaultCoordinatesWithMesh')
 				->and('Contains', ' T ')
@@ -47,50 +45,27 @@ class MapSpec extends BaseSpec {
                 ->and('Contains', ' S ')
 	;}
 	
-	public function testDrops() {
-		return $this
-			->given('Genesis')
-				->and('User', 'Alice')
-			->when('Exec', 'map --for drops '.$this->getRobotId('tea'))
-			->then('Success')
-				->and('HasDefaultCoordinatesWithMesh')
-				->and('Contains', ' 1 ')
-                ->and('Contains', ' 9 ')
-                ->and('Contains', ' 4 ')
+	public function testLettersReport() {
+		
 	;}
 	
-    /* Borderline */
-
-    public function testInvalidArgumentsRobotId() {
-		$this
-			->given('Genesis')
-				->and('User', 'Alice')
-			->when('Exec', 'map 111')
-			->then('Failure')
+	
+	public function testDrops($type = 'drops') {
+		
+	;}
+	
+	public function testDropsReport() {
+		
 	;}
 
-    public function testInvalidNotOwnRobot() {
+	/* Borderline */
+
+	public function testInvalidReportOther() {
 		$this
 			->given('Genesis')
 				->and('User', 'Mob')
-			->when('Exec', 'map '.$this->getRobotId('tea'))
+			->when('Exec', 'report '.$this->getRobotId('tea'))
 			->then('Failure')
 	;}	
-
-    /* Utility methods */
-
-    public function thenHasDefaultCoordinatesWithMesh() {
-        return $this
-            ->and('HasCoordinatesWithMesh', '4,14', '14,14', '4,4', '14,4')
-    ;}
-
-    public function thenHasCoordinatesWithMesh($tl, $tr, $bl, $br) {
-        return $this
-            ->and('Contains', $tl)
-            ->and('Contains', $tr)
-            ->and('Contains', $bl)
-            ->and('Contains', $br)
-            ->and('Contains', '-  -  -  -  -  -  -  -  -  -  -')
-    ;}
 
 }

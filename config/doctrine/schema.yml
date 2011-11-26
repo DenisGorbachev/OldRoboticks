@@ -41,7 +41,7 @@ Sector:
     x:						{ type: integer, readonly: true }
     y:						{ type: integer, readonly: true }
     letter:				{ type: string(1), fixed: true, readonly: true, default: "" }
-    drops:				{ type: string(255) }
+    drops:				{ type: text }
   indexes:
     coordinates:
       fields:				[x, y]
@@ -49,7 +49,7 @@ Sector:
 
 Robot:
   columns:
-    name:				{ type: string(255), default: "TEA" }
+    status:				{ type: string(255), default: "TEA" }
     speed:				{ type: integer }
     cargo:				{ type: string(5) }
     word_id:				{ type: integer, notnull: false }

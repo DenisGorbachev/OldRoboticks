@@ -31,9 +31,12 @@ class SectorTable extends Doctrine_Table {
 		return $this->getMinMaxQuery($field)->fetchOne(array(), Doctrine_Core::HYDRATE_SCALAR);
 	}
 	
-	public function getBaseScanQuery($blX, $blY, $trX, $trY) {
+	public function getScanQuery($blX, $blY, $trX, $trY, $userId) {
 		return $this->createQuery('s')
-			->select('s.id, s.x, s.y')
+			->select('s.*, r.*, u.id, u.username, sfr.*')
+            ->leftJoin('s.Robots r')
+            ->leftJoin('r.User u')
+			->leftJoin('u.StancesFrom sfr WITH sfr.to_id = ?', $userId)
 			->andWhere('s.x >= ?', $blX)
 			->andWhere('s.y >= ?', $blY)
 			->andWhere('s.x <= ?', $trX)
@@ -41,27 +44,9 @@ class SectorTable extends Doctrine_Table {
 			->orderBy('s.x, s.y DESC')
 	;}
 	
-	public function getScanQueryForRobots($blX, $blY, $trX, $trY, $userId) {
-		return $this->getBaseScanQuery($blX, $blY, $trX, $trY)
-			->addSelect('r.id, r.user_id, u.id, sfr.id, sfr.type')
-            ->leftJoin('s.Robots r')
-            ->leftJoin('r.User u')
-			->leftJoin('u.StancesFrom sfr WITH sfr.to_id = ?', $userId)
-                ->andWhere('u.id IS NOT NULL')
+	public function getScanQueryResults($blX, $blY, $trX, $trY, $userId) {
+		return $this->getScanQuery($blX, $blY, $trX, $trY, $userId)->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
 	;}
-
-    public function getScanQueryForLetters($blX, $blY, $trX, $trY) {
-		return $this->getBaseScanQuery($blX, $blY, $trX, $trY)
-			->addSelect('s.letter')
-	;}
-
-	public function getScanResultsForRobots($blX, $blY, $trX, $trY, $userId) {
-		return $this->getScanQueryForRobots($blX, $blY, $trX, $trY, $userId)->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
-	}
-
-    public function getScanResultsForLetters($blX, $blY, $trX, $trY) {
-		return $this->getScanQueryForLetters($blX, $blY, $trX, $trY)->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
-	}
 
 	public function getEffectiveCoordinates($x1, $y1, $x2, $y2, $speed) {
 		if ($x1 == $x2) {

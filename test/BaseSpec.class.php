@@ -63,6 +63,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	}
 	
 	public function runThen(&$world, $action, $arguments) {
+        $this->assertNotContains('Server error', implode(PHP_EOL, $this->world['results']), 'Output contains server errors.');
 		$this->assertNotContains('Call Stack', implode(PHP_EOL, $this->world['results']), 'Output contains PHP errors.');
 		return call_user_func_array(array($this, 'then'.$action), $arguments);
 	}

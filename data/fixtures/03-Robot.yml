@@ -1,77 +1,77 @@
 Robot:
   Tea:
-    name:			"TEA"
+    status:			"TEA"
     cargo:			"M"
     Word:			TEA
     User:				Alice
     Sector:			Sector_190
   Grunt:
-    name:			"GRUNT"
+    status:			"GRUNT"
     Word:			GRUNT
     User:				Alice
     Sector:			Sector_100
   Pear:
-    name:			"PEAR"
+    status:			"PEAR"
     Word:			PEAR
     User:				Alice
     Sector:			Sector_227
   Rear:
-    name:			"REAR"
+    status:			"REAR"
     Word:			REAR
     User:				Alice
     Sector:			Sector_246
   Sea:
-    name:			"SEA"
+    status:			"SEA"
     Word:			SEA
     User:				Alice
     Sector:			Sector_232
   Stake:
-    name:			"STAKE"
+    status:			"STAKE"
     Word:			STAKE
     User:				Friend
     Sector:			Sector_170
   Wake:
-    name:			"WAKE"
+    status:			"WAKE"
     Word:			WAKE
     User:				Friend
     Sector:			Sector_208
   Lake:
-    name:			"LAKE"
+    status:			"LAKE"
     Word:			LAKE
     User:				Friend
     Sector:			Sector_232
   Drake:
-    name:			"DRAKE"
+    status:			"DRAKE"
     Word:			DRAKE
     User:				Friend
     Sector:			Sector_246
   Fuel:
-    name:			"FUEL"
+    status:			"FUEL"
     Word:			FUEL
     User:				Foe
     Sector:			Sector_189
   Rush:
-    name:			"RUSH"
+    status:			"RUSH"
     Word:			RUSH
     User:				Foe
     Sector:			Sector_208
   Push:
-    name:			"PUSH"
+    status:			"PUSH"
     Word:			PUSH
     User:				Foe
     Sector:			Sector_227
   Mushroom:
-    name:			"MUSHROOM"
+    status:			"MUSHROOM"
     Word:			MUSHROOM
     User:				Foe
     Sector:			Sector_246
   Plush:
-    name:			"PLUSH"
+    status:			"PLUSH"
     Word:			PLUSH
     User:				Foe
     Sector:			Sector_305
   Mouse:
-    name:			"MOUSE"
+    status:			"MOUSE"
     Word:			MOUSE
     User:				Stranger
     Sector:			Sector_248

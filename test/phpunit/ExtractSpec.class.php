@@ -15,7 +15,25 @@ class ExtractSpec extends BaseSpec {
 				->and('DropsReport', 'Contains', 'T T')
 	;}
 
-	public function testNonExtractiveRobot() {
+    /* Borderline */
+
+    public function testInvalidArgumentsRobotId() {
+		$this
+			->given('Genesis')
+				->and('User', 'Alice')
+			->when('Exec', 'extract 111')
+			->then('Failure')
+	;}
+
+    public function testInvalidNotOwnRobot() {
+		$this
+			->given('Genesis')
+				->and('User', 'Mob')
+			->when('Exec', 'extract '.$this->getRobotId('tea'))
+			->then('Failure')
+	;}
+
+	public function testInvalidNonExtractiveRobot() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
@@ -24,7 +42,7 @@ class ExtractSpec extends BaseSpec {
 				->and('DropsReport', 'NotContains', 'T')
 	;}
 	
-	public function testNonExtractiveSector() {
+	public function testInvalidNonExtractiveSector() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')

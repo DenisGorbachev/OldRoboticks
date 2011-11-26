@@ -84,7 +84,7 @@ class MvSpec extends BaseSpec {
 			->then('Failure')
 	;}
 	
-	public function testInvalidMoveImmobile() {
+	public function testInvalidImmobile() {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
@@ -92,7 +92,7 @@ class MvSpec extends BaseSpec {
 			->then('Failure')
 	;}
 	
-	public function testInvalidMoveOthers() {
+	public function testInvalidNotOwnRobot() {
 		$this
 			->given('Genesis')
 				->and('User', 'Mob')

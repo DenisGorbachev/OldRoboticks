@@ -11,7 +11,7 @@
 	}
 	
 	$cmdClass = ucfirst($cmdName).'Command';
-	$cmdFilename = LIBDIR.'/command/depot/'.$cmdClass.'.class.php';
+	$cmdFilename = LIBDIR.'/command/'.$cmdClass.'.class.php';
 	if (!file_exists($cmdFilename)) {
 		throw new RoboticksException('Command not found', 1);
 	}
@@ -20,4 +20,3 @@
 	$cmd = new $cmdClass();
 	$cmd->parse();
 	$cmd->run();
-	

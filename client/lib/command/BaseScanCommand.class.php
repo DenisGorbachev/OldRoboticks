@@ -25,8 +25,22 @@ class BaseScanCommand extends BaseUserInterfaceCommand {
 	
 	public function execute($options, $arguments) {
 		return $this->get('robot/scan', array(
-			'id' => $arguments['robot_id'],
-			'for' => $options['for']
+			'id' => $arguments['robot_id']
 		));
 	}
+
+    public function getStance($robot)
+    {
+        $stance = 'enemy';
+        $stancesFrom = $robot['User']['StancesFrom'];
+        if ($stancesFrom) {
+            if ($stancesFrom[0]['type']) {
+                $stance = $stancesFrom[0]['type'];
+            }
+        } else if ($robot['user_id'] == $this->getUserId()) {
+            $stance = 'own';
+        }
+        return $stance;
+    }
+
 }

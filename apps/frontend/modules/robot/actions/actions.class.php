@@ -35,10 +35,7 @@ class robotActions extends rbActions {
 	}
 	
 	public function validateScan() {
-		return $this->validateAutoObject()
-			&& $this->argumentUnless('for')
-			&& ($this->method = 'getScanResultsFor'.$this->for)
-			&& $this->failureUnless(method_exists('SectorTable', $this->method), 'no such scan type defined');
+		return $this->validateAutoObject();
 	}
 	
 	public function executeScan(sfWebRequest $request) {
@@ -47,7 +44,7 @@ class robotActions extends rbActions {
 		$arguments = $borders + array(
 			'userId' => $this->getUser()->getId()
 		);
-		$this->add('results', call_user_func_array(array(SectorTable::getInstance(), $this->method), $arguments));
+		$this->add('results', call_user_func_array(array(SectorTable::getInstance(), 'getScanQueryResults'), $arguments));
 		return $this->success('scanned surroundings');
 	}
 

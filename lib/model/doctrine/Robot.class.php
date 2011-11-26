@@ -12,21 +12,20 @@
  */
 class Robot extends BaseRobot {
 	public function __toString() {
-		return $this->id.' ("'.$this->getCanonicalName().'")';
-	}
-	
-	public function getCanonicalName() {
-		return mb_strtolower($this->name);
+		return '#'.$this->id.' "'.$this->getName().'"';
 	}
 
-    public function hasDenotative($denotative) {
-        return mb_strpos($this->name, $denotative);
+    public function getName() {
+        return (string)$this->getWord();
     }
 
+    public function hasDenotative($denotative) {
+        return mb_strpos($this->getName(), $denotative);
+    }
 
 	public function toListItem() {
 		return array(
-			'name' => $this->getCanonicalName(),
+			'name' => $this->getName(),
 			'sector' => $this->Sector->__toString(),
 			'functions' => implode($this->getFunctions())
 		) + $this->toArray(false);
@@ -47,8 +46,8 @@ class Robot extends BaseRobot {
     }
 
 	public function calculateSpeed() {
-		preg_match_all('/'.implode('|', $this->getTable()->getVowels()).'/u', $this->name, $matches, PREG_SET_ORDER);
-		return max(0, 3*count($matches) - mb_strlen($this->name));
+		preg_match_all('/'.implode('|', $this->getTable()->getVowels()).'/u', $this->getName(), $matches, PREG_SET_ORDER);
+		return max(0, 3*count($matches) - mb_strlen($this->getName()));
 	}
 
 	public function getScanBorders() {
@@ -69,5 +68,5 @@ class Robot extends BaseRobot {
 	public function preSave($event) {
 		$this->speed = $this->calculateSpeed();
 	}
-	
+
 }
