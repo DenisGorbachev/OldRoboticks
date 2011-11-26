@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/../BaseUserInterfaceCommand.class.php';
+require_once dirname(__FILE__).'/base/UserInterfaceCommand.class.php';
 
-class LsCommand extends BaseUserInterfaceCommand {
+class LsCommand extends UserInterfaceCommand {
 	public $columns = array(
 		'id' => array(
 			'name' => 'ID',

@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/BaseUserInterfaceCommand.class.php';
+require_once dirname(__FILE__).'/UserInterfaceCommand.class.php';
 
-class BaseScanCommand extends BaseUserInterfaceCommand {
+class ScanCommand extends UserInterfaceCommand {
 	public function getOptionConfigs() {
 		return array(
 			'for' => array(

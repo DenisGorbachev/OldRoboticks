@@ -4,7 +4,7 @@ require_once 'Console/CommandLine.php';
 require_once 'Console/CommandLine/Action.php';
 require_once_dir(LIBDIR.'/action');
 
-abstract class BaseCommand {
+abstract class Command {
 	public $options = array();
 	public $arguments = array();
 	

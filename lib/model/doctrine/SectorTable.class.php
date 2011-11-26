@@ -33,8 +33,9 @@ class SectorTable extends Doctrine_Table {
 	
 	public function getScanQuery($blX, $blY, $trX, $trY, $userId) {
 		return $this->createQuery('s')
-			->select('s.*, r.*, u.id, u.username, sfr.*')
+			->select('s.*, r.*, w.*, u.id, u.username, sfr.*')
             ->leftJoin('s.Robots r')
+            ->leftJoin('r.Word w')
             ->leftJoin('r.User u')
 			->leftJoin('u.StancesFrom sfr WITH sfr.to_id = ?', $userId)
 			->andWhere('s.x >= ?', $blX)

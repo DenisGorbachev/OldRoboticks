@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/../BaseUserInterfaceCommand.class.php';
+require_once dirname(__FILE__).'/base/UserInterfaceCommand.class.php';
 
-class InfoCommand extends BaseUserInterfaceCommand {
+class InfoCommand extends UserInterfaceCommand {
 	public function getParserConfig() {
 		return array(
 			'description' => 'Output data about this Roboticks client installation',
@@ -45,6 +45,10 @@ class InfoCommand extends BaseUserInterfaceCommand {
 	}
 	
 	public function outputCommandInfo($file) {
+        if (preg_match('/base/u', $file)) {
+            return;
+        }
+        
 		require_once $file;
 		$cmdName = strtolower(str_replace('Command.class.php', '', basename($file)));
 		$cmdClass = $cmdName.'Command';

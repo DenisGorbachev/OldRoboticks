@@ -9,10 +9,12 @@ class ExtractSpec extends BaseSpec {
 				->and('User', 'Alice')
 			->when('Exec', 'extract '.$this->getRobotId('tea'))
 			->then('Success')
-				->and('DropsReport', 'Contains', 'T')
+            ->when('Exec', 'report --for drops '.$this->getRobotId('tea'))
+            ->then('Contains', '9,9     T')
             ->when('Exec', 'extract '.$this->getRobotId('tea'))
             ->then('Success')
-				->and('DropsReport', 'Contains', 'T T')
+            ->when('Exec', 'report --for drops '.$this->getRobotId('tea'))
+            ->then('Contains', '9,9     T T')
 	;}
 
     /* Borderline */
@@ -39,7 +41,8 @@ class ExtractSpec extends BaseSpec {
 				->and('User', 'Alice')
 			->when('Exec', 'extract '.$this->getRobotId('grunt'))
 			->then('Failure')
-				->and('DropsReport', 'NotContains', 'T')
+            ->when('Exec', 'report --for drops '.$this->getRobotId('grunt'))
+            ->then('NotContains', '4,19     T')
 	;}
 	
 	public function testInvalidNonExtractiveSector() {
@@ -49,7 +52,8 @@ class ExtractSpec extends BaseSpec {
             ->when('Moves', '--relative '.$this->getRobotId('tea').' 1,0')
 			->when('Exec', 'extract '.$this->getRobotId('tea'))
 			->then('Failure')
-				->and('DropsReport', 'NotContains', 'T')
+            ->when('Exec', 'report --for drops '.$this->getRobotId('tea'))
+            ->then('NotContains', '10,9     T')
 	;}
 
 }

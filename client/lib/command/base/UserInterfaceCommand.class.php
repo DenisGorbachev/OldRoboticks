@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/BaseServerCommand.class.php';
+require_once dirname(__FILE__).'/ServerCommand.class.php';
 
-abstract class BaseUserInterfaceCommand extends BaseServerCommand {
+abstract class UserInterfaceCommand extends ServerCommand {
     public $empty_cell_placeholder = '-';
 	
     public function table($table, $sortByColumnIndex = false)
@@ -38,8 +38,12 @@ abstract class BaseUserInterfaceCommand extends BaseServerCommand {
         }
     }
 
-    public function coords($x, $y) {
+    public function sector($x, $y) {
         return $x.','.$y;
+    }
+
+    public function coords($sector) {
+        return $this->sector($sector['x'], $sector['y']);
     }
 
 }

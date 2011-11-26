@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/../BaseUserInterfaceCommand.class.php';
+require_once dirname(__FILE__).'/base/UserInterfaceCommand.class.php';
 
-class HelpCommand extends BaseUserInterfaceCommand {
+class HelpCommand extends UserInterfaceCommand {
 	public function getParserConfig() {
 		return array(
 			'description' => 'Output info about command'

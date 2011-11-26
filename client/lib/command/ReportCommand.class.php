@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/../BaseScanCommand.class.php';
+require_once dirname(__FILE__).'/base/ScanCommand.class.php';
 
-class ReportCommand extends BaseScanCommand {
+class ReportCommand extends ScanCommand {
 	public function getParserConfig() {
 		return array(
 			'description' => 'Show a report of robots surroundings'
@@ -26,27 +26,46 @@ class ReportCommand extends BaseScanCommand {
 	
     public function executeForRobots($response)
     {
-        $info = array('ID', 'Name', 'Status', 'User', );
+        $info = array(array('ID', 'Stance', 'Status', 'Sector', 'Owner', 'Name', 'Speed',));
         foreach ($response['results'] as $sector) {
-            $x = $sector['x'];
-            $y = $sector['y'];
             if (empty($sector['Robots'])) {
                 continue;
             }
             foreach ($sector['Robots'] as $robot) {
-                $stance = $this->getStance($robot);
-                $this->stance_values[$stance];
+                $info[] = array(
+                    $robot['id'],
+                    $this->getStance($robot),
+                    $robot['status'],
+                    $this->coords($sector),
+                    $robot['User']['username'],
+                    $robot['Word']['name'],
+                    $robot['speed'],
+                );
             }
         }
         return $info;
     }
 
-    public function executeForLetters($response, $info)
+    public function executeForLetters($response)
     {
+        $info = array(array('Sector', 'Letter'));
         foreach ($response['results'] as $sector) {
-            $x = $sector['x'];
-            $y = $sector['y'];
-            $info[$y][$x] = empty($sector['letter'])? $this->empty_cell_placeholder : $sector['letter'];
+            if (empty($sector['letter'])) {
+                continue;
+            }
+            $info[] = array($this->coords($sector), $sector['letter']);
+        }
+        return $info;
+	}
+
+    public function executeForDrops($response)
+    {
+        $info = array(array('Sector', 'Drops'));
+        foreach ($response['results'] as $sector) {
+            if (empty($sector['drops'])) {
+                continue;
+            }
+            $info[] = array($this->coords($sector), implode(' ', str_split($sector['drops'])));
         }
         return $info;
 	}

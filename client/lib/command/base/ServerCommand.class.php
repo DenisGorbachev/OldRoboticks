@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/BaseCommand.class.php';
+require_once dirname(__FILE__).'/Command.class.php';
 
-abstract class BaseServerCommand extends BaseCommand {
+abstract class ServerCommand extends Command {
     public $user_id = null;
 
     public function run() {

@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/../BaseUserInterfaceCommand.class.php';
+require_once dirname(__FILE__).'/base/UserInterfaceCommand.class.php';
 
-class ExtractCommand extends BaseUserInterfaceCommand {
+class ExtractCommand extends UserInterfaceCommand {
 	public function getParserConfig() {
 		return array(
 			'description' => 'Extract a letter from current sector (will be added to drops)'

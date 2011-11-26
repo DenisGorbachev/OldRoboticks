@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/../BaseScanCommand.class.php';
+require_once dirname(__FILE__).'/base/ScanCommand.class.php';
 
-class MapCommand extends BaseScanCommand {
+class MapCommand extends ScanCommand {
 	public $stance_values = array(
 		'enemy' => 1,
         'ally' => 2,
@@ -34,8 +34,8 @@ class MapCommand extends BaseScanCommand {
             foreach ($info as &$row) {
                 array_unshift($row, '');
             }
-            $upperCoordinatesRow = array_merge(array($this->coords($borders['blX'], $borders['trY'])), array_fill(0, $borders['trX']-$borders['blX']+1, ''), array($this->coords($borders['trX'], $borders['trY'])));
-            $lowerCoordinatesRow = array_merge(array($this->coords($borders['blX'], $borders['blY'])), array_fill(0, $borders['trX']-$borders['blX']+1, ''), array($this->coords($borders['trX'], $borders['blY'])));
+            $upperCoordinatesRow = array_merge(array($this->sector($borders['blX'], $borders['trY'])), array_fill(0, $borders['trX']-$borders['blX']+1, ''), array($this->sector($borders['trX'], $borders['trY'])));
+            $lowerCoordinatesRow = array_merge(array($this->sector($borders['blX'], $borders['blY'])), array_fill(0, $borders['trX']-$borders['blX']+1, ''), array($this->sector($borders['trX'], $borders['blY'])));
             array_unshift($info, $upperCoordinatesRow);
             $info[] = $lowerCoordinatesRow;
             $this->table($info);

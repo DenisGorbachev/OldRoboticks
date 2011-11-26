@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/../BaseUserInterfaceCommand.class.php';
+require_once dirname(__FILE__).'/base/UserInterfaceCommand.class.php';
 
-class RequestCommand extends BaseUserInterfaceCommand {
+class RequestCommand extends UserInterfaceCommand {
 	public function getParserConfig() {
 		return array(
 			'description' => 'Request playable robots from game server'
