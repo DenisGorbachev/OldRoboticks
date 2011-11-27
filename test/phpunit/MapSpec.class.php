@@ -3,15 +3,12 @@
 require_once __DIR__.'/../ScanBaseSpec.class.php';
 
 class MapSpec extends ScanBaseSpec {
-    public function getCommand() {
-        return 'map';
-    }
-
 	public function testRobots() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'map '.$this->getRobotId('tea'))
+                ->and('Robot', 'tea')
+			->when('Exec', 'map')
 			->then('Success')
 				->and('HasDefaultCoordinatesWithMesh')
 				->and('Contains', ' 1 ') // enemy
@@ -30,8 +27,9 @@ class MapSpec extends ScanBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'mv --relative '.$this->getRobotId('tea').' 3,0')
-                ->and('Exec', 'map '.$this->getRobotId('tea'))
+                ->and('Robot', 'tea')
+			->when('Exec', 'mv --relative 3,0')
+                ->and('Exec', 'map')
 			->then('Success')
 				->and('HasCoordinatesWithMesh', '7,14', '17,14', '7,4', '17,4')
                 ->and('Contains', ' 2  -  -  -  4 ') // Alice's robot is three sectors away from ally
@@ -41,7 +39,8 @@ class MapSpec extends ScanBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'map --for letters '.$this->getRobotId('tea'))
+                ->and('Robot', 'tea')
+			->when('Exec', 'map --for letters')
 			->then('Success')
 				->and('HasDefaultCoordinatesWithMesh')
 				->and('Contains', ' T ')
@@ -55,7 +54,8 @@ class MapSpec extends ScanBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'map --for drops '.$this->getRobotId('tea'))
+                ->and('Robot', 'tea')
+			->when('Exec', 'map --for drops')
 			->then('Success')
 				->and('HasDefaultCoordinatesWithMesh')
 				->and('Contains', ' 1 ')
@@ -80,5 +80,9 @@ class MapSpec extends ScanBaseSpec {
             ->and('Contains', $br)
             ->and('Contains', '-  -  -  -  -  -  -  -  -  -  -')
     ;}
+
+    public function getRobotTestCommand() {
+        return 'map';
+    }
 
 }

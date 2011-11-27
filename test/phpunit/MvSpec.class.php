@@ -1,13 +1,14 @@
 <?php
 
-require_once __DIR__.'/../BaseSpec.class.php';
+require_once __DIR__.'/../RobotBaseSpec.class.php';
 
-class MvSpec extends BaseSpec {
+class MvSpec extends RobotBaseSpec {
 	public function testStand() {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Moves', $this->getRobotId('tea').' 9,9')
+                ->and('Robot', 'tea')
+			->when('Exec', 'mv 9,9')
 			->then('Success')
 				->and('Contains', '9,9')
 	;}
@@ -16,7 +17,8 @@ class MvSpec extends BaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Moves', $this->getRobotId('tea').' 8,9')
+                ->and('Robot', 'tea')
+			->when('Exec', 'mv 8,9')
 			->then('Success')
 				->and('Contains', '8,9')
 	;}
@@ -25,7 +27,8 @@ class MvSpec extends BaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Moves', $this->getRobotId('tea').' 9,8')
+                ->and('Robot', 'tea')
+			->when('Exec', 'mv 9,8')
 			->then('Success')
 				->and('Contains', '9,8')
 	;}
@@ -34,7 +37,8 @@ class MvSpec extends BaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Moves', $this->getRobotId('tea').' 8,8')
+                ->and('Robot', 'tea')
+			->when('Exec', 'mv 8,8')
 			->then('Success')
 				->and('Contains', '8,8')
 	;}
@@ -43,7 +47,8 @@ class MvSpec extends BaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Moves', $this->getRobotId('tea').' 0,9')
+                ->and('Robot', 'tea')
+			->when('Exec', 'mv 0,9')
 			->then('Success')
 				->and('Contains', '6,9')
 	;}
@@ -52,7 +57,8 @@ class MvSpec extends BaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Moves', $this->getRobotId('tea').' 0,0')
+                ->and('Robot', 'tea')
+			->when('Exec', 'mv 0,0')
 			->then('Success')
 				->and('Contains', '7,7')
 	;}
@@ -61,34 +67,20 @@ class MvSpec extends BaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Moves', '-r '.$this->getRobotId('tea').' 1,1')
+                ->and('Robot', 'tea')
+			->when('Exec', 'mv --relative 1,1')
 			->then('Success')
 				->and('Contains', '10,10')
 	;}
 	
 	/* Borderline */
 
-    public function testInvalidNotOwnRobot() {
-        $this
-            ->given('Genesis')
-                ->and('User', 'Mob')
-            ->when('Moves', $this->getRobotId('tea').' 0,9')
-            ->then('Failure')
-    ;}
-
-	public function testInvalidArgumentsRobotId() {
-		$this
-			->given('Genesis')
-				->and('User', 'Alice')
-			->when('Moves', '111 0,0')
-			->then('Failure')
-	;}
-	
 	public function testInvalidPositiveCoordinates() {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Moves', $this->getRobotId('tea').' 100,100')
+                ->and('Robot', 'tea')
+			->when('Exec', 'mv 100,100')
 			->then('Failure')
 	;}
 	
@@ -96,8 +88,13 @@ class MvSpec extends BaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Moves', $this->getRobotId('grunt').' 0,9')
+                ->and('Robot', 'grunt')
+			->when('Exec', 'mv 0,9')
 			->then('Failure')
 	;}
-	
+
+    public function getRobotTestCommand() {
+        return 'mv 10,10';
+    }
+
 }

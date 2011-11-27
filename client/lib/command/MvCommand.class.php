@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/base/UserInterfaceCommand.class.php';
+require_once dirname(__FILE__).'/base/RobotCommand.class.php';
 
-class MvCommand extends UserInterfaceCommand {
+class MvCommand extends RobotCommand {
 	public function getParserConfig() {
 		return array(
 			'description' => 'Move a robot'
@@ -10,9 +10,9 @@ class MvCommand extends UserInterfaceCommand {
 	}
 
 	public function getOptionConfigs() {
-		return array(
+		return parent::getOptionConfigs() + array(
 			'relative' => array(
-				'short_name' => '-r',
+				'short_name' => '-l',
 				'long_name' => '--relative',
 				'description' => 'Use relative movement',
 				'action' => 'StoreTrue'
@@ -21,10 +21,7 @@ class MvCommand extends UserInterfaceCommand {
 	}
 	
 	public function getArgumentConfigs() {
-		return array(
-			'robot_id' => array(
-				'description' => 'ID of robot to move (example: 1)'
-			),
+		return parent::getArgumentConfigs() + array(
 			'sector' => array(
 				'description' => 'Destination sector coordinates (example: 45,230)'
 			)
@@ -36,7 +33,7 @@ class MvCommand extends UserInterfaceCommand {
 		foreach (array('x', 'y') as $key=>$coord) {
 			$$coord = empty($coords[$key])? 0 : $coords[$key];
 		}
-		$this->postForm('robot', 'robot/move/id/'.$arguments['robot_id'], array(
+		$this->postForm('robot', 'robot/move/id/'.$options['robot_id'], array(
 			'x' => $x,
 			'y' => $y,
 			'relative' => $options['relative']

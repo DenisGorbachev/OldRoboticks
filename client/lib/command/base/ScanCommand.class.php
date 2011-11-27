@@ -1,10 +1,10 @@
 <?php
 
-require_once dirname(__FILE__).'/UserInterfaceCommand.class.php';
+require_once dirname(__FILE__).'/RobotCommand.class.php';
 
-class ScanCommand extends UserInterfaceCommand {
+class ScanCommand extends RobotCommand {
 	public function getOptionConfigs() {
-		return array(
+		return array_merge(parent::getOptionConfigs(), array(
 			'for' => array(
 				'short_name' => '-f',
 				'long_name' => '--for',
@@ -12,20 +12,16 @@ class ScanCommand extends UserInterfaceCommand {
 				'action' => 'StoreString',
 				'default' => 'robots'
 			)
-		);
+		));
 	}
 	
-	public function getArgumentConfigs() {
-		return array(
-			'robot_id' => array(
-				'description' => 'ID of robot executing the scan (example: 1)'
-			)
-		);
-	}
+    public function getArgumentConfigs() {
+        return array_merge(array(), parent::getArgumentConfigs());
+    }
 	
 	public function execute($options, $arguments) {
 		return $this->get('robot/scan', array(
-			'id' => $arguments['robot_id']
+			'id' => $options['robot_id']
 		));
 	}
 

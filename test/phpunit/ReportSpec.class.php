@@ -3,15 +3,12 @@
 require_once __DIR__.'/../ScanBaseSpec.class.php';
 
 class ReportSpec extends ScanBaseSpec {
-    public function getCommand() {
-        return 'report';
-    }
-
 	public function testRobots() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'report '.$this->getRobotId('tea'))
+                ->and('Robot', 'tea')
+			->when('Exec', 'report')
 			->then('Success')
                 ->and('Contains', '6   ally    STAKE     8,9     friend    STAKE     1')
                 ->and('Contains', ' FUEL ')
@@ -23,8 +20,9 @@ class ReportSpec extends ScanBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'mv --relative '.$this->getRobotId('tea').' 3,0')
-                ->and('Exec', 'report '.$this->getRobotId('tea'))
+                ->and('Robot', 'tea')
+			->when('Exec', 'mv --relative 3,0')
+                ->and('Exec', 'report')
 			->then('Success')
                 ->and('Contains', ' PLUSH ')
 	;}
@@ -33,7 +31,8 @@ class ReportSpec extends ScanBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'report --for letters '.$this->getRobotId('tea'))
+                ->and('Robot', 'tea')
+			->when('Exec', 'report --for letters')
 			->then('Success')
 				->and('Contains', '9,9     T')
                 ->and('Contains', 'E')
@@ -46,7 +45,8 @@ class ReportSpec extends ScanBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
-            ->when('Exec', 'report --for drops '.$this->getRobotId('tea'))
+                ->and('Robot', 'tea')
+            ->when('Exec', 'report --for drops')
             ->then('Success')
                 ->and('Contains', '9,8     K')
                 ->and('Contains', 'H O Q Z J G I R N Q J D E T O O')
@@ -55,5 +55,9 @@ class ReportSpec extends ScanBaseSpec {
 	;}
 	
 	/* Borderline */
+
+    public function getRobotTestCommand() {
+        return 'report';
+    }
 
 }

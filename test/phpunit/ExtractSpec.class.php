@@ -1,19 +1,20 @@
 <?php
 
-require_once __DIR__.'/../BaseSpec.class.php';
+require_once __DIR__.'/../RobotBaseSpec.class.php';
 
-class ExtractSpec extends BaseSpec {
-	public function testNormal() {
+class ExtractSpec extends RobotBaseSpec {
+    public function testNormal() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'extract '.$this->getRobotId('tea'))
+                ->and('Robot', 'tea')
+			->when('Exec', 'extract')
 			->then('Success')
-            ->when('Exec', 'report --for drops '.$this->getRobotId('tea'))
+            ->when('Exec', 'report --for drops')
             ->then('Contains', '9,9     T')
-            ->when('Exec', 'extract '.$this->getRobotId('tea'))
+            ->when('Exec', 'extract')
             ->then('Success')
-            ->when('Exec', 'report --for drops '.$this->getRobotId('tea'))
+            ->when('Exec', 'report --for drops')
             ->then('Contains', '9,9     T T')
 	;}
 
@@ -23,6 +24,7 @@ class ExtractSpec extends BaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+                ->and('RobotId', '111')
 			->when('Exec', 'extract 111')
 			->then('Failure')
 	;}
@@ -31,7 +33,8 @@ class ExtractSpec extends BaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Mob')
-			->when('Exec', 'extract '.$this->getRobotId('tea'))
+                ->and('Robot', 'tea')
+			->when('Exec', 'extract')
 			->then('Failure')
 	;}
 
@@ -39,9 +42,10 @@ class ExtractSpec extends BaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'extract '.$this->getRobotId('grunt'))
+                ->and('Robot', 'grunt')
+			->when('Exec', 'extract')
 			->then('Failure')
-            ->when('Exec', 'report --for drops '.$this->getRobotId('grunt'))
+            ->when('Exec', 'report --for drops')
             ->then('NotContains', '4,19     T')
 	;}
 	
@@ -49,11 +53,16 @@ class ExtractSpec extends BaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-            ->when('Moves', '--relative '.$this->getRobotId('tea').' 1,0')
-			->when('Exec', 'extract '.$this->getRobotId('tea'))
+                ->and('Robot', 'tea')
+            ->when('Exec', 'mv --relative 1,0')
+			->when('Exec', 'extract')
 			->then('Failure')
-            ->when('Exec', 'report --for drops '.$this->getRobotId('tea'))
+            ->when('Exec', 'report --for drops')
             ->then('NotContains', '10,9     T')
 	;}
 
+    public function getRobotTestCommand() {
+        return 'extract';
+    }
+    
 }

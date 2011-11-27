@@ -45,9 +45,17 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 		file_put_contents($this->getClientDir().'/cache/cookie.jar', '');
 	}
 	
-	public function givenUser($login) {
+	public function givenUser($login, $password = 'asdf') {
 		$login = strtolower($login);
-		return $this->exec("login $login asdf");
+		return $this->exec('login '.$login.' '.$password);
+	}
+
+    public function givenRobot($name) {
+		return $this->givenRobotId($this->getRobotId($name));
+	}
+
+    public function givenRobotId($robotId) {
+		return $this->exec('select '.$robotId);
 	}
 
 	public function runWhen(&$world, $action, $arguments) {
@@ -56,10 +64,6 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 
 	public function whenExec($retinue) {
 		return $this->exec($retinue);
-	}
-	
-	public function whenMoves($retinue) {
-		return $this->exec('mv '.$retinue);
 	}
 	
 	public function runThen(&$world, $action, $arguments) {

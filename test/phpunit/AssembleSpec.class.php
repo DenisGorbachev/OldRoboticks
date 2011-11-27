@@ -1,20 +1,21 @@
 <?php
 
-require_once __DIR__.'/../BaseSpec.class.php';
+require_once __DIR__.'/../RobotBaseSpec.class.php';
 
-class AssembleSpec extends BaseSpec {
+class AssembleSpec extends RobotBaseSpec {
 	public function testNormal() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'mv '.$this->getRobotId('tea').' 10,12')
-                ->and('Exec', 'asm '.$this->getRobotId('tea').' BABY')
+                ->and('Robot', 'tea')
+			->when('Exec', 'mv 10,12')
+                ->and('Exec', 'asm BABY')
 			->then('Success')
-            ->when('Exec', 'report --for robots '.$this->getRobotId('tea'))
+            ->when('Exec', 'report --for robots')
             ->then('Contains', 'own     BABY')
-            ->when('Exec', 'report --for drops '.$this->getRobotId('tea'))
+            ->when('Exec', 'report --for drops')
             ->then('NotContains', 'B')
-            ->when('StoreRobotIdByName', 'BABY')
+            ->when('SelectRobotByName', 'BABY')
                 ->and('Exec', 'mv '.$this->getStoredRobotId().' 9,9')
             ->then('Success')
 	;}
@@ -36,5 +37,9 @@ class AssembleSpec extends BaseSpec {
     public function testInvalidNotAWord() {
 
 	;}
-    
+
+    public function getRobotTestCommand() {
+        return 'assemble';
+    }
+
 }

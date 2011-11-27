@@ -7,7 +7,11 @@ require_once_dir(LIBDIR.'/action');
 abstract class Command {
 	public $options = array();
 	public $arguments = array();
-	
+
+    public function __construct() {
+        
+    }
+
 	public function setOptions($options) {
 		$this->options = $options;
 		return $this;
@@ -18,11 +22,11 @@ abstract class Command {
 	}
 
 	public function setOption($option, $value) {
-		$this[$option] = $value;
+		$this->options[$option] = $value;
 	}
 	
-	public function getOption($option) {
-		return $this[$option];
+	public function getOption($option, $default = null) {
+		return empty($this->options[$option])? $default : $this->options[$option];
 	}
 
 	public function setArguments($arguments) {
@@ -38,8 +42,8 @@ abstract class Command {
 		$this->arguments[$argument] = $value;
 	}
 	
-	public function getArgument($argument) {
-		return $this->arguments[$argument];
+	public function getArgument($argument, $default = null) {
+		return empty($this->arguments[$argument])? $default : $this->arguments[$argument];
 	}
 	
 	public function getOptionConfigs() {

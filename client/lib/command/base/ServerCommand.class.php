@@ -65,8 +65,8 @@ abstract class ServerCommand extends Command {
 			CURLOPT_MAXREDIRS => 5,
 			CURLOPT_CONNECTTIMEOUT => 15,
 			CURLOPT_TIMEOUT => 30,
-			CURLOPT_COOKIEFILE => BASEDIR.'/cache/cookie.jar',
-			CURLOPT_COOKIEJAR => BASEDIR.'/cache/cookie.jar',
+			CURLOPT_COOKIEFILE => CACHEDIR.'/cookie.jar',
+			CURLOPT_COOKIEJAR => CACHEDIR.'/cookie.jar',
 			CURLOPT_USERAGENT => 'Robotics client v'.VERSION
 		);
 	}
