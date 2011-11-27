@@ -12,7 +12,15 @@ class LoginSpec extends BaseSpec {
 	
 	/* Borderline */
 
-	public function testUserNotFound() {
+    public function testInvalidActionWithoutAuthentication() {
+        $this
+            ->given('Genesis')
+                ->and('Robot', 'tea')
+            ->when('Exec', 'mv 10,10')
+            ->then('Failure')
+    ;}
+
+	public function testInvalidUserNotFound() {
 		$this
 			->given('Genesis')
 			->when('Exec', 'login usernotfound password')
@@ -20,7 +28,7 @@ class LoginSpec extends BaseSpec {
 	;}
 	
 	
-	public function testWrongPassword() {
+	public function testInvalidWrongPassword() {
 		$this
 			->given('Genesis')
 			->when('Exec', 'login alice wrongpassword')

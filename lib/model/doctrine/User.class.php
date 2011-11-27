@@ -14,7 +14,7 @@ class User extends BaseUser {
 	public $salt = '343b02c254cc227f0bd461cd6d95cdc6';
 	
 	public function __toString() {
-		return $this->id.' ("'.$this->username.'")';
+		return '#'.$this->id.' "'.$this->username.'"';
 	}
 	
 	public function setPassword($password) {
@@ -30,5 +30,23 @@ class User extends BaseUser {
 			->where('r.user_id = ?', $this->id)
 			->count();
 	}
-	
+
+    public function preInsert($event) {
+        if (sfContext::hasInstance()) {
+            $this->createRobot();
+        }
+        parent::preInsert($event);
+    }
+
+    public function restart() {
+        RobotTable::getInstance()->deleteOwnedRobots($this->getId());
+        $this->createRobot();
+    }
+
+    public function createRobot() {
+        $robot = new Robot();
+		$robot->setSector(SectorTable::getInstance()->getRandomSector());
+		$this->Robots[] = $robot;
+    }
+
 }

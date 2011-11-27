@@ -147,14 +147,14 @@ class tfExtendedActions extends sfActions {
 				continue;
 			}
 			$errors[$name] = array(
-				'text' => $error->getMessageFormat(),
+				'text' => $error->getMessageFormat()? $error->getMessageFormat() : $error->getMessage(),
 				'arguments' => $error->getArguments(true)
 			);
 		}
 		$this->add('errors', $errors);
 		foreach ($globalErrors as $name => $error) {
 			$globalErrors[$name] = array(
-				'text' => $error->getMessageFormat(),
+				'text' => $error->getMessageFormat()? $error->getMessageFormat() : $error->getMessage(),
 				'arguments' => $error->getArguments(true)
 			);
 		}

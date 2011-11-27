@@ -18,7 +18,7 @@ class userActions extends rbActions {
 	}
 	
 	public function executeLoginMessage(sfWebRequest $request) {
-		return $this->message('You should authenticate using the "login" command of your client.');
+		return $this->failure('You should authenticate using the "login" command of your client.');
 	}
 
 	public function prepareLogin() {
@@ -40,28 +40,9 @@ class userActions extends rbActions {
 		));
 	}
 	
-	public function prepareRequest() {
-		$this->argumentUnless('item');
-	}
-
-	public function validateRequest() {
-		return $this->failureUnless(method_exists($this, 'executeRequest'.$this->item), 'You can\'t request an item "'.$this->item.'"');
-	}
-	
-	public function executeRequest(sfWebRequest $request) {
-		$this->forward($this->getModuleName(), 'request'.ucfirst($this->item));
-	}
-
-	public function validateRequestRobot() {
-		return $this->failureUnless(!RobotTable::getInstance()->hasPlayableRobot($this->getUser()->getId()), 'You can\'t request another robot, because you already have at least one.');
-	}
-	
 	public function executeRequestRobot(sfWebRequest $request) {
-		$this->object = new Robot();
-		$this->object->User = $this->getUser()->getUser();
-		$this->object->Sector = SectorTable::getInstance()->getRandomSector();
-		$this->object->save();
-		return $this->message('A new robot '.$this->object.' created at '.$this->object->Sector);
+		
+		return $this->message('A new robot '.$this->object.' created at '.$this->object->getSector());
 	}
 
 	public function prepareShow() {

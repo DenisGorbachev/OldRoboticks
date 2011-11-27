@@ -11,5 +11,16 @@
 class UserForm extends BaseUserForm {
 	public function configure() {
 		parent::configure();
+
+        foreach (array('username', 'password') as $field) {
+            $this->validatorSchema[$field]->setOption('min_length', 3);
+            $this->validatorSchema[$field]->setOption('max_length', 32);
+            $this->validatorSchema[$field] = new sfValidatorAnd(array(
+                $this->validatorSchema[$field],
+                new sfValidatorRegex(array(
+                    'pattern' => '/^[\d\w-_]+$/'
+                ))
+            ));
+        }
 	}
 }

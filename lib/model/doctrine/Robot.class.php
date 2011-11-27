@@ -65,8 +65,15 @@ class Robot extends BaseRobot {
         $sector->setDrops($sector->getDrops().$sector->getLetter());
     }
 
+    public function preInsert($event) {
+        $this->setWord(WordTable::getInstance()->findOneBy('name', $this->getStatus()));
+        $this->speed = $this->calculateSpeed(); // preSave is invoked before preInsert
+        parent::preInsert($event);
+    }
+
 	public function preSave($event) {
 		$this->speed = $this->calculateSpeed();
+        parent::preSave($event);
 	}
 
 }

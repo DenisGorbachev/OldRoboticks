@@ -9,7 +9,7 @@ Word:
 
 User:
   columns:
-    username:			{ type: string(255), unique: true, readonly: true }
+    username:			{ type: string(255), minlength: 3, unique: true, readonly: true }
     password:			{ type: string(255) }
     last_login: 			{ type: timestamp }
     current_login: 	{ type: timestamp }

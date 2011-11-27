@@ -45,7 +45,7 @@ class HelpCommand extends UserInterfaceCommand {
 			$optionsDescription[] = '   --'.$longName.str_repeat(' ', 14-strlen($longName)).$description;
 		}
 		foreach ($cmd->getArgumentConfigs() as $argument=>$array) {
-			list($description) = $array;
+			$description = $array['description'];
 			$argumentsSynopsys[] = $argument;
 			$argumentsDescription[] = '   '.$argument.str_repeat(' ', 14-strlen($argument)).$description;
 		}

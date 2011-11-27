@@ -3,7 +3,11 @@
 
 class RobotTable extends Doctrine_Table {
 	public $language;
-	
+
+    /**
+     * @static
+     * @return RobotTable
+     */
     public static function getInstance() {
         return Doctrine_Core::getTable('Robot');
     }
@@ -34,19 +38,9 @@ class RobotTable extends Doctrine_Table {
     		->where('r.user_id = ?', $userId);
     }
     
-    public function getPlayableRobotQuery($userId) {
-    	return $this->getOwnedQuery($userId)
-    		->andWhere('INSTR(r.name, ?)', $this->getFunctionDenotative('extract'))
-    		->andWhere('INSTR(r.name, ?)', $this->getFunctionDenotative('transport'));
-    }
-    
-    public function hasPlayableRobot($userId) {
-    	return $this->getPlayableRobotQuery($userId)->count();
-    }
-    
     public function getListQuery($userId) {
     	return $this->getOwnedQuery($userId)
-    		->select('r.*, s.x, s.y')
+    		->select('r.*, s.*')
     		->leftJoin('r.Sector s');
     }
     

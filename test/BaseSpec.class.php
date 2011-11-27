@@ -65,6 +65,11 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	public function whenExec($retinue) {
 		return $this->exec($retinue);
 	}
+
+    public function whenSelectRobotByName($retinue) {
+		$this->exec('report --for robots');
+        return $this;
+	}
 	
 	public function runThen(&$world, $action, $arguments) {
         $this->assertNotContains('Server error', implode(PHP_EOL, $this->world['results']), 'Output contains server errors.');
