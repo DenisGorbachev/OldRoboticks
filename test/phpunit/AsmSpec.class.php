@@ -9,13 +9,13 @@ class AsmSpec extends RobotBaseSpec {
 				->and('User', 'Alice')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 10,12')
-                ->and('Exec', 'asm BABY')
+                ->and('Exec', 'asm BEAR')
 			->then('Success')
             ->when('Exec', 'report --for robots')
-            ->then('Contains', 'own     BABY')
+            ->then('Contains', 'own     BEAR')
             ->when('Exec', 'report --for drops')
             ->then('NotContains', 'B')
-            ->when('SelectRobotByName', 'BABY')
+            ->when('SelectRobotByName', 'BEAR')
                 ->and('Exec', 'mv 9,9')
             ->then('Success')
 	;}
@@ -27,7 +27,7 @@ class AsmSpec extends RobotBaseSpec {
             ->given('Genesis')
                 ->and('User', 'Alice')
                 ->and('Robot', 'grunt')
-            ->when('Exec', 'asm BABY')
+            ->when('Exec', 'asm BEAR')
             ->then('Failure')
     ;}
 
@@ -50,7 +50,7 @@ class AsmSpec extends RobotBaseSpec {
 	;}
 
     public function getRobotTestCommand() {
-        return 'asm BABY';
+        return 'asm BEAR';
     }
 
 }

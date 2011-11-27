@@ -16,7 +16,7 @@ class AsmCommand extends RobotCommand {
 	public function getArgumentConfigs() {
 		return array_merge(parent::getArgumentConfigs(), array(
 			'name' => array(
-				'description' => 'Name of a new robot (example: BABY)'
+				'description' => 'Name of a new robot (example: BEAR)'
 			)
 		));
 	}
