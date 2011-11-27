@@ -27,7 +27,15 @@ Word:
     name:					"MUSHROOM"
   PLUSH:
     name:					"PLUSH"
+  BUSH:
+    name:					"BUSH"
+  NAILBRUSH:
+    name:					"NAILBRUSH"
   MOUSE:
     name:					"MOUSE"
-  BABY:
-    name:					"BABY"
+  HOUSE:
+    name:					"HOUSE"
+  SOUSE:
+    name:					"SOUSE"
+  BLOUSE:
+    name:					"BLOUSE"
