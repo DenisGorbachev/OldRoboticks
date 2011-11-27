@@ -81,7 +81,7 @@ abstract class ServerCommand extends Command {
 			echoln('Failure: '.$message);
 			if (!empty($response['globalErrors'])) {
 				foreach ($response['globalErrors'] as $error) {
-					echoln('  - '.__(array('text' => $error, 'arguments' => array())));
+					echoln('  - '.__($error));
 				}
 			}
 			if (!empty($response['errors'])) {
