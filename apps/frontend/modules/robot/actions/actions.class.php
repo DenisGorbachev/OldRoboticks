@@ -45,7 +45,7 @@ class robotActions extends rbActions {
 			'userId' => $this->getUser()->getId()
 		);
 		$this->add('results', call_user_func_array(array(SectorTable::getInstance(), 'getScanQueryResults'), $arguments));
-		return $this->success('scanned surroundings');
+		return $this->success('scanned surroundings from '.$this->object->getSector());
 	}
 
 	public function prepareExtract() {

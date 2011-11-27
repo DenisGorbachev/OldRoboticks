@@ -68,6 +68,14 @@ class MvSpec extends BaseSpec {
 	
 	/* Borderline */
 
+    public function testInvalidNotOwnRobot() {
+        $this
+            ->given('Genesis')
+                ->and('User', 'Mob')
+            ->when('Moves', $this->getRobotId('tea').' 0,9')
+            ->then('Failure')
+    ;}
+
 	public function testInvalidArgumentsRobotId() {
 		$this
 			->given('Genesis')
@@ -91,13 +99,5 @@ class MvSpec extends BaseSpec {
 			->when('Moves', $this->getRobotId('grunt').' 0,9')
 			->then('Failure')
 	;}
-	
-	public function testInvalidNotOwnRobot() {
-		$this
-			->given('Genesis')
-				->and('User', 'Mob')
-			->when('Moves', $this->getRobotId('tea').' 0,9')
-			->then('Failure')
-	;}	
 	
 }

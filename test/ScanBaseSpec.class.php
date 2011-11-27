@@ -8,14 +8,6 @@ abstract class ScanBaseSpec extends BaseSpec {
 
     /* Borderline */
 
-    public function testInvalidArgumentsRobotId() {
-		$this
-			->given('Genesis')
-				->and('User', 'Alice')
-			->when('Exec', $this->getCommand().' 111')
-			->then('Failure')
-	;}
-
     public function testInvalidNotOwnRobot() {
 		$this
 			->given('Genesis')
@@ -23,5 +15,13 @@ abstract class ScanBaseSpec extends BaseSpec {
 			->when('Exec', $this->getCommand().' '.$this->getRobotId('tea'))
 			->then('Failure')
 	;}	
+
+    public function testInvalidArgumentsRobotId() {
+		$this
+			->given('Genesis')
+				->and('User', 'Alice')
+			->when('Exec', $this->getCommand().' 111')
+			->then('Failure')
+	;}
 
 }
