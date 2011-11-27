@@ -23,7 +23,7 @@ class RobotMoveForm extends RobotForm {
 	}
 	
 	public function getSuccessText() {
-		return 'moved at %sector%';
+		return 'moved robot '.$this->getObject().' at %sector%';
 	}
 
 	public function getSuccessArguments() {

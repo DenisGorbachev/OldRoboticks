@@ -10,7 +10,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	);
 	
 	public function exec($command) {
-		$cmd = $this->getClientDir().'/roboticks '.$command;
+		$cmd = 'rk '.$command;
 		echo PHP_EOL.$cmd.PHP_EOL;
 		$result = `$cmd`;
 		echo $result.PHP_EOL;

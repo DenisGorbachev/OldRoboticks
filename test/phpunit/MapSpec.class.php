@@ -1,8 +1,12 @@
 <?php
 
-require_once __DIR__.'/../BaseSpec.class.php';
+require_once __DIR__.'/../ScanBaseSpec.class.php';
 
-class MapSpec extends BaseSpec {
+class MapSpec extends ScanBaseSpec {
+    public function getCommand() {
+        return 'map';
+    }
+
 	public function testRobots() {
 		return $this
 			->given('Genesis')
@@ -60,22 +64,6 @@ class MapSpec extends BaseSpec {
 	;}
 	
     /* Borderline */
-
-    public function testInvalidArgumentsRobotId() {
-		$this
-			->given('Genesis')
-				->and('User', 'Alice')
-			->when('Exec', 'map 111')
-			->then('Failure')
-	;}
-
-    public function testInvalidNotOwnRobot() {
-		$this
-			->given('Genesis')
-				->and('User', 'Mob')
-			->when('Exec', 'map '.$this->getRobotId('tea'))
-			->then('Failure')
-	;}	
 
     /* Utility methods */
 
