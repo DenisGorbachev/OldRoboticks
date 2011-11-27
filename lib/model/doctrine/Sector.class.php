@@ -14,4 +14,13 @@ class Sector extends BaseSector {
 	public function __toString() {
 		return $this->x.','.$this->y;
 	}
+
+    public function setDropsArray(array $drops) {
+        $this->setDrops(implode('', $drops));
+    }
+
+    public function getDropsArray() {
+        return str_split($this->getDrops());
+    }
+
 }

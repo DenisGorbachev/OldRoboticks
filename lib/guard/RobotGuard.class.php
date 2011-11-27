@@ -23,6 +23,14 @@ class RobotGuard extends BaseGuard {
         return true;
     }
 
+    public function canAssemble($name) {
+        $this->checkIsOwner();
+        $this->checkHasFunction('assemble');
+        $this->checkIsWord($name);
+        $this->checkSectorHasDrops(str_split($name));
+        return true;
+    }
+
     public function checkIsOwner() {
 	    if (!$this->isOwner()) {
 			throw new tfSanityException('Robot %robot% is not owned by you.', array(
@@ -60,5 +68,24 @@ class RobotGuard extends BaseGuard {
 		return true;
     }
 
+    public function checkIsWord($name) {
+        if (!WordTable::getInstance()->findOneBy('name', $name)) {
+			throw new tfSanityException('%name% is not a name', array(
+				'name' => $name,
+			));
+		}
+		return true;
+    }
 
+    public function checkSectorHasDrops(array $drops) {
+        $diff = array_diff($drops, $this->object->getSector()->getDropsArray());
+        if ($diff) {
+			throw new tfSanityException('Sector %sector% has no %diff% drops', array(
+				'sector' => (string)$this->object->getSector(),
+                'diff' => implode(', ', $diff),
+			));
+		}
+		return true;
+    }
+    
 }

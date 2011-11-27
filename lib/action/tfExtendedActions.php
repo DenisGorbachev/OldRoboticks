@@ -117,7 +117,8 @@ class tfExtendedActions extends sfActions {
 	}
 	
 	public function validateAutoObject() {
-		return $this->object->getGuard()->{'can'.sfInflector::camelize($this->getActionName())}();
+        $arguments = func_get_args();
+		return call_user_func_array(array($this->object->getGuard(), 'can'.sfInflector::camelize($this->getActionName())), $arguments);
 	}
 	
 	public function validateAutoStatic($params = array()) {

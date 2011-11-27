@@ -10,11 +10,7 @@ class robotActions extends rbActions {
 	}
 	
 	public function executeList(sfWebRequest $request) {
-		$list = array();
-		foreach ($this->objects as $object) {
-			$list[] = $object->toListItem();
-		}
-		$this->add('objects', $list);
+		$this->add('objects', $this->objects);
 		return $this->success('got own robots list');
 	}
 	
@@ -57,9 +53,23 @@ class robotActions extends rbActions {
     }
 
 	public function executeExtract(sfWebRequest $request) {
-		$this->object->doExtract();
-        $this->object->save();
-		return $this->success('extracted letter "'.$this->object->getSector()->getLetter().'"');
+		$letter = $this->object->doExtract();
+		return $this->success('extracted letter "'.$letter.'"');
 	}
+
+    public function prepareAssemble() {
+        return $this->prepareAutoObject()
+            && $this->argumentUnless('name');
+    }
+
+    public function validateAssemble() {
+        return $this->validateAutoObject($this->name);
+    }
+
+    public function executeAssemble(sfWebRequest $request) {
+        $newborn = $this->object->doAssemble($this->name);
+        return $this->success('assembled new robot '.$newborn);
+    }
+
 
 }

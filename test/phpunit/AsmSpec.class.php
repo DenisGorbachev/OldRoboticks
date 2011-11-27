@@ -22,12 +22,31 @@ class AsmSpec extends RobotBaseSpec {
 
 	/* Borderline */
 
-    public function testInvalidNotEnoughDrops() {
+    public function testInvalidNonAssembliveRobot() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
+                ->and('Robot', 'grunt')
+            ->when('Exec', 'asm BABY')
+            ->then('Failure')
+    ;}
 
+    public function testInvalidNotEnoughDrops() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
+                ->and('Robot', 'tea')
+            ->when('Exec', 'asm PEAR')
+            ->then('Failure')
 	;}
 
     public function testInvalidNotAWord() {
-
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
+                ->and('Robot', 'tea')
+            ->when('Exec', 'asm ASDF')
+            ->then('Failure')
 	;}
 
     public function getRobotTestCommand() {

@@ -20,30 +20,16 @@ class Robot extends BaseRobot {
     }
 
     public function hasDenotative($denotative) {
-        return mb_strpos($this->getName(), $denotative);
+        return $this->getTable()->hasDenotative($this->getName(), $denotative);
     }
-
-	public function toListItem() {
-		return array(
-			'name' => $this->getName(),
-			'sector' => $this->Sector->__toString(),
-			'functions' => implode($this->getFunctions())
-		) + $this->toArray(false);
-	}
-	
-	public function getFunctions() {
-		$functions = array();
-		foreach ($this->getTable()->getFunctions() as $meaning=>$denotative) {
-			if ($this->hasDenotative($denotative)) {
-				$functions[$meaning] = $denotative;
-			}
-		}
-		return $functions;
-	}
 
     public function hasFunction($meaning) {
-        return $this->hasDenotative($this->getTable()->getFunctionDenotative($meaning));
+        return $this->getTable()->hasFunction($this->getName(), $meaning);
     }
+
+	public function getFunctions() {
+        return $this->getTable()->getFunctionsForName($this->getName());
+	}
 
 	public function calculateSpeed() {
 		preg_match_all('/'.implode('|', $this->getTable()->getVowels()).'/u', $this->getName(), $matches, PREG_SET_ORDER);
@@ -63,6 +49,27 @@ class Robot extends BaseRobot {
     public function doExtract() {
         $sector = $this->getSector();
         $sector->setDrops($sector->getDrops().$sector->getLetter());
+        $sector->save();
+        return $sector->getLetter();
+    }
+
+    public function doAssemble($name) {
+        $connection = $this->getTable()->getConnection();
+        $connection->beginTransaction();
+        try {
+            $sector = $this->getSector();
+            $sector->setDropsArray(array_diff($sector->getDropsArray(), str_split($name)));
+            $sector->save();
+            $robot = new Robot();
+            $robot->setStatus($name);
+            $robot->setUser($this->getUser());
+            $robot->setSector($sector);
+            $robot->save();
+        } catch (Exception $e) {
+            $connection->rollback();
+        }
+        $connection->commit();
+        return $robot;
     }
 
     public function preInsert($event) {

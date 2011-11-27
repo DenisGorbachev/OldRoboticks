@@ -300,6 +300,7 @@ Sector:
     x: '4'
     y: '19'
     letter: 'T'
+    drops: 'BABY'
   Sector_101:
     x: '5'
     y: '0'

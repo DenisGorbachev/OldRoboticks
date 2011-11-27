@@ -32,7 +32,25 @@ class RobotTable extends Doctrine_Table {
     public function getFunctionMeaning($denotative) {
     	return array_search($denotative, $this->getFunctions());
     }
-    
+
+    public function hasDenotative($name, $denotative) {
+        return mb_strpos($name, $denotative);
+    }
+
+    public function hasFunction($name, $meaning) {
+        return $this->hasDenotative($name, $this->getFunctionDenotative($meaning));
+    }
+
+    public function getFunctionsForName($name) {
+        $functions = array();
+        foreach ($this->getFunctions() as $meaning=>$denotative) {
+            if ($this->hasDenotative($name, $denotative)) {
+                $functions[$meaning] = $denotative;
+            }
+        }
+        return $functions;
+    }
+
     public function getOwnedQuery($userId) {
     	return $this->createQuery('r')
     		->where('r.user_id = ?', $userId);
@@ -40,12 +58,16 @@ class RobotTable extends Doctrine_Table {
     
     public function getListQuery($userId) {
     	return $this->getOwnedQuery($userId)
-    		->select('r.*, s.*')
-    		->leftJoin('r.Sector s');
-    }
+            ->leftJoin('r.Word w')
+    		->leftJoin('r.Sector s')
+    ;}
     
     public function getList($userId) {
-    	return $this->getListQuery($userId)->execute();
+    	$results = $this->getListQuery($userId)->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
+        foreach ($results as &$object) {
+            $object['functions'] = implode(',', $this->getFunctionsForName($object['Word']['name']));
+        }
+        return $results;
     }
     
 }

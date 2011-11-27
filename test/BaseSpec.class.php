@@ -66,8 +66,10 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 		return $this->exec($retinue);
 	}
 
-    public function whenSelectRobotByName($retinue) {
+    public function whenSelectRobotByName($name) {
 		$this->exec('report --for robots');
+        preg_match('/^(\d+)\s.*'.$name.'/Uum', $this->world['lastResult'], $matches);
+        $this->exec('select '.$matches[1]);
         return $this;
 	}
 	

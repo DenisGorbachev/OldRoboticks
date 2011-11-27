@@ -3,28 +3,6 @@
 require_once dirname(__FILE__).'/base/UserInterfaceCommand.class.php';
 
 class LsCommand extends UserInterfaceCommand {
-	public $columns = array(
-		'id' => array(
-			'name' => 'ID',
-			'length' => 5
-		),
-		'sector' => array(
-			'name' => 'Sector',
-			'length' => 11
-		),
-		'cargo' => array(
-			'name' => 'Cargo',
-			'length' => 11
-		),
-		'functions' => array(
-			'name' => 'Funcs',
-			'length' => 11
-		),
-		'name' => array(
-			'name' => 'Name'
-		),
-	);
-	
 	public function getParserConfig() {
 		return array(
 			'description' => 'List robots'
@@ -33,28 +11,21 @@ class LsCommand extends UserInterfaceCommand {
 
 	public function execute($options, $arguments) {
 		if (($response = $this->get('robot/list'))) {
-			foreach ($this->columns as $key=>$column) {
-				$this->renderColumn($key, $column['name']);
+            $info = array(array('ID', 'Sector', 'Cargo', 'Funcs', 'Status', 'Name', 'Speed'));
+			foreach ($response['objects'] as $robot) {
+				$info[] = array(
+                    $robot['id'],
+                    $this->coords($robot['Sector']),
+                    $robot['cargo'],
+                    $robot['functions'],
+                    $robot['status'],
+                    $robot['Word']['name'],
+                    $robot['speed'],
+                );
 			}
-			$this->endRow();
-			foreach ($response['objects'] as $object) {
-				foreach ($this->columns as $key=>$column) {
-					$this->renderColumn($key, $object[$key]);
-				}
-				$this->endRow();
-			}
+            $this->table($info);
 		}
 	}
 	
-	public function renderColumn($key, $value) {
-		if (isset($this->columns[$key]['length'])) {
-			$value = str_pad($value, $this->columns[$key]['length']);
-		}
-		echo $value.' ';
-	}
-	
-	public function endRow() {
-		echo PHP_EOL;
-	}
-	
+
 }
