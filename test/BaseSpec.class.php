@@ -3,7 +3,7 @@
 require_once __DIR__.'/../lib/symfony/lib/yaml/sfYaml.php';
 
 class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
-	public $robots = array(null, 'tea', 'grunt');
+	public $robots = array(null, 'tea', 'grunt', 'pear');
 	protected $world = array(
 		'results' => array(),
 		'lastResult' => ''

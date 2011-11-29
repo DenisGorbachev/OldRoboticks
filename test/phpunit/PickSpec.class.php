@@ -2,20 +2,19 @@
 
 require_once __DIR__.'/../RobotBaseSpec.class.php';
 
-class ExtractSpec extends RobotBaseSpec {
-    public function testNormal() {
+class PickSpec extends RobotBaseSpec {
+    public function testPick() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
                 ->and('Robot', 'tea')
-			->when('Exec', 'extract')
-			->then('Success')
-            ->when('Exec', 'report --for drops')
-            ->then('Contains', '9,9     T')
-            ->when('Exec', 'extract')
-            ->then('Success')
-            ->when('Exec', 'report --for drops')
-            ->then('Contains', '9,9     T T')
+			->when('Exec', 'report --for drops')
+			->then('Contains', '9,8     K')
+			->when('Exec', 'drop M')
+			->when('Exec', 'mv 9,8')
+            ->when('Exec', 'pick K')
+			->when('Exec', 'report --for drops')
+			->then('NotContains', '9,8     K')
 	;}
 
     /* Borderline */
@@ -44,7 +43,7 @@ class ExtractSpec extends RobotBaseSpec {
 	;}
 
     public function getRobotTestCommand() {
-        return 'extract';
+        return 'pick';
     }
     
 }
