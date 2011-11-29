@@ -3,7 +3,7 @@
 require_once __DIR__.'/../RobotBaseSpec.class.php';
 
 class PickSpec extends RobotBaseSpec {
-    public function testPick() {
+    public function testNormal() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
@@ -19,31 +19,44 @@ class PickSpec extends RobotBaseSpec {
 
     /* Borderline */
 
-	public function testInvalidNonExtractiveRobot() {
+	public function testInvalidNonPickableRobot() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-                ->and('Robot', 'grunt')
-			->when('Exec', 'extract')
+                ->and('Robot', 'pear')
+			->when('Exec', 'pick A')
 			->then('Failure')
-            ->when('Exec', 'report --for drops')
-            ->then('NotContains', '4,19     T')
+            ->when('Exec', 'ls')
+            ->then('NotContains', '11,6     A')
 	;}
 	
-	public function testInvalidNonExtractiveSector() {
+	public function testInvalidNonPickableLetter() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
                 ->and('Robot', 'tea')
-            ->when('Exec', 'mv --relative 1,0')
-			->when('Exec', 'extract')
+            ->when('Exec', 'drop M')
+            ->when('Exec', 'pick A')
 			->then('Failure')
-            ->when('Exec', 'report --for drops')
-            ->then('NotContains', '10,9     T')
+            ->when('Exec', 'ls')
+            ->then('NotContains', '9,9      A')
+	;}
+
+    public function testInvalidPickMoreThanOneLetter() {
+		return $this
+			->given('Genesis')
+				->and('User', 'Alice')
+                ->and('Robot', 'teeter')
+            ->when('Exec', 'drop N')
+            ->when('Exec', 'drop Z')
+            ->when('Exec', 'pick NZ')
+			->then('Failure')
+            ->when('Exec', 'ls')
+            ->then('NotContains', '4,19     NZ')
 	;}
 
     public function getRobotTestCommand() {
-        return 'pick';
+        return 'pick A';
     }
     
 }

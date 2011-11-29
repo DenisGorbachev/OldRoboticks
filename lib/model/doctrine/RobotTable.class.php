@@ -12,16 +12,12 @@ class RobotTable extends Doctrine_Table {
         return Doctrine_Core::getTable('Robot');
     }
 
-    public function construct() {
-    	$this->language = sfYaml::load(sfConfig::get('sf_config_dir').'/language.yml');
-    }
-    
     public function getFunctions() {
-    	return $this->language['functions'];
+    	return WordTable::getInstance()->getFunctions();
     }
     
     public function getVowels() {
-    	return $this->language['vowels'];
+    	return WordTable::getInstance()->getVowels();
     }
     
     public function getFunctionDenotative($meaning) {
@@ -34,7 +30,7 @@ class RobotTable extends Doctrine_Table {
     }
 
     public function hasDenotative($name, $denotative) {
-        return mb_strpos($name, $denotative);
+        return mb_strpos($name, $denotative) !== false;
     }
 
     public function hasFunction($name, $meaning) {

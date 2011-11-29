@@ -687,6 +687,7 @@ Sector:
   Sector_227:
     x: '11'
     y: '6'
+    drops: 'A'
   Sector_228:
     x: '11'
     y: '7'

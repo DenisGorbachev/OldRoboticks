@@ -31,6 +31,14 @@ class RobotGuard extends BaseGuard {
         return true;
     }
 
+    public function canDrop($letter) {
+        $this->checkIsOwner();
+        $this->checkHasFunction('transport');
+        $this->checkIsLetter($letter);
+        $this->checkHasCargo($letter);
+        return true;
+    }
+
     public function checkIsOwner() {
 	    if (!$this->isOwner()) {
 			throw new tfSanityException('Robot %robot% is not owned by you.', array(
@@ -68,9 +76,18 @@ class RobotGuard extends BaseGuard {
 		return true;
     }
 
+    public function checkIsLetter($letter) {
+        if (!WordTable::getInstance()->isLetter($letter)) {
+			throw new tfSanityException('%letter% is not a letter', array(
+				'letter' => $letter,
+			));
+		}
+		return true;
+    }
+
     public function checkIsWord($name) {
         if (!WordTable::getInstance()->findOneBy('name', $name)) {
-			throw new tfSanityException('%name% is not a name', array(
+			throw new tfSanityException('%name% is not a word', array(
 				'name' => $name,
 			));
 		}
@@ -87,5 +104,15 @@ class RobotGuard extends BaseGuard {
 		}
 		return true;
     }
-    
+
+    public function checkHasCargo($letter) {
+        if (!$this->getObject()->hasCargo($letter)) {
+			throw new tfSanityException('Letter %letter% is not present in cargo', array(
+				'letter' => $letter,
+			));
+		}
+		return true;
+    }
+
+
 }

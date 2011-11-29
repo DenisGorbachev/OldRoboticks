@@ -57,6 +57,21 @@ class robotActions extends rbActions {
 		return $this->success('extracted letter "'.$letter.'"');
 	}
 
+    public function prepareDrop() {
+        return $this->prepareAutoObject()
+            && $this->argumentUnless('letter');
+    }
+
+    public function validateDrop() {
+        return $this->validateAutoObject($this->letter);
+    }
+
+    public function executeDrop(sfWebRequest $request) {
+        $this->object->doDrop($this->letter);
+        $this->object->save();
+        return $this->success('dropped letter '.$this->letter);
+    }
+
     public function prepareAssemble() {
         return $this->prepareAutoObject()
             && $this->argumentUnless('name');
@@ -70,6 +85,5 @@ class robotActions extends rbActions {
         $newborn = $this->object->doAssemble($this->name);
         return $this->success('assembled new robot '.$newborn);
     }
-
 
 }

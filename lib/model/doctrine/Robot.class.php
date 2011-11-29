@@ -31,6 +31,10 @@ class Robot extends BaseRobot {
         return $this->getTable()->getFunctionsForName($this->getName());
 	}
 
+    public function hasCargo($letter) {
+        return mb_strpos($this->getCargo(), $letter) !== false;
+    }
+
 	public function calculateSpeed() {
 		preg_match_all('/'.implode('|', $this->getTable()->getVowels()).'/u', $this->getName(), $matches, PREG_SET_ORDER);
 		return max(0, 3*count($matches) - mb_strlen($this->getName()));
@@ -51,6 +55,12 @@ class Robot extends BaseRobot {
         $sector->setDrops($sector->getDrops().$sector->getLetter());
         $sector->save();
         return $sector->getLetter();
+    }
+
+    public function doDrop($letter) {
+        $this->setCargo(preg_replace('/'.preg_quote($letter, '/').'/u', '', $this->getCargo(), 1));
+        $sector = $this->getSector();
+        $sector->setDrops($sector->getDrops().$letter);
     }
 
     public function doAssemble($name) {

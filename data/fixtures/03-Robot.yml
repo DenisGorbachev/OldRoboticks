@@ -10,6 +10,12 @@ Robot:
     Word:			GRUNT
     User:				Alice
     Sector:			Sector_100
+  Teeter:
+    status:			"TEETER"
+    cargo:          "NZ"
+    Word:			TEETER
+    User:				Stranger
+    Sector:			Sector_100
   Pear:
     status:			"PEAR"
     Word:			PEAR

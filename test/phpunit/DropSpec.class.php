@@ -27,9 +27,31 @@ class DropSpec extends RobotBaseSpec {
             ->when('Exec', 'report --for drops')
             ->then('NotContains', '11,6     M')
 	;}
-	
+
+    public function testInvalidNonDroppableLetter() {
+		return $this
+			->given('Genesis')
+				->and('User', 'Alice')
+                ->and('Robot', 'tea')
+			->when('Exec', 'drop A')
+			->then('Failure')
+            ->when('Exec', 'report --for drops')
+            ->then('NotContains', '9,9      A')
+	;}
+
+    public function testInvalidDropMoreThanOneLetter() {
+		return $this
+			->given('Genesis')
+				->and('User', 'Alice')
+                ->and('Robot', 'teeter')
+			->when('Exec', 'drop NZ')
+			->then('Failure')
+            ->when('Exec', 'report --for drops')
+            ->then('NotContains', '4,19    B E A R N Z')
+	;}
+
     public function getRobotTestCommand() {
-        return 'drop';
+        return 'drop A';
     }
     
 }
