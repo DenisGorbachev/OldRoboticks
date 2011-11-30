@@ -97,7 +97,9 @@ class Robot extends BaseRobot {
     }
 
     public function preInsert($event) {
-        $this->setWord(WordTable::getInstance()->findOneBy('name', $this->getStatus()));
+        if (!$this->getWord()->getId()) {
+            $this->setWord(WordTable::getInstance()->findOneBy('name', $this->getStatus()));
+        }
         $this->speed = $this->calculateSpeed(); // preSave is invoked before preInsert
         parent::preInsert($event);
     }

@@ -21,9 +21,10 @@ Robot:
     Word:			PEAR
     User:				Alice
     Sector:			Sector_227
-  Rear:
-    status:			"REAR"
-    Word:			REAR
+  Sedative:
+    status:			"SEDAT_VE"
+    cargo:          "F"
+    Word:			SEDATIVE
     User:				Alice
     Sector:			Sector_246
   Sea:

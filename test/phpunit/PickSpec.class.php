@@ -83,6 +83,16 @@ class PickSpec extends RobotBaseSpec {
             ->then('NotContains', '9,9     MA')
 	;}
 
+    public function testInvalidDisabledRobot() {
+        $this
+			->given('Genesis')
+				->and('User', 'Alice')
+                ->and('Robot', 'sedative')
+			->when('Exec', 'drop F')
+            ->when('Exec', 'pick F')
+			->then('Failure')
+    ;}
+
     public function getRobotTestCommand() {
         return 'pick A';
     }

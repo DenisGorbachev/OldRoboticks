@@ -50,6 +50,15 @@ class DropSpec extends RobotBaseSpec {
             ->then('NotContains', '4,19    B E A R N Z')
 	;}
 
+    public function testInvalidDisabledRobot() {
+        $this
+			->given('Genesis')
+				->and('User', 'Alice')
+                ->and('Robot', 'sedative')
+			->when('Exec', 'drop F')
+			->then('Failure')
+    ;}
+
     public function getRobotTestCommand() {
         return 'drop A';
     }

@@ -6,6 +6,15 @@ abstract class RobotBaseSpec extends BaseSpec {
 
     /* Borderline */
 
+    public function testInvalidDisabledRobot() {
+		$this
+			->given('Genesis')
+				->and('User', 'Alice')
+                ->and('Robot', 'sedative')
+			->when('Exec', $this->getRobotTestCommand())
+			->then('Failure')
+	;}
+
     public function testInvalidNotOwnRobot() {
 		$this
 			->given('Genesis')

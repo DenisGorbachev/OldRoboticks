@@ -62,7 +62,21 @@ class MapSpec extends ScanBaseSpec {
                 ->and('Contains', ' 9 ')
                 ->and('Contains', ' 4 ')
 	;}
-	
+
+    public function testEdges() {
+        // Negative values, cache the max coordinates
+//        return $this
+//            ->given('Genesis')
+//                ->and('User', 'Alice')
+//                ->and('Robot', 'tea')
+//            ->when('Exec', 'map --for drops')
+//            ->then('Success')
+//                ->and('HasDefaultCoordinatesWithMesh')
+//                ->and('Contains', ' 1 ')
+//                ->and('Contains', ' 9 ')
+//                ->and('Contains', ' 4 ')
+    ;}
+    
     /* Borderline */
 
     /* Utility methods */
