@@ -72,6 +72,21 @@ class robotActions extends rbActions {
         return $this->success('dropped letter '.$this->letter);
     }
 
+    public function preparePick() {
+        return $this->prepareAutoObject()
+            && $this->argumentUnless('letter');
+    }
+
+    public function validatePick() {
+        return $this->validateAutoObject($this->letter);
+    }
+
+    public function executePick(sfWebRequest $request) {
+        $this->object->doPick($this->letter);
+        $this->object->save();
+        return $this->success('picked letter '.$this->letter);
+    }
+
     public function prepareAssemble() {
         return $this->prepareAutoObject()
             && $this->argumentUnless('name');

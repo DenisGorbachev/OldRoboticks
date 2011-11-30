@@ -39,6 +39,15 @@ class RobotGuard extends BaseGuard {
         return true;
     }
 
+    public function canPick($letter) {
+        $this->checkIsOwner();
+        $this->checkHasFunction('transport');
+        $this->checkIsLetter($letter);
+        $this->checkSectorHasDrops(array($letter));
+        $this->checkHasFreeCargoSpace();
+        return true;
+    }
+
     public function checkIsOwner() {
 	    if (!$this->isOwner()) {
 			throw new tfSanityException('Robot %robot% is not owned by you.', array(
@@ -109,6 +118,18 @@ class RobotGuard extends BaseGuard {
         if (!$this->getObject()->hasCargo($letter)) {
 			throw new tfSanityException('Letter %letter% is not present in cargo', array(
 				'letter' => $letter,
+			));
+		}
+		return true;
+    }
+
+    public function checkHasFreeCargoSpace() {
+        if (!$this->getObject()->hasFreeCargoSpace()) {
+            $totalCargoSpace = $this->getObject()->getTotalCargoSpace();
+            throw new tfSanityException('Robot %robot% can\'t carry more than %limit% letter%ending%', array(
+				'robot' => (string)$this->getObject(),
+                'limit' => $totalCargoSpace,
+                'ending' => $totalCargoSpace == 1? '' : 's',
 			));
 		}
 		return true;

@@ -37,6 +37,10 @@ class RobotTable extends Doctrine_Table {
         return $this->hasDenotative($name, $this->getFunctionDenotative($meaning));
     }
 
+    public function getFunctionCount($name, $meaning) {
+        return mb_substr_count($name, $this->getFunctionDenotative($meaning));
+    }
+
     public function getFunctionsForName($name) {
         $functions = array();
         foreach ($this->getFunctions() as $meaning=>$denotative) {

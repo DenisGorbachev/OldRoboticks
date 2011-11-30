@@ -14,7 +14,7 @@ Robot:
     status:			"TEETER"
     cargo:          "NZ"
     Word:			TEETER
-    User:				Stranger
+    User:				Alice
     Sector:			Sector_100
   Pear:
     status:			"PEAR"
