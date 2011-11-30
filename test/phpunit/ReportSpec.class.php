@@ -10,7 +10,7 @@ class ReportSpec extends ScanBaseSpec {
                 ->and('Robot', 'tea')
 			->when('Exec', 'report')
 			->then('Success')
-                ->and('Contains', '6   ally    STAKE     8,9     friend    STAKE     1')
+                ->and('Contains', '7   ally    STAKE     8,9     friend    STAKE     1')
                 ->and('Contains', ' FUEL ')
 				->and('NotContains', ' GRUNT ')
                 ->and('NotContains', ' PLUSH ')
