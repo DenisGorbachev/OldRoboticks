@@ -76,7 +76,7 @@ class SectorTable extends Doctrine_Table {
 	}
 
     public function isInRange(Sector $source, Sector $target, $range) {
-        return ($target->getX() - $source->getX())^2 + ($target->getY() - $source->getY())^2 <= $range^2;
+        return pow($target->getX() - $source->getX(), 2) + pow($target->getY() - $source->getY(), 2) <= pow($range, 2);
     }
 
 }

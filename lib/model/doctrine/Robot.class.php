@@ -12,11 +12,30 @@
  */
 class Robot extends BaseRobot {
 	public function __toString() {
-		return '#'.$this->id.' "'.$this->getName().'"';
+		return sprintf($this->getTable()->getToStringFormat(), $this->id, $this->getStatus());
 	}
 
+    public function __toStatusString() {
+        return sprintf($this->getTable()->getToStringFormat(), $this->id, $this->getStatus());
+    }
+
     public function getName() {
-        return (string)$this->getWord();
+        return (string)$this->getEffectiveWord();
+    }
+
+    public function setStatus($status) {
+        if (sfContext::hasInstance()) {
+            $statusWordName = preg_replace('/_/u', '', $status);
+            $effectiveWord = WordTable::getInstance()->findOneBy('name', $statusWordName);
+            if ($effectiveWord) {
+                $this->setEffectiveWord($effectiveWord);
+                $this->setEffectiveWordId($effectiveWord->getId());
+            } else {
+                $this->setEffectiveWord(null);
+                $this->setEffectiveWordId(null);
+            }
+        }
+        return $this->_set('status', $status);
     }
 
     public function hasLetter($letter) {
@@ -53,8 +72,12 @@ class Robot extends BaseRobot {
 
 	public function calculateSpeed() {
 		preg_match_all('/'.implode('|', $this->getTable()->getVowels()).'/u', $this->getName(), $matches, PREG_SET_ORDER);
-		return max(0, 3*count($matches) - mb_strlen($this->getName()));
+		return max(0, 4*count($matches) - mb_strlen($this->getName()));
 	}
+
+    public function getFireableRange() {
+        return mb_strlen($this->getName())*2;
+    }
 
 	public function getScanBorders() {
 		$base = $this->Sector;
@@ -109,7 +132,7 @@ class Robot extends BaseRobot {
     }
 
     public function doFire(Robot $enemy, $letter) {
-        $enemy->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '', $enemy->getStatus(), 1));
+        $enemy->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '_', $enemy->getStatus(), 1));
         $enemy->save();
     }
 

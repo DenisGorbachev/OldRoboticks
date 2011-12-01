@@ -111,9 +111,9 @@ class robotActions extends rbActions {
         return $this->validateAutoObject($this->enemy, $this->letter);
     }
 
-    public function executeAssemble(sfWebRequest $request) {
-        $newborn = $this->object->doAssemble($this->name);
-        return $this->success('assembled new robot '.$newborn);
+    public function executeFire(sfWebRequest $request) {
+        $this->object->doFire($this->enemy, $this->letter);
+        return $this->success('fired at robot '.$this->enemy->__toStatusString());
     }
 
 }

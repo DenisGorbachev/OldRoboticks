@@ -3,22 +3,26 @@ Robot:
     status:			"TEA"
     cargo:			"M"
     Word:			TEA
+    EffectiveWord:	TEA
     User:				Alice
     Sector:			Sector_190
   Grunt:
     status:			"GRUNT"
     Word:			GRUNT
+    EffectiveWord:	GRUNT
     User:				Alice
     Sector:			Sector_100
   Teeter:
     status:			"TEETER"
     cargo:          "NZ"
     Word:			TEETER
+    EffectiveWord:	TEETER
     User:				Alice
     Sector:			Sector_100
   Pear:
     status:			"PEAR"
     Word:			PEAR
+    EffectiveWord:	PEAR
     User:				Alice
     Sector:			Sector_227
   Sedative:
@@ -30,55 +34,72 @@ Robot:
   Sea:
     status:			"SEA"
     Word:			SEA
+    EffectiveWord:	SEA
     User:				Alice
     Sector:			Sector_232
   Stake:
     status:			"STAKE"
     Word:			STAKE
+    EffectiveWord:	STAKE
     User:				Friend
     Sector:			Sector_170
   Wake:
     status:			"WAKE"
     Word:			WAKE
+    EffectiveWord:	WAKE
     User:				Friend
     Sector:			Sector_208
   Lake:
     status:			"LAKE"
     Word:			LAKE
+    EffectiveWord:	LAKE
     User:				Friend
     Sector:			Sector_232
   Drake:
     status:			"DRAKE"
     Word:			DRAKE
+    EffectiveWord:	DRAKE
     User:				Friend
     Sector:			Sector_246
   Fuel:
     status:			"FUEL"
     Word:			FUEL
+    EffectiveWord:	FUEL
     User:				Foe
     Sector:			Sector_189
   Rush:
     status:			"RUSH"
     Word:			RUSH
+    EffectiveWord:	RUSH
     User:				Foe
     Sector:			Sector_208
   Push:
     status:			"PUSH"
     Word:			PUSH
+    EffectiveWord:	PUSH
     User:				Foe
     Sector:			Sector_227
   Mushroom:
     status:			"MUSHROOM"
     Word:			MUSHROOM
+    EffectiveWord:	MUSHROOM
     User:				Foe
     Sector:			Sector_246
   Plush:
     status:			"PLUSH"
     Word:			PLUSH
+    EffectiveWord:	PLUSH
     User:				Foe
     Sector:			Sector_305
   Mouse:
     status:			"MOUSE"
     Word:			MOUSE
+    EffectiveWord:	MOUSE
     User:				Stranger
     Sector:			Sector_248
+  Cart:
+    status:			"CART"
+    Word:			CART
+    EffectiveWord:	CART
+    User:				Foe
+    Sector:			Sector_189

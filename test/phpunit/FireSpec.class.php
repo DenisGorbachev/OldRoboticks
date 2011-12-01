@@ -20,11 +20,11 @@ class FireSpec extends RobotBaseSpec {
             ->then('Failure')
 	;}
 
-	public function testWoundedButAliveRobotAfterFire() {
+	public function testWoundedButAliveRobot() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-                ->and('Robot', 'tea')
+                ->and('Robot', 'sea')
 			->when('Exec', 'fire 17 T')
 			->then('Success')
             ->when('Exec', 'report --for robots')
@@ -33,7 +33,6 @@ class FireSpec extends RobotBaseSpec {
                 ->given('Robot', 'cart')
             ->when('Exec', 'mv 9,9')
             ->then('Success')
-		->markTestIncomplete()
 	;}
 
 	/* Borderline */

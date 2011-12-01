@@ -52,13 +52,22 @@ Robot:
     status:				{ type: string(255), default: "TEA" }
     speed:				{ type: integer }
     cargo:				{ type: string(5) }
-    word_id:				{ type: integer, notnull: false }
+    word_id:				{ type: integer }
+    effective_word_id:	{ type: integer, notnull: false }
     user_id:				{ type: integer }
     sector_id:			{ type: integer }
   relations:
     Word:
+      class:                Word
       foreignAlias:		Robots
       local:				word_id
+      foreign:			id
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
+    EffectiveWord:
+      class:                Word
+      foreignAlias:		EffectiveRobots
+      local:				effective_word_id
       foreign:			id
       onDelete:			CASCADE
       onUpdate:		CASCADE

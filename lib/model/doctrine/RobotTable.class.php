@@ -12,6 +12,10 @@ class RobotTable extends Doctrine_Table {
         return Doctrine_Core::getTable('Robot');
     }
 
+    public function getToStringFormat() {
+        return '#%d "%s"';
+    }
+
     public function getFunctions() {
     	return WordTable::getInstance()->getFunctions();
     }
@@ -59,7 +63,7 @@ class RobotTable extends Doctrine_Table {
 			$previousLetterIndex = count($letters) - 1;
 		}
 		$previousLetter = $letters[$previousLetterIndex];
-		return $this->hasDenotative($name, $letter);
+		return $this->hasDenotative($name, $previousLetter);
 	}
 	
     public function getOwnedQuery($userId) {
