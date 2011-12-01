@@ -162,5 +162,14 @@ class RobotGuard extends BaseGuard {
 		return true;
     }
 
+    public function checkEnemyHasLetter(Robot $enemy, $letter) {
+        if (!$enemy->hasLetter($letter)) {
+			throw new tfSanityException('Robot %robot% doesn\'t have letter %letter%', array(
+				'robot' => (string)$enemy,
+                'letter' => $letter,
+			));
+		}
+		return true;
+    }
 
 }

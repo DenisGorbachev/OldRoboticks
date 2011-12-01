@@ -19,6 +19,10 @@ class Robot extends BaseRobot {
         return (string)$this->getWord();
     }
 
+    public function hasLetter($letter) {
+        return $this->hasDenotative($letter);
+    }
+
     public function hasDenotative($denotative) {
         return $this->getTable()->hasDenotative($this->getName(), $denotative);
     }
@@ -61,6 +65,10 @@ class Robot extends BaseRobot {
 			'trY' => $base->y + sfConfig::get('app_scan_size'),
 		);
 	}
+
+    public function hasInFireableRange(Robot $enemy) {
+        return SectorTable::getInstance()->isInRange($this->getSector(), $enemy->getSector(), $this->getFireableRange());
+    }
 
     public function doExtract() {
         $sector = $this->getSector();
