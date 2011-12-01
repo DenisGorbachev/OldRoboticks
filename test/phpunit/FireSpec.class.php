@@ -3,6 +3,8 @@
 require_once __DIR__.'/../RobotBaseSpec.class.php';
 
 class FireSpec extends RobotBaseSpec {
+	// Number of letter to fire at is not implemented, as it would foster the player imagination to come up with hard-to-disable-robots
+	
 	public function testNormal() {
 		return $this
 			->given('Genesis')
@@ -20,7 +22,7 @@ class FireSpec extends RobotBaseSpec {
 
 	/* Borderline */
 
-    public function testInvalidNonExistingRobot() {
+    public function testInvalidNonExistingEnemy() {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
@@ -29,7 +31,7 @@ class FireSpec extends RobotBaseSpec {
             ->then('Failure')
     ;}
 
-    public function testInvalidOutOfRangeRobot() {
+    public function testInvalidOutOfRangeEnemy() {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')

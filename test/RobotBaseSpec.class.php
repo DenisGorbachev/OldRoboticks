@@ -3,6 +3,14 @@
 require_once __DIR__.'/BaseSpec.class.php';
 
 abstract class RobotBaseSpec extends BaseSpec {
+    public function testWoundedButAliveRobot() {
+//		$this
+//			->given('Genesis')
+//				->and('User', 'Alice')
+//                ->and('Robot', 'sedative')
+//			->when('Exec', $this->getRobotTestCommand())
+//			->then('Failure')
+	;}
 
     /* Borderline */
 

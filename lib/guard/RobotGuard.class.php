@@ -48,6 +48,15 @@ class RobotGuard extends BaseGuard {
         return true;
     }
 
+    public function canFire(Robot $enemy, $letter) {
+        $this->checkIsOwner();
+        $this->checkIsLetter($letter);
+        $this->checkIsFireableLetter($letter);
+        $this->checkEnemyInRange($enemy);
+        $this->checkEnemyHasLetter($enemy, $letter);
+        return true;
+    }
+
     public function checkIsOwner() {
 	    if (!$this->isOwner()) {
 			throw new tfSanityException('Robot %robot% is not owned by you.', array(
