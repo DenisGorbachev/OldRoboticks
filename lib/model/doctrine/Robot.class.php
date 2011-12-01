@@ -43,6 +43,10 @@ class Robot extends BaseRobot {
         return $this->getTable()->getFunctionCount($this->getName(), 'transport');
     }
 
+    public function canFire($letter) {
+        return $this->getTable()->canFire($this->getName(), $letter);
+    }
+
 	public function calculateSpeed() {
 		preg_match_all('/'.implode('|', $this->getTable()->getVowels()).'/u', $this->getName(), $matches, PREG_SET_ORDER);
 		return max(0, 3*count($matches) - mb_strlen($this->getName()));
@@ -94,6 +98,11 @@ class Robot extends BaseRobot {
         }
         $connection->commit();
         return $robot;
+    }
+
+    public function doFire(Robot $enemy, $letter) {
+        $enemy->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '', $enemy->getStatus(), 1));
+        $enemy->save();
     }
 
     public function preInsert($event) {

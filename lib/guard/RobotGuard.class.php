@@ -144,5 +144,23 @@ class RobotGuard extends BaseGuard {
 		return true;
     }
 
+    public function checkIsFireableLetter($letter) {
+        if (!$this->getObject()->canFire($letter)) {
+			throw new tfSanityException('Can\'t fire at letter %letter%', array(
+				'letter' => $letter,
+			));
+		}
+		return true;
+    }
+
+    public function checkEnemyInRange(Robot $enemy) {
+        if (!$this->getObject()->hasInFireableRange($enemy)) {
+			throw new tfSanityException('Robot %robot% is not in fireable range', array(
+				'robot' => (string)$enemy,
+			));
+		}
+		return true;
+    }
+
 
 }

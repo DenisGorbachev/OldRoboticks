@@ -20,6 +20,22 @@ class FireSpec extends RobotBaseSpec {
             ->then('Failure')
 	;}
 
+	public function testWoundedButAliveRobotAfterFire() {
+		return $this
+			->given('Genesis')
+				->and('User', 'Alice')
+                ->and('Robot', 'tea')
+			->when('Exec', 'fire 17 T')
+			->then('Success')
+            ->when('Exec', 'report --for robots')
+            ->then('Contains', 'enemy   CAR_')
+                ->given('User', 'Foe')
+                ->given('Robot', 'cart')
+            ->when('Exec', 'mv 9,9')
+            ->then('Success')
+		->markTestIncomplete()
+	;}
+
 	/* Borderline */
 
     public function testInvalidNonExistingEnemy() {

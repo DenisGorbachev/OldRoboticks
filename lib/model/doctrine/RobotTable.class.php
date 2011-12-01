@@ -51,6 +51,17 @@ class RobotTable extends Doctrine_Table {
         return $functions;
     }
 
+	public function canFire($name, $letter) {
+		$letters = WordTable::getInstance()->getLetters();
+		$letterIndex = array_search($letter, $letters);
+		$previousLetterIndex = $letterIndex - 1;
+		if ($previousLetterIndex < 0) {
+			$previousLetterIndex = count($letters) - 1;
+		}
+		$previousLetter = $letters[$previousLetterIndex];
+		return $this->hasDenotative($name, $letter);
+	}
+	
     public function getOwnedQuery($userId) {
     	return $this->createQuery('r')
     		->where('r.user_id = ?', $userId);

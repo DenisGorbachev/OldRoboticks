@@ -17,8 +17,8 @@ class WordTable extends Doctrine_Table
     	$this->language = sfYaml::load(sfConfig::get('sf_config_dir').'/language.yml');
     }
 
-    public function getFunctions() {
-    	return $this->language['functions'];
+    public function getLetters() {
+        return $this->language['letters'];
     }
 
     public function getVowels() {
@@ -26,11 +26,11 @@ class WordTable extends Doctrine_Table
     }
 
     public function getConsonants() {
-    	return $this->language['consonants'];
+    	return array_diff($this->getLetters(), $this->getVowels());
     }
 
-    public function getLetters() {
-        return array_merge($this->getVowels(), $this->getConsonants());
+    public function getFunctions() {
+    	return $this->language['functions'];
     }
 
     public function isLetter($candidate) {
