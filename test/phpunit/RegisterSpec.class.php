@@ -10,6 +10,9 @@ class RegisterSpec extends BaseSpec {
 			->then('Success')
             ->given('User', 'player')
             ->then('Success')
+            ->given('Robot', 'justregistered')
+            ->when('Exec', 'mv 9,9')
+            ->then('Success')
 	;}
 
 	/* Borderline */

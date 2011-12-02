@@ -39,7 +39,7 @@ class Robot extends BaseRobot {
     }
 
     public function hasLetter($letter) {
-        return $this->hasDenotative($letter);
+        return $this->getTable()->hasDenotative($this->getStatus(), $letter);
     }
 
     public function hasDenotative($denotative) {
@@ -138,7 +138,9 @@ class Robot extends BaseRobot {
 
     public function preInsert($event) {
         if (!$this->getWord()->getId()) {
-            $this->setWord(WordTable::getInstance()->findOneBy('name', $this->getStatus()));
+			$word = WordTable::getInstance()->findOneBy('name', $this->getStatus());
+            $this->setWord($word);
+            $this->setEffectiveWord($word);
         }
         $this->speed = $this->calculateSpeed(); // preSave is invoked before preInsert
         parent::preInsert($event);
