@@ -65,14 +65,14 @@ class SectorTable extends Doctrine_Table {
 		$K = $a*($b - $y1) - $x1;
 		$C = pow($b - $y1, 2) + pow($x1, 2) - pow($speed, 2);
 		$M = 1;
-		do {
+		for ($i = 0; $i < 2; $i++) {
 			$x = (-$K + $M*sqrt(pow($K, 2) - $A*$C)) / $A;
-			if (abs($x2 - $x) + abs($x1 - $x) == abs($x2 - $x1)) {
-				break;
+			if (abs(abs($x2 - $x) + abs($x1 - $x) - abs($x2 - $x1)) < 0.001 /* floats can't be compared for equality */) {
+				return array($x, $a*$x + $b);
 			}
 			$M = -$M;
-		} while ($M < 0);
-		return array($x, $a*$x + $b);
+		};
+        throw new sfException('Destination sector calculation failed, math does not work, all is lost (but there is hope)');
 	}
 
     public function isInRange(Sector $source, Sector $target, $range) {

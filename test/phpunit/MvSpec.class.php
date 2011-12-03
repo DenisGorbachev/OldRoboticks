@@ -50,7 +50,7 @@ class MvSpec extends RobotBaseSpec {
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 0,9')
 			->then('Success')
-				->and('Contains', '6,9')
+				->and('Contains', '4,9')
 	;}
 	
 	public function testLongDiagonalMove() {
@@ -60,7 +60,7 @@ class MvSpec extends RobotBaseSpec {
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 0,0')
 			->then('Success')
-				->and('Contains', '7,7')
+				->and('Contains', '5,5')
 	;}
 
 	public function testRelativeMove() {
@@ -72,7 +72,24 @@ class MvSpec extends RobotBaseSpec {
 			->then('Success')
 				->and('Contains', '10,10')
 	;}
-	
+
+    /*
+     * This test covers the float comparison, which is erroneous because of inherent computer math inconsistencies
+     */
+    public function testExactDiagonalMoveInXPlusDirection() {
+		$this
+			->given('Genesis')
+				->and('User', 'Alice')
+                ->and('Robot', 'tea')
+			->when('Exec', 'mv 12,5')
+			->then('Success')
+				->and('Contains', '12,5')
+            ->when('Exec', 'mv 9,9')
+            ->when('Exec', 'mv 12,13')
+			->then('Success')
+				->and('Contains', '12,13')
+	;}
+
 	/* Borderline */
 
 	public function testInvalidPositiveCoordinates() {
