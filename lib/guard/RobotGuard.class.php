@@ -7,17 +7,20 @@ class RobotGuard extends BaseGuard {
 
     public function canMove() {
         $this->checkIsOwner();
+        $this->checkIsEnabled();
         $this->checkIsMobile();
         return true;
     }
 
     public function canScan() {
         $this->checkIsOwner();
+        $this->checkIsEnabled();
         return true;
     }
 
     public function canExtract() {
         $this->checkIsOwner();
+        $this->checkIsEnabled();
         $this->checkHasFunction('extract');
         $this->checkSectorHasLetter();
         return true;
@@ -25,6 +28,7 @@ class RobotGuard extends BaseGuard {
 
     public function canAssemble($name) {
         $this->checkIsOwner();
+        $this->checkIsEnabled();
         $this->checkHasFunction('assemble');
         $this->checkIsWord($name);
         $this->checkSectorHasDrops(str_split($name));
@@ -33,6 +37,7 @@ class RobotGuard extends BaseGuard {
 
     public function canDisassemble(Robot $target) {
         $this->checkIsOwner();
+        $this->checkIsEnabled();
         $this->checkHasFunction('disassemble');
         $this->checkTargetIsInSameSector($target);
         $this->checkTargetIsDisabled($target);
@@ -41,6 +46,7 @@ class RobotGuard extends BaseGuard {
 
     public function canDrop($letter) {
         $this->checkIsOwner();
+        $this->checkIsEnabled();
         $this->checkHasFunction('transport');
         $this->checkIsLetter($letter);
         $this->checkHasCargo($letter);
@@ -49,6 +55,7 @@ class RobotGuard extends BaseGuard {
 
     public function canPick($letter) {
         $this->checkIsOwner();
+        $this->checkIsEnabled();
         $this->checkHasFunction('transport');
         $this->checkIsLetter($letter);
         $this->checkSectorHasDrops(array($letter));
@@ -58,6 +65,7 @@ class RobotGuard extends BaseGuard {
 
     public function canFire(Robot $target, $letter) {
         $this->checkIsOwner();
+        $this->checkIsEnabled();
         $this->checkIsLetter($letter);
         $this->checkIsFireableLetter($letter);
         $this->checkTargetIsInRange($target);
@@ -73,7 +81,16 @@ class RobotGuard extends BaseGuard {
 		}
 		return true;
     }
-	
+
+    public function checkIsEnabled() {
+        if ($this->getObject()->isDisabled()) {
+			throw new tfSanityException('Robot %robot% is disabled (its status is not a word)', array(
+				'robot' => (string)$this->getObject(),
+			));
+		}
+		return true;
+    }
+
     public function checkIsMobile() {
     	if (!$this->object->speed) {
 			throw new tfSanityException('Robot %robot% is immobile.', array(
