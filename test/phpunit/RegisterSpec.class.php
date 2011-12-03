@@ -10,8 +10,7 @@ class RegisterSpec extends BaseSpec {
 			->then('Success')
             ->given('User', 'player')
             ->then('Success')
-            ->given('Robot', 'justregistered')
-            ->when('Exec', 'mv 9,9')
+            ->when('Exec', 'mv 9,9') // The robot is preselected
             ->then('Success')
 	;}
 

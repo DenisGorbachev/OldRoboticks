@@ -2,7 +2,7 @@
 
 require_once dirname(__FILE__).'/base/Command.class.php';
 
-class SelectCommand extends Command {
+class SelectCommand extends UserInterfaceCommand {
 	public function getParserConfig() {
 		return array(
 			'description' => 'Select a robot ID'
@@ -22,8 +22,8 @@ class SelectCommand extends Command {
         if ((string)$robotId != $arguments['robot_id']) {
             throw new RoboticksArgumentException('Invalid argument "robot_id": expected integer, but got "'.$arguments['robot_id'].'"');
         }
-        file_put_contents(CACHEDIR.'/robotId', $robotId);
+        $this->select($robotId);
         echoln('Success: selected robot #'.$robotId);
 	}
-	
+
 }

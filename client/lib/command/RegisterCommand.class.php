@@ -21,7 +21,9 @@ class RegisterCommand extends UserInterfaceCommand {
 	}
 	
 	public function execute($options, $arguments) {
-		$this->postForm('user', 'user/create', $arguments);
+        if (($response = $this->postForm('user', 'user/create', $arguments))) {
+            $this->select($response['message']['arguments']['robot_id']);
+        }
 	}
 	
 }
