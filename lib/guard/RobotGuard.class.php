@@ -48,12 +48,12 @@ class RobotGuard extends BaseGuard {
         return true;
     }
 
-    public function canFire(Robot $enemy, $letter) {
+    public function canFire(Robot $target, $letter) {
         $this->checkIsOwner();
         $this->checkIsLetter($letter);
         $this->checkIsFireableLetter($letter);
-        $this->checkEnemyInRange($enemy);
-        $this->checkEnemyHasLetter($enemy, $letter);
+        $this->checkTargetInRange($target);
+        $this->checkTargetHasLetter($target, $letter);
         return true;
     }
 
@@ -153,19 +153,19 @@ class RobotGuard extends BaseGuard {
 		return true;
     }
 
-    public function checkEnemyInRange(Robot $enemy) {
-        if (!$this->getObject()->hasInFireableRange($enemy)) {
+    public function checkTargetInRange(Robot $target) {
+        if (!$this->getObject()->hasInFireableRange($target)) {
 			throw new tfSanityException('Robot %robot% is not in fireable range', array(
-				'robot' => (string)$enemy,
+				'robot' => (string)$target,
 			));
 		}
 		return true;
     }
 
-    public function checkEnemyHasLetter(Robot $enemy, $letter) {
-        if (!$enemy->hasLetter($letter)) {
+    public function checkTargetHasLetter(Robot $target, $letter) {
+        if (!$target->hasLetter($letter)) {
 			throw new tfSanityException('Robot %robot% doesn\'t have letter %letter%', array(
-				'robot' => (string)$enemy,
+				'robot' => (string)$target,
                 'letter' => $letter,
 			));
 		}

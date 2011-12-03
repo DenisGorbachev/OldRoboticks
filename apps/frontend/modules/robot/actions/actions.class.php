@@ -103,17 +103,17 @@ class robotActions extends rbActions {
 
     public function prepareFire() {
         return $this->prepareAutoObject()
-			&& $this->prepareAutoObject('enemy_id', 'enemy')
+			&& $this->prepareAutoObject('target_id', 'target')
             && $this->argumentUnless('letter')
     ;}
 
     public function validateFire() {
-        return $this->validateAutoObject($this->enemy, $this->letter);
+        return $this->validateAutoObject($this->target, $this->letter);
     }
 
     public function executeFire(sfWebRequest $request) {
-        $this->object->doFire($this->enemy, $this->letter);
-        return $this->success('fired at robot '.$this->enemy->__toStatusString());
+        $this->object->doFire($this->target, $this->letter);
+        return $this->success('fired at robot '.$this->target->__toStatusString());
     }
 
 }

@@ -39,7 +39,7 @@ class FireSpec extends RobotBaseSpec {
 
 	/* Borderline */
 
-    public function testInvalidNonExistingEnemy() {
+    public function testInvalidNonExistingTarget() {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
@@ -48,7 +48,7 @@ class FireSpec extends RobotBaseSpec {
             ->then('Failure')
     ;}
 
-    public function testInvalidOutOfRangeEnemy() {
+    public function testInvalidOutOfRangeTarget() {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')

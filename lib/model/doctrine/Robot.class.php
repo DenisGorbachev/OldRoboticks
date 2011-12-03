@@ -89,8 +89,8 @@ class Robot extends BaseRobot {
 		);
 	}
 
-    public function hasInFireableRange(Robot $enemy) {
-        return SectorTable::getInstance()->isInRange($this->getSector(), $enemy->getSector(), $this->getFireableRange());
+    public function hasInFireableRange(Robot $target) {
+        return SectorTable::getInstance()->isInRange($this->getSector(), $target->getSector(), $this->getFireableRange());
     }
 
     public function doExtract() {
@@ -131,9 +131,9 @@ class Robot extends BaseRobot {
         return $robot;
     }
 
-    public function doFire(Robot $enemy, $letter) {
-        $enemy->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '_', $enemy->getStatus(), 1));
-        $enemy->save();
+    public function doFire(Robot $target, $letter) {
+        $target->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '_', $target->getStatus(), 1));
+        $target->save();
     }
 
     public function preInsert($event) {
