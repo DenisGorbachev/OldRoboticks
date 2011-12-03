@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -u
+set -e
+
+./symfony rs:truncate Word User Stance Sector Robot
+./symfony rs:load-words
+./symfony rs:generate-sectors ${1:-20}

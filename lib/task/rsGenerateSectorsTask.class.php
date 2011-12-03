@@ -7,7 +7,7 @@ class rsGenerateSectorsTask extends sfBaseTask {
 		));
 		
 		$this->addOptions(array(
-			new sfCommandOption('default', 'd', sfCommandOption::PARAMETER_REQUIRED, 'Default letter', '_'),
+			new sfCommandOption('default', 'd', sfCommandOption::PARAMETER_REQUIRED, 'Default letter', ''),
 			new sfCommandOption('probability', 'p', sfCommandOption::PARAMETER_REQUIRED, 'Probability of a letter (float, from 0 to 1)', 0.02),
 			new sfCommandOption('print-only', 'o', sfCommandOption::PARAMETER_NONE, 'Only print, do not insert into database'),
 		));
@@ -20,14 +20,14 @@ class rsGenerateSectorsTask extends sfBaseTask {
 	}
 
 	protected function execute($arguments = array(), $options = array()) {
-		$this->arguments = $arguments;
-		$this->options = $options;
-		$this->language = sfYaml::load(sfConfig::get('sf_config_dir').'/language.yml');
-		foreach (array('vowels', 'consonants') as $type) {
-			if (($defaultIndex = array_search($this->options['default'], $this->language[$type]))) {
-				unset($this->language[$type][$defaultIndex]);
-			}
-		}
+        $this->arguments = $arguments;
+        $this->options = $options;
+		$language = sfYaml::load(sfConfig::get('sf_config_dir').'/language.yml');
+        $defaultLetter = $options['default'];
+        $letters = $language['letters'];
+        if (($defaultIndex = array_search($defaultLetter, $letters))) {
+            unset($letters[$defaultIndex]);
+        }
 		$this->databaseManager = new sfDatabaseManager($this->configuration);
 			$this->databaseManager->getDatabase('doctrine')->getConnection();
 		$this->connection = Doctrine_Manager::connection();
@@ -35,7 +35,7 @@ class rsGenerateSectorsTask extends sfBaseTask {
 		$dbh = $this->connection->getDbh();
 		$dbh->query('TRUNCATE TABLE '.SectorTable::getInstance()->getTableName());
 		$this->map = array();
-		$this->generateMap();
+		$this->generateMap($letters);
 		if ($this->options['print-only']) {
 			$this->printMap();
 		} else {
@@ -44,16 +44,16 @@ class rsGenerateSectorsTask extends sfBaseTask {
 		return 0;
 	}
 
-	public function generateMap() {
+	public function generateMap($letters) {
 		for ($y = 0; $y < $this->arguments['size']; $y++) {
 			for ($x = 0; $x < $this->arguments['size']; $x++) {
-				$this->map[$x][$y] = (mt_rand(0, 100)/100 < (float)$this->options['probability'])? $this->generateLetter() : $this->options['default'];
+				$this->map[$x][$y] = (mt_rand(0, 100)/100 < (float)$this->options['probability'])? $this->generateLetter($letters) : $this->options['default'];
 			}
 		}
 	}
 		
-	public function generateLetter() {
-		return $this->rand(array_merge($this->language['vowels'], $this->language['consonants']));
+	public function generateLetter(array $letters) {
+		return $this->rand($letters);
 	}
 
 	public function rand(array $array) {
@@ -70,6 +70,8 @@ class rsGenerateSectorsTask extends sfBaseTask {
 	}
 	
 	public function insertMap() {
+        $i = 0;
+        $this->connection->beginTransaction();
 		foreach ($this->map as $x => $row) {
 			foreach ($row as $y => $letter) {
 				$s = new Sector();
@@ -78,8 +80,13 @@ class rsGenerateSectorsTask extends sfBaseTask {
 				$s->letter = $letter;
 				$s->save();
 				$s->free(true);
+                $i++;
+                if ($i % 100 == 0) {
+                    $this->logSection($this->namespace, '['.$x.','.$y.'] Loaded '.$i.' sectors');
+                }
 			}
 		}
+        $this->connection->commit();
 	}
 	
 }
