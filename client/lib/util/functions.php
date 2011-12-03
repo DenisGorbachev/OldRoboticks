@@ -25,7 +25,16 @@
 		}
 		return $results;
 	}
-	
+
+    function array_fill_negative($start_index, $num, $value) {
+        $array = array();
+        while ($num--) {
+            $array[$start_index] = $value;
+            $start_index++;
+        }
+        return $array;
+    }
+
 	function vd() {
 		$args = func_get_args();
 		foreach ($args as &$arg) {
@@ -50,4 +59,3 @@
 		$translator = new Translator($message);
 		return $translator->translate();
 	}
-	

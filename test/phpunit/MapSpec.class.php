@@ -64,17 +64,17 @@ class MapSpec extends ScanBaseSpec {
 	;}
 
     public function testEdges() {
-        // Negative values, cache the max coordinates
-//        return $this
-//            ->given('Genesis')
-//                ->and('User', 'Alice')
-//                ->and('Robot', 'tea')
-//            ->when('Exec', 'map --for drops')
-//            ->then('Success')
-//                ->and('HasDefaultCoordinatesWithMesh')
-//                ->and('Contains', ' 1 ')
-//                ->and('Contains', ' 9 ')
-//                ->and('Contains', ' 4 ')
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
+                ->and('Robot', 'tea')
+            ->when('Exec', 'mv 0,0')
+            ->when('Exec', 'mv 0,0')
+            ->when('Exec', 'mv 0,0')
+            ->when('Exec', 'map')
+            ->then('Success')
+                ->and('HasCoordinatesWithMesh', '-5,5', '5,5', '5,-5', '-5,-5')
+                ->and('Contains', '                 4  -  -  -  -  - ')
     ;}
     
     /* Borderline */

@@ -27,31 +27,32 @@ class MapCommand extends ScanCommand {
 		$response = parent::execute($options, $arguments);
         if ($response) {
 		    $borders = $response['borders'];
-            $xfill = array_fill($borders['blX'], $borders['trX']-$borders['blX']+1, $this->empty_cell_placeholder);
-            $info = array_fill($borders['blY'], $borders['trY']-$borders['blY']+1, $xfill);
+            $xfill = array_fill_negative($borders['blX'], $borders['trX']-$borders['blX']+1, ' ');
+            $info = array_fill_negative($borders['blY'], $borders['trY']-$borders['blY']+1, $xfill);
             $info = array_reverse($info, true);
             $info = $this->{'executeFor'.$options['for']}($response, $info);
             foreach ($info as &$row) {
                 array_unshift($row, '');
             }
-            $upperCoordinatesRow = array_merge(array($this->sector($borders['blX'], $borders['trY'])), array_fill(0, $borders['trX']-$borders['blX']+1, ''), array($this->sector($borders['trX'], $borders['trY'])));
-            $lowerCoordinatesRow = array_merge(array($this->sector($borders['blX'], $borders['blY'])), array_fill(0, $borders['trX']-$borders['blX']+1, ''), array($this->sector($borders['trX'], $borders['blY'])));
+            $upperCoordinatesRow = array_merge(array($this->sector($borders['blX'], $borders['trY'])), array_fill_negative(0, $borders['trX']-$borders['blX']+1, ''), array($this->sector($borders['trX'], $borders['trY'])));
+            $lowerCoordinatesRow = array_merge(array($this->sector($borders['blX'], $borders['blY'])), array_fill_negative(0, $borders['trX']-$borders['blX']+1, ''), array($this->sector($borders['trX'], $borders['blY'])));
             array_unshift($info, $upperCoordinatesRow);
             $info[] = $lowerCoordinatesRow;
             $this->table($info);
         }
 	}
-	
+
     public function executeForRobots($response, $info)
     {
         foreach ($response['results'] as $sector) {
             $x = $sector['x'];
             $y = $sector['y'];
             if (empty($sector['Robots'])) {
+                $info[$y][$x] = $this->empty_cell_placeholder;
                 continue;
             }
             foreach ($sector['Robots'] as $robot) {
-				if ($info[$y][$x] == $this->empty_cell_placeholder) {
+				if ($info[$y][$x] == ' ') {
                     $info[$y][$x] = 0;
                 }
                 $stance = $this->getStance($robot);
