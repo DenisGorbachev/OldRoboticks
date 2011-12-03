@@ -31,6 +31,14 @@ class RobotGuard extends BaseGuard {
         return true;
     }
 
+    public function canDisassemble(Robot $target) {
+        $this->checkIsOwner();
+        $this->checkHasFunction('disassemble');
+        $this->checkTargetIsInSameSector($target);
+        $this->checkTargetIsDisabled($target);
+        return true;
+    }
+
     public function canDrop($letter) {
         $this->checkIsOwner();
         $this->checkHasFunction('transport');
@@ -52,7 +60,7 @@ class RobotGuard extends BaseGuard {
         $this->checkIsOwner();
         $this->checkIsLetter($letter);
         $this->checkIsFireableLetter($letter);
-        $this->checkTargetInRange($target);
+        $this->checkTargetIsInRange($target);
         $this->checkTargetHasLetter($target, $letter);
         return true;
     }
@@ -153,7 +161,7 @@ class RobotGuard extends BaseGuard {
 		return true;
     }
 
-    public function checkTargetInRange(Robot $target) {
+    public function checkTargetIsInRange(Robot $target) {
         if (!$this->getObject()->hasInFireableRange($target)) {
 			throw new tfSanityException('Robot %robot% is not in fireable range', array(
 				'robot' => (string)$target,
@@ -167,6 +175,24 @@ class RobotGuard extends BaseGuard {
 			throw new tfSanityException('Robot %robot% doesn\'t have letter %letter%', array(
 				'robot' => (string)$target,
                 'letter' => $letter,
+			));
+		}
+		return true;
+    }
+
+    public function checkTargetIsInSameSector(Robot $target) {
+        if ($this->getObject()->getSectorId() != $target->getSectorId()) {
+			throw new tfSanityException('Robot %robot% is not in the same sector', array(
+				'robot' => (string)$target,
+			));
+		}
+		return true;
+    }
+
+    public function checkTargetIsDisabled(Robot $target) {
+        if (!$target->isDisabled()) {
+			throw new tfSanityException('Robot %robot% is not disabled (its status is a word)', array(
+				'robot' => (string)$target,
 			));
 		}
 		return true;

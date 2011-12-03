@@ -54,6 +54,10 @@ class Robot extends BaseRobot {
         return $this->getTable()->getFunctionsForName($this->getName());
 	}
 
+    public function getEffectiveStatus() {
+        return preg_replace('/_/u', '', $this->getStatus());
+    }
+
     public function hasCargo($letter) {
         return mb_strpos($this->getCargo(), $letter) !== false;
     }
@@ -68,6 +72,10 @@ class Robot extends BaseRobot {
 
     public function canFire($letter) {
         return $this->getTable()->canFire($this->getName(), $letter);
+    }
+
+    public function isDisabled() {
+        return !$this->getEffectiveWordId();
     }
 
 	public function calculateSpeed() {
@@ -129,6 +137,20 @@ class Robot extends BaseRobot {
         }
         $connection->commit();
         return $robot;
+    }
+
+    public function doDisassemble(Robot $target) {
+        $connection = $this->getTable()->getConnection();
+        $connection->beginTransaction();
+        try {
+            $sector = $this->getSector();
+            $sector->setDrops($sector->getDrops().$target->getEffectiveStatus());
+            $sector->save();
+            $target->delete();
+        } catch (Exception $e) {
+            $connection->rollback();
+        }
+        $connection->commit();
     }
 
     public function doFire(Robot $target, $letter) {

@@ -101,6 +101,20 @@ class robotActions extends rbActions {
         return $this->success('assembled new robot '.$newborn);
     }
 
+    public function prepareDisassemble() {
+        return $this->prepareAutoObject()
+			&& $this->prepareAutoObject('target_id', 'target')
+    ;}
+
+    public function validateDisassemble() {
+        return $this->validateAutoObject($this->target);
+    }
+
+    public function executeDisassemble(sfWebRequest $request) {
+        $this->object->doDisassemble($this->target);
+        return $this->success('disassembled robot '.$this->target);
+    }
+
     public function prepareFire() {
         return $this->prepareAutoObject()
 			&& $this->prepareAutoObject('target_id', 'target')
