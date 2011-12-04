@@ -17,8 +17,8 @@ class rsGenerateSmartSectorsTask extends rsGenerateSectorsTask {
 		return parent::execute($arguments, $options);
 	}
 	
-	public function generateMap() {
-		parent::generateMap();
+	public function generateMap($letters) {
+		parent::generateMap($letters);
 		$this->generateSpills();
 	}
 	
