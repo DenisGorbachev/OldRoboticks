@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__).'/base/Command.class.php';
+require_once dirname(__FILE__).'/base/UserInterfaceCommand.class.php';
 
 class SelectCommand extends UserInterfaceCommand {
 	public function getParserConfig() {
