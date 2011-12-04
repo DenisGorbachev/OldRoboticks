@@ -73,6 +73,18 @@ class RobotGuard extends BaseGuard {
         return true;
     }
 
+    public function canRepair(Robot $target, $letter) {
+        $this->checkIsOwner();
+        $this->checkIsEnabled();
+        $this->checkHasFunction('repair');
+        $this->checkIsLetter($letter);
+        $this->checkTargetIsInSameSector($target);
+        $this->checkTargetHasLetterInWord($target, $letter);
+        $this->checkTargetHasLetterPinchedOut($target, $letter);
+        $this->checkSectorHasDrops(array($letter));
+        return true;
+    }
+
     public function checkIsOwner() {
 	    if (!$this->isOwner()) {
 			throw new tfSanityException('Robot %robot% is not owned by you.', array(
@@ -92,7 +104,7 @@ class RobotGuard extends BaseGuard {
     }
 
     public function checkIsMobile() {
-    	if (!$this->object->speed) {
+    	if (!$this->getObject()->getSpeed()) {
 			throw new tfSanityException('Robot %robot% is immobile.', array(
 				'robot' => (string)$this->object
 			));
@@ -190,6 +202,26 @@ class RobotGuard extends BaseGuard {
     public function checkTargetHasLetter(Robot $target, $letter) {
         if (!$target->hasLetter($letter)) {
 			throw new tfSanityException('Robot %robot% doesn\'t have letter %letter%', array(
+				'robot' => (string)$target,
+                'letter' => $letter,
+			));
+		}
+		return true;
+    }
+
+    public function checkTargetHasLetterInWord(Robot $target, $letter) {
+        if (!$target->getWord()->hasLetter($letter)) {
+			throw new tfSanityException('Robot %robot% doesn\'t have letter %letter% in its base word', array(
+				'robot' => (string)$target,
+                'letter' => $letter,
+			));
+		}
+		return true;
+    }
+
+    public function checkTargetHasLetterPinchedOut(Robot $target, $letter) {
+        if (!$target->hasLetterPinchedOut($letter)) {
+			throw new tfSanityException('Robot %robot% doesn\'t have a pinched out letter %letter%', array(
 				'robot' => (string)$target,
                 'letter' => $letter,
 			));

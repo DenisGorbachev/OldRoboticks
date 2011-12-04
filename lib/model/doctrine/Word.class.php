@@ -12,4 +12,12 @@
  */
 class Word extends BaseWord
 {
+    public function hasLetter($letter) {
+        return $this->getTable()->hasLetter($this->getName(), $letter);
+    }
+
+    public function getNameArray() {
+        return str_split($this->getName());
+    }
+
 }

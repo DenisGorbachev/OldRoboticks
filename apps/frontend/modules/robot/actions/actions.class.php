@@ -130,4 +130,19 @@ class robotActions extends rbActions {
         return $this->success('fired at robot '.$this->target->__toStatusString());
     }
 
+    public function prepareRepair() {
+        return $this->prepareAutoObject()
+			&& $this->prepareAutoObject('target_id', 'target')
+            && $this->argumentUnless('letter')
+    ;}
+
+    public function validateRepair() {
+        return $this->validateAutoObject($this->target, $this->letter);
+    }
+
+    public function executeRepair(sfWebRequest $request) {
+        $this->object->doRepair($this->target, $this->letter);
+        return $this->success('repaired letter "'.$this->letter.'" in robot '.$this->target->__toStatusString());
+    }
+
 }

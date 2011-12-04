@@ -23,6 +23,10 @@ class Robot extends BaseRobot {
         return (string)$this->getEffectiveWord();
     }
 
+    public function getStatusArray() {
+        return str_split($this->getStatus());
+    }
+
     public function setStatus($status) {
         if (sfContext::hasInstance()) {
             $statusWordName = preg_replace('/_/u', '', $status);
@@ -76,6 +80,10 @@ class Robot extends BaseRobot {
 
     public function isDisabled() {
         return !$this->getEffectiveWordId();
+    }
+
+    public function hasLetterPinchedOut($letter) {
+        return in_array($letter, array_diff_assoc($this->getWord()->getNameArray(), $this->getStatusArray()));
     }
 
 	public function calculateSpeed() {
@@ -156,6 +164,29 @@ class Robot extends BaseRobot {
     public function doFire(Robot $target, $letter) {
         $target->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '_', $target->getStatus(), 1));
         $target->save();
+    }
+
+    public function doRepair(Robot $target, $letter) {
+        $statusArray = $target->getStatusArray();
+        foreach (array_keys($target->getWord()->getNameArray(), $letter) as $key) {
+            if ($statusArray[$key] == '_') {
+                $connection = $this->getTable()->getConnection();
+                $connection->beginTransaction();
+                try {
+                    $sector = $this->getSector();
+                    $sector->setDrops(preg_replace('/'.preg_quote($letter, '/').'/u', '', $sector->getDrops(), 1));
+                    $sector->save();
+                    $statusArray[$key] = $letter;
+                    $target->setStatus(implode('',  $statusArray));
+                    $target->save();
+                } catch (Exception $e) {
+                    $connection->rollback();
+                }
+                $connection->commit();
+                return $target;
+            }
+        }
+        throw new sfException('Can\'t repair letter "'.$letter.'" in robot '.$target.', something is wrong with validation');
     }
 
     public function preInsert($event) {

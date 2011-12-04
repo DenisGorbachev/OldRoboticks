@@ -36,4 +36,20 @@ class WordTable extends Doctrine_Table
     public function isLetter($candidate) {
         return in_array($candidate, $this->getLetters());
     }
+
+    public function hasLetter($word, $letter) {
+        return mb_strpos($word, $letter) !== false;
+    }
+
+    public function getPreviousLetter($letter) {
+        $letters = $this->getLetters();
+        $letterIndex = array_search($letter, $letters);
+        $previousLetterIndex = $letterIndex - 1;
+        if ($previousLetterIndex < 0) {
+            $previousLetterIndex = count($letters) - 1;
+        }
+        $previousLetter = $letters[$previousLetterIndex];
+        return $previousLetter;
+    }
+
 }

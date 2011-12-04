@@ -34,7 +34,7 @@ class RobotTable extends Doctrine_Table {
     }
 
     public function hasDenotative($name, $denotative) {
-        return mb_strpos($name, $denotative) !== false;
+        return WordTable::getInstance()->hasLetter($name, $denotative);
     }
 
     public function hasFunction($name, $meaning) {
@@ -56,16 +56,9 @@ class RobotTable extends Doctrine_Table {
     }
 
 	public function canFire($name, $letter) {
-		$letters = WordTable::getInstance()->getLetters();
-		$letterIndex = array_search($letter, $letters);
-		$previousLetterIndex = $letterIndex - 1;
-		if ($previousLetterIndex < 0) {
-			$previousLetterIndex = count($letters) - 1;
-		}
-		$previousLetter = $letters[$previousLetterIndex];
-		return $this->hasDenotative($name, $previousLetter);
+		return $this->hasDenotative($name, WordTable::getInstance()->getPreviousLetter($letter));
 	}
-	
+
     public function getOwnedQuery($userId) {
     	return $this->createQuery('r')
     		->where('r.user_id = ?', $userId);
