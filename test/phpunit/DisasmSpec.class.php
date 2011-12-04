@@ -11,7 +11,7 @@ class DisasmSpec extends RobotBaseSpec {
             ->when('Exec', 'disasm '.$this->getRobotId('sedative'))
 			->then('Success')
             ->when('Exec', 'report --for drops')
-            ->then('Contains', '12,5    B E A R S E D A T V E')
+            ->then('Contains', '12,5    B E A R I S E D A T V E')
             ->when('Exec', 'report --for robots')
             ->then('NotContains', 'SEDATIVE')
 	;}
