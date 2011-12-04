@@ -8,10 +8,12 @@ abstract class ServerCommand extends Command {
     public function run() {
         $options = $this->getCurlOptions();
         $filename = $options[CURLOPT_COOKIEFILE];
-        $contents = file_get_contents($filename);
-        preg_match('/user_id\t(.*)/u', $contents, $matches);
-        if (isset($matches[1])) {
-            $this->setUserId($matches[1]);
+        if (file_exists($filename)) {
+            $contents = file_get_contents($filename);
+            preg_match('/user_id\t(.*)/u', $contents, $matches);
+            if (isset($matches[1])) {
+                $this->setUserId($matches[1]);
+            }
         }
 
         return parent::run();
