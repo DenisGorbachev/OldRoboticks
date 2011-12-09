@@ -4,10 +4,13 @@ require_once __DIR__.'/../lib/symfony/lib/yaml/sfYaml.php';
 
 class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	public $robots = array(null, 'tea', 'grunt', 'teeter', 'pear', 'sedative', 'sea', '', '', '', 'drake', 'fuel', '', '', '', 'plush', 'mouse', 'cart', 'justregistered');
+
 	protected $world = array(
 		'results' => array(),
 		'lastResult' => ''
 	);
+
+    public $debug = true;
 	
 	public function exec($command) {
 		$cmd = 'rk '.$command;
@@ -102,5 +105,13 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
     public function testDummy() {
         $this->assertTrue(true);
     }
-    
+
+    public function setDebug($debug) {
+        $this->debug = $debug;
+    }
+
+    public function getDebug() {
+        return $this->debug;
+    }
+
 }
