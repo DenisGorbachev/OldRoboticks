@@ -6,6 +6,12 @@ Robot:
     EffectiveWord:	TEA
     User:				Alice
     Sector:			Sector_190
+  Tear:
+    status:			"TEAR"
+    Word:			TEAR
+    EffectiveWord:	TEAR
+    User:				Alice
+    Sector:			Sector_190
   Grunt:
     status:			"GRUNT"
     Word:			GRUNT
@@ -31,10 +37,10 @@ Robot:
     Word:			SEDATIVE
     User:				Alice
     Sector:			Sector_246
-  Sea:
-    status:			"SEA"
-    Word:			SEA
-    EffectiveWord:	SEA
+  Seaside:
+    status:			"SEASIDE"
+    Word:			SEASIDE
+    EffectiveWord:	SEASIDE
     User:				Alice
     Sector:			Sector_232
   Stake:

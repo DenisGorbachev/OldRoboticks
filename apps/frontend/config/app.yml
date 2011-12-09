@@ -4,3 +4,10 @@
 all:
   scan:
     size:				5
+  speed:
+    limit:            14
+    increment:  2
+  fire_range:
+    limit:            6
+    increment:  3
+
