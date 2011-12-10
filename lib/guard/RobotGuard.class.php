@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @method Robot getObject()
+ */
 class RobotGuard extends BaseGuard {
 	public static function canList() {
 		return true;
@@ -18,7 +21,7 @@ class RobotGuard extends BaseGuard {
         $this->checkIsOwner();
         $this->checkIsEnabled();
         $this->checkIsActive();
-        return true;
+        return true;    
     }
 
     public function canExtract() {
@@ -143,7 +146,7 @@ class RobotGuard extends BaseGuard {
     }
 
     public function checkHasFunction($meaning) {
-        if (!$this->object->hasFunction($meaning)) {
+        if (!$this->getObject()->hasFunction($meaning)) {
 			throw new rsSanityException('Robot %robot% can\'t %function%', array(
 				'robot' => (string)$this->object,
                 'function' => $meaning
@@ -153,9 +156,9 @@ class RobotGuard extends BaseGuard {
     }
 
     public function checkSectorHasLetter() {
-        if (!$this->object->getSector()->getLetter()) {
+        if (!$this->getObject()->getSector()->getLetter()) {
 			throw new rsSanityException('Sector %sector% has no letters', array(
-				'sector' => (string)$this->object->getSector()
+				'sector' => (string)$this->getObject()->getSector()
 			));
 		}
 		return true;
@@ -180,10 +183,10 @@ class RobotGuard extends BaseGuard {
     }
 
     public function checkSectorHasDrops(array $drops) {
-        $diff = array_diff($drops, $this->object->getSector()->getDropsArray());
+        $diff = array_diff($drops, $this->getObject()->getSector()->getDropsArray());
         if ($diff) {
 			throw new rsSanityException('Sector %sector% has no %diff% drops', array(
-				'sector' => (string)$this->object->getSector(),
+				'sector' => (string)$this->getObject()->getSector(),
                 'diff' => implode(', ', $diff),
 			));
 		}

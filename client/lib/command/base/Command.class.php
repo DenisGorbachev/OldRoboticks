@@ -26,7 +26,7 @@ abstract class Command {
 	}
 	
 	public function getOption($option, $default = null) {
-		return empty($this->options[$option])? $default : $this->options[$option];
+		return array_key_exists($option, $this->options)? $this->options[$option] : $default;
 	}
 
 	public function setArguments($arguments) {
@@ -43,7 +43,7 @@ abstract class Command {
 	}
 	
 	public function getArgument($argument, $default = null) {
-		return empty($this->arguments[$argument])? $default : $this->arguments[$argument];
+        return array_key_exists($argument, $this->arguments)? $this->arguments[$argument] : $default;
 	}
 	
 	public function getOptionConfigs() {

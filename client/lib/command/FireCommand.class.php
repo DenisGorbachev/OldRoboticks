@@ -16,7 +16,7 @@ class FireCommand extends RobotCommand {
 	public function getArgumentConfigs() {
 		return array_merge(parent::getArgumentConfigs(), array(
 			'target_robot_id' => array(
-				'description' => 'ID of target robot (example: 3)'
+				'description' => 'ID of robot to fire at (example: 3)'
 			),
 			'letter' => array(
 				'description' => 'Letter in target robot to fire at'
