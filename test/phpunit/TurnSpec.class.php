@@ -3,7 +3,7 @@
 require_once __DIR__.'/../BaseSpec.class.php';
 
 /**
- * @group timing
+ * @group time-consuming
  */
 class TurnSpec extends BaseSpec {
     public function setUp() {

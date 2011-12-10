@@ -9,8 +9,18 @@
 		$cmdName = 'info';
 		array_splice($_SERVER['argv'], 1, 0, array($cmdName));
 	}
-	
-	$cmdClass = ucfirst($cmdName).'Command';
+
+	$cmdClass = preg_replace(
+        array(
+            '#/(.?)#e',
+            '/(^|_|-|:)+(.)/e'
+        ),
+        array(
+            "'::'.strtoupper('\\1')",
+            "strtoupper('\\2')"
+        ),
+        $cmdName
+    ).'Command';
 	$cmdFilename = LIBDIR.'/command/'.$cmdClass.'.class.php';
 	if (!file_exists($cmdFilename)) {
 		throw new RoboticksException('Command not found', 1);

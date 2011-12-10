@@ -76,9 +76,19 @@ abstract class Command {
 	}
 	
 	public function run() {
-		return $this->execute($this->getOptions(), $this->getArguments());
+        $options = $this->getOptions();
+        $arguments = $this->getArguments();
+        $this->preExecute($options, $arguments);
+		$result = $this->execute($options, $arguments);
+        $this->postExecute($options, $arguments);
+        return $result;
 	}
-	
+
+    public function preExecute($options, $arguments) {}
+
 	abstract public function execute($options, $arguments);
-	
+
+    public function postExecute($options, $arguments) {}
+
 }
+

@@ -5,8 +5,12 @@ require_once dirname(__FILE__).'/ServerCommand.class.php';
 abstract class UserInterfaceCommand extends ServerCommand {
     public $empty_cell_placeholder = '-';
 
-    public function select($robotId) {
+    public function selectRobotId($robotId) {
         file_put_contents(CACHEDIR . '/robotId', $robotId);
+    }
+
+    public function selectRealmId($realmId) {
+        file_put_contents(CACHEDIR . '/realmId', $realmId);
     }
 
     public function table($table, $sortByColumnIndex = false)

@@ -1,16 +1,18 @@
 <?php
 
-require_once dirname(__FILE__).'/base/UserInterfaceCommand.class.php';
+require_once dirname(__FILE__).'/base/RealmCommand.class.php';
 
-class LsCommand extends UserInterfaceCommand {
+class LsCommand extends RealmCommand {
 	public function getParserConfig() {
 		return array(
-			'description' => 'List robots'
+			'description' => 'List robots in a selected realm'
 		) + parent::getParserConfig();
 	}
 
 	public function execute($options, $arguments) {
-		if (($response = $this->get('robot/list'))) {
+		if (($response = $this->get('robot/list', array(
+            'realm_id' => $options['realm_id']
+        )))) {
             $info = array(array('ID', 'Sector', 'Cargo', 'Funcs', 'Status', 'Name', 'Speed'));
 			foreach ($response['objects'] as $robot) {
 				$info[] = array(

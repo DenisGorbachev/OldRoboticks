@@ -40,11 +40,6 @@ class userActions extends rbActions {
 		));
 	}
 	
-	public function executeRequestRobot(sfWebRequest $request) {
-		
-		return $this->message('A new robot '.$this->object.' created at '.$this->object->getSector());
-	}
-
 	public function prepareShow() {
 		return $this->prepareAutoObject();
 	}

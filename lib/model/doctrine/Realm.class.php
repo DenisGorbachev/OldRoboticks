@@ -12,4 +12,18 @@
  */
 class Realm extends BaseRealm
 {
+    public $salt = '301fd763d41594cacdedb18b53e265ee';
+
+    public function __toString() {
+        return '#'.$this->id.' "'.$this->name.'" ['.$this->type.']';
+    }
+
+    public function setPassword($password) {
+        $this->_set('password', md5($password.$this->salt));
+    }
+
+    public function checkPassword($password) {
+      return $this->password == md5($password.$this->salt);
+    }
+
 }

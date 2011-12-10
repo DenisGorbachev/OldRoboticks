@@ -35,12 +35,12 @@ abstract class RobotCommand extends UserInterfaceCommand {
         return $this->robotId;
     }
 
-    public function run()
+    public function preExecute($options, $arguments)
     {
+        parent::preExecute($options, $arguments);
         if (!$this->getOption('robot_id')) {
             throw new RoboticksCacheException('No robot selected. '.PHP_EOL.'See a list of available robots using `rk ls`, select a robot using `rk select ID`. '.PHP_EOL.'Alternatively, you can select a robot for a specific command by adding `--robot-id|-r ID`.');
         }
-        return parent::run();
     }
 
 }
