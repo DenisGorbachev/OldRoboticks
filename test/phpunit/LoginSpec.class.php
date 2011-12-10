@@ -15,6 +15,7 @@ class LoginSpec extends BaseSpec {
     public function testInvalidActionWithoutAuthentication() {
         $this
             ->given('Genesis')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
             ->when('Exec', 'mv 10,10')
             ->then('Failure')
