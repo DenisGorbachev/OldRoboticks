@@ -9,10 +9,10 @@ class FireSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-                ->and('Robot', 'tea')
-			->when('Exec', 'fire 11 U')
+                ->and('Robot', 'tear')
+			->when('Exec', 'fire '.$this->getRobotId('fuel').' U')
 			->then('Success')
-			->when('Exec', 'fire 11 F')
+			->when('Exec', 'fire '.$this->getRobotId('fuel').' F')
 			->then('Success')
             ->when('Exec', 'report --for robots')
             ->then('Contains', 'enemy   __EL')
@@ -26,8 +26,8 @@ class FireSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-                ->and('Robot', 'sea')
-			->when('Exec', 'fire 17 T')
+                ->and('Robot', 'seaside')
+			->when('Exec', 'fire '.$this->getRobotId('cart').' T')
 			->then('Success')
             ->when('Exec', 'report --for robots')
             ->then('Contains', 'enemy   CAR_')
@@ -43,7 +43,7 @@ class FireSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
-                ->and('Robot', 'tea')
+                ->and('Robot', 'tear')
             ->when('Exec', 'fire 111 A')
             ->then('Failure')
     ;}
@@ -52,8 +52,8 @@ class FireSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
-                ->and('Robot', 'tea')
-            ->when('Exec', 'fire 15 U')
+                ->and('Robot', 'tear')
+            ->when('Exec', 'fire '.$this->getRobotId('plush').' U')
             ->then('Failure')
     ;}
 
@@ -61,8 +61,8 @@ class FireSpec extends RobotBaseSpec {
         return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-                ->and('Robot', 'tea')
-			->when('Exec', 'fire 11 A')
+                ->and('Robot', 'tear')
+			->when('Exec', 'fire '.$this->getRobotId('fuel').' A')
 			->then('Failure')
     ;}
 
@@ -70,13 +70,13 @@ class FireSpec extends RobotBaseSpec {
         return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-                ->and('Robot', 'tea')
-			->when('Exec', 'fire 11 L')
+                ->and('Robot', 'tear')
+			->when('Exec', 'fire '.$this->getRobotId('fuel').' L')
 			->then('Failure')
     ;}
 
     public function getRobotTestCommand() {
-        return 'fire 11 U';
+        return 'fire '.$this->getRobotId('fuel').' U';
     }
 
 }

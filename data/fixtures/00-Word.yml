@@ -1,12 +1,14 @@
 Word:
   TEA:
     name:					"TEA"
+  TEAR:
+    name:                  "TEAR"
   PEAR:
     name:					"PEAR"
   SEDATIVE:
     name:					"SEDATIVE"
-  SEA:
-    name:					"SEA"
+  SEASIDE:
+    name:					"SEASIDE"
   GRUNT:
     name:					"GRUNT"
   TEETER:

@@ -50,7 +50,7 @@ class MvSpec extends RobotBaseSpec {
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 0,9')
 			->then('Success')
-				->and('Contains', '4,9')
+				->and('Contains', '1,9')
 	;}
 	
 	public function testLongDiagonalMove() {
@@ -60,7 +60,7 @@ class MvSpec extends RobotBaseSpec {
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 0,0')
 			->then('Success')
-				->and('Contains', '5,5')
+				->and('Contains', '3,3')
 	;}
 
 	public function testRelativeMove() {
@@ -105,7 +105,7 @@ class MvSpec extends RobotBaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
-                ->and('Robot', 'grunt')
+                ->and('Robot', 'seaside')
 			->when('Exec', 'mv 0,9')
 			->then('Failure')
 	;}

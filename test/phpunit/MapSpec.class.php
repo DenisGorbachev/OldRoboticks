@@ -32,7 +32,7 @@ class MapSpec extends ScanBaseSpec {
                 ->and('Exec', 'map')
 			->then('Success')
 				->and('HasCoordinatesWithMesh', '7,14', '17,14', '7,4', '17,4')
-                ->and('Contains', ' 2  -  -  -  4 ') // Alice's robot is three sectors away from ally
+                ->and('Contains', ' 2  4  -  -  4 ') // Alice's robot is three sectors away from ally
 	;}
 	
 	public function testLetters() {

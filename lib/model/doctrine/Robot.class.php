@@ -87,12 +87,11 @@ class Robot extends BaseRobot {
     }
 
 	public function calculateSpeed() {
-		preg_match_all('/'.implode('|', $this->getTable()->getVowels()).'/u', $this->getName(), $matches, PREG_SET_ORDER);
-		return max(0, 4*count($matches) - mb_strlen($this->getName()));
+		return $this->isDisabled()? 0 : max(0, sfConfig::get('app_speed_limit') - sfConfig::get('app_speed_increment')*mb_strlen($this->getName()));
 	}
 
     public function getFireableRange() {
-        return mb_strlen($this->getName())*2;
+        return $this->isDisabled()? 0 : max(0, sfConfig::get('app_fire_range_increment')*mb_strlen($this->getName()) - sfConfig::get('app_fire_range_limit'));
     }
 
 	public function getScanBorders() {

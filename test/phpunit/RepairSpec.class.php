@@ -14,7 +14,7 @@ class RepairSpec extends RobotBaseSpec {
             ->then('NotContains', 'I')
             ->given('User', 'Alice')
             ->given('Robot', 'sedative')
-            ->when('Exec', 'mv 9,9')
+            ->when('Exec', 'asm BEAR')
             ->then('Success')
 	;}
 

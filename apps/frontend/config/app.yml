@@ -4,6 +4,13 @@
 all:
   scan:
     size:				5
+  speed:
+    limit:            14
+    increment:  2
+  fire_range:
+    limit:            6
+    increment:  3
   turn_duration:
     increment:      2
     limit:              60
+
