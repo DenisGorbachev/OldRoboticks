@@ -1,5 +1,6 @@
 Robot:
   Tea:
+    Realm:         Universe
     status:			"TEA"
     cargo:			"M"
     Word:			TEA
@@ -7,18 +8,21 @@ Robot:
     User:				Alice
     Sector:			Sector_190
   Tear:
+    Realm:         Universe
     status:			"TEAR"
     Word:			TEAR
     EffectiveWord:	TEAR
     User:				Alice
     Sector:			Sector_190
   Grunt:
+    Realm:         Universe
     status:			"GRUNT"
     Word:			GRUNT
     EffectiveWord:	GRUNT
     User:				Alice
     Sector:			Sector_100
   Teeter:
+    Realm:         Universe
     status:			"TEETER"
     cargo:          "NZ"
     Word:			TEETER
@@ -26,294 +30,343 @@ Robot:
     User:				Alice
     Sector:			Sector_100
   Pear:
+    Realm:         Universe
     status:			"PEAR"
     Word:			PEAR
     EffectiveWord:	PEAR
     User:				Alice
     Sector:			Sector_227
   Sedative:
+    Realm:         Universe
     status:			"SEDAT_VE"
     cargo:          "F"
     Word:			SEDATIVE
     User:				Alice
     Sector:			Sector_246
   Seaside:
+    Realm:         Universe
     status:			"SEASIDE"
     Word:			SEASIDE
     EffectiveWord:	SEASIDE
     User:				Alice
     Sector:			Sector_232
   Stake:
+    Realm:         Universe
     status:			"STAKE"
     Word:			STAKE
     EffectiveWord:	STAKE
     User:				Friend
     Sector:			Sector_170
   Wake:
+    Realm:         Universe
     status:			"WAKE"
     Word:			WAKE
     EffectiveWord:	WAKE
     User:				Friend
     Sector:			Sector_208
   Lake:
+    Realm:         Universe
     status:			"LAKE"
     Word:			LAKE
     EffectiveWord:	LAKE
     User:				Friend
     Sector:			Sector_232
   Drake:
+    Realm:         Universe
     status:			"DRAKE"
     Word:			DRAKE
     EffectiveWord:	DRAKE
     User:				Friend
     Sector:			Sector_246
   Fuel:
+    Realm:         Universe
     status:			"FUEL"
     Word:			FUEL
     EffectiveWord:	FUEL
     User:				Foe
     Sector:			Sector_189
   Rush:
+    Realm:         Universe
     status:			"RUSH"
     Word:			RUSH
     EffectiveWord:	RUSH
     User:				Foe
     Sector:			Sector_208
   Push:
+    Realm:         Universe
     status:			"PUSH"
     Word:			PUSH
     EffectiveWord:	PUSH
     User:				Foe
     Sector:			Sector_227
   Mushroom:
+    Realm:         Universe
     status:			"MUSHROOM"
     Word:			MUSHROOM
     EffectiveWord:	MUSHROOM
     User:				Foe
     Sector:			Sector_246
   Plush:
+    Realm:         Universe
     status:			"PLUSH"
     Word:			PLUSH
     EffectiveWord:	PLUSH
     User:				Foe
     Sector:			Sector_305
   Mouse:
+    Realm:         Universe
     status:			"MOUSE"
     Word:			MOUSE
     EffectiveWord:	MOUSE
     User:				Stranger
     Sector:			Sector_248
   Cart:
+    Realm:         Universe
     status:			"CART"
     Word:			CART
     EffectiveWord:	CART
     User:				Foe
     Sector:			Sector_189
   Finger1:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger2:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger3:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger4:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger5:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger6:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger7:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger8:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger9:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger10:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger11:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger12:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger13:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger14:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger15:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger16:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger17:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger18:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger19:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger20:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger21:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger22:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger23:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger24:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger25:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger26:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger27:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger28:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger29:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger30:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger31:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger32:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger33:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger34:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
   Finger35:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER
@@ -322,6 +375,7 @@ Robot:
 
 <?php /* for ($i = 1; $i <= 32; $i++): ?>
   Finger<?php echo $i ?>:
+    Realm:         Universe
     status:         "FINGER"
     Word:			FINGER
     EffectiveWord:	FINGER

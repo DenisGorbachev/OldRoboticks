@@ -2,1213 +2,1613 @@ Sector:
   Sector_1:
     x: '0'
     y: '0'
+    Realm:  Universe
   Sector_2:
     x: '0'
     y: '1'
+    Realm:  Universe
   Sector_3:
     x: '0'
     y: '2'
+    Realm:  Universe
   Sector_4:
     x: '0'
     y: '3'
+    Realm:  Universe
   Sector_5:
     x: '0'
     y: '4'
+    Realm:  Universe
   Sector_6:
     x: '0'
     y: '5'
+    Realm:  Universe
   Sector_7:
     x: '0'
     y: '6'
+    Realm:  Universe
   Sector_8:
     x: '0'
     y: '7'
+    Realm:  Universe
   Sector_9:
     x: '0'
     y: '8'
+    Realm:  Universe
   Sector_10:
     x: '0'
     y: '9'
+    Realm:  Universe
   Sector_11:
     x: '0'
     y: '10'
+    Realm:  Universe
   Sector_12:
     x: '0'
     y: '11'
+    Realm:  Universe
   Sector_13:
     x: '0'
     y: '12'
+    Realm:  Universe
   Sector_14:
     x: '0'
     y: '13'
+    Realm:  Universe
   Sector_15:
     x: '0'
     y: '14'
+    Realm:  Universe
   Sector_16:
     x: '0'
     y: '15'
+    Realm:  Universe
   Sector_17:
     x: '0'
     y: '16'
+    Realm:  Universe
   Sector_18:
     x: '0'
     y: '17'
+    Realm:  Universe
   Sector_19:
     x: '0'
     y: '18'
+    Realm:  Universe
   Sector_20:
     x: '0'
     y: '19'
+    Realm:  Universe
   Sector_21:
     x: '1'
     y: '0'
+    Realm:  Universe
   Sector_22:
     x: '1'
     y: '1'
+    Realm:  Universe
   Sector_23:
     x: '1'
     y: '2'
+    Realm:  Universe
   Sector_24:
     x: '1'
     y: '3'
+    Realm:  Universe
   Sector_25:
     x: '1'
     y: '4'
+    Realm:  Universe
   Sector_26:
     x: '1'
     y: '5'
+    Realm:  Universe
   Sector_27:
     x: '1'
     y: '6'
+    Realm:  Universe
   Sector_28:
     x: '1'
     y: '7'
+    Realm:  Universe
   Sector_29:
     x: '1'
     y: '8'
+    Realm:  Universe
   Sector_30:
     x: '1'
     y: '9'
+    Realm:  Universe
   Sector_31:
     x: '1'
     y: '10'
+    Realm:  Universe
   Sector_32:
     x: '1'
     y: '11'
+    Realm:  Universe
   Sector_33:
     x: '1'
     y: '12'
+    Realm:  Universe
   Sector_34:
     x: '1'
     y: '13'
+    Realm:  Universe
   Sector_35:
     x: '1'
     y: '14'
+    Realm:  Universe
   Sector_36:
     x: '1'
     y: '15'
+    Realm:  Universe
   Sector_37:
     x: '1'
     y: '16'
+    Realm:  Universe
   Sector_38:
     x: '1'
     y: '17'
+    Realm:  Universe
   Sector_39:
     x: '1'
     y: '18'
+    Realm:  Universe
   Sector_40:
     x: '1'
     y: '19'
+    Realm:  Universe
   Sector_41:
     x: '2'
     y: '0'
+    Realm:  Universe
   Sector_42:
     x: '2'
     y: '1'
+    Realm:  Universe
   Sector_43:
     x: '2'
     y: '2'
+    Realm:  Universe
   Sector_44:
     x: '2'
     y: '3'
+    Realm:  Universe
   Sector_45:
     x: '2'
     y: '4'
+    Realm:  Universe
   Sector_46:
     x: '2'
     y: '5'
+    Realm:  Universe
   Sector_47:
     x: '2'
     y: '6'
+    Realm:  Universe
   Sector_48:
     x: '2'
     y: '7'
+    Realm:  Universe
   Sector_49:
     x: '2'
     y: '8'
+    Realm:  Universe
   Sector_50:
     x: '2'
     y: '9'
+    Realm:  Universe
   Sector_51:
     x: '2'
     y: '10'
+    Realm:  Universe
   Sector_52:
     x: '2'
     y: '11'
+    Realm:  Universe
   Sector_53:
     x: '2'
     y: '12'
+    Realm:  Universe
   Sector_54:
     x: '2'
     y: '13'
+    Realm:  Universe
   Sector_55:
     x: '2'
     y: '14'
+    Realm:  Universe
   Sector_56:
     x: '2'
     y: '15'
+    Realm:  Universe
   Sector_57:
     x: '2'
     y: '16'
+    Realm:  Universe
   Sector_58:
     x: '2'
     y: '17'
+    Realm:  Universe
   Sector_59:
     x: '2'
     y: '18'
+    Realm:  Universe
   Sector_60:
     x: '2'
     y: '19'
+    Realm:  Universe
   Sector_61:
     x: '3'
     y: '0'
+    Realm:  Universe
   Sector_62:
     x: '3'
     y: '1'
+    Realm:  Universe
   Sector_63:
     x: '3'
     y: '2'
+    Realm:  Universe
   Sector_64:
     x: '3'
     y: '3'
+    Realm:  Universe
   Sector_65:
     x: '3'
     y: '4'
+    Realm:  Universe
   Sector_66:
     x: '3'
     y: '5'
+    Realm:  Universe
   Sector_67:
     x: '3'
     y: '6'
+    Realm:  Universe
   Sector_68:
     x: '3'
     y: '7'
+    Realm:  Universe
   Sector_69:
     x: '3'
     y: '8'
+    Realm:  Universe
   Sector_70:
     x: '3'
     y: '9'
+    Realm:  Universe
   Sector_71:
     x: '3'
     y: '10'
+    Realm:  Universe
   Sector_72:
     x: '3'
     y: '11'
+    Realm:  Universe
   Sector_73:
     x: '3'
     y: '12'
+    Realm:  Universe
   Sector_74:
     x: '3'
     y: '13'
+    Realm:  Universe
   Sector_75:
     x: '3'
     y: '14'
+    Realm:  Universe
   Sector_76:
     x: '3'
     y: '15'
+    Realm:  Universe
   Sector_77:
     x: '3'
     y: '16'
+    Realm:  Universe
   Sector_78:
     x: '3'
     y: '17'
+    Realm:  Universe
   Sector_79:
     x: '3'
     y: '18'
+    Realm:  Universe
   Sector_80:
     x: '3'
     y: '19'
+    Realm:  Universe
   Sector_81:
     x: '4'
     y: '0'
+    Realm:  Universe
   Sector_82:
     x: '4'
     y: '1'
+    Realm:  Universe
   Sector_83:
     x: '4'
     y: '2'
+    Realm:  Universe
   Sector_84:
     x: '4'
     y: '3'
+    Realm:  Universe
   Sector_85:
     x: '4'
     y: '4'
+    Realm:  Universe
   Sector_86:
     x: '4'
     y: '5'
+    Realm:  Universe
   Sector_87:
     x: '4'
     y: '6'
+    Realm:  Universe
   Sector_88:
     x: '4'
     y: '7'
+    Realm:  Universe
   Sector_89:
     x: '4'
     y: '8'
+    Realm:  Universe
   Sector_90:
     x: '4'
     y: '9'
+    Realm:  Universe
   Sector_91:
     x: '4'
     y: '10'
+    Realm:  Universe
   Sector_92:
     x: '4'
     y: '11'
+    Realm:  Universe
   Sector_93:
     x: '4'
     y: '12'
+    Realm:  Universe
   Sector_94:
     x: '4'
     y: '13'
+    Realm:  Universe
   Sector_95:
     x: '4'
     y: '14'
+    Realm:  Universe
   Sector_96:
     x: '4'
     y: '15'
+    Realm:  Universe
   Sector_97:
     x: '4'
     y: '16'
+    Realm:  Universe
   Sector_98:
     x: '4'
     y: '17'
+    Realm:  Universe
   Sector_99:
     x: '4'
     y: '18'
+    Realm:  Universe
   Sector_100:
     x: '4'
     y: '19'
     letter: 'T'
     drops: 'BEAR'
+    Realm:  Universe
   Sector_101:
     x: '5'
     y: '0'
+    Realm:  Universe
   Sector_102:
     x: '5'
     y: '1'
+    Realm:  Universe
   Sector_103:
     x: '5'
     y: '2'
+    Realm:  Universe
   Sector_104:
     x: '5'
     y: '3'
+    Realm:  Universe
   Sector_105:
     x: '5'
     y: '4'
+    Realm:  Universe
   Sector_106:
     x: '5'
     y: '5'
+    Realm:  Universe
   Sector_107:
     x: '5'
     y: '6'
+    Realm:  Universe
   Sector_108:
     x: '5'
     y: '7'
+    Realm:  Universe
   Sector_109:
     x: '5'
     y: '8'
+    Realm:  Universe
   Sector_110:
     x: '5'
     y: '9'
+    Realm:  Universe
   Sector_111:
     x: '5'
     y: '10'
+    Realm:  Universe
   Sector_112:
     x: '5'
     y: '11'
+    Realm:  Universe
   Sector_113:
     x: '5'
     y: '12'
+    Realm:  Universe
   Sector_114:
     x: '5'
     y: '13'
+    Realm:  Universe
   Sector_115:
     x: '5'
     y: '14'
+    Realm:  Universe
   Sector_116:
     x: '5'
     y: '15'
+    Realm:  Universe
   Sector_117:
     x: '5'
     y: '16'
+    Realm:  Universe
   Sector_118:
     x: '5'
     y: '17'
+    Realm:  Universe
   Sector_119:
     x: '5'
     y: '18'
+    Realm:  Universe
   Sector_120:
     x: '5'
     y: '19'
+    Realm:  Universe
   Sector_121:
     x: '6'
     y: '0'
+    Realm:  Universe
   Sector_122:
     x: '6'
     y: '1'
+    Realm:  Universe
   Sector_123:
     x: '6'
     y: '2'
+    Realm:  Universe
   Sector_124:
     x: '6'
     y: '3'
+    Realm:  Universe
   Sector_125:
     x: '6'
     y: '4'
+    Realm:  Universe
   Sector_126:
     x: '6'
     y: '5'
+    Realm:  Universe
   Sector_127:
     x: '6'
     y: '6'
+    Realm:  Universe
   Sector_128:
     x: '6'
     y: '7'
+    Realm:  Universe
   Sector_129:
     x: '6'
     y: '8'
+    Realm:  Universe
   Sector_130:
     x: '6'
     y: '9'
+    Realm:  Universe
   Sector_131:
     x: '6'
     y: '10'
+    Realm:  Universe
   Sector_132:
     x: '6'
     y: '11'
+    Realm:  Universe
   Sector_133:
     x: '6'
     y: '12'
+    Realm:  Universe
   Sector_134:
     x: '6'
     y: '13'
+    Realm:  Universe
   Sector_135:
     x: '6'
     y: '14'
+    Realm:  Universe
   Sector_136:
     x: '6'
     y: '15'
+    Realm:  Universe
   Sector_137:
     x: '6'
     y: '16'
+    Realm:  Universe
   Sector_138:
     x: '6'
     y: '17'
+    Realm:  Universe
   Sector_139:
     x: '6'
     y: '18'
+    Realm:  Universe
   Sector_140:
     x: '6'
     y: '19'
+    Realm:  Universe
   Sector_141:
     x: '7'
     y: '0'
+    Realm:  Universe
   Sector_142:
     x: '7'
     y: '1'
+    Realm:  Universe
   Sector_143:
     x: '7'
     y: '2'
+    Realm:  Universe
   Sector_144:
     x: '7'
     y: '3'
+    Realm:  Universe
   Sector_145:
     x: '7'
     y: '4'
+    Realm:  Universe
   Sector_146:
     x: '7'
     y: '5'
+    Realm:  Universe
   Sector_147:
     x: '7'
     y: '6'
+    Realm:  Universe
   Sector_148:
     x: '7'
     y: '7'
+    Realm:  Universe
   Sector_149:
     x: '7'
     y: '8'
+    Realm:  Universe
   Sector_150:
     x: '7'
     y: '9'
+    Realm:  Universe
   Sector_151:
     x: '7'
     y: '10'
+    Realm:  Universe
   Sector_152:
     x: '7'
     y: '11'
+    Realm:  Universe
   Sector_153:
     x: '7'
     y: '12'
+    Realm:  Universe
   Sector_154:
     x: '7'
     y: '13'
+    Realm:  Universe
   Sector_155:
     x: '7'
     y: '14'
+    Realm:  Universe
   Sector_156:
     x: '7'
     y: '15'
+    Realm:  Universe
   Sector_157:
     x: '7'
     y: '16'
+    Realm:  Universe
   Sector_158:
     x: '7'
     y: '17'
+    Realm:  Universe
   Sector_159:
     x: '7'
     y: '18'
+    Realm:  Universe
   Sector_160:
     x: '7'
     y: '19'
+    Realm:  Universe
   Sector_161:
     x: '8'
     y: '0'
+    Realm:  Universe
   Sector_162:
     x: '8'
     y: '1'
+    Realm:  Universe
   Sector_163:
     x: '8'
     y: '2'
+    Realm:  Universe
   Sector_164:
     x: '8'
     y: '3'
+    Realm:  Universe
   Sector_165:
     x: '8'
     y: '4'
+    Realm:  Universe
   Sector_166:
     x: '8'
     y: '5'
+    Realm:  Universe
   Sector_167:
     x: '8'
     y: '6'
+    Realm:  Universe
   Sector_168:
     x: '8'
     y: '7'
+    Realm:  Universe
   Sector_169:
     x: '8'
     y: '8'
+    Realm:  Universe
   Sector_170:
     x: '8'
     y: '9'
+    Realm:  Universe
   Sector_171:
     x: '8'
     y: '10'
+    Realm:  Universe
   Sector_172:
     x: '8'
     y: '11'
     letter: 'A'
+    Realm:  Universe
   Sector_173:
     x: '8'
     y: '12'
+    Realm:  Universe
   Sector_174:
     x: '8'
     y: '13'
+    Realm:  Universe
   Sector_175:
     x: '8'
     y: '14'
+    Realm:  Universe
   Sector_176:
     x: '8'
     y: '15'
+    Realm:  Universe
   Sector_177:
     x: '8'
     y: '16'
+    Realm:  Universe
   Sector_178:
     x: '8'
     y: '17'
+    Realm:  Universe
   Sector_179:
     x: '8'
     y: '18'
+    Realm:  Universe
   Sector_180:
     x: '8'
     y: '19'
+    Realm:  Universe
   Sector_181:
     x: '9'
     y: '0'
+    Realm:  Universe
   Sector_182:
     x: '9'
     y: '1'
+    Realm:  Universe
   Sector_183:
     x: '9'
     y: '2'
+    Realm:  Universe
   Sector_184:
     x: '9'
     y: '3'
+    Realm:  Universe
   Sector_185:
     x: '9'
     y: '4'
+    Realm:  Universe
   Sector_186:
     x: '9'
     y: '5'
+    Realm:  Universe
   Sector_187:
     x: '9'
     y: '6'
     letter: 'E'
+    Realm:  Universe
   Sector_188:
     x: '9'
     y: '7'
+    Realm:  Universe
   Sector_189:
     x: '9'
     y: '8'
     drops: 'K'
+    Realm:  Universe
   Sector_190:
     x: '9'
     y: '9'
     letter: 'T'
+    Realm:  Universe
   Sector_191:
     x: '9'
     y: '10'
+    Realm:  Universe
   Sector_192:
     x: '9'
     y: '11'
+    Realm:  Universe
   Sector_193:
     x: '9'
     y: '12'
+    Realm:  Universe
   Sector_194:
     x: '9'
     y: '13'
+    Realm:  Universe
   Sector_195:
     x: '9'
     y: '14'
+    Realm:  Universe
   Sector_196:
     x: '9'
     y: '15'
+    Realm:  Universe
   Sector_197:
     x: '9'
     y: '16'
+    Realm:  Universe
   Sector_198:
     x: '9'
     y: '17'
+    Realm:  Universe
   Sector_199:
     x: '9'
     y: '18'
+    Realm:  Universe
   Sector_200:
     x: '9'
     y: '19'
+    Realm:  Universe
   Sector_201:
     x: '10'
     y: '0'
+    Realm:  Universe
   Sector_202:
     x: '10'
     y: '1'
+    Realm:  Universe
   Sector_203:
     x: '10'
     y: '2'
+    Realm:  Universe
   Sector_204:
     x: '10'
     y: '3'
+    Realm:  Universe
   Sector_205:
     x: '10'
     y: '4'
+    Realm:  Universe
   Sector_206:
     x: '10'
     y: '5'
+    Realm:  Universe
   Sector_207:
     x: '10'
     y: '6'
+    Realm:  Universe
   Sector_208:
     x: '10'
     y: '7'
+    Realm:  Universe
   Sector_209:
     x: '10'
     y: '8'
+    Realm:  Universe
   Sector_210:
     x: '10'
     y: '9'
+    Realm:  Universe
   Sector_211:
     x: '10'
     y: '10'
+    Realm:  Universe
   Sector_212:
     x: '10'
     y: '11'
+    Realm:  Universe
   Sector_213:
     x: '10'
     y: '12'
     drops: 'HOQZJGIRNQJDETOOJNUFTCIGXVRUVWCKMRKWXTOLJXORDCAQXFJAOQXKISGEVRRNCOLVBCXFAMUSQWSHUYRUNHSYQLFVHWNUYG'
+    Realm:  Universe
   Sector_214:
     x: '10'
     y: '13'
+    Realm:  Universe
   Sector_215:
     x: '10'
     y: '14'
+    Realm:  Universe
   Sector_216:
     x: '10'
     y: '15'
+    Realm:  Universe
   Sector_217:
     x: '10'
     y: '16'
+    Realm:  Universe
   Sector_218:
     x: '10'
     y: '17'
+    Realm:  Universe
   Sector_219:
     x: '10'
     y: '18'
+    Realm:  Universe
   Sector_220:
     x: '10'
     y: '19'
+    Realm:  Universe
   Sector_221:
     x: '11'
     y: '0'
+    Realm:  Universe
   Sector_222:
     x: '11'
     y: '1'
+    Realm:  Universe
   Sector_223:
     x: '11'
     y: '2'
+    Realm:  Universe
   Sector_224:
     x: '11'
     y: '3'
+    Realm:  Universe
   Sector_225:
     x: '11'
     y: '4'
+    Realm:  Universe
   Sector_226:
     x: '11'
     y: '5'
+    Realm:  Universe
   Sector_227:
     x: '11'
     y: '6'
     drops: 'A'
+    Realm:  Universe
   Sector_228:
     x: '11'
     y: '7'
+    Realm:  Universe
   Sector_229:
     x: '11'
     y: '8'
+    Realm:  Universe
   Sector_230:
     x: '11'
     y: '9'
+    Realm:  Universe
   Sector_231:
     x: '11'
     y: '10'
     drops: 'WOSXLMZSZRJXODLLJGKEAZKYNZFGFXAC'
+    Realm:  Universe
   Sector_232:
     x: '11'
     y: '11'
+    Realm:  Universe
   Sector_233:
     x: '11'
     y: '12'
     letter: 'S'
+    Realm:  Universe
   Sector_234:
     x: '11'
     y: '13'
+    Realm:  Universe
   Sector_235:
     x: '11'
     y: '14'
+    Realm:  Universe
   Sector_236:
     x: '11'
     y: '15'
+    Realm:  Universe
   Sector_237:
     x: '11'
     y: '16'
+    Realm:  Universe
   Sector_238:
     x: '11'
     y: '17'
+    Realm:  Universe
   Sector_239:
     x: '11'
     y: '18'
+    Realm:  Universe
   Sector_240:
     x: '11'
     y: '19'
+    Realm:  Universe
   Sector_241:
     x: '12'
     y: '0'
+    Realm:  Universe
   Sector_242:
     x: '12'
     y: '1'
+    Realm:  Universe
   Sector_243:
     x: '12'
     y: '2'
+    Realm:  Universe
   Sector_244:
     x: '12'
     y: '3'
+    Realm:  Universe
   Sector_245:
     x: '12'
     y: '4'
+    Realm:  Universe
   Sector_246:
     x: '12'
     y: '5'
     letter: F
     drops: 'BEARI'
+    Realm:  Universe
   Sector_247:
     x: '12'
     y: '6'
+    Realm:  Universe
   Sector_248:
     x: '12'
     y: '7'
+    Realm:  Universe
   Sector_249:
     x: '12'
     y: '8'
+    Realm:  Universe
   Sector_250:
     x: '12'
     y: '9'
+    Realm:  Universe
   Sector_251:
     x: '12'
     y: '10'
+    Realm:  Universe
   Sector_252:
     x: '12'
     y: '11'
+    Realm:  Universe
   Sector_253:
     x: '12'
     y: '12'
+    Realm:  Universe
   Sector_254:
     x: '12'
     y: '13'
+    Realm:  Universe
   Sector_255:
     x: '12'
     y: '14'
+    Realm:  Universe
   Sector_256:
     x: '12'
     y: '15'
+    Realm:  Universe
   Sector_257:
     x: '12'
     y: '16'
+    Realm:  Universe
   Sector_258:
     x: '12'
     y: '17'
+    Realm:  Universe
   Sector_259:
     x: '12'
     y: '18'
+    Realm:  Universe
   Sector_260:
     x: '12'
     y: '19'
+    Realm:  Universe
   Sector_261:
     x: '13'
     y: '0'
+    Realm:  Universe
   Sector_262:
     x: '13'
     y: '1'
+    Realm:  Universe
   Sector_263:
     x: '13'
     y: '2'
+    Realm:  Universe
   Sector_264:
     x: '13'
     y: '3'
+    Realm:  Universe
   Sector_265:
     x: '13'
     y: '4'
+    Realm:  Universe
   Sector_266:
     x: '13'
     y: '5'
+    Realm:  Universe
   Sector_267:
     x: '13'
     y: '6'
+    Realm:  Universe
   Sector_268:
     x: '13'
     y: '7'
+    Realm:  Universe
   Sector_269:
     x: '13'
     y: '8'
+    Realm:  Universe
   Sector_270:
     x: '13'
     y: '9'
+    Realm:  Universe
   Sector_271:
     x: '13'
     y: '10'
+    Realm:  Universe
   Sector_272:
     x: '13'
     y: '11'
     letter: 'D'
+    Realm:  Universe
   Sector_273:
     x: '13'
     y: '12'
+    Realm:  Universe
   Sector_274:
     x: '13'
     y: '13'
+    Realm:  Universe
   Sector_275:
     x: '13'
     y: '14'
+    Realm:  Universe
   Sector_276:
     x: '13'
     y: '15'
+    Realm:  Universe
   Sector_277:
     x: '13'
     y: '16'
+    Realm:  Universe
   Sector_278:
     x: '13'
     y: '17'
+    Realm:  Universe
   Sector_279:
     x: '13'
     y: '18'
+    Realm:  Universe
   Sector_280:
     x: '13'
     y: '19'
+    Realm:  Universe
   Sector_281:
     x: '14'
     y: '0'
+    Realm:  Universe
   Sector_282:
     x: '14'
     y: '1'
+    Realm:  Universe
   Sector_283:
     x: '14'
     y: '2'
+    Realm:  Universe
   Sector_284:
     x: '14'
     y: '3'
+    Realm:  Universe
   Sector_285:
     x: '14'
     y: '4'
+    Realm:  Universe
   Sector_286:
     x: '14'
     y: '5'
+    Realm:  Universe
   Sector_287:
     x: '14'
     y: '6'
+    Realm:  Universe
   Sector_288:
     x: '14'
     y: '7'
+    Realm:  Universe
   Sector_289:
     x: '14'
     y: '8'
+    Realm:  Universe
   Sector_290:
     x: '14'
     y: '9'
+    Realm:  Universe
   Sector_291:
     x: '14'
     y: '10'
+    Realm:  Universe
   Sector_292:
     x: '14'
     y: '11'
+    Realm:  Universe
   Sector_293:
     x: '14'
     y: '12'
+    Realm:  Universe
   Sector_294:
     x: '14'
     y: '13'
+    Realm:  Universe
   Sector_295:
     x: '14'
     y: '14'
+    Realm:  Universe
   Sector_296:
     x: '14'
     y: '15'
+    Realm:  Universe
   Sector_297:
     x: '14'
     y: '16'
+    Realm:  Universe
   Sector_298:
     x: '14'
     y: '17'
+    Realm:  Universe
   Sector_299:
     x: '14'
     y: '18'
+    Realm:  Universe
   Sector_300:
     x: '14'
     y: '19'
+    Realm:  Universe
   Sector_301:
     x: '15'
     y: '0'
+    Realm:  Universe
   Sector_302:
     x: '15'
     y: '1'
+    Realm:  Universe
   Sector_303:
     x: '15'
     y: '2'
+    Realm:  Universe
   Sector_304:
     x: '15'
     y: '3'
+    Realm:  Universe
   Sector_305:
     x: '15'
     y: '4'
+    Realm:  Universe
   Sector_306:
     x: '15'
     y: '5'
+    Realm:  Universe
   Sector_307:
     x: '15'
     y: '6'
+    Realm:  Universe
   Sector_308:
     x: '15'
     y: '7'
+    Realm:  Universe
   Sector_309:
     x: '15'
     y: '8'
+    Realm:  Universe
   Sector_310:
     x: '15'
     y: '9'
+    Realm:  Universe
   Sector_311:
     x: '15'
     y: '10'
+    Realm:  Universe
   Sector_312:
     x: '15'
     y: '11'
+    Realm:  Universe
   Sector_313:
     x: '15'
     y: '12'
+    Realm:  Universe
   Sector_314:
     x: '15'
     y: '13'
+    Realm:  Universe
   Sector_315:
     x: '15'
     y: '14'
+    Realm:  Universe
   Sector_316:
     x: '15'
     y: '15'
+    Realm:  Universe
   Sector_317:
     x: '15'
     y: '16'
+    Realm:  Universe
   Sector_318:
     x: '15'
     y: '17'
+    Realm:  Universe
   Sector_319:
     x: '15'
     y: '18'
+    Realm:  Universe
   Sector_320:
     x: '15'
     y: '19'
+    Realm:  Universe
   Sector_321:
     x: '16'
     y: '0'
+    Realm:  Universe
   Sector_322:
     x: '16'
     y: '1'
+    Realm:  Universe
   Sector_323:
     x: '16'
     y: '2'
+    Realm:  Universe
   Sector_324:
     x: '16'
     y: '3'
+    Realm:  Universe
   Sector_325:
     x: '16'
     y: '4'
+    Realm:  Universe
   Sector_326:
     x: '16'
     y: '5'
+    Realm:  Universe
   Sector_327:
     x: '16'
     y: '6'
+    Realm:  Universe
   Sector_328:
     x: '16'
     y: '7'
+    Realm:  Universe
   Sector_329:
     x: '16'
     y: '8'
+    Realm:  Universe
   Sector_330:
     x: '16'
     y: '9'
+    Realm:  Universe
   Sector_331:
     x: '16'
     y: '10'
+    Realm:  Universe
   Sector_332:
     x: '16'
     y: '11'
+    Realm:  Universe
   Sector_333:
     x: '16'
     y: '12'
+    Realm:  Universe
   Sector_334:
     x: '16'
     y: '13'
+    Realm:  Universe
   Sector_335:
     x: '16'
     y: '14'
+    Realm:  Universe
   Sector_336:
     x: '16'
     y: '15'
+    Realm:  Universe
   Sector_337:
     x: '16'
     y: '16'
+    Realm:  Universe
   Sector_338:
     x: '16'
     y: '17'
+    Realm:  Universe
   Sector_339:
     x: '16'
     y: '18'
+    Realm:  Universe
   Sector_340:
     x: '16'
     y: '19'
+    Realm:  Universe
   Sector_341:
     x: '17'
     y: '0'
+    Realm:  Universe
   Sector_342:
     x: '17'
     y: '1'
+    Realm:  Universe
   Sector_343:
     x: '17'
     y: '2'
+    Realm:  Universe
   Sector_344:
     x: '17'
     y: '3'
+    Realm:  Universe
   Sector_345:
     x: '17'
     y: '4'
+    Realm:  Universe
   Sector_346:
     x: '17'
     y: '5'
+    Realm:  Universe
   Sector_347:
     x: '17'
     y: '6'
+    Realm:  Universe
   Sector_348:
     x: '17'
     y: '7'
+    Realm:  Universe
   Sector_349:
     x: '17'
     y: '8'
+    Realm:  Universe
   Sector_350:
     x: '17'
     y: '9'
+    Realm:  Universe
   Sector_351:
     x: '17'
     y: '10'
+    Realm:  Universe
   Sector_352:
     x: '17'
     y: '11'
+    Realm:  Universe
   Sector_353:
     x: '17'
     y: '12'
+    Realm:  Universe
   Sector_354:
     x: '17'
     y: '13'
+    Realm:  Universe
   Sector_355:
     x: '17'
     y: '14'
+    Realm:  Universe
   Sector_356:
     x: '17'
     y: '15'
+    Realm:  Universe
   Sector_357:
     x: '17'
     y: '16'
+    Realm:  Universe
   Sector_358:
     x: '17'
     y: '17'
+    Realm:  Universe
   Sector_359:
     x: '17'
     y: '18'
+    Realm:  Universe
   Sector_360:
     x: '17'
     y: '19'
+    Realm:  Universe
   Sector_361:
     x: '18'
     y: '0'
+    Realm:  Universe
   Sector_362:
     x: '18'
     y: '1'
+    Realm:  Universe
   Sector_363:
     x: '18'
     y: '2'
+    Realm:  Universe
   Sector_364:
     x: '18'
     y: '3'
+    Realm:  Universe
   Sector_365:
     x: '18'
     y: '4'
+    Realm:  Universe
   Sector_366:
     x: '18'
     y: '5'
+    Realm:  Universe
   Sector_367:
     x: '18'
     y: '6'
+    Realm:  Universe
   Sector_368:
     x: '18'
     y: '7'
+    Realm:  Universe
   Sector_369:
     x: '18'
     y: '8'
+    Realm:  Universe
   Sector_370:
     x: '18'
     y: '9'
+    Realm:  Universe
   Sector_371:
     x: '18'
     y: '10'
+    Realm:  Universe
   Sector_372:
     x: '18'
     y: '11'
+    Realm:  Universe
   Sector_373:
     x: '18'
     y: '12'
+    Realm:  Universe
   Sector_374:
     x: '18'
     y: '13'
+    Realm:  Universe
   Sector_375:
     x: '18'
     y: '14'
+    Realm:  Universe
   Sector_376:
     x: '18'
     y: '15'
+    Realm:  Universe
   Sector_377:
     x: '18'
     y: '16'
+    Realm:  Universe
   Sector_378:
     x: '18'
     y: '17'
+    Realm:  Universe
   Sector_379:
     x: '18'
     y: '18'
+    Realm:  Universe
   Sector_380:
     x: '18'
     y: '19'
+    Realm:  Universe
   Sector_381:
     x: '19'
     y: '0'
+    Realm:  Universe
   Sector_382:
     x: '19'
     y: '1'
+    Realm:  Universe
   Sector_383:
     x: '19'
     y: '2'
+    Realm:  Universe
   Sector_384:
     x: '19'
     y: '3'
+    Realm:  Universe
   Sector_385:
     x: '19'
     y: '4'
+    Realm:  Universe
   Sector_386:
     x: '19'
     y: '5'
+    Realm:  Universe
   Sector_387:
     x: '19'
     y: '6'
+    Realm:  Universe
   Sector_388:
     x: '19'
     y: '7'
+    Realm:  Universe
   Sector_389:
     x: '19'
     y: '8'
+    Realm:  Universe
   Sector_390:
     x: '19'
     y: '9'
+    Realm:  Universe
   Sector_391:
     x: '19'
     y: '10'
+    Realm:  Universe
   Sector_392:
     x: '19'
     y: '11'
+    Realm:  Universe
   Sector_393:
     x: '19'
     y: '12'
+    Realm:  Universe
   Sector_394:
     x: '19'
     y: '13'
+    Realm:  Universe
   Sector_395:
     x: '19'
     y: '14'
+    Realm:  Universe
   Sector_396:
     x: '19'
     y: '15'
+    Realm:  Universe
   Sector_397:
     x: '19'
     y: '16'
+    Realm:  Universe
   Sector_398:
     x: '19'
     y: '17'
+    Realm:  Universe
   Sector_399:
     x: '19'
     y: '18'
+    Realm:  Universe
   Sector_400:
     x: '19'
     y: '19'
+    Realm:  Universe

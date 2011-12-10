@@ -1,0 +1,26 @@
+Stance:
+  -
+    Realm:              Universe
+    From:				Mob
+    To:					Alice
+    type:					enemy
+  -
+    Realm:              Universe
+    From:				Alice
+    To:					Friend
+    type:					ally
+  -
+    Realm:              Universe
+    From:				Friend
+    To:					Alice
+    type:					ally
+  -
+    Realm:              Universe
+    From:				Alice
+    To:					Foe
+    type:					enemy
+  -
+    Realm:              Universe
+    From:				Foe
+    To:					Alice
+    type:					enemy

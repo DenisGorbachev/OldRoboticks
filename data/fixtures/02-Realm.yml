@@ -1,0 +1,6 @@
+Realm:
+  Universe:
+    name:             "Universe"
+    password:      ""
+    type:               "deathmatch"
+    Owner:            Gamemaster

@@ -17,25 +17,6 @@ User:
   Manipulator:
     username:			"manipulator"
     password:			"asdf"
-
-Stance:
-  -
-    From:				Mob
-    To:					Alice
-    type:					enemy
-  -
-    From:				Alice
-    To:					Friend
-    type:					ally
-  -
-    From:				Friend
-    To:					Alice
-    type:					ally
-  -
-    From:				Alice
-    To:					Foe
-    type:					enemy
-  -
-    From:				Foe
-    To:					Alice
-    type:					enemy
+  Gamemaster:
+    username:			"gamemaster"
+    password:			"asdf"

@@ -49,10 +49,18 @@ UserRealm:
 
 Stance:
   columns:
+    realm_id:		{ type: integer }
     from_id:			{ type: integer }
     to_id:				{ type: integer }
     type:				{ type: enum, values: [ally, enemy] }
   relations:
+    Realm:
+      class:				Realm
+      foreign:			id
+      local:				realm_id
+      foreignAlias:		Stances
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
     From:
       class:				User
       foreign:			id
@@ -70,6 +78,7 @@ Stance:
 
 Sector:
   columns:
+    realm_id:		{ type: integer }
     x:						{ type: integer, readonly: true }
     y:						{ type: integer, readonly: true }
     letter:				{ type: string(1), fixed: true, readonly: true, default: "" }
@@ -78,9 +87,18 @@ Sector:
     coordinates:
       fields:				[x, y]
   actAs:					[]
+  relations:
+    Realm:
+      class:				Realm
+      foreign:			id
+      local:				realm_id
+      foreignAlias:		Sectors
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
 
 Robot:
   columns:
+    realm_id:		{ type: integer }
     status:				{ type: string(255), default: "TEA" }
     speed:				{ type: integer }
     cargo:				{ type: string(5) }
@@ -90,6 +108,13 @@ Robot:
     sector_id:			{ type: integer }
     active_at:           { type: integer, default: 0 }
   relations:
+    Realm:
+      class:				Realm
+      foreign:			id
+      local:				realm_id
+      foreignAlias:		Robots
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
     Word:
       class:                Word
       foreignAlias:		Robots
