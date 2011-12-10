@@ -1,6 +1,6 @@
 <?php
 
-class tfSanityException extends sfException {
+class rsException extends sfException {
 	public $text;
 	public $arguments;
 	

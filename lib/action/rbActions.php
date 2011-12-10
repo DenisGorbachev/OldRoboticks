@@ -1,15 +1,15 @@
 <?php
 
 class rbActions extends tfExtendedActions {
-	public function prepareFailed(tfSanityException $e) {
+	public function prepareFailed(rsException $e) {
 		return $this->somethingFailed($e);
 	}
 	
-	public function validateFailed(tfSanityException $e) {
+	public function validateFailed(rsException $e) {
 		return $this->somethingFailed($e);
 	}
 	
-	public function somethingFailed(tfSanityException $e) {
+	public function somethingFailed(rsException $e) {
 		return $this->failure($e->getText(), $e->getArguments());
 	}
 	

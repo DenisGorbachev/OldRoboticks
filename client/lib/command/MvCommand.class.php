@@ -30,10 +30,10 @@ class MvCommand extends RobotCommand {
 	
 	public function execute($options, $arguments) {
 		$coords = explode(',', $arguments['sector']);
-		foreach (array('x', 'y') as $key=>$coord) {
-			$$coord = empty($coords[$key])? 0 : $coords[$key];
-		}
-		$this->postForm('robot', 'robot/move/id/'.$options['robot_id'], array(
+        $x = $coords[0];
+        $y = $coords[1];
+		$this->post('robot/move', array(
+            'id' => $options['robot_id'],
 			'x' => $x,
 			'y' => $y,
 			'relative' => $options['relative']

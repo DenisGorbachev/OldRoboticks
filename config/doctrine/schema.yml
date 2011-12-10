@@ -56,7 +56,7 @@ Robot:
     effective_word_id:	{ type: integer, notnull: false }
     user_id:				{ type: integer }
     sector_id:			{ type: integer }
-    acted_at:           { type: integer, default: 0 }
+    active_at:           { type: integer, default: 0 }
   relations:
     Word:
       class:                Word

@@ -25,7 +25,7 @@ abstract class ServerCommand extends Command {
 		if (empty($host)) {
 			throw new RoboticksConnectionException('No host defined in generic.yml');
 		}
-		$uri = 'http://'.$host.(Config::get('generic/debug')? '/dev.php' : '').'/'.$controller;
+		$uri = 'http://'.$host.(DEBUG? '/dev.php' : '').'/'.$controller;
 		if ($method == 'GET') {
 			$uri .= '?'.http_build_query($parameters);
 		}
@@ -43,7 +43,7 @@ abstract class ServerCommand extends Command {
 		$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		if ($code != 200) {
 			$message = 'Server error ['.$code.']';
-			if (Config::get('generic/debug') && ($error = $json['error'])) {
+			if (($error = $json['error'])) {
 				$debug = $error['debug'];
 				$message .= ': '.$debug['name'].'. '.$debug['message'].PHP_EOL.PHP_EOL.implode(PHP_EOL, $debug['traces']);
 			}
@@ -51,9 +51,7 @@ abstract class ServerCommand extends Command {
 		}
 		if (is_null($json)) {
 			$message = 'Unknown server error ['.$code.']';
-			if (Config::get('generic/debug')) {
-				$message .= PHP_EOL.$response.PHP_EOL.'>> End of server error'.PHP_EOL;
-			}
+            $message .= PHP_EOL.$response.PHP_EOL.'>> End of server error'.PHP_EOL;
 			throw new RoboticksUnknownServerException($message);
 		}
 		curl_close($ch);

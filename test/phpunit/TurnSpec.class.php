@@ -2,8 +2,12 @@
 
 require_once __DIR__.'/../BaseSpec.class.php';
 
+/**
+ * @group timing
+ */
 class TurnSpec extends BaseSpec {
     public function setUp() {
+        parent::setUp();
         $this->setDebug(false);
     }
 
@@ -23,10 +27,10 @@ class TurnSpec extends BaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Manipulator')
-                ->and('Robot', 'legion')
+                ->and('Robot', 'finger1')
 			->when('Exec', 'mv 10,12')
             ->then('Success')
-            ->when('Wait', 60)
+            ->when('Wait', 61)
             ->when('Exec', 'mv 10,12')
             ->then('Success')
 	;}
@@ -44,8 +48,20 @@ class TurnSpec extends BaseSpec {
             ->then('Failure')
     ;}
 
+    public function testInvalidSprayFire() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
+                ->and('Robot', 'tear')
+            ->when('Exec', 'fire '.$this->getRobotId('plush').' U')
+            ->then('Failure')
+            ->when('Exec', 'fire '.$this->getRobotId('fuel').' U')
+            ->then('Failure')
+    ;}
+
     public function tearDown() {
         $this->setDebug(true);
+        parent::tearDown();
     }
 
 }

@@ -37,6 +37,10 @@ class FireSpec extends RobotBaseSpec {
             ->then('Success')
 	;}
 
+    public function testCompleteDestruction() {
+
+    ;}
+
 	/* Borderline */
 
     public function testInvalidNonExistingTarget() {
