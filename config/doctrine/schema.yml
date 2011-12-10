@@ -15,6 +15,38 @@ User:
     current_login: 	{ type: timestamp }
     remember_key:	{ type: string(255) }
 
+Realm:
+  columns:
+    name:			         { type: string(255), minlength: 3, unique: true, readonly: true }
+    password:                { type: string(255) }
+    type:			         { type: string(255), readonly: true } # Used for event listeners
+    owner_id:                { type: integer }
+  relations:
+    Owner:
+      class:                  User
+      foreignAlias:		OwnedRealms
+      local:				owner_id
+      foreign:			id
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
+    Users:
+      class:                  User
+      refClass:             UserRealm
+      foreignAlias:		Realms
+      local:			       realm_id
+      foreign:			 user_id
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
+
+UserRealm:
+  columns:
+    user_id:		          	{ type: integer }
+    realm_id:				{ type: integer }
+  options:
+    symfony:
+      filter: false
+      form: false
+
 Stance:
   columns:
     from_id:			{ type: integer }
