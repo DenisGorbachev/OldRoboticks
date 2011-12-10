@@ -7,7 +7,7 @@ class RealmSpec extends BaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-                ->and('Realm', 'Underworld')
+                ->and('Realm', 'Etherworld')
                 ->and('Robot', 'meat')
 			->when('Exec', 'report')
             ->then('Success')
@@ -22,8 +22,18 @@ class RealmSpec extends BaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
+                ->and('Realm', 'Etherworld')
                 ->and('Robot', 'meat')
             ->when('Exec', 'fire 11 U')
+            ->then('Failure')
+    ;}
+
+    public function testInvalidPlayOnInaccessibleRealm() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Friend')
+                ->and('Realm', 'Etherworld')
+            ->when('Exec', 'ls')
             ->then('Failure')
     ;}
 

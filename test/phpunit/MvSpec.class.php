@@ -7,6 +7,7 @@ class MvSpec extends RobotBaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 9,9')
 			->then('Success')
@@ -17,6 +18,7 @@ class MvSpec extends RobotBaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 8,9')
 			->then('Success')
@@ -27,6 +29,7 @@ class MvSpec extends RobotBaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 9,8')
 			->then('Success')
@@ -37,6 +40,7 @@ class MvSpec extends RobotBaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 8,8')
 			->then('Success')
@@ -47,6 +51,7 @@ class MvSpec extends RobotBaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 0,9')
 			->then('Success')
@@ -57,6 +62,7 @@ class MvSpec extends RobotBaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 0,0')
 			->then('Success')
@@ -67,6 +73,7 @@ class MvSpec extends RobotBaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv --relative 1,1')
 			->then('Success')
@@ -80,6 +87,7 @@ class MvSpec extends RobotBaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 12,5')
 			->then('Success')
@@ -96,6 +104,7 @@ class MvSpec extends RobotBaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 100,100')
 			->then('Failure')
@@ -105,6 +114,7 @@ class MvSpec extends RobotBaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'seaside')
 			->when('Exec', 'mv 0,9')
 			->then('Failure')

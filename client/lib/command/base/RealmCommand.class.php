@@ -43,4 +43,10 @@ abstract class RealmCommand extends UserInterfaceCommand {
         }
     }
 
+    public function request($controller, $parameters = array(), $method = 'GET', $options = array())
+    {
+        $parameters['realm_id'] = $this->getOption('realm_id');
+        return parent::request($controller, $parameters, $method, $options);
+    }
+
 }

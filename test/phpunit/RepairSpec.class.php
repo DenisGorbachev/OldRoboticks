@@ -7,6 +7,7 @@ class RepairSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Friend')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' I')
 			->then('Success')
@@ -24,6 +25,7 @@ class RepairSpec extends RobotBaseSpec {
         return $this
 			->given('Genesis')
 				->and('User', 'Friend')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' _')
             ->then('Failure')
@@ -33,6 +35,7 @@ class RepairSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 12,5')
 			->when('Exec', 'mv 12,5')
@@ -45,6 +48,7 @@ class RepairSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Friend')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'mv 9,8')
 			->when('Exec', 'mv 9,8')
@@ -56,6 +60,7 @@ class RepairSpec extends RobotBaseSpec {
         return $this
 			->given('Genesis')
 				->and('User', 'Friend')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' E')
             ->then('Failure')
@@ -65,6 +70,7 @@ class RepairSpec extends RobotBaseSpec {
         return $this
 			->given('Genesis')
 				->and('User', 'Friend')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' G')
             ->then('Failure')
@@ -74,6 +80,7 @@ class RepairSpec extends RobotBaseSpec {
         return $this
 			->given('Genesis')
 				->and('User', 'Friend')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'fire '.$this->getRobotId('sedative').' S')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' S')
@@ -84,6 +91,7 @@ class RepairSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Friend')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'mv 9,8')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' I')

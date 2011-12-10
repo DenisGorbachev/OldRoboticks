@@ -9,6 +9,7 @@ abstract class RobotBaseSpec extends BaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'sedative')
 			->when('Exec', $this->getRobotTestCommand())
 			->then('Failure')
@@ -18,6 +19,7 @@ abstract class RobotBaseSpec extends BaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Mob')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', $this->getRobotTestCommand())
 			->then('Failure')
@@ -27,6 +29,7 @@ abstract class RobotBaseSpec extends BaseSpec {
 		$this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('RobotId', '111')
 			->when('Exec', $this->getRobotTestCommand())
 			->then('Failure')

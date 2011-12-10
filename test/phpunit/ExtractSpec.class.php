@@ -7,6 +7,7 @@ class ExtractSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'extract')
 			->then('Success')
@@ -24,6 +25,7 @@ class ExtractSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'grunt')
 			->when('Exec', 'extract')
 			->then('Failure')
@@ -35,6 +37,7 @@ class ExtractSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
             ->when('Exec', 'mv --relative 1,0')
 			->when('Exec', 'extract')

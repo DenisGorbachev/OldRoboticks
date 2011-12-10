@@ -2,10 +2,11 @@
 
 class robotActions extends rbActions {
 	public function prepareList() {
+        $this->restrictByRealmId();
 		return ($this->objects = RobotTable::getInstance()->getList($this->getUser()->getId()));
 	}
-	
-	public function validateList() {
+
+    public function validateList() {
 		return $this->validateAutoStatic();
 	}
 	
@@ -15,6 +16,7 @@ class robotActions extends rbActions {
 	}
 	
 	public function prepareMove() {
+        $this->restrictByRealmId();
         $this->prepareAutoObject();
         $this->argumentUnless('x');
         $this->argumentUnless('y');
@@ -36,9 +38,10 @@ class robotActions extends rbActions {
 	}
 
 	public function prepareScan() {
-		return $this->prepareAutoObject();
+        $this->restrictByRealmId();
+		$this->prepareAutoObject();
 	}
-	
+
 	public function validateScan() {
 		return $this->validateAutoObject();
 	}
@@ -54,7 +57,8 @@ class robotActions extends rbActions {
 	}
 
 	public function prepareExtract() {
-		return $this->prepareAutoObject();
+        $this->restrictByRealmId();
+		$this->prepareAutoObject();
 	}
 
 	public function validateExtract() {
@@ -67,8 +71,9 @@ class robotActions extends rbActions {
 	}
 
     public function prepareDrop() {
-        return $this->prepareAutoObject()
-            && $this->argumentUnless('letter');
+        $this->restrictByRealmId();
+        $this->prepareAutoObject();
+        $this->argumentUnless('letter');
     }
 
     public function validateDrop() {
@@ -81,8 +86,9 @@ class robotActions extends rbActions {
     }
 
     public function preparePick() {
-        return $this->prepareAutoObject()
-            && $this->argumentUnless('letter');
+        $this->restrictByRealmId();
+        $this->prepareAutoObject();
+        $this->argumentUnless('letter');
     }
 
     public function validatePick() {
@@ -95,8 +101,9 @@ class robotActions extends rbActions {
     }
 
     public function prepareAssemble() {
-        return $this->prepareAutoObject()
-            && $this->argumentUnless('name');
+        $this->restrictByRealmId();
+        $this->prepareAutoObject();
+        $this->argumentUnless('name');
     }
 
     public function validateAssemble() {
@@ -109,8 +116,9 @@ class robotActions extends rbActions {
     }
 
     public function prepareDisassemble() {
-        return $this->prepareAutoObject()
-			&& $this->prepareAutoObject('target_id', 'target')
+        $this->restrictByRealmId();
+        $this->prepareAutoObject();
+		$this->prepareAutoObject('target_id', 'target')
     ;}
 
     public function validateDisassemble() {
@@ -123,10 +131,11 @@ class robotActions extends rbActions {
     }
 
     public function prepareFire() {
-        return $this->prepareAutoObject()
-			&& $this->prepareAutoObject('target_id', 'target')
-            && $this->argumentUnless('letter')
-    ;}
+        $this->restrictByRealmId();
+        $this->prepareAutoObject();
+		$this->prepareAutoObject('target_id', 'target');
+        $this->argumentUnless('letter');
+    }
 
     public function validateFire() {
         return $this->validateAutoObject($this->target, $this->letter);
@@ -138,10 +147,11 @@ class robotActions extends rbActions {
     }
 
     public function prepareRepair() {
-        return $this->prepareAutoObject()
-			&& $this->prepareAutoObject('target_id', 'target')
-            && $this->argumentUnless('letter')
-    ;}
+        $this->restrictByRealmId();
+        $this->prepareAutoObject();
+		$this->prepareAutoObject('target_id', 'target');
+        $this->argumentUnless('letter');
+    }
 
     public function validateRepair() {
         return $this->validateAutoObject($this->target, $this->letter);
@@ -158,4 +168,5 @@ class robotActions extends rbActions {
         }
         return parent::validateFailed($e);
     }
+
 }

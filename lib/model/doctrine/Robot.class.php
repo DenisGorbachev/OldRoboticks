@@ -87,7 +87,6 @@ class Robot extends BaseRobot {
     }
 
     public function getInactiveTimeLeft() {
-        // TODO: This should really depend on realm
         return max(0, $this->getActiveAt() - time());
     }
 
@@ -124,7 +123,7 @@ class Robot extends BaseRobot {
         $connection->beginTransaction();
         try {
             $result = call_user_func_array(array($this, 'do'.$action.'Action'), $arguments);
-            $this->setActiveAt(time() + $this->getUser()->getRobotInactivityInterval());
+            $this->setActiveAt(time() + $this->getUser()->getRobotInactivityInterval($this->getRealmId()));
             $this->save();
         } catch (Exception $e) {
             $connection->rollback();
@@ -167,6 +166,7 @@ class Robot extends BaseRobot {
         $sector->setDropsArray(array_diff($sector->getDropsArray(), str_split($name)));
         $sector->save();
         $robot = new Robot();
+        $robot->setRealm($this->getRealm());
         $robot->setStatus($name);
         $robot->setUser($this->getUser());
         $robot->setSector($sector);

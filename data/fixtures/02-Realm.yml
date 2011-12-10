@@ -4,3 +4,10 @@ Realm:
     password:      ""
     type:               "deathmatch"
     Owner:            Gamemaster
+    Users:              [Alice, Mob, Friend, Foe, Stranger, Manipulator, Gamemaster]
+  Etherworld:
+    name:             "Etherworld"
+    password:      ""
+    type:               "deathmatch"
+    Owner:            Gamemaster
+    Users:              [Alice, Gamemaster]

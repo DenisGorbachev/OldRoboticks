@@ -53,6 +53,10 @@ Stance:
     from_id:			{ type: integer }
     to_id:				{ type: integer }
     type:				{ type: enum, values: [ally, enemy] }
+  actAs:
+    Restricted:
+      column:       realm_id
+    Timestampable:		~
   relations:
     Realm:
       class:				Realm
@@ -86,7 +90,10 @@ Sector:
   indexes:
     coordinates:
       fields:				[x, y]
-  actAs:					[]
+  actAs:
+    Restricted:
+      column:       realm_id
+    Timestampable:		~
   relations:
     Realm:
       class:				Realm
@@ -107,6 +114,10 @@ Robot:
     user_id:				{ type: integer }
     sector_id:			{ type: integer }
     active_at:           { type: integer, default: 0 }
+  actAs:
+    Restricted:
+      column:       realm_id
+    Timestampable:		~
   relations:
     Realm:
       class:				Realm

@@ -7,6 +7,7 @@ class AsmSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 10,12')
                 ->and('Exec', 'asm BEAR')
@@ -26,6 +27,7 @@ class AsmSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'grunt')
             ->when('Exec', 'asm BEAR')
             ->then('Failure')
@@ -35,6 +37,7 @@ class AsmSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
             ->when('Exec', 'asm PEAR')
             ->then('Failure')
@@ -44,6 +47,7 @@ class AsmSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
             ->when('Exec', 'asm ASDF')
             ->then('Failure')

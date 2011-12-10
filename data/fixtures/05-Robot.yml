@@ -372,14 +372,10 @@ Robot:
     EffectiveWord:	FINGER
     User:				Manipulator
     Sector:         Sector_400
-
-<?php /* for ($i = 1; $i <= 32; $i++): ?>
-  Finger<?php echo $i ?>:
-    Realm:         Universe
-    status:         "FINGER"
-    Word:			FINGER
-    EffectiveWord:	FINGER
-    User:				Manipulator
-    Sector:         Sector_400
-<?php endfor */ ?>
-<?php /*  for ($i = 1; $i <= 32; $i++) { echo "'finger".$i."', "; } */ ?>
+  Meat:
+    Realm:         Etherworld
+    status:			"MEAT"
+    Word:			MEAT
+    EffectiveWord:	MEAT
+    User:				Alice
+    Sector:			Sector_190_Etherworld

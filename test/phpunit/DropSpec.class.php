@@ -7,6 +7,7 @@ class DropSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->then('NotContains', '9,9     M')
 			->when('Exec', 'drop M')
@@ -21,6 +22,7 @@ class DropSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'pear')
 			->when('Exec', 'drop M')
 			->then('Failure')
@@ -32,6 +34,7 @@ class DropSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'drop A')
 			->then('Failure')
@@ -43,6 +46,7 @@ class DropSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'teeter')
 			->when('Exec', 'drop NZ')
 			->then('Failure')
@@ -54,6 +58,7 @@ class DropSpec extends RobotBaseSpec {
         $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'sedative')
 			->when('Exec', 'drop F')
 			->then('Failure')

@@ -7,6 +7,7 @@ class DisasmSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Friend')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'disasm '.$this->getRobotId('sedative'))
 			->then('Success')
@@ -22,6 +23,7 @@ class DisasmSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 12,5')
 			->when('Exec', 'mv 12,5')
@@ -34,6 +36,7 @@ class DisasmSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Friend')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'mv 9,8')
 			->when('Exec', 'mv 9,8')
@@ -45,6 +48,7 @@ class DisasmSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Friend')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'mv 9,8')
             ->when('Exec', 'disasm '.$this->getRobotId('sedative'))

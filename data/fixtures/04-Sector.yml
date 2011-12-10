@@ -1612,3 +1612,8 @@ Sector:
     x: '19'
     y: '19'
     Realm:  Universe
+
+  Sector_190_Etherworld:
+    x: '9'
+    y: '9'
+    Realm:  Etherworld

@@ -7,6 +7,7 @@ class ReportSpec extends ScanBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'report')
 			->then('Success')
@@ -20,6 +21,7 @@ class ReportSpec extends ScanBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv --relative 3,0')
                 ->and('Exec', 'report')
@@ -31,6 +33,7 @@ class ReportSpec extends ScanBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'report --for letters')
 			->then('Success')
@@ -45,6 +48,7 @@ class ReportSpec extends ScanBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
             ->when('Exec', 'report --for drops')
             ->then('Success')

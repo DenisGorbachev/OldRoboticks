@@ -25,23 +25,18 @@ class User extends BaseUser {
       return $this->password == md5($password.$this->salt);
 	}
 
-//	public function countRobots() {
-//		return RobotTable::getInstance()->createQuery('r')
-//			->where('r.user_id = ?', $this->id)
-//			->count();
-//	}
-//
-//    public function createRobot() {
-//        $robot = new Robot();
-//		$robot->setSector(SectorTable::getInstance()->getRandomSector());
-//		$this->Robots[] = $robot;
-//    }
-//
-//    public function getRobotInactivityInterval() {
-//        if (!sfContext::hasInstance() || sfContext::getInstance()->getConfiguration()->isDebug()) {
-//            return 0;
-//        }
-//        return min(sfConfig::get('app_turn_duration_limit'), sfConfig::get('app_turn_duration_increment') * $this->countRobots());
-//    }
+	public function countRobotsInRealm($realmId) {
+		return RobotTable::getInstance()->createQuery('r')
+			->where('r.user_id = ?', $this->id)
+            ->andWhere('r.realm_id = ?', $realmId)
+			->count();
+	}
+    
+    public function getRobotInactivityInterval($realmId) {
+        if (!sfContext::hasInstance() || sfContext::getInstance()->getConfiguration()->isDebug()) {
+            return 0;
+        }
+        return min(sfConfig::get('app_turn_duration_limit'), sfConfig::get('app_turn_duration_increment') * $this->countRobotsInRealm($realmId));
+    }
 
 }

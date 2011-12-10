@@ -7,6 +7,7 @@ class PickSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'report --for drops')
 			->then('Contains', '9,8     K')
@@ -21,6 +22,7 @@ class PickSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'teeter')
             ->when('Exec', 'drop N')
             ->when('Exec', 'drop Z')
@@ -39,6 +41,7 @@ class PickSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'pear')
 			->when('Exec', 'pick A')
 			->then('Failure')
@@ -50,6 +53,7 @@ class PickSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
             ->when('Exec', 'drop M')
             ->when('Exec', 'pick A')
@@ -62,6 +66,7 @@ class PickSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'teeter')
             ->when('Exec', 'drop N')
             ->when('Exec', 'drop Z')
@@ -75,6 +80,7 @@ class PickSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
             ->when('Exec', 'mv 10,12')
             ->when('Exec', 'pick A')
@@ -87,6 +93,7 @@ class PickSpec extends RobotBaseSpec {
         $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'sedative')
 			->when('Exec', 'drop F')
             ->when('Exec', 'pick F')

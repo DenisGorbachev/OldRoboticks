@@ -7,6 +7,7 @@ class MapSpec extends ScanBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'map')
 			->then('Success')
@@ -27,6 +28,7 @@ class MapSpec extends ScanBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv --relative 3,0')
                 ->and('Exec', 'map')
@@ -39,6 +41,7 @@ class MapSpec extends ScanBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'map --for letters')
 			->then('Success')
@@ -54,6 +57,7 @@ class MapSpec extends ScanBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'map --for drops')
 			->then('Success')
@@ -67,6 +71,7 @@ class MapSpec extends ScanBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
             ->when('Exec', 'mv 0,0')
             ->when('Exec', 'mv 0,0')

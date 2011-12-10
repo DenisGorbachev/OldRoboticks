@@ -4,6 +4,7 @@ require_once __DIR__.'/../lib/symfony/lib/yaml/sfYaml.php';
 
 class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	public $robots = array(null, 'tea', 'tear', 'grunt', 'teeter', 'pear', 'sedative', 'seaside', 'stake', '', '', 'drake', 'fuel', '', '', '', 'plush', 'mouse', 'cart', 'finger1', 'finger2', 'finger3', 'finger4', 'finger5', 'finger6', 'finger7', 'finger8', 'finger9', 'finger10', 'finger11', 'finger12', 'finger13', 'finger14', 'finger15', 'finger16', 'finger17', 'finger18', 'finger19', 'finger20', 'finger21', 'finger22', 'finger23', 'finger24', 'finger25', 'finger26', 'finger27', 'finger28', 'finger29', 'finger30', 'finger31', 'finger32', 'finger33', 'finger34', 'finger35', 'justregistered');
+    public $realms = array(null, 'Universe', 'Etherworld');
     
 	protected $world = array(
 		'results' => array(),
@@ -13,6 +14,8 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
     public function setUp() {
         parent::setUp();
         $this->setDebug(true);
+        $this->unlinkIfExists($this->getClientCacheDir().'/realmId');
+        $this->unlinkIfExists($this->getClientCacheDir().'/robotId');
     }
 
     public function tearDown() {
@@ -33,11 +36,19 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	public function getClientDir() {
 		return __DIR__.'/../client';
 	}
-	
+
+    public function getClientCacheDir() {
+        return $this->getClientDir().'/cache';
+    }
+
 	public function getRobotId($name) {
 		return array_search($name, $this->robots, true);
 	}
-	
+
+    public function getRealmId($name) {
+        return array_search($name, $this->realms, true);
+    }
+
 	public function runGiven(&$world, $action, $arguments) {
 		return call_user_func_array(array($this, 'given'.$action), $arguments);
 	}
@@ -59,6 +70,14 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	public function givenUser($login, $password = 'asdf') {
 		$login = strtolower($login);
 		return $this->exec('login '.$login.' '.$password);
+	}
+
+    public function givenRealm($name) {
+		return $this->givenRealmId($this->getRealmId($name));
+	}
+
+    public function givenRealmId($realmId) {
+		return $this->exec('realm:select '.$realmId);
 	}
 
     public function givenRobot($name) {
@@ -120,7 +139,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
     }
 
     public function getClientDebugFilename() {
-        return $this->getClientDir().'/cache/debug';
+        return $this->getClientCacheDir().'/debug';
     }
 
     public function setDebug($debug) {
@@ -130,6 +149,12 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 
     public function getDebug() {
         return file_exists($this->getClientDebugFilename());
+    }
+
+    public function unlinkIfExists($filename) {
+        if (file_exists($filename)) {
+            unlink($filename);
+        }
     }
 
 }

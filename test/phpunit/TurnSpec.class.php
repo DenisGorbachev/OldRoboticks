@@ -15,6 +15,7 @@ class TurnSpec extends BaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Stranger')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'mouse')
 			->when('Exec', 'mv 10,12')
             ->then('Success')
@@ -27,6 +28,7 @@ class TurnSpec extends BaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Manipulator')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'finger1')
 			->when('Exec', 'mv 10,12')
             ->then('Success')
@@ -41,6 +43,7 @@ class TurnSpec extends BaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
             ->when('Exec', 'mv 10,12')
             ->then('Success')
@@ -52,6 +55,7 @@ class TurnSpec extends BaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tear')
             ->when('Exec', 'fire '.$this->getRobotId('plush').' U')
             ->then('Failure')

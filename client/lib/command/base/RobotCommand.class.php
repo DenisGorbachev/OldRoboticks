@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/UserInterfaceCommand.class.php';
+require_once dirname(__FILE__).'/RealmCommand.class.php';
 
-abstract class RobotCommand extends UserInterfaceCommand {
+abstract class RobotCommand extends RealmCommand {
     public $robotId;
 
     public function __construct() {
@@ -14,7 +14,7 @@ abstract class RobotCommand extends UserInterfaceCommand {
     }
 
     public function getOptionConfigs() {
-        return array(
+        return parent::getOptionConfigs() + array(
             'robot_id' => array(
                 'short_name' => '-r',
                 'long_name' => '--robot-id',
@@ -43,4 +43,9 @@ abstract class RobotCommand extends UserInterfaceCommand {
         }
     }
 
+    public function request($controller, $parameters = array(), $method = 'GET', $options = array())
+    {
+        $parameters['id'] = $this->getOption('robot_id');
+        return parent::request($controller, $parameters, $method, $options);
+    }
 }

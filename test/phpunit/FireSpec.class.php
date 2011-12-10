@@ -9,6 +9,7 @@ class FireSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tear')
 			->when('Exec', 'fire '.$this->getRobotId('fuel').' U')
 			->then('Success')
@@ -26,6 +27,7 @@ class FireSpec extends RobotBaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'seaside')
 			->when('Exec', 'fire '.$this->getRobotId('cart').' T')
 			->then('Success')
@@ -47,6 +49,7 @@ class FireSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tear')
             ->when('Exec', 'fire 111 A')
             ->then('Failure')
@@ -56,6 +59,7 @@ class FireSpec extends RobotBaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tear')
             ->when('Exec', 'fire '.$this->getRobotId('plush').' U')
             ->then('Failure')
@@ -65,6 +69,7 @@ class FireSpec extends RobotBaseSpec {
         return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tear')
 			->when('Exec', 'fire '.$this->getRobotId('fuel').' A')
 			->then('Failure')
@@ -74,6 +79,7 @@ class FireSpec extends RobotBaseSpec {
         return $this
 			->given('Genesis')
 				->and('User', 'Alice')
+				->and('Realm', 'Universe')
                 ->and('Robot', 'tear')
 			->when('Exec', 'fire '.$this->getRobotId('fuel').' L')
 			->then('Failure')
