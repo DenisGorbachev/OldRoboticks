@@ -2,7 +2,7 @@
 
 class robotActions extends rbActions {
 	public function prepareList() {
-		return $this->objects = RobotTable::getInstance()->getList($this->getUser()->getId());
+		return ($this->objects = RobotTable::getInstance()->getList($this->getUser()->getId()));
 	}
 	
 	public function validateList() {
@@ -15,15 +15,24 @@ class robotActions extends rbActions {
 	}
 	
 	public function prepareMove() {
-		return $this->prepareAutoEditForm();
-	}
+        $this->prepareAutoObject();
+        $this->argumentUnless('x');
+        $this->argumentUnless('y');
+        $this->argument('relative', false);
+        if ($this->relative) {
+            $sector = $this->object->getSector();
+            $this->x += $sector->getX();
+            $this->y += $sector->getY();
+        }
+	;}
 	
 	public function validateMove() {
-		return $this->validateAutoObject();
+		return $this->validateAutoObject($this->x, $this->y);
 	}
 	
 	public function executeMove(sfWebRequest $request) {
-		return $this->executeAutoAjaxForm();
+        $this->object->doAction('Move', $this->x, $this->y);
+        return $this->success('moved robot '.$this->object.' at '.$this->object->getSector());
 	}
 
 	public function prepareScan() {
@@ -53,7 +62,7 @@ class robotActions extends rbActions {
     }
 
 	public function executeExtract(sfWebRequest $request) {
-		$letter = $this->object->doExtract();
+		$letter = $this->object->doAction('Extract');
 		return $this->success('extracted letter "'.$letter.'"');
 	}
 
@@ -67,8 +76,7 @@ class robotActions extends rbActions {
     }
 
     public function executeDrop(sfWebRequest $request) {
-        $this->object->doDrop($this->letter);
-        $this->object->save();
+        $this->object->doAction('Drop', $this->letter);
         return $this->success('dropped letter '.$this->letter);
     }
 
@@ -82,8 +90,7 @@ class robotActions extends rbActions {
     }
 
     public function executePick(sfWebRequest $request) {
-        $this->object->doPick($this->letter);
-        $this->object->save();
+        $this->object->doAction('Pick', $this->letter);
         return $this->success('picked letter '.$this->letter);
     }
 
@@ -97,7 +104,7 @@ class robotActions extends rbActions {
     }
 
     public function executeAssemble(sfWebRequest $request) {
-        $newborn = $this->object->doAssemble($this->name);
+        $newborn = $this->object->doAction('Assemble', $this->name);
         return $this->success('assembled new robot '.$newborn);
     }
 
@@ -111,7 +118,7 @@ class robotActions extends rbActions {
     }
 
     public function executeDisassemble(sfWebRequest $request) {
-        $this->object->doDisassemble($this->target);
+        $this->object->doAction('Disassemble', $this->target);
         return $this->success('disassembled robot '.$this->target);
     }
 
@@ -126,7 +133,7 @@ class robotActions extends rbActions {
     }
 
     public function executeFire(sfWebRequest $request) {
-        $this->object->doFire($this->target, $this->letter);
+        $this->object->doAction('Fire', $this->target, $this->letter);
         return $this->success('fired at robot '.$this->target->__toStatusString());
     }
 
@@ -141,8 +148,14 @@ class robotActions extends rbActions {
     }
 
     public function executeRepair(sfWebRequest $request) {
-        $this->object->doRepair($this->target, $this->letter);
+        $this->object->doAction('Repair', $this->target, $this->letter);
         return $this->success('repaired letter "'.$this->letter.'" in robot '.$this->target->__toStatusString());
     }
 
+    public function validateFailed(rsException $e) {
+        if ($e instanceof rsInsanityException) {
+            $this->object->doAction('Noop');
+        }
+        return parent::validateFailed($e);
+    }
 }

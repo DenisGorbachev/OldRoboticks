@@ -4,6 +4,7 @@
 	define('BASEDIR', dirname(__FILE__));
 	define('CACHEDIR', BASEDIR.'/cache');
 	define('LIBDIR', BASEDIR.'/lib');
+	define('DEBUG', file_exists(CACHEDIR.'/debug'));
 	try {
 		require_once LIBDIR.'/util/config.php';
 		Config::load(BASEDIR.'/config');

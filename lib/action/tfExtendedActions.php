@@ -14,41 +14,45 @@ class tfExtendedActions extends sfActions {
 		$this->packet = array();
 		try {
 			$this->prepare();
-		} catch (tfSanityException $e) {
+		} catch (rsException $e) {
 			return $this->prepareFailed($e);
 		}
 		try {
 			if (!$this->validate()) {
-				throw new tfSanityException('blatantly invalidated');
+				throw new rsSanityException('blatantly invalidated');
 			}
-		} catch (tfSanityException $e) {
+		} catch (rsException $e) {
 			return $this->validateFailed($e);
 		}
 		return parent::execute($request);
 	}
 
-	public function prepareFailure(tfSanityException $e) {
+	public function prepareFailure(rsSanityException $e) {
 		
 	}
 
-	public function validateFailure(tfSanityException $e) {
+	public function validateFailure(rsSanityException $e) {
 		
 	}
 	
 	public function failureUnless($condition, $text, array $arguments = array()) {
 		if (!$condition) {
-			throw new tfSanityException($text, $arguments);
+			throw new rsSanityException($text, $arguments);
 		}
 		return $condition;
 	}
 
 	public function argumentUnless($argument, $text = null, array $arguments = array()) {
-		$this->$argument = $this->getRequestParameter($argument);
-		$arguments['argument'] = $argument;
-		return $this->failureUnless($this->$argument, $text? $text : 'Argument "%argument%" not provided', $arguments);
+        $this->argument($argument, null);
+        $arguments['argument'] = print_r($argument, true);
+		return $this->failureUnless($this->$argument !== null, $text? $text : 'Argument "%argument%" not provided', $arguments);
 	}
-	
-	public function prepare() {
+
+    public function argument($argument, $default = null) {
+        $this->$argument = $this->getRequestParameter($argument, $default);
+    }
+
+    public function prepare() {
 		$method = __FUNCTION__.$this->getActionName();
 		return method_exists($this, $method) ? $this->$method() : true;
 	}

@@ -109,3 +109,223 @@ Robot:
     EffectiveWord:	CART
     User:				Foe
     Sector:			Sector_189
+  Finger1:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger2:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger3:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger4:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger5:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger6:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger7:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger8:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger9:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger10:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger11:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger12:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger13:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger14:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger15:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger16:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger17:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger18:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger19:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger20:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger21:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger22:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger23:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger24:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger25:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger26:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger27:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger28:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger29:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger30:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger31:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger32:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger33:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger34:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+  Finger35:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+
+<?php /* for ($i = 1; $i <= 32; $i++): ?>
+  Finger<?php echo $i ?>:
+    status:         "FINGER"
+    Word:			FINGER
+    EffectiveWord:	FINGER
+    User:				Manipulator
+    Sector:         Sector_400
+<?php endfor */ ?>
+<?php /*  for ($i = 1; $i <= 32; $i++) { echo "'finger".$i."', "; } */ ?>

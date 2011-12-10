@@ -49,4 +49,11 @@ class User extends BaseUser {
 		$this->Robots[] = $robot;
     }
 
+    public function getRobotInactivityInterval() {
+        if (!sfContext::hasInstance() || sfContext::getInstance()->getConfiguration()->isDebug()) {
+            return 0;
+        }
+        return min(sfConfig::get('app_turn_duration_limit'), sfConfig::get('app_turn_duration_increment') * $this->countRobots());
+    }
+
 }

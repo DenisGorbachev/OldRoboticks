@@ -5,22 +5,26 @@ class RobotGuard extends BaseGuard {
 		return true;
 	}
 
-    public function canMove() {
+    public function canMove($x, $y) {
         $this->checkIsOwner();
         $this->checkIsEnabled();
+        $this->checkIsActive();
         $this->checkIsMobile();
+        $this->checkSectorExists($x, $y);
         return true;
     }
 
     public function canScan() {
         $this->checkIsOwner();
         $this->checkIsEnabled();
+        $this->checkIsActive();
         return true;
     }
 
     public function canExtract() {
         $this->checkIsOwner();
         $this->checkIsEnabled();
+        $this->checkIsActive();
         $this->checkHasFunction('extract');
         $this->checkSectorHasLetter();
         return true;
@@ -29,6 +33,7 @@ class RobotGuard extends BaseGuard {
     public function canAssemble($name) {
         $this->checkIsOwner();
         $this->checkIsEnabled();
+        $this->checkIsActive();
         $this->checkHasFunction('assemble');
         $this->checkIsWord($name);
         $this->checkSectorHasDrops(str_split($name));
@@ -38,6 +43,7 @@ class RobotGuard extends BaseGuard {
     public function canDisassemble(Robot $target) {
         $this->checkIsOwner();
         $this->checkIsEnabled();
+        $this->checkIsActive();
         $this->checkHasFunction('disassemble');
         $this->checkTargetIsInSameSector($target);
         $this->checkTargetIsDisabled($target);
@@ -47,6 +53,7 @@ class RobotGuard extends BaseGuard {
     public function canDrop($letter) {
         $this->checkIsOwner();
         $this->checkIsEnabled();
+        $this->checkIsActive();
         $this->checkHasFunction('transport');
         $this->checkIsLetter($letter);
         $this->checkHasCargo($letter);
@@ -56,6 +63,7 @@ class RobotGuard extends BaseGuard {
     public function canPick($letter) {
         $this->checkIsOwner();
         $this->checkIsEnabled();
+        $this->checkIsActive();
         $this->checkHasFunction('transport');
         $this->checkIsLetter($letter);
         $this->checkSectorHasDrops(array($letter));
@@ -66,6 +74,7 @@ class RobotGuard extends BaseGuard {
     public function canFire(Robot $target, $letter) {
         $this->checkIsOwner();
         $this->checkIsEnabled();
+        $this->checkIsActive();
         $this->checkIsLetter($letter);
         $this->checkIsFireableLetter($letter);
         $this->checkTargetIsInRange($target);
@@ -76,6 +85,7 @@ class RobotGuard extends BaseGuard {
     public function canRepair(Robot $target, $letter) {
         $this->checkIsOwner();
         $this->checkIsEnabled();
+        $this->checkIsActive();
         $this->checkHasFunction('repair');
         $this->checkIsLetter($letter);
         $this->checkTargetIsInSameSector($target);
@@ -87,7 +97,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkIsOwner() {
 	    if (!$this->isOwner()) {
-			throw new tfSanityException('Robot %robot% is not owned by you.', array(
+			throw new rsSanityException('Robot %robot% is not owned by you.', array(
 				'robot' => (string)$this->object
 			));
 		}
@@ -96,17 +106,37 @@ class RobotGuard extends BaseGuard {
 
     public function checkIsEnabled() {
         if ($this->getObject()->isDisabled()) {
-			throw new tfSanityException('Robot %robot% is disabled (its status is not a word)', array(
+			throw new rsSanityException('Robot %robot% is disabled (its status is not a word)', array(
 				'robot' => (string)$this->getObject(),
 			));
 		}
 		return true;
     }
 
+    public function checkIsActive() {
+        if ($this->getObject()->isInactive()) {
+			throw new rsSanityException('Robot %robot% can\'t act for %amount% more seconds', array(
+				'robot' => (string)$this->getObject(),
+                'amount' => (string)$this->getObject()->getInactiveTimeLeft(),
+			));
+		}
+		return true;
+    }
+    
     public function checkIsMobile() {
     	if (!$this->getObject()->getSpeed()) {
-			throw new tfSanityException('Robot %robot% is immobile.', array(
+			throw new rsSanityException('Robot %robot% is immobile.', array(
 				'robot' => (string)$this->object
+			));
+		}
+		return true;
+    }
+
+    public function checkSectorExists($x, $y) {
+        if (!SectorTable::getInstance()->findOneByXAndY($x, $y)) {
+			throw new rsSanityException('Sector with coordinates "%x%,%y%" doesn\'t exist', array(
+				'x' => $x,
+                'y' => $y,
 			));
 		}
 		return true;
@@ -114,7 +144,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkHasFunction($meaning) {
         if (!$this->object->hasFunction($meaning)) {
-			throw new tfSanityException('Robot %robot% can\'t %function%', array(
+			throw new rsSanityException('Robot %robot% can\'t %function%', array(
 				'robot' => (string)$this->object,
                 'function' => $meaning
 			));
@@ -124,7 +154,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkSectorHasLetter() {
         if (!$this->object->getSector()->getLetter()) {
-			throw new tfSanityException('Sector %sector% has no letters', array(
+			throw new rsSanityException('Sector %sector% has no letters', array(
 				'sector' => (string)$this->object->getSector()
 			));
 		}
@@ -133,7 +163,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkIsLetter($letter) {
         if (!WordTable::getInstance()->isLetter($letter)) {
-			throw new tfSanityException('%letter% is not a letter', array(
+			throw new rsSanityException('%letter% is not a letter', array(
 				'letter' => $letter,
 			));
 		}
@@ -142,7 +172,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkIsWord($name) {
         if (!WordTable::getInstance()->findOneBy('name', $name)) {
-			throw new tfSanityException('%name% is not a word', array(
+			throw new rsSanityException('%name% is not a word', array(
 				'name' => $name,
 			));
 		}
@@ -152,7 +182,7 @@ class RobotGuard extends BaseGuard {
     public function checkSectorHasDrops(array $drops) {
         $diff = array_diff($drops, $this->object->getSector()->getDropsArray());
         if ($diff) {
-			throw new tfSanityException('Sector %sector% has no %diff% drops', array(
+			throw new rsSanityException('Sector %sector% has no %diff% drops', array(
 				'sector' => (string)$this->object->getSector(),
                 'diff' => implode(', ', $diff),
 			));
@@ -162,7 +192,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkHasCargo($letter) {
         if (!$this->getObject()->hasCargo($letter)) {
-			throw new tfSanityException('Letter %letter% is not present in cargo', array(
+			throw new rsSanityException('Letter %letter% is not present in cargo', array(
 				'letter' => $letter,
 			));
 		}
@@ -172,7 +202,7 @@ class RobotGuard extends BaseGuard {
     public function checkHasFreeCargoSpace() {
         if (!$this->getObject()->hasFreeCargoSpace()) {
             $totalCargoSpace = $this->getObject()->getTotalCargoSpace();
-            throw new tfSanityException('Robot %robot% can\'t carry more than %limit% letter%ending%', array(
+            throw new rsSanityException('Robot %robot% can\'t carry more than %limit% letter%ending%', array(
 				'robot' => (string)$this->getObject(),
                 'limit' => $totalCargoSpace,
                 'ending' => $totalCargoSpace == 1? '' : 's',
@@ -183,7 +213,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkIsFireableLetter($letter) {
         if (!$this->getObject()->canFire($letter)) {
-			throw new tfSanityException('Can\'t fire at letter %letter%', array(
+			throw new rsInsanityException('Can\'t fire at letter %letter%', array(
 				'letter' => $letter,
 			));
 		}
@@ -192,7 +222,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkTargetIsInRange(Robot $target) {
         if (!$this->getObject()->hasInFireableRange($target)) {
-			throw new tfSanityException('Robot %robot% is not in fireable range', array(
+			throw new rsInsanityException('Robot %robot% is not in fireable range', array(
 				'robot' => (string)$target,
 			));
 		}
@@ -201,7 +231,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkTargetHasLetter(Robot $target, $letter) {
         if (!$target->hasLetter($letter)) {
-			throw new tfSanityException('Robot %robot% doesn\'t have letter %letter%', array(
+			throw new rsInsanityException('Robot %robot% doesn\'t have letter %letter%', array(
 				'robot' => (string)$target,
                 'letter' => $letter,
 			));
@@ -211,7 +241,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkTargetHasLetterInWord(Robot $target, $letter) {
         if (!$target->getWord()->hasLetter($letter)) {
-			throw new tfSanityException('Robot %robot% doesn\'t have letter %letter% in its base word', array(
+			throw new rsSanityException('Robot %robot% doesn\'t have letter %letter% in its base word', array(
 				'robot' => (string)$target,
                 'letter' => $letter,
 			));
@@ -221,7 +251,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkTargetHasLetterPinchedOut(Robot $target, $letter) {
         if (!$target->hasLetterPinchedOut($letter)) {
-			throw new tfSanityException('Robot %robot% doesn\'t have a pinched out letter %letter%', array(
+			throw new rsSanityException('Robot %robot% doesn\'t have a pinched out letter %letter%', array(
 				'robot' => (string)$target,
                 'letter' => $letter,
 			));
@@ -231,7 +261,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkTargetIsInSameSector(Robot $target) {
         if ($this->getObject()->getSectorId() != $target->getSectorId()) {
-			throw new tfSanityException('Robot %robot% is not in the same sector', array(
+			throw new rsSanityException('Robot %robot% is not in the same sector', array(
 				'robot' => (string)$target,
 			));
 		}
@@ -240,7 +270,7 @@ class RobotGuard extends BaseGuard {
 
     public function checkTargetIsDisabled(Robot $target) {
         if (!$target->isDisabled()) {
-			throw new tfSanityException('Robot %robot% is not disabled (its status is a word)', array(
+			throw new rsSanityException('Robot %robot% is not disabled (its status is a word)', array(
 				'robot' => (string)$target,
 			));
 		}

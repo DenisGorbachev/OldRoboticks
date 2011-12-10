@@ -10,4 +10,7 @@ all:
   fire_range:
     limit:            6
     increment:  3
+  turn_duration:
+    increment:      2
+    limit:              60
 

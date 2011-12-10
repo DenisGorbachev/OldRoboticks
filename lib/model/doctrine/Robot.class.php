@@ -82,6 +82,15 @@ class Robot extends BaseRobot {
         return !$this->getEffectiveWordId();
     }
 
+    public function isInactive() {
+        return (bool)$this->getInactiveTimeLeft();
+    }
+
+    public function getInactiveTimeLeft() {
+        // TODO: This should really depend on realm
+        return max(0, $this->getActiveAt() - time());
+    }
+
     public function hasLetterPinchedOut($letter) {
         return in_array($letter, array_diff_assoc($this->getWord()->getNameArray(), $this->getStatusArray()));
     }
@@ -108,84 +117,93 @@ class Robot extends BaseRobot {
         return SectorTable::getInstance()->isInRange($this->getSector(), $target->getSector(), $this->getFireableRange());
     }
 
-    public function doExtract() {
+    public function doAction($action /* ... */) {
+        $arguments = func_get_args();
+        array_shift($arguments); // removing $action
+        $connection = $this->getTable()->getConnection();
+        $connection->beginTransaction();
+        try {
+            $result = call_user_func_array(array($this, 'do'.$action.'Action'), $arguments);
+            $this->setActiveAt(time() + $this->getUser()->getRobotInactivityInterval());
+            $this->save();
+        } catch (Exception $e) {
+            $connection->rollback();
+            throw $e;
+        }
+        $connection->commit();
+        return $result;
+    }
+
+    public function doMoveAction($x, $y) {
+        $sectorTable = SectorTable::getInstance();
+        $sector = $this->getSector();
+		list($x, $y) = $sectorTable->getEffectiveCoordinates($sector->getX(), $sector->getY(), $x, $y, $this->getSpeed());
+        $newSector = $sectorTable->findOneByXAndY($x, $y);
+        $this->setSector($newSector);
+        return $newSector;
+    }
+
+    public function doExtractAction() {
         $sector = $this->getSector();
         $sector->setDrops($sector->getDrops().$sector->getLetter());
         $sector->save();
         return $sector->getLetter();
     }
 
-    public function doDrop($letter) {
+    public function doDropAction($letter) {
         $sector = $this->getSector();
         $sector->setDrops($sector->getDrops().$letter);
         $this->setCargo(preg_replace('/'.preg_quote($letter, '/').'/u', '', $this->getCargo(), 1));
     }
 
-    public function doPick($letter) {
+    public function doPickAction($letter) {
         $sector = $this->getSector();
         $sector->setDrops(preg_replace('/'.preg_quote($letter, '/').'/u', '', $sector->getDrops(), 1));
         $this->setCargo($this->getCargo().$letter);
     }
 
-    public function doAssemble($name) {
-        $connection = $this->getTable()->getConnection();
-        $connection->beginTransaction();
-        try {
-            $sector = $this->getSector();
-            $sector->setDropsArray(array_diff($sector->getDropsArray(), str_split($name)));
-            $sector->save();
-            $robot = new Robot();
-            $robot->setStatus($name);
-            $robot->setUser($this->getUser());
-            $robot->setSector($sector);
-            $robot->save();
-        } catch (Exception $e) {
-            $connection->rollback();
-        }
-        $connection->commit();
+    public function doAssembleAction($name) {
+        $sector = $this->getSector();
+        $sector->setDropsArray(array_diff($sector->getDropsArray(), str_split($name)));
+        $sector->save();
+        $robot = new Robot();
+        $robot->setStatus($name);
+        $robot->setUser($this->getUser());
+        $robot->setSector($sector);
+        $robot->save();
         return $robot;
     }
 
-    public function doDisassemble(Robot $target) {
-        $connection = $this->getTable()->getConnection();
-        $connection->beginTransaction();
-        try {
-            $sector = $this->getSector();
-            $sector->setDrops($sector->getDrops().$target->getEffectiveStatus());
-            $sector->save();
-            $target->delete();
-        } catch (Exception $e) {
-            $connection->rollback();
-        }
-        $connection->commit();
+    public function doDisassembleAction(Robot $target) {
+        $sector = $this->getSector();
+        $sector->setDrops($sector->getDrops().$target->getEffectiveStatus());
+        $sector->save();
+        $target->delete();
     }
 
-    public function doFire(Robot $target, $letter) {
+    public function doFireAction(Robot $target, $letter) {
         $target->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '_', $target->getStatus(), 1));
         $target->save();
     }
 
-    public function doRepair(Robot $target, $letter) {
+    public function doRepairAction(Robot $target, $letter) {
         $statusArray = $target->getStatusArray();
         foreach (array_keys($target->getWord()->getNameArray(), $letter) as $key) {
             if ($statusArray[$key] == '_') {
-                $connection = $this->getTable()->getConnection();
-                $connection->beginTransaction();
-                try {
-                    $sector = $this->getSector();
-                    $sector->setDrops(preg_replace('/'.preg_quote($letter, '/').'/u', '', $sector->getDrops(), 1));
-                    $sector->save();
-                    $statusArray[$key] = $letter;
-                    $target->setStatus(implode('',  $statusArray));
-                    $target->save();
-                } catch (Exception $e) {
-                    $connection->rollback();
-                }
-                $connection->commit();
+                $sector = $this->getSector();
+                $sector->setDrops(preg_replace('/'.preg_quote($letter, '/').'/u', '', $sector->getDrops(), 1));
+                $sector->save();
+                $statusArray[$key] = $letter;
+                $target->setStatus(implode('',  $statusArray));
+                $target->save();
                 return $target;
             }
         }
         throw new sfException('Can\'t repair letter "'.$letter.'" in robot '.$target.', something is wrong with validation');
+    }
+
+    public function doNoopAction() {
+        // An action that is executed on rsInsanityException, leading to loss of turn
     }
 
     public function preInsert($event) {
