@@ -182,8 +182,13 @@ class Robot extends BaseRobot {
     }
 
     public function doFireAction(Robot $target, $letter) {
-        $target->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '_', $target->getStatus(), 1));
-        $target->save();
+		$target->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '_', $target->getStatus(), 1));
+		if (preg_match('/'.implode('|', WordTable::getInstance()->getLetters()).'/u', $target->getStatus())) {
+			$target->save();
+			return $target;
+		} else {
+			$target->delete();
+		}
     }
 
     public function doRepairAction(Robot $target, $letter) {

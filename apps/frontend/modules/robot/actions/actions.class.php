@@ -142,8 +142,8 @@ class robotActions extends rbActions {
     }
 
     public function executeFire(sfWebRequest $request) {
-        $this->object->doAction('Fire', $this->target, $this->letter);
-        return $this->success('fired at robot '.$this->target->__toStatusString());
+        $returnedTarget = $this->object->doAction('Fire', $this->target, $this->letter);
+        return $this->success('fired at robot '.$this->target->__toStatusString().($returnedTarget? '' : ' and destroyed it'));
     }
 
     public function prepareRepair() {

@@ -14,6 +14,13 @@ Robot:
     EffectiveWord:	TEAR
     User:				Alice
     Sector:			Sector_190
+  Dirk:
+    Realm:         Universe
+    status:			"DIRK"
+    Word:			DIRK
+    EffectiveWord:	DIRK
+    User:				Alice
+    Sector:			Sector_190
   Grunt:
     Realm:         Universe
     status:			"GRUNT"

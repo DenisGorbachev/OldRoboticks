@@ -40,7 +40,18 @@ class FireSpec extends RobotBaseSpec {
 	;}
 
     public function testCompleteDestruction() {
-
+		return $this
+			->given('Genesis')
+				->and('User', 'Alice')
+				->and('Realm', 'Universe')
+                ->and('Robot', 'tear')
+			->when('Exec', 'fire '.$this->getRobotId('fuel').' U')
+			->when('Exec', 'fire '.$this->getRobotId('fuel').' F')
+			->given('Robot', 'dirk')
+			->when('Exec', 'fire '.$this->getRobotId('fuel').' E')
+			->when('Exec', 'fire '.$this->getRobotId('fuel').' L')
+            ->when('Exec', 'report --for robots')
+            ->then('NotContains', $this->getRobotId('fuel'))
     ;}
 
 	/* Borderline */
