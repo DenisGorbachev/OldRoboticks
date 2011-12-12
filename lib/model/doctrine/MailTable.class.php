@@ -23,6 +23,8 @@ class MailTable extends Doctrine_Table
             ->orderBy('m.created_at');
         if ($realm_id) {
             $query->andWhere('m.realm_id = ?', $realm_id);
+        } else {
+            $query->andWhere('m.realm_id IS NULL');
         }
         return $query;
     ;}

@@ -34,13 +34,13 @@ class MailSpec extends BaseSpec {
                 ->and('Contains', 'Hello')
             ->when('Exec', 'receive')
             ->then('Success')
-                ->and('Contains', 'No unread messages')
+                ->and('Contains', 'no unread messages')
             ->when('Exec', 'receive --realm')
             ->then('Success')
                 ->and('Contains', 'pool')
             ->when('Exec', 'receive --realm')
             ->then('Success')
-                ->and('Contains', 'No unread messages')
+                ->and('Contains', 'no unread messages')
     ;}
 
     public function testReminder() {
