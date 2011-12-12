@@ -34,6 +34,7 @@ class ProjectConfiguration extends sfProjectConfiguration
   	$manager->setAttribute(Doctrine::ATTR_DEFAULT_COLUMN_OPTIONS, array('notnull' => true));
   	$manager->setAttribute(Doctrine::ATTR_DEFAULT_TABLE_CHARSET, 'utf8');
   	$manager->setAttribute(Doctrine::ATTR_DEFAULT_TABLE_COLLATE, 'utf8_general_ci');
+      $manager->setAttribute(Doctrine::ATTR_USE_DQL_CALLBACKS, true);
   	sfConfig::set('doctrine_model_builder_options', array(
   		'baseClassName' => 'tfGuardedRecord'
   	));

@@ -95,7 +95,7 @@ class tfExtendedActions extends sfActions {
 	public function prepareAutoObject($parameter = 'id', $varname = 'object') {
 		return
 			$this->argumentUnless($parameter)
-			&& $this->failureUnless($this->$varname = Doctrine::getTable($this->model)->find($this->$parameter), $this->model.' '.$this->$parameter.' not found')
+			&& $this->failureUnless($this->$varname = Doctrine::getTable($this->model)->find($this->$parameter), sfInflector::underscore($this->model).' #'.$this->$parameter.' not found')
 	;}
 
 	public function prepareAutoNewObject($varname = 'object') {
