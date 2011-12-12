@@ -10,8 +10,7 @@ class RealmSpec extends BaseSpec {
                 ->and('Realm', 'Etherworld')
                 ->and('Robot', 'meat')
 			->when('Exec', 'report')
-            ->then('Success')
-//            ->and('NotContains', 'TEA') // TODO: place "MEAT" robot near "TEA"
+			->then('NotContains', 'TEA')
 			->when('Exec', 'ls')
             ->then('NotContains', 'TEA')
 	;}
