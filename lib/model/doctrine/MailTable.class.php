@@ -17,9 +17,13 @@ class MailTable extends Doctrine_Table
         return Doctrine_Core::getTable('Mail');
     }
 
-    public function getNextMailQuery($recipient_id, $realm_id) {
-        $query = $this->createQuery('m')
+	public function getOwnMailQuery($recipient_id) {
+		return $this->createQuery('m')
             ->andWhere('m.recipient_id = ?', $recipient_id)
+	;}
+
+    public function getNextMailQuery($recipient_id, $realm_id) {
+        $query = $this->getOwnMailQuery($recipient_id)
             ->orderBy('m.created_at');
         if ($realm_id) {
             $query->andWhere('m.realm_id = ?', $realm_id);
@@ -27,7 +31,7 @@ class MailTable extends Doctrine_Table
             $query->andWhere('m.realm_id IS NULL');
         }
         return $query;
-    ;}
+    }
 
     public function getNextUnreadMailQuery($recipient_id, $realm_id) {
         return $this->getNextMailQuery($recipient_id, $realm_id)
@@ -36,6 +40,21 @@ class MailTable extends Doctrine_Table
 
     public function getNextUnreadMail($recipient_id, $realm_id) {
         return $this->getNextUnreadMailQuery($recipient_id, $realm_id)->fetchOne();
+    }
+
+	public function getNotificationCountQuery($recipient_id, $realm_id = null) {
+		$query = $this->getOwnMailQuery($recipient_id)
+			->groupBy('m.realm_id');
+		if ($realm_id) {
+			$query->andWhere('m.realm_id = ? OR m.realm_id IS NULL', $realm_id);
+		} else {
+			$query->andWhere('m.realm_id IS NULL');
+		}
+		return $query;
+	;}
+
+    public function getNotificationCount($recipient_id, $realm_id = null) {
+        return $this->getNotificationCountQuery($recipient_id, $realm_id)->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
     }
     
 }

@@ -21,4 +21,10 @@ class rbActions extends tfExtendedActions {
         sfConfig::set('app_realm_id', $this->realm_id);
     }
 
+	public function success($text, array $arguments = array()) {
+		$realm_id = $this->getRequestParameter('realm_id');
+		$this->add('notifications', array_merge($this->get('notifications', array()), MailTable::getInstance()->getNotificationCount($this->getUser()->getUser()->getId(), $realm_id)));
+		return parent::success($text, $arguments);
+	}
+
 }

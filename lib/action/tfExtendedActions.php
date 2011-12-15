@@ -180,6 +180,10 @@ class tfExtendedActions extends sfActions {
 	public function forward403() {
 		$this->forward(sfConfig::get('sf_secure_module'), sfConfig::get('sf_secure_action'));
 	}
+
+	public function get($key, $default = null) {
+		return array_key_exists($key, $this->packet)? $this->packet[$key] : $default;
+	}
 	
 	public function add($key, $value) {
 		$this->packet[$key] = $value;
