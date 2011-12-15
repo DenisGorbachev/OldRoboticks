@@ -32,7 +32,7 @@ class Doctrine_Template_RestrictedListener extends Doctrine_Record_Listener
         $parameters = $event->getParams();
         $alias = $parameters['alias'];
         $column = $this->getOption('column');
-        $query->addWhere($alias . '.' . $column . ' = ?', sfConfig::get('app_' . $column));
+        $query->addWhere('('.$alias . '.' . $column . ' = ? OR '. $alias . '.' . $column . ' IS NULL)', sfConfig::get('app_' . $column));
 
     }
 
