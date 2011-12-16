@@ -175,23 +175,47 @@ class Robot extends BaseRobot {
     }
 
     public function doDisassembleAction(Robot $target) {
+        $dispatcher = sfContext::getInstance()->getEventDispatcher();
+        $dispatcher->notify(new sfEvent($this, 'robot.pre_do_disassemble_action', array(
+            'target' => $target,
+        )));
         $sector = $this->getSector();
         $sector->setDrops($sector->getDrops().$target->getEffectiveStatus());
         $sector->save();
         $target->delete();
+        $dispatcher->notify(new sfEvent($this, 'robot.post_do_disassemble_action', array(
+            'target' => $target,
+        )));
     }
 
     public function doFireAction(Robot $target, $letter) {
+        $dispatcher = sfContext::getInstance()->getEventDispatcher();
+        $dispatcher->notify(new sfEvent($this, 'robot.pre_do_fire_action', array(
+            'target' => $target,
+            'letter' => $letter
+        )));
 		$target->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '_', $target->getStatus(), 1));
+        $destroyed = false;
 		if (preg_match('/'.implode('|', WordTable::getInstance()->getLetters()).'/u', $target->getStatus())) {
 			$target->save();
-			return $target;
 		} else {
 			$target->delete();
+            $destroyed = true;
 		}
+        $dispatcher->notify(new sfEvent($this, 'robot.post_do_fire_action', array(
+            'target' => $target,
+            'letter' => $letter,
+            'destroyed' => $destroyed
+        )));
+        return $destroyed? null : $target;
     }
 
     public function doRepairAction(Robot $target, $letter) {
+        $dispatcher = sfContext::getInstance()->getEventDispatcher();
+        $dispatcher->notify(new sfEvent($this, 'robot.pre_do_repair_action', array(
+            'target' => $target,
+            'letter' => $letter
+        )));
         $statusArray = $target->getStatusArray();
         foreach (array_keys($target->getWord()->getNameArray(), $letter) as $key) {
             if ($statusArray[$key] == '_') {
@@ -201,6 +225,10 @@ class Robot extends BaseRobot {
                 $statusArray[$key] = $letter;
                 $target->setStatus(implode('',  $statusArray));
                 $target->save();
+                $dispatcher->notify(new sfEvent($this, 'robot.post_do_repair_action', array(
+                    'target' => $target,
+                    'letter' => $letter,
+                )));
                 return $target;
             }
         }

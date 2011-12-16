@@ -75,7 +75,9 @@ class MailSpec extends BaseSpec {
                     ->and('Robot', 'drake')
                 ->when('Exec', $command)
                 ->given('User', 'Alice')
-                    ->then('Contains', 'mail')
+                    ->and('Realm', 'Universe')
+                ->when('Exec', 'ls')
+                ->then('Contains', 'mail')
         ;}
         return $this;
     }

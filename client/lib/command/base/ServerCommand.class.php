@@ -5,6 +5,8 @@ require_once dirname(__FILE__).'/Command.class.php';
 abstract class ServerCommand extends Command {
     public $user_id = null;
 
+    public $notifications = array();
+
     public function run() {
         $options = $this->getCurlOptions();
         $filename = $options[CURLOPT_COOKIEFILE];
@@ -76,6 +78,9 @@ abstract class ServerCommand extends Command {
 		$message = __($response['message']);
 		if ($response['success']) {
 			echoln('Success: '.$message);
+            if (!empty($response['notifications'])) {
+                $this->notifications = array_merge($this->notifications, $response['notifications']);
+            }
 			return $response;
 		} else {
 			echoln('Failure: '.$message);
@@ -123,4 +128,11 @@ abstract class ServerCommand extends Command {
         return $this->user_id;
     }
 
+    public function postExecute($options, $arguments)
+    {
+        foreach ($this->notifications as $notification) {
+            echoln(__($notification));
+        }
+        parent::postExecute($options, $arguments);
+    }
 }

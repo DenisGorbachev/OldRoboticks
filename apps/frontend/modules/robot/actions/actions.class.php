@@ -1,8 +1,13 @@
 <?php
 
 class robotActions extends rbActions {
-	public function prepareList() {
-        $this->restrictByRealmId();
+    public function prepare() {
+        $this->prepareAutoRealm();
+        return parent::prepare();
+    }
+
+
+    public function prepareList() {
 		return ($this->objects = RobotTable::getInstance()->getList($this->getUser()->getId()));
 	}
 
@@ -16,7 +21,6 @@ class robotActions extends rbActions {
 	}
 	
 	public function prepareMove() {
-        $this->restrictByRealmId();
         $this->prepareAutoObject();
         $this->argumentUnless('x');
         $this->argumentUnless('y');
@@ -38,7 +42,6 @@ class robotActions extends rbActions {
 	}
 
 	public function prepareScan() {
-        $this->restrictByRealmId();
 		$this->prepareAutoObject();
 	}
 
@@ -57,7 +60,6 @@ class robotActions extends rbActions {
 	}
 
 	public function prepareExtract() {
-        $this->restrictByRealmId();
 		$this->prepareAutoObject();
 	}
 
@@ -71,7 +73,6 @@ class robotActions extends rbActions {
 	}
 
     public function prepareDrop() {
-        $this->restrictByRealmId();
         $this->prepareAutoObject();
         $this->argumentUnless('letter');
     }
@@ -86,7 +87,6 @@ class robotActions extends rbActions {
     }
 
     public function preparePick() {
-        $this->restrictByRealmId();
         $this->prepareAutoObject();
         $this->argumentUnless('letter');
     }
@@ -101,7 +101,6 @@ class robotActions extends rbActions {
     }
 
     public function prepareAssemble() {
-        $this->restrictByRealmId();
         $this->prepareAutoObject();
         $this->argumentUnless('name');
     }
@@ -116,7 +115,6 @@ class robotActions extends rbActions {
     }
 
     public function prepareDisassemble() {
-        $this->restrictByRealmId();
         $this->prepareAutoObject();
 		$this->prepareAutoObject('target_id', 'target')
     ;}
@@ -131,7 +129,6 @@ class robotActions extends rbActions {
     }
 
     public function prepareFire() {
-        $this->restrictByRealmId();
         $this->prepareAutoObject();
 		$this->prepareAutoObject('target_id', 'target');
         $this->argumentUnless('letter');
@@ -147,7 +144,6 @@ class robotActions extends rbActions {
     }
 
     public function prepareRepair() {
-        $this->restrictByRealmId();
         $this->prepareAutoObject();
 		$this->prepareAutoObject('target_id', 'target');
         $this->argumentUnless('letter');

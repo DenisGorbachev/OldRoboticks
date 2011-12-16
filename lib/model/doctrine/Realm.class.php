@@ -12,6 +12,20 @@
  */
 class Realm extends BaseRealm
 {
+    public $controller;
+
+    public function construct()
+    {
+        parent::construct();
+        if (sfContext::hasInstance()) {
+            $controllerClass = $this->getType().get_class($this).'Controller';
+            if (!class_exists($controllerClass)) {
+                throw new sfException('Controller class "'.$controllerClass.'" not found');
+            }
+            $this->controller = new $controllerClass($this, sfContext::getInstance()->getEventDispatcher());
+        }
+    }
+
     public $salt = '301fd763d41594cacdedb18b53e265ee';
 
     public function __toString() {

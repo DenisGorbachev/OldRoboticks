@@ -19,7 +19,7 @@ Realm:
   columns:
     name:			         { type: string(255), minlength: 3, unique: true, readonly: true }
     password:                { type: string(255) }
-    type:			         { type: string(255), readonly: true } # Used for event listeners
+    type:			         { type: string(255), default: "generic", readonly: true } # Used for event listeners
     owner_id:                { type: integer }
   relations:
     Owner:
@@ -158,7 +158,7 @@ Mail:
     sender_id:		{ type: integer }
     recipient_id:	{ type: integer }
     realm_id:		{ type: integer, notnull: false }
-    type:               { type: enum, values: [fire, disasm, repair], notnull: false, default: null }
+    type:               { type: string(255), notnull: false, default: null }
     subject:			{ type: string(255), minlength: 3 }
     text:			        { type: text }
     is_read:           { type: boolean, default: false }

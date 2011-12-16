@@ -29,7 +29,7 @@ class mailActions extends rbActions {
         if ($this->object) {
             $this->object->setIsRead(true);
             $this->object->save();
-            return $this->success('received mail #%id%.'.PHP_EOL.PHP_EOL.'From: %sender%'.PHP_EOL.'Subject: %type%%subject%'.PHP_EOL.'Text: %text%'.PHP_EOL, array(
+            return $this->success('received mail #%id%.'.PHP_EOL.PHP_EOL.'From: %sender%'.PHP_EOL.'Subject: %type% %subject%'.PHP_EOL.($this->object->getText()? 'Text: %text%'.PHP_EOL : ''), array(
                 'id' => (string)$this->object->getId(),
                 'sender' => (string)$this->object->getSender(),
                 'type' => $this->object->getType()? '['.$this->object->getType().']' : '',

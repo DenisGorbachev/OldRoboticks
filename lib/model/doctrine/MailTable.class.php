@@ -44,6 +44,8 @@ class MailTable extends Doctrine_Table
 
 	public function getNotificationCountQuery($recipient_id, $realm_id = null) {
 		$query = $this->getOwnMailQuery($recipient_id)
+            ->select('m.realm_id, COUNT(id) as count')
+            ->andWhere('m.is_read = ?', false)
 			->groupBy('m.realm_id');
 		if ($realm_id) {
 			$query->andWhere('m.realm_id = ? OR m.realm_id IS NULL', $realm_id);
@@ -53,7 +55,7 @@ class MailTable extends Doctrine_Table
 		return $query;
 	;}
 
-    public function getNotificationCount($recipient_id, $realm_id = null) {
+    public function getNotificationCounts($recipient_id, $realm_id = null) {
         return $this->getNotificationCountQuery($recipient_id, $realm_id)->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
     }
     
