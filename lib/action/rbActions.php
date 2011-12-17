@@ -26,16 +26,18 @@ class rbActions extends tfExtendedActions {
     }
 
 	public function success($text, array $arguments = array()) {
-		$realm_id = $this->getRequestParameter('realm_id');
-        $counts = MailTable::getInstance()->getNotificationCounts($this->getUser()->getUser()->getId(), $realm_id);
-        $notifications = array();
-        foreach ($counts as $count) {
-            $notifications[] = array(
-                'text' => 'You have %count% unread'.($count['realm_id']? ' realm' : ' personal').' mail.',
-                'arguments' => $count
-            );
+        if ($this->getUser()->isAuthenticated()) {
+            $realm_id = $this->getRequestParameter('realm_id');
+            $counts = MailTable::getInstance()->getNotificationCounts($this->getUser()->getUser()->getId(), $realm_id);
+            $notifications = array();
+            foreach ($counts as $count) {
+                $notifications[] = array(
+                    'text' => 'You have %count% unread'.($count['realm_id']? ' realm' : ' personal').' mail.',
+                    'arguments' => $count
+                );
+            }
+            $this->add('notifications', array_merge($this->get('notifications', array()), $notifications));
         }
-		$this->add('notifications', array_merge($this->get('notifications', array()), $notifications));
 		return parent::success($text, $arguments);
 	}
 
