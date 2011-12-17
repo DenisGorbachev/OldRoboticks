@@ -19,7 +19,7 @@ Realm:
   columns:
     name:			         { type: string(255), minlength: 3, unique: true, readonly: true }
     password:                { type: string(255) }
-    type:			         { type: string(255), default: "generic", readonly: true } # Used for event listeners
+    controller_class:	  { type: string(255), readonly: true } # Used for realm controllers initialization
     owner_id:                { type: integer }
   relations:
     Owner:

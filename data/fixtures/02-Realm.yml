@@ -2,12 +2,12 @@ Realm:
   Universe:
     name:             "Universe"
     password:      ""
-    type:               "Deathmatch"
+    controller_class:  "DeathmatchRealmController"
     Owner:            Gamemaster
     Users:              [Alice, Mob, Friend, Foe, Stranger, Manipulator, Gamemaster]
   Etherworld:
     name:             "Etherworld"
     password:      ""
-    type:               "Deathmatch"
+    controller_class:  "DeathmatchRealmController"
     Owner:            Gamemaster
     Users:              [Alice, Gamemaster]

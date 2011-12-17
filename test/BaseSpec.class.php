@@ -4,7 +4,7 @@ require_once __DIR__.'/../lib/symfony/lib/yaml/sfYaml.php';
 
 class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	public $robots = array(null, 'tea', 'tear', 'dirk', 'grunt', 'teeter', 'pear', 'sedative', 'seaside', 'stake', '', '', 'drake', 'fuel', '', '', '', 'plush', 'mouse', 'cart', 'finger1', 'finger2', 'finger3', 'finger4', 'finger5', 'finger6', 'finger7', 'finger8', 'finger9', 'finger10', 'finger11', 'finger12', 'finger13', 'finger14', 'finger15', 'finger16', 'finger17', 'finger18', 'finger19', 'finger20', 'finger21', 'finger22', 'finger23', 'finger24', 'finger25', 'finger26', 'finger27', 'finger28', 'finger29', 'finger30', 'finger31', 'finger32', 'finger33', 'finger34', 'finger35', 'meat', 'justregistered');
-    public $realms = array(null, 'Universe', 'Etherworld');
+    public $realms = array(null, 'Universe', 'Etherworld', 'Afterlife');
     
 	protected $world = array(
 		'results' => array(),

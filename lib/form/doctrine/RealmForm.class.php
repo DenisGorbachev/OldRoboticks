@@ -10,7 +10,14 @@
  */
 class RealmForm extends BaseRealmForm
 {
-  public function configure()
+    public function setup()
+    {
+        parent::setup();
+        $this->validatorSchema['controller_class'] = new rsValidatorRealmControllerClass();
+    }
+
+    public function configure()
   {
+      parent::configure();
   }
 }

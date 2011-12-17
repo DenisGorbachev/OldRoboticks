@@ -24,7 +24,7 @@ class ProjectConfiguration extends sfProjectConfiguration
   {
     mb_internal_encoding('UTF-8');
   	mb_regex_encoding('UTF-8');
-    $this->enablePlugins(array('sfDoctrinePlugin'));
+    $this->enableAllPluginsExcept(array());
     umask(0);
   }
   
