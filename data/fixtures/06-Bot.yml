@@ -1,0 +1,4 @@
+Bot:
+  RiderOnTheStorm:
+    controller_class:   RiderOnTheStormBotController
+    User:           RiderOnTheStormBotUser

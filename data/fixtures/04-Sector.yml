@@ -1,1619 +1,3220 @@
 Sector:
-  Sector_1:
+  Sector_Universe_1:
     x: '0'
     y: '0'
     Realm:  Universe
-  Sector_2:
+  Sector_Universe_2:
     x: '0'
     y: '1'
     Realm:  Universe
-  Sector_3:
+  Sector_Universe_3:
     x: '0'
     y: '2'
     Realm:  Universe
-  Sector_4:
+  Sector_Universe_4:
     x: '0'
     y: '3'
     Realm:  Universe
-  Sector_5:
+  Sector_Universe_5:
     x: '0'
     y: '4'
     Realm:  Universe
-  Sector_6:
+  Sector_Universe_6:
     x: '0'
     y: '5'
     Realm:  Universe
-  Sector_7:
+  Sector_Universe_7:
     x: '0'
     y: '6'
     Realm:  Universe
-  Sector_8:
+  Sector_Universe_8:
     x: '0'
     y: '7'
     Realm:  Universe
-  Sector_9:
+  Sector_Universe_9:
     x: '0'
     y: '8'
     Realm:  Universe
-  Sector_10:
+  Sector_Universe_10:
     x: '0'
     y: '9'
     Realm:  Universe
-  Sector_11:
+  Sector_Universe_11:
     x: '0'
     y: '10'
     Realm:  Universe
-  Sector_12:
+  Sector_Universe_12:
     x: '0'
     y: '11'
     Realm:  Universe
-  Sector_13:
+  Sector_Universe_13:
     x: '0'
     y: '12'
     Realm:  Universe
-  Sector_14:
+  Sector_Universe_14:
     x: '0'
     y: '13'
     Realm:  Universe
-  Sector_15:
+  Sector_Universe_15:
     x: '0'
     y: '14'
     Realm:  Universe
-  Sector_16:
+  Sector_Universe_16:
     x: '0'
     y: '15'
     Realm:  Universe
-  Sector_17:
+  Sector_Universe_17:
     x: '0'
     y: '16'
     Realm:  Universe
-  Sector_18:
+  Sector_Universe_18:
     x: '0'
     y: '17'
     Realm:  Universe
-  Sector_19:
+  Sector_Universe_19:
     x: '0'
     y: '18'
     Realm:  Universe
-  Sector_20:
+  Sector_Universe_20:
     x: '0'
     y: '19'
     Realm:  Universe
-  Sector_21:
+  Sector_Universe_21:
     x: '1'
     y: '0'
     Realm:  Universe
-  Sector_22:
+  Sector_Universe_22:
     x: '1'
     y: '1'
     Realm:  Universe
-  Sector_23:
+  Sector_Universe_23:
     x: '1'
     y: '2'
     Realm:  Universe
-  Sector_24:
+  Sector_Universe_24:
     x: '1'
     y: '3'
     Realm:  Universe
-  Sector_25:
+  Sector_Universe_25:
     x: '1'
     y: '4'
     Realm:  Universe
-  Sector_26:
+  Sector_Universe_26:
     x: '1'
     y: '5'
     Realm:  Universe
-  Sector_27:
+  Sector_Universe_27:
     x: '1'
     y: '6'
     Realm:  Universe
-  Sector_28:
+  Sector_Universe_28:
     x: '1'
     y: '7'
     Realm:  Universe
-  Sector_29:
+  Sector_Universe_29:
     x: '1'
     y: '8'
     Realm:  Universe
-  Sector_30:
+  Sector_Universe_30:
     x: '1'
     y: '9'
     Realm:  Universe
-  Sector_31:
+  Sector_Universe_31:
     x: '1'
     y: '10'
     Realm:  Universe
-  Sector_32:
+  Sector_Universe_32:
     x: '1'
     y: '11'
     Realm:  Universe
-  Sector_33:
+  Sector_Universe_33:
     x: '1'
     y: '12'
     Realm:  Universe
-  Sector_34:
+  Sector_Universe_34:
     x: '1'
     y: '13'
     Realm:  Universe
-  Sector_35:
+  Sector_Universe_35:
     x: '1'
     y: '14'
     Realm:  Universe
-  Sector_36:
+  Sector_Universe_36:
     x: '1'
     y: '15'
     Realm:  Universe
-  Sector_37:
+  Sector_Universe_37:
     x: '1'
     y: '16'
     Realm:  Universe
-  Sector_38:
+  Sector_Universe_38:
     x: '1'
     y: '17'
     Realm:  Universe
-  Sector_39:
+  Sector_Universe_39:
     x: '1'
     y: '18'
     Realm:  Universe
-  Sector_40:
+  Sector_Universe_40:
     x: '1'
     y: '19'
     Realm:  Universe
-  Sector_41:
+  Sector_Universe_41:
     x: '2'
     y: '0'
     Realm:  Universe
-  Sector_42:
+  Sector_Universe_42:
     x: '2'
     y: '1'
     Realm:  Universe
-  Sector_43:
+  Sector_Universe_43:
     x: '2'
     y: '2'
     Realm:  Universe
-  Sector_44:
+  Sector_Universe_44:
     x: '2'
     y: '3'
     Realm:  Universe
-  Sector_45:
+  Sector_Universe_45:
     x: '2'
     y: '4'
     Realm:  Universe
-  Sector_46:
+  Sector_Universe_46:
     x: '2'
     y: '5'
     Realm:  Universe
-  Sector_47:
+  Sector_Universe_47:
     x: '2'
     y: '6'
     Realm:  Universe
-  Sector_48:
+  Sector_Universe_48:
     x: '2'
     y: '7'
     Realm:  Universe
-  Sector_49:
+  Sector_Universe_49:
     x: '2'
     y: '8'
     Realm:  Universe
-  Sector_50:
+  Sector_Universe_50:
     x: '2'
     y: '9'
     Realm:  Universe
-  Sector_51:
+  Sector_Universe_51:
     x: '2'
     y: '10'
     Realm:  Universe
-  Sector_52:
+  Sector_Universe_52:
     x: '2'
     y: '11'
     Realm:  Universe
-  Sector_53:
+  Sector_Universe_53:
     x: '2'
     y: '12'
     Realm:  Universe
-  Sector_54:
+  Sector_Universe_54:
     x: '2'
     y: '13'
     Realm:  Universe
-  Sector_55:
+  Sector_Universe_55:
     x: '2'
     y: '14'
     Realm:  Universe
-  Sector_56:
+  Sector_Universe_56:
     x: '2'
     y: '15'
     Realm:  Universe
-  Sector_57:
+  Sector_Universe_57:
     x: '2'
     y: '16'
     Realm:  Universe
-  Sector_58:
+  Sector_Universe_58:
     x: '2'
     y: '17'
     Realm:  Universe
-  Sector_59:
+  Sector_Universe_59:
     x: '2'
     y: '18'
     Realm:  Universe
-  Sector_60:
+  Sector_Universe_60:
     x: '2'
     y: '19'
     Realm:  Universe
-  Sector_61:
+  Sector_Universe_61:
     x: '3'
     y: '0'
     Realm:  Universe
-  Sector_62:
+  Sector_Universe_62:
     x: '3'
     y: '1'
     Realm:  Universe
-  Sector_63:
+  Sector_Universe_63:
     x: '3'
     y: '2'
     Realm:  Universe
-  Sector_64:
+  Sector_Universe_64:
     x: '3'
     y: '3'
     Realm:  Universe
-  Sector_65:
+  Sector_Universe_65:
     x: '3'
     y: '4'
     Realm:  Universe
-  Sector_66:
+  Sector_Universe_66:
     x: '3'
     y: '5'
     Realm:  Universe
-  Sector_67:
+  Sector_Universe_67:
     x: '3'
     y: '6'
     Realm:  Universe
-  Sector_68:
+  Sector_Universe_68:
     x: '3'
     y: '7'
     Realm:  Universe
-  Sector_69:
+  Sector_Universe_69:
     x: '3'
     y: '8'
     Realm:  Universe
-  Sector_70:
+  Sector_Universe_70:
     x: '3'
     y: '9'
     Realm:  Universe
-  Sector_71:
+  Sector_Universe_71:
     x: '3'
     y: '10'
     Realm:  Universe
-  Sector_72:
+  Sector_Universe_72:
     x: '3'
     y: '11'
     Realm:  Universe
-  Sector_73:
+  Sector_Universe_73:
     x: '3'
     y: '12'
     Realm:  Universe
-  Sector_74:
+  Sector_Universe_74:
     x: '3'
     y: '13'
     Realm:  Universe
-  Sector_75:
+  Sector_Universe_75:
     x: '3'
     y: '14'
     Realm:  Universe
-  Sector_76:
+  Sector_Universe_76:
     x: '3'
     y: '15'
     Realm:  Universe
-  Sector_77:
+  Sector_Universe_77:
     x: '3'
     y: '16'
     Realm:  Universe
-  Sector_78:
+  Sector_Universe_78:
     x: '3'
     y: '17'
     Realm:  Universe
-  Sector_79:
+  Sector_Universe_79:
     x: '3'
     y: '18'
     Realm:  Universe
-  Sector_80:
+  Sector_Universe_80:
     x: '3'
     y: '19'
     Realm:  Universe
-  Sector_81:
+  Sector_Universe_81:
     x: '4'
     y: '0'
     Realm:  Universe
-  Sector_82:
+  Sector_Universe_82:
     x: '4'
     y: '1'
     Realm:  Universe
-  Sector_83:
+  Sector_Universe_83:
     x: '4'
     y: '2'
     Realm:  Universe
-  Sector_84:
+  Sector_Universe_84:
     x: '4'
     y: '3'
     Realm:  Universe
-  Sector_85:
+  Sector_Universe_85:
     x: '4'
     y: '4'
     Realm:  Universe
-  Sector_86:
+  Sector_Universe_86:
     x: '4'
     y: '5'
     Realm:  Universe
-  Sector_87:
+  Sector_Universe_87:
     x: '4'
     y: '6'
     Realm:  Universe
-  Sector_88:
+  Sector_Universe_88:
     x: '4'
     y: '7'
     Realm:  Universe
-  Sector_89:
+  Sector_Universe_89:
     x: '4'
     y: '8'
     Realm:  Universe
-  Sector_90:
+  Sector_Universe_90:
     x: '4'
     y: '9'
     Realm:  Universe
-  Sector_91:
+  Sector_Universe_91:
     x: '4'
     y: '10'
     Realm:  Universe
-  Sector_92:
+  Sector_Universe_92:
     x: '4'
     y: '11'
     Realm:  Universe
-  Sector_93:
+  Sector_Universe_93:
     x: '4'
     y: '12'
     Realm:  Universe
-  Sector_94:
+  Sector_Universe_94:
     x: '4'
     y: '13'
     Realm:  Universe
-  Sector_95:
+  Sector_Universe_95:
     x: '4'
     y: '14'
     Realm:  Universe
-  Sector_96:
+  Sector_Universe_96:
     x: '4'
     y: '15'
     Realm:  Universe
-  Sector_97:
+  Sector_Universe_97:
     x: '4'
     y: '16'
     Realm:  Universe
-  Sector_98:
+  Sector_Universe_98:
     x: '4'
     y: '17'
     Realm:  Universe
-  Sector_99:
+  Sector_Universe_99:
     x: '4'
     y: '18'
     Realm:  Universe
-  Sector_100:
+  Sector_Universe_100:
     x: '4'
     y: '19'
     letter: 'T'
     drops: 'BEAR'
     Realm:  Universe
-  Sector_101:
+  Sector_Universe_101:
     x: '5'
     y: '0'
     Realm:  Universe
-  Sector_102:
+  Sector_Universe_102:
     x: '5'
     y: '1'
     Realm:  Universe
-  Sector_103:
+  Sector_Universe_103:
     x: '5'
     y: '2'
     Realm:  Universe
-  Sector_104:
+  Sector_Universe_104:
     x: '5'
     y: '3'
     Realm:  Universe
-  Sector_105:
+  Sector_Universe_105:
     x: '5'
     y: '4'
     Realm:  Universe
-  Sector_106:
+  Sector_Universe_106:
     x: '5'
     y: '5'
     Realm:  Universe
-  Sector_107:
+  Sector_Universe_107:
     x: '5'
     y: '6'
     Realm:  Universe
-  Sector_108:
+  Sector_Universe_108:
     x: '5'
     y: '7'
     Realm:  Universe
-  Sector_109:
+  Sector_Universe_109:
     x: '5'
     y: '8'
     Realm:  Universe
-  Sector_110:
+  Sector_Universe_110:
     x: '5'
     y: '9'
     Realm:  Universe
-  Sector_111:
+  Sector_Universe_111:
     x: '5'
     y: '10'
     Realm:  Universe
-  Sector_112:
+  Sector_Universe_112:
     x: '5'
     y: '11'
     Realm:  Universe
-  Sector_113:
+  Sector_Universe_113:
     x: '5'
     y: '12'
     Realm:  Universe
-  Sector_114:
+  Sector_Universe_114:
     x: '5'
     y: '13'
     Realm:  Universe
-  Sector_115:
+  Sector_Universe_115:
     x: '5'
     y: '14'
     Realm:  Universe
-  Sector_116:
+  Sector_Universe_116:
     x: '5'
     y: '15'
     Realm:  Universe
-  Sector_117:
+  Sector_Universe_117:
     x: '5'
     y: '16'
     Realm:  Universe
-  Sector_118:
+  Sector_Universe_118:
     x: '5'
     y: '17'
     Realm:  Universe
-  Sector_119:
+  Sector_Universe_119:
     x: '5'
     y: '18'
     Realm:  Universe
-  Sector_120:
+  Sector_Universe_120:
     x: '5'
     y: '19'
     Realm:  Universe
-  Sector_121:
+  Sector_Universe_121:
     x: '6'
     y: '0'
     Realm:  Universe
-  Sector_122:
+  Sector_Universe_122:
     x: '6'
     y: '1'
     Realm:  Universe
-  Sector_123:
+  Sector_Universe_123:
     x: '6'
     y: '2'
     Realm:  Universe
-  Sector_124:
+  Sector_Universe_124:
     x: '6'
     y: '3'
     Realm:  Universe
-  Sector_125:
+  Sector_Universe_125:
     x: '6'
     y: '4'
     Realm:  Universe
-  Sector_126:
+  Sector_Universe_126:
     x: '6'
     y: '5'
     Realm:  Universe
-  Sector_127:
+  Sector_Universe_127:
     x: '6'
     y: '6'
     Realm:  Universe
-  Sector_128:
+  Sector_Universe_128:
     x: '6'
     y: '7'
     Realm:  Universe
-  Sector_129:
+  Sector_Universe_129:
     x: '6'
     y: '8'
     Realm:  Universe
-  Sector_130:
+  Sector_Universe_130:
     x: '6'
     y: '9'
     Realm:  Universe
-  Sector_131:
+  Sector_Universe_131:
     x: '6'
     y: '10'
     Realm:  Universe
-  Sector_132:
+  Sector_Universe_132:
     x: '6'
     y: '11'
     Realm:  Universe
-  Sector_133:
+  Sector_Universe_133:
     x: '6'
     y: '12'
     Realm:  Universe
-  Sector_134:
+  Sector_Universe_134:
     x: '6'
     y: '13'
     Realm:  Universe
-  Sector_135:
+  Sector_Universe_135:
     x: '6'
     y: '14'
     Realm:  Universe
-  Sector_136:
+  Sector_Universe_136:
     x: '6'
     y: '15'
     Realm:  Universe
-  Sector_137:
+  Sector_Universe_137:
     x: '6'
     y: '16'
     Realm:  Universe
-  Sector_138:
+  Sector_Universe_138:
     x: '6'
     y: '17'
     Realm:  Universe
-  Sector_139:
+  Sector_Universe_139:
     x: '6'
     y: '18'
     Realm:  Universe
-  Sector_140:
+  Sector_Universe_140:
     x: '6'
     y: '19'
     Realm:  Universe
-  Sector_141:
+  Sector_Universe_141:
     x: '7'
     y: '0'
     Realm:  Universe
-  Sector_142:
+  Sector_Universe_142:
     x: '7'
     y: '1'
     Realm:  Universe
-  Sector_143:
+  Sector_Universe_143:
     x: '7'
     y: '2'
     Realm:  Universe
-  Sector_144:
+  Sector_Universe_144:
     x: '7'
     y: '3'
     Realm:  Universe
-  Sector_145:
+  Sector_Universe_145:
     x: '7'
     y: '4'
     Realm:  Universe
-  Sector_146:
+  Sector_Universe_146:
     x: '7'
     y: '5'
     Realm:  Universe
-  Sector_147:
+  Sector_Universe_147:
     x: '7'
     y: '6'
     Realm:  Universe
-  Sector_148:
+  Sector_Universe_148:
     x: '7'
     y: '7'
     Realm:  Universe
-  Sector_149:
+  Sector_Universe_149:
     x: '7'
     y: '8'
     Realm:  Universe
-  Sector_150:
+  Sector_Universe_150:
     x: '7'
     y: '9'
     Realm:  Universe
-  Sector_151:
+  Sector_Universe_151:
     x: '7'
     y: '10'
     Realm:  Universe
-  Sector_152:
+  Sector_Universe_152:
     x: '7'
     y: '11'
     Realm:  Universe
-  Sector_153:
+  Sector_Universe_153:
     x: '7'
     y: '12'
     Realm:  Universe
-  Sector_154:
+  Sector_Universe_154:
     x: '7'
     y: '13'
     Realm:  Universe
-  Sector_155:
+  Sector_Universe_155:
     x: '7'
     y: '14'
     Realm:  Universe
-  Sector_156:
+  Sector_Universe_156:
     x: '7'
     y: '15'
     Realm:  Universe
-  Sector_157:
+  Sector_Universe_157:
     x: '7'
     y: '16'
     Realm:  Universe
-  Sector_158:
+  Sector_Universe_158:
     x: '7'
     y: '17'
     Realm:  Universe
-  Sector_159:
+  Sector_Universe_159:
     x: '7'
     y: '18'
     Realm:  Universe
-  Sector_160:
+  Sector_Universe_160:
     x: '7'
     y: '19'
     Realm:  Universe
-  Sector_161:
+  Sector_Universe_161:
     x: '8'
     y: '0'
     Realm:  Universe
-  Sector_162:
+  Sector_Universe_162:
     x: '8'
     y: '1'
     Realm:  Universe
-  Sector_163:
+  Sector_Universe_163:
     x: '8'
     y: '2'
     Realm:  Universe
-  Sector_164:
+  Sector_Universe_164:
     x: '8'
     y: '3'
     Realm:  Universe
-  Sector_165:
+  Sector_Universe_165:
     x: '8'
     y: '4'
     Realm:  Universe
-  Sector_166:
+  Sector_Universe_166:
     x: '8'
     y: '5'
     Realm:  Universe
-  Sector_167:
+  Sector_Universe_167:
     x: '8'
     y: '6'
     Realm:  Universe
-  Sector_168:
+  Sector_Universe_168:
     x: '8'
     y: '7'
     Realm:  Universe
-  Sector_169:
+  Sector_Universe_169:
     x: '8'
     y: '8'
     Realm:  Universe
-  Sector_170:
+  Sector_Universe_170:
     x: '8'
     y: '9'
     Realm:  Universe
-  Sector_171:
+  Sector_Universe_171:
     x: '8'
     y: '10'
     Realm:  Universe
-  Sector_172:
+  Sector_Universe_172:
     x: '8'
     y: '11'
     letter: 'A'
     Realm:  Universe
-  Sector_173:
+  Sector_Universe_173:
     x: '8'
     y: '12'
     Realm:  Universe
-  Sector_174:
+  Sector_Universe_174:
     x: '8'
     y: '13'
     Realm:  Universe
-  Sector_175:
+  Sector_Universe_175:
     x: '8'
     y: '14'
     Realm:  Universe
-  Sector_176:
+  Sector_Universe_176:
     x: '8'
     y: '15'
     Realm:  Universe
-  Sector_177:
+  Sector_Universe_177:
     x: '8'
     y: '16'
     Realm:  Universe
-  Sector_178:
+  Sector_Universe_178:
     x: '8'
     y: '17'
     Realm:  Universe
-  Sector_179:
+  Sector_Universe_179:
     x: '8'
     y: '18'
     Realm:  Universe
-  Sector_180:
+  Sector_Universe_180:
     x: '8'
     y: '19'
     Realm:  Universe
-  Sector_181:
+  Sector_Universe_181:
     x: '9'
     y: '0'
     Realm:  Universe
-  Sector_182:
+  Sector_Universe_182:
     x: '9'
     y: '1'
     Realm:  Universe
-  Sector_183:
+  Sector_Universe_183:
     x: '9'
     y: '2'
     Realm:  Universe
-  Sector_184:
+  Sector_Universe_184:
     x: '9'
     y: '3'
     Realm:  Universe
-  Sector_185:
+  Sector_Universe_185:
     x: '9'
     y: '4'
     Realm:  Universe
-  Sector_186:
+  Sector_Universe_186:
     x: '9'
     y: '5'
     Realm:  Universe
-  Sector_187:
+  Sector_Universe_187:
     x: '9'
     y: '6'
     letter: 'E'
     Realm:  Universe
-  Sector_188:
+  Sector_Universe_188:
     x: '9'
     y: '7'
     Realm:  Universe
-  Sector_189:
+  Sector_Universe_189:
     x: '9'
     y: '8'
     drops: 'K'
     Realm:  Universe
-  Sector_190:
+  Sector_Universe_190:
     x: '9'
     y: '9'
     letter: 'T'
     Realm:  Universe
-  Sector_191:
+  Sector_Universe_191:
     x: '9'
     y: '10'
     Realm:  Universe
-  Sector_192:
+  Sector_Universe_192:
     x: '9'
     y: '11'
     Realm:  Universe
-  Sector_193:
+  Sector_Universe_193:
     x: '9'
     y: '12'
     Realm:  Universe
-  Sector_194:
+  Sector_Universe_194:
     x: '9'
     y: '13'
     Realm:  Universe
-  Sector_195:
+  Sector_Universe_195:
     x: '9'
     y: '14'
     Realm:  Universe
-  Sector_196:
+  Sector_Universe_196:
     x: '9'
     y: '15'
     Realm:  Universe
-  Sector_197:
+  Sector_Universe_197:
     x: '9'
     y: '16'
     Realm:  Universe
-  Sector_198:
+  Sector_Universe_198:
     x: '9'
     y: '17'
     Realm:  Universe
-  Sector_199:
+  Sector_Universe_199:
     x: '9'
     y: '18'
     Realm:  Universe
-  Sector_200:
+  Sector_Universe_200:
     x: '9'
     y: '19'
     Realm:  Universe
-  Sector_201:
+  Sector_Universe_201:
     x: '10'
     y: '0'
     Realm:  Universe
-  Sector_202:
+  Sector_Universe_202:
     x: '10'
     y: '1'
     Realm:  Universe
-  Sector_203:
+  Sector_Universe_203:
     x: '10'
     y: '2'
     Realm:  Universe
-  Sector_204:
+  Sector_Universe_204:
     x: '10'
     y: '3'
     Realm:  Universe
-  Sector_205:
+  Sector_Universe_205:
     x: '10'
     y: '4'
     Realm:  Universe
-  Sector_206:
+  Sector_Universe_206:
     x: '10'
     y: '5'
     Realm:  Universe
-  Sector_207:
+  Sector_Universe_207:
     x: '10'
     y: '6'
     Realm:  Universe
-  Sector_208:
+  Sector_Universe_208:
     x: '10'
     y: '7'
     Realm:  Universe
-  Sector_209:
+  Sector_Universe_209:
     x: '10'
     y: '8'
     Realm:  Universe
-  Sector_210:
+  Sector_Universe_210:
     x: '10'
     y: '9'
     Realm:  Universe
-  Sector_211:
+  Sector_Universe_211:
     x: '10'
     y: '10'
     Realm:  Universe
-  Sector_212:
+  Sector_Universe_212:
     x: '10'
     y: '11'
     Realm:  Universe
-  Sector_213:
+  Sector_Universe_213:
     x: '10'
     y: '12'
     drops: 'HOQZJGIRNQJDETOOJNUFTCIGXVRUVWCKMRKWXTOLJXORDCAQXFJAOQXKISGEVRRNCOLVBCXFAMUSQWSHUYRUNHSYQLFVHWNUYG'
     Realm:  Universe
-  Sector_214:
+  Sector_Universe_214:
     x: '10'
     y: '13'
     Realm:  Universe
-  Sector_215:
+  Sector_Universe_215:
     x: '10'
     y: '14'
     Realm:  Universe
-  Sector_216:
+  Sector_Universe_216:
     x: '10'
     y: '15'
     Realm:  Universe
-  Sector_217:
+  Sector_Universe_217:
     x: '10'
     y: '16'
     Realm:  Universe
-  Sector_218:
+  Sector_Universe_218:
     x: '10'
     y: '17'
     Realm:  Universe
-  Sector_219:
+  Sector_Universe_219:
     x: '10'
     y: '18'
     Realm:  Universe
-  Sector_220:
+  Sector_Universe_220:
     x: '10'
     y: '19'
     Realm:  Universe
-  Sector_221:
+  Sector_Universe_221:
     x: '11'
     y: '0'
     Realm:  Universe
-  Sector_222:
+  Sector_Universe_222:
     x: '11'
     y: '1'
     Realm:  Universe
-  Sector_223:
+  Sector_Universe_223:
     x: '11'
     y: '2'
     Realm:  Universe
-  Sector_224:
+  Sector_Universe_224:
     x: '11'
     y: '3'
     Realm:  Universe
-  Sector_225:
+  Sector_Universe_225:
     x: '11'
     y: '4'
     Realm:  Universe
-  Sector_226:
+  Sector_Universe_226:
     x: '11'
     y: '5'
     Realm:  Universe
-  Sector_227:
+  Sector_Universe_227:
     x: '11'
     y: '6'
     drops: 'A'
     Realm:  Universe
-  Sector_228:
+  Sector_Universe_228:
     x: '11'
     y: '7'
     Realm:  Universe
-  Sector_229:
+  Sector_Universe_229:
     x: '11'
     y: '8'
     Realm:  Universe
-  Sector_230:
+  Sector_Universe_230:
     x: '11'
     y: '9'
     Realm:  Universe
-  Sector_231:
+  Sector_Universe_231:
     x: '11'
     y: '10'
     drops: 'WOSXLMZSZRJXODLLJGKEAZKYNZFGFXAC'
     Realm:  Universe
-  Sector_232:
+  Sector_Universe_232:
     x: '11'
     y: '11'
     Realm:  Universe
-  Sector_233:
+  Sector_Universe_233:
     x: '11'
     y: '12'
     letter: 'S'
     Realm:  Universe
-  Sector_234:
+  Sector_Universe_234:
     x: '11'
     y: '13'
     Realm:  Universe
-  Sector_235:
+  Sector_Universe_235:
     x: '11'
     y: '14'
     Realm:  Universe
-  Sector_236:
+  Sector_Universe_236:
     x: '11'
     y: '15'
     Realm:  Universe
-  Sector_237:
+  Sector_Universe_237:
     x: '11'
     y: '16'
     Realm:  Universe
-  Sector_238:
+  Sector_Universe_238:
     x: '11'
     y: '17'
     Realm:  Universe
-  Sector_239:
+  Sector_Universe_239:
     x: '11'
     y: '18'
     Realm:  Universe
-  Sector_240:
+  Sector_Universe_240:
     x: '11'
     y: '19'
     Realm:  Universe
-  Sector_241:
+  Sector_Universe_241:
     x: '12'
     y: '0'
     Realm:  Universe
-  Sector_242:
+  Sector_Universe_242:
     x: '12'
     y: '1'
     Realm:  Universe
-  Sector_243:
+  Sector_Universe_243:
     x: '12'
     y: '2'
     Realm:  Universe
-  Sector_244:
+  Sector_Universe_244:
     x: '12'
     y: '3'
     Realm:  Universe
-  Sector_245:
+  Sector_Universe_245:
     x: '12'
     y: '4'
     Realm:  Universe
-  Sector_246:
+  Sector_Universe_246:
     x: '12'
     y: '5'
     letter: F
     drops: 'BEARI'
     Realm:  Universe
-  Sector_247:
+  Sector_Universe_247:
     x: '12'
     y: '6'
     Realm:  Universe
-  Sector_248:
+  Sector_Universe_248:
     x: '12'
     y: '7'
     Realm:  Universe
-  Sector_249:
+  Sector_Universe_249:
     x: '12'
     y: '8'
     Realm:  Universe
-  Sector_250:
+  Sector_Universe_250:
     x: '12'
     y: '9'
     Realm:  Universe
-  Sector_251:
+  Sector_Universe_251:
     x: '12'
     y: '10'
     Realm:  Universe
-  Sector_252:
+  Sector_Universe_252:
     x: '12'
     y: '11'
     Realm:  Universe
-  Sector_253:
+  Sector_Universe_253:
     x: '12'
     y: '12'
     Realm:  Universe
-  Sector_254:
+  Sector_Universe_254:
     x: '12'
     y: '13'
     Realm:  Universe
-  Sector_255:
+  Sector_Universe_255:
     x: '12'
     y: '14'
     Realm:  Universe
-  Sector_256:
+  Sector_Universe_256:
     x: '12'
     y: '15'
     Realm:  Universe
-  Sector_257:
+  Sector_Universe_257:
     x: '12'
     y: '16'
     Realm:  Universe
-  Sector_258:
+  Sector_Universe_258:
     x: '12'
     y: '17'
     Realm:  Universe
-  Sector_259:
+  Sector_Universe_259:
     x: '12'
     y: '18'
     Realm:  Universe
-  Sector_260:
+  Sector_Universe_260:
     x: '12'
     y: '19'
     Realm:  Universe
-  Sector_261:
+  Sector_Universe_261:
     x: '13'
     y: '0'
     Realm:  Universe
-  Sector_262:
+  Sector_Universe_262:
     x: '13'
     y: '1'
     Realm:  Universe
-  Sector_263:
+  Sector_Universe_263:
     x: '13'
     y: '2'
     Realm:  Universe
-  Sector_264:
+  Sector_Universe_264:
     x: '13'
     y: '3'
     Realm:  Universe
-  Sector_265:
+  Sector_Universe_265:
     x: '13'
     y: '4'
     Realm:  Universe
-  Sector_266:
+  Sector_Universe_266:
     x: '13'
     y: '5'
     Realm:  Universe
-  Sector_267:
+  Sector_Universe_267:
     x: '13'
     y: '6'
     Realm:  Universe
-  Sector_268:
+  Sector_Universe_268:
     x: '13'
     y: '7'
     Realm:  Universe
-  Sector_269:
+  Sector_Universe_269:
     x: '13'
     y: '8'
     Realm:  Universe
-  Sector_270:
+  Sector_Universe_270:
     x: '13'
     y: '9'
     Realm:  Universe
-  Sector_271:
+  Sector_Universe_271:
     x: '13'
     y: '10'
     Realm:  Universe
-  Sector_272:
+  Sector_Universe_272:
     x: '13'
     y: '11'
     letter: 'D'
     Realm:  Universe
-  Sector_273:
+  Sector_Universe_273:
     x: '13'
     y: '12'
     Realm:  Universe
-  Sector_274:
+  Sector_Universe_274:
     x: '13'
     y: '13'
     Realm:  Universe
-  Sector_275:
+  Sector_Universe_275:
     x: '13'
     y: '14'
     Realm:  Universe
-  Sector_276:
+  Sector_Universe_276:
     x: '13'
     y: '15'
     Realm:  Universe
-  Sector_277:
+  Sector_Universe_277:
     x: '13'
     y: '16'
     Realm:  Universe
-  Sector_278:
+  Sector_Universe_278:
     x: '13'
     y: '17'
     Realm:  Universe
-  Sector_279:
+  Sector_Universe_279:
     x: '13'
     y: '18'
     Realm:  Universe
-  Sector_280:
+  Sector_Universe_280:
     x: '13'
     y: '19'
     Realm:  Universe
-  Sector_281:
+  Sector_Universe_281:
     x: '14'
     y: '0'
     Realm:  Universe
-  Sector_282:
+  Sector_Universe_282:
     x: '14'
     y: '1'
     Realm:  Universe
-  Sector_283:
+  Sector_Universe_283:
     x: '14'
     y: '2'
     Realm:  Universe
-  Sector_284:
+  Sector_Universe_284:
     x: '14'
     y: '3'
     Realm:  Universe
-  Sector_285:
+  Sector_Universe_285:
     x: '14'
     y: '4'
     Realm:  Universe
-  Sector_286:
+  Sector_Universe_286:
     x: '14'
     y: '5'
     Realm:  Universe
-  Sector_287:
+  Sector_Universe_287:
     x: '14'
     y: '6'
     Realm:  Universe
-  Sector_288:
+  Sector_Universe_288:
     x: '14'
     y: '7'
     Realm:  Universe
-  Sector_289:
+  Sector_Universe_289:
     x: '14'
     y: '8'
     Realm:  Universe
-  Sector_290:
+  Sector_Universe_290:
     x: '14'
     y: '9'
     Realm:  Universe
-  Sector_291:
+  Sector_Universe_291:
     x: '14'
     y: '10'
     Realm:  Universe
-  Sector_292:
+  Sector_Universe_292:
     x: '14'
     y: '11'
     Realm:  Universe
-  Sector_293:
+  Sector_Universe_293:
     x: '14'
     y: '12'
     Realm:  Universe
-  Sector_294:
+  Sector_Universe_294:
     x: '14'
     y: '13'
     Realm:  Universe
-  Sector_295:
+  Sector_Universe_295:
     x: '14'
     y: '14'
     Realm:  Universe
-  Sector_296:
+  Sector_Universe_296:
     x: '14'
     y: '15'
     Realm:  Universe
-  Sector_297:
+  Sector_Universe_297:
     x: '14'
     y: '16'
     Realm:  Universe
-  Sector_298:
+  Sector_Universe_298:
     x: '14'
     y: '17'
     Realm:  Universe
-  Sector_299:
+  Sector_Universe_299:
     x: '14'
     y: '18'
     Realm:  Universe
-  Sector_300:
+  Sector_Universe_300:
     x: '14'
     y: '19'
     Realm:  Universe
-  Sector_301:
+  Sector_Universe_301:
     x: '15'
     y: '0'
     Realm:  Universe
-  Sector_302:
+  Sector_Universe_302:
     x: '15'
     y: '1'
     Realm:  Universe
-  Sector_303:
+  Sector_Universe_303:
     x: '15'
     y: '2'
     Realm:  Universe
-  Sector_304:
+  Sector_Universe_304:
     x: '15'
     y: '3'
     Realm:  Universe
-  Sector_305:
+  Sector_Universe_305:
     x: '15'
     y: '4'
     Realm:  Universe
-  Sector_306:
+  Sector_Universe_306:
     x: '15'
     y: '5'
     Realm:  Universe
-  Sector_307:
+  Sector_Universe_307:
     x: '15'
     y: '6'
     Realm:  Universe
-  Sector_308:
+  Sector_Universe_308:
     x: '15'
     y: '7'
     Realm:  Universe
-  Sector_309:
+  Sector_Universe_309:
     x: '15'
     y: '8'
     Realm:  Universe
-  Sector_310:
+  Sector_Universe_310:
     x: '15'
     y: '9'
     Realm:  Universe
-  Sector_311:
+  Sector_Universe_311:
     x: '15'
     y: '10'
     Realm:  Universe
-  Sector_312:
+  Sector_Universe_312:
     x: '15'
     y: '11'
     Realm:  Universe
-  Sector_313:
+  Sector_Universe_313:
     x: '15'
     y: '12'
     Realm:  Universe
-  Sector_314:
+  Sector_Universe_314:
     x: '15'
     y: '13'
     Realm:  Universe
-  Sector_315:
+  Sector_Universe_315:
     x: '15'
     y: '14'
     Realm:  Universe
-  Sector_316:
+  Sector_Universe_316:
     x: '15'
     y: '15'
     Realm:  Universe
-  Sector_317:
+  Sector_Universe_317:
     x: '15'
     y: '16'
     Realm:  Universe
-  Sector_318:
+  Sector_Universe_318:
     x: '15'
     y: '17'
     Realm:  Universe
-  Sector_319:
+  Sector_Universe_319:
     x: '15'
     y: '18'
     Realm:  Universe
-  Sector_320:
+  Sector_Universe_320:
     x: '15'
     y: '19'
     Realm:  Universe
-  Sector_321:
+  Sector_Universe_321:
     x: '16'
     y: '0'
     Realm:  Universe
-  Sector_322:
+  Sector_Universe_322:
     x: '16'
     y: '1'
     Realm:  Universe
-  Sector_323:
+  Sector_Universe_323:
     x: '16'
     y: '2'
     Realm:  Universe
-  Sector_324:
+  Sector_Universe_324:
     x: '16'
     y: '3'
     Realm:  Universe
-  Sector_325:
+  Sector_Universe_325:
     x: '16'
     y: '4'
     Realm:  Universe
-  Sector_326:
+  Sector_Universe_326:
     x: '16'
     y: '5'
     Realm:  Universe
-  Sector_327:
+  Sector_Universe_327:
     x: '16'
     y: '6'
     Realm:  Universe
-  Sector_328:
+  Sector_Universe_328:
     x: '16'
     y: '7'
     Realm:  Universe
-  Sector_329:
+  Sector_Universe_329:
     x: '16'
     y: '8'
     Realm:  Universe
-  Sector_330:
+  Sector_Universe_330:
     x: '16'
     y: '9'
     Realm:  Universe
-  Sector_331:
+  Sector_Universe_331:
     x: '16'
     y: '10'
     Realm:  Universe
-  Sector_332:
+  Sector_Universe_332:
     x: '16'
     y: '11'
     Realm:  Universe
-  Sector_333:
+  Sector_Universe_333:
     x: '16'
     y: '12'
     Realm:  Universe
-  Sector_334:
+  Sector_Universe_334:
     x: '16'
     y: '13'
     Realm:  Universe
-  Sector_335:
+  Sector_Universe_335:
     x: '16'
     y: '14'
     Realm:  Universe
-  Sector_336:
+  Sector_Universe_336:
     x: '16'
     y: '15'
     Realm:  Universe
-  Sector_337:
+  Sector_Universe_337:
     x: '16'
     y: '16'
     Realm:  Universe
-  Sector_338:
+  Sector_Universe_338:
     x: '16'
     y: '17'
     Realm:  Universe
-  Sector_339:
+  Sector_Universe_339:
     x: '16'
     y: '18'
     Realm:  Universe
-  Sector_340:
+  Sector_Universe_340:
     x: '16'
     y: '19'
     Realm:  Universe
-  Sector_341:
+  Sector_Universe_341:
     x: '17'
     y: '0'
     Realm:  Universe
-  Sector_342:
+  Sector_Universe_342:
     x: '17'
     y: '1'
     Realm:  Universe
-  Sector_343:
+  Sector_Universe_343:
     x: '17'
     y: '2'
     Realm:  Universe
-  Sector_344:
+  Sector_Universe_344:
     x: '17'
     y: '3'
     Realm:  Universe
-  Sector_345:
+  Sector_Universe_345:
     x: '17'
     y: '4'
     Realm:  Universe
-  Sector_346:
+  Sector_Universe_346:
     x: '17'
     y: '5'
     Realm:  Universe
-  Sector_347:
+  Sector_Universe_347:
     x: '17'
     y: '6'
     Realm:  Universe
-  Sector_348:
+  Sector_Universe_348:
     x: '17'
     y: '7'
     Realm:  Universe
-  Sector_349:
+  Sector_Universe_349:
     x: '17'
     y: '8'
     Realm:  Universe
-  Sector_350:
+  Sector_Universe_350:
     x: '17'
     y: '9'
     Realm:  Universe
-  Sector_351:
+  Sector_Universe_351:
     x: '17'
     y: '10'
     Realm:  Universe
-  Sector_352:
+  Sector_Universe_352:
     x: '17'
     y: '11'
     Realm:  Universe
-  Sector_353:
+  Sector_Universe_353:
     x: '17'
     y: '12'
     Realm:  Universe
-  Sector_354:
+  Sector_Universe_354:
     x: '17'
     y: '13'
     Realm:  Universe
-  Sector_355:
+  Sector_Universe_355:
     x: '17'
     y: '14'
     Realm:  Universe
-  Sector_356:
+  Sector_Universe_356:
     x: '17'
     y: '15'
     Realm:  Universe
-  Sector_357:
+  Sector_Universe_357:
     x: '17'
     y: '16'
     Realm:  Universe
-  Sector_358:
+  Sector_Universe_358:
     x: '17'
     y: '17'
     Realm:  Universe
-  Sector_359:
+  Sector_Universe_359:
     x: '17'
     y: '18'
     Realm:  Universe
-  Sector_360:
+  Sector_Universe_360:
     x: '17'
     y: '19'
     Realm:  Universe
-  Sector_361:
+  Sector_Universe_361:
     x: '18'
     y: '0'
     Realm:  Universe
-  Sector_362:
+  Sector_Universe_362:
     x: '18'
     y: '1'
     Realm:  Universe
-  Sector_363:
+  Sector_Universe_363:
     x: '18'
     y: '2'
     Realm:  Universe
-  Sector_364:
+  Sector_Universe_364:
     x: '18'
     y: '3'
     Realm:  Universe
-  Sector_365:
+  Sector_Universe_365:
     x: '18'
     y: '4'
     Realm:  Universe
-  Sector_366:
+  Sector_Universe_366:
     x: '18'
     y: '5'
     Realm:  Universe
-  Sector_367:
+  Sector_Universe_367:
     x: '18'
     y: '6'
     Realm:  Universe
-  Sector_368:
+  Sector_Universe_368:
     x: '18'
     y: '7'
     Realm:  Universe
-  Sector_369:
+  Sector_Universe_369:
     x: '18'
     y: '8'
     Realm:  Universe
-  Sector_370:
+  Sector_Universe_370:
     x: '18'
     y: '9'
     Realm:  Universe
-  Sector_371:
+  Sector_Universe_371:
     x: '18'
     y: '10'
     Realm:  Universe
-  Sector_372:
+  Sector_Universe_372:
     x: '18'
     y: '11'
     Realm:  Universe
-  Sector_373:
+  Sector_Universe_373:
     x: '18'
     y: '12'
     Realm:  Universe
-  Sector_374:
+  Sector_Universe_374:
     x: '18'
     y: '13'
     Realm:  Universe
-  Sector_375:
+  Sector_Universe_375:
     x: '18'
     y: '14'
     Realm:  Universe
-  Sector_376:
+  Sector_Universe_376:
     x: '18'
     y: '15'
     Realm:  Universe
-  Sector_377:
+  Sector_Universe_377:
     x: '18'
     y: '16'
     Realm:  Universe
-  Sector_378:
+  Sector_Universe_378:
     x: '18'
     y: '17'
     Realm:  Universe
-  Sector_379:
+  Sector_Universe_379:
     x: '18'
     y: '18'
     Realm:  Universe
-  Sector_380:
+  Sector_Universe_380:
     x: '18'
     y: '19'
     Realm:  Universe
-  Sector_381:
+  Sector_Universe_381:
     x: '19'
     y: '0'
     Realm:  Universe
-  Sector_382:
+  Sector_Universe_382:
     x: '19'
     y: '1'
     Realm:  Universe
-  Sector_383:
+  Sector_Universe_383:
     x: '19'
     y: '2'
     Realm:  Universe
-  Sector_384:
+  Sector_Universe_384:
     x: '19'
     y: '3'
     Realm:  Universe
-  Sector_385:
+  Sector_Universe_385:
     x: '19'
     y: '4'
     Realm:  Universe
-  Sector_386:
+  Sector_Universe_386:
     x: '19'
     y: '5'
     Realm:  Universe
-  Sector_387:
+  Sector_Universe_387:
     x: '19'
     y: '6'
     Realm:  Universe
-  Sector_388:
+  Sector_Universe_388:
     x: '19'
     y: '7'
     Realm:  Universe
-  Sector_389:
+  Sector_Universe_389:
     x: '19'
     y: '8'
     Realm:  Universe
-  Sector_390:
+  Sector_Universe_390:
     x: '19'
     y: '9'
     Realm:  Universe
-  Sector_391:
+  Sector_Universe_391:
     x: '19'
     y: '10'
     Realm:  Universe
-  Sector_392:
+  Sector_Universe_392:
     x: '19'
     y: '11'
     Realm:  Universe
-  Sector_393:
+  Sector_Universe_393:
     x: '19'
     y: '12'
     Realm:  Universe
-  Sector_394:
+  Sector_Universe_394:
     x: '19'
     y: '13'
     Realm:  Universe
-  Sector_395:
+  Sector_Universe_395:
     x: '19'
     y: '14'
     Realm:  Universe
-  Sector_396:
+  Sector_Universe_396:
     x: '19'
     y: '15'
     Realm:  Universe
-  Sector_397:
+  Sector_Universe_397:
     x: '19'
     y: '16'
     Realm:  Universe
-  Sector_398:
+  Sector_Universe_398:
     x: '19'
     y: '17'
     Realm:  Universe
-  Sector_399:
+  Sector_Universe_399:
     x: '19'
     y: '18'
     Realm:  Universe
-  Sector_400:
+  Sector_Universe_400:
     x: '19'
     y: '19'
     Realm:  Universe
 
-  Sector_190_Etherworld:
+  Sector_Etherworld_190:
     x: '9'
     y: '9'
     Realm:  Etherworld
+
+  Sector_Lawn_1:
+    x: '0'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_2:
+    x: '0'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_3:
+    x: '0'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_4:
+    x: '0'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_5:
+    x: '0'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_6:
+    x: '0'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_7:
+    x: '0'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_8:
+    x: '0'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_9:
+    x: '0'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_10:
+    x: '0'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_11:
+    x: '0'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_12:
+    x: '0'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_13:
+    x: '0'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_14:
+    x: '0'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_15:
+    x: '0'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_16:
+    x: '0'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_17:
+    x: '0'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_18:
+    x: '0'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_19:
+    x: '0'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_20:
+    x: '0'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_21:
+    x: '1'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_22:
+    x: '1'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_23:
+    x: '1'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_24:
+    x: '1'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_25:
+    x: '1'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_26:
+    x: '1'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_27:
+    x: '1'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_28:
+    x: '1'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_29:
+    x: '1'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_30:
+    x: '1'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_31:
+    x: '1'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_32:
+    x: '1'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_33:
+    x: '1'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_34:
+    x: '1'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_35:
+    x: '1'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_36:
+    x: '1'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_37:
+    x: '1'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_38:
+    x: '1'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_39:
+    x: '1'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_40:
+    x: '1'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_41:
+    x: '2'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_42:
+    x: '2'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_43:
+    x: '2'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_44:
+    x: '2'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_45:
+    x: '2'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_46:
+    x: '2'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_47:
+    x: '2'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_48:
+    x: '2'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_49:
+    x: '2'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_50:
+    x: '2'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_51:
+    x: '2'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_52:
+    x: '2'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_53:
+    x: '2'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_54:
+    x: '2'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_55:
+    x: '2'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_56:
+    x: '2'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_57:
+    x: '2'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_58:
+    x: '2'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_59:
+    x: '2'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_60:
+    x: '2'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_61:
+    x: '3'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_62:
+    x: '3'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_63:
+    x: '3'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_64:
+    x: '3'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_65:
+    x: '3'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_66:
+    x: '3'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_67:
+    x: '3'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_68:
+    x: '3'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_69:
+    x: '3'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_70:
+    x: '3'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_71:
+    x: '3'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_72:
+    x: '3'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_73:
+    x: '3'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_74:
+    x: '3'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_75:
+    x: '3'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_76:
+    x: '3'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_77:
+    x: '3'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_78:
+    x: '3'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_79:
+    x: '3'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_80:
+    x: '3'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_81:
+    x: '4'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_82:
+    x: '4'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_83:
+    x: '4'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_84:
+    x: '4'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_85:
+    x: '4'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_86:
+    x: '4'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_87:
+    x: '4'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_88:
+    x: '4'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_89:
+    x: '4'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_90:
+    x: '4'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_91:
+    x: '4'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_92:
+    x: '4'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_93:
+    x: '4'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_94:
+    x: '4'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_95:
+    x: '4'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_96:
+    x: '4'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_97:
+    x: '4'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_98:
+    x: '4'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_99:
+    x: '4'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_100:
+    x: '4'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_101:
+    x: '5'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_102:
+    x: '5'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_103:
+    x: '5'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_104:
+    x: '5'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_105:
+    x: '5'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_106:
+    x: '5'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_107:
+    x: '5'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_108:
+    x: '5'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_109:
+    x: '5'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_110:
+    x: '5'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_111:
+    x: '5'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_112:
+    x: '5'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_113:
+    x: '5'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_114:
+    x: '5'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_115:
+    x: '5'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_116:
+    x: '5'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_117:
+    x: '5'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_118:
+    x: '5'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_119:
+    x: '5'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_120:
+    x: '5'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_121:
+    x: '6'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_122:
+    x: '6'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_123:
+    x: '6'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_124:
+    x: '6'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_125:
+    x: '6'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_126:
+    x: '6'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_127:
+    x: '6'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_128:
+    x: '6'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_129:
+    x: '6'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_130:
+    x: '6'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_131:
+    x: '6'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_132:
+    x: '6'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_133:
+    x: '6'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_134:
+    x: '6'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_135:
+    x: '6'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_136:
+    x: '6'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_137:
+    x: '6'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_138:
+    x: '6'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_139:
+    x: '6'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_140:
+    x: '6'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_141:
+    x: '7'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_142:
+    x: '7'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_143:
+    x: '7'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_144:
+    x: '7'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_145:
+    x: '7'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_146:
+    x: '7'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_147:
+    x: '7'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_148:
+    x: '7'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_149:
+    x: '7'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_150:
+    x: '7'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_151:
+    x: '7'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_152:
+    x: '7'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_153:
+    x: '7'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_154:
+    x: '7'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_155:
+    x: '7'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_156:
+    x: '7'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_157:
+    x: '7'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_158:
+    x: '7'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_159:
+    x: '7'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_160:
+    x: '7'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_161:
+    x: '8'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_162:
+    x: '8'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_163:
+    x: '8'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_164:
+    x: '8'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_165:
+    x: '8'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_166:
+    x: '8'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_167:
+    x: '8'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_168:
+    x: '8'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_169:
+    x: '8'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_170:
+    x: '8'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_171:
+    x: '8'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_172:
+    x: '8'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_173:
+    x: '8'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_174:
+    x: '8'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_175:
+    x: '8'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_176:
+    x: '8'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_177:
+    x: '8'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_178:
+    x: '8'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_179:
+    x: '8'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_180:
+    x: '8'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_181:
+    x: '9'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_182:
+    x: '9'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_183:
+    x: '9'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_184:
+    x: '9'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_185:
+    x: '9'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_186:
+    x: '9'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_187:
+    x: '9'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_188:
+    x: '9'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_189:
+    x: '9'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_190:
+    x: '9'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_191:
+    x: '9'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_192:
+    x: '9'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_193:
+    x: '9'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_194:
+    x: '9'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_195:
+    x: '9'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_196:
+    x: '9'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_197:
+    x: '9'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_198:
+    x: '9'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_199:
+    x: '9'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_200:
+    x: '9'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_201:
+    x: '10'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_202:
+    x: '10'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_203:
+    x: '10'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_204:
+    x: '10'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_205:
+    x: '10'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_206:
+    x: '10'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_207:
+    x: '10'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_208:
+    x: '10'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_209:
+    x: '10'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_210:
+    x: '10'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_211:
+    x: '10'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_212:
+    x: '10'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_213:
+    x: '10'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_214:
+    x: '10'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_215:
+    x: '10'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_216:
+    x: '10'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_217:
+    x: '10'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_218:
+    x: '10'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_219:
+    x: '10'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_220:
+    x: '10'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_221:
+    x: '11'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_222:
+    x: '11'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_223:
+    x: '11'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_224:
+    x: '11'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_225:
+    x: '11'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_226:
+    x: '11'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_227:
+    x: '11'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_228:
+    x: '11'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_229:
+    x: '11'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_230:
+    x: '11'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_231:
+    x: '11'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_232:
+    x: '11'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_233:
+    x: '11'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_234:
+    x: '11'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_235:
+    x: '11'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_236:
+    x: '11'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_237:
+    x: '11'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_238:
+    x: '11'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_239:
+    x: '11'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_240:
+    x: '11'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_241:
+    x: '12'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_242:
+    x: '12'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_243:
+    x: '12'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_244:
+    x: '12'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_245:
+    x: '12'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_246:
+    x: '12'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_247:
+    x: '12'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_248:
+    x: '12'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_249:
+    x: '12'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_250:
+    x: '12'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_251:
+    x: '12'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_252:
+    x: '12'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_253:
+    x: '12'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_254:
+    x: '12'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_255:
+    x: '12'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_256:
+    x: '12'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_257:
+    x: '12'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_258:
+    x: '12'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_259:
+    x: '12'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_260:
+    x: '12'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_261:
+    x: '13'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_262:
+    x: '13'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_263:
+    x: '13'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_264:
+    x: '13'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_265:
+    x: '13'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_266:
+    x: '13'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_267:
+    x: '13'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_268:
+    x: '13'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_269:
+    x: '13'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_270:
+    x: '13'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_271:
+    x: '13'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_272:
+    x: '13'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_273:
+    x: '13'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_274:
+    x: '13'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_275:
+    x: '13'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_276:
+    x: '13'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_277:
+    x: '13'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_278:
+    x: '13'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_279:
+    x: '13'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_280:
+    x: '13'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_281:
+    x: '14'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_282:
+    x: '14'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_283:
+    x: '14'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_284:
+    x: '14'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_285:
+    x: '14'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_286:
+    x: '14'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_287:
+    x: '14'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_288:
+    x: '14'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_289:
+    x: '14'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_290:
+    x: '14'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_291:
+    x: '14'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_292:
+    x: '14'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_293:
+    x: '14'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_294:
+    x: '14'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_295:
+    x: '14'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_296:
+    x: '14'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_297:
+    x: '14'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_298:
+    x: '14'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_299:
+    x: '14'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_300:
+    x: '14'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_301:
+    x: '15'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_302:
+    x: '15'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_303:
+    x: '15'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_304:
+    x: '15'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_305:
+    x: '15'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_306:
+    x: '15'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_307:
+    x: '15'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_308:
+    x: '15'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_309:
+    x: '15'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_310:
+    x: '15'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_311:
+    x: '15'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_312:
+    x: '15'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_313:
+    x: '15'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_314:
+    x: '15'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_315:
+    x: '15'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_316:
+    x: '15'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_317:
+    x: '15'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_318:
+    x: '15'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_319:
+    x: '15'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_320:
+    x: '15'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_321:
+    x: '16'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_322:
+    x: '16'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_323:
+    x: '16'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_324:
+    x: '16'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_325:
+    x: '16'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_326:
+    x: '16'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_327:
+    x: '16'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_328:
+    x: '16'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_329:
+    x: '16'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_330:
+    x: '16'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_331:
+    x: '16'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_332:
+    x: '16'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_333:
+    x: '16'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_334:
+    x: '16'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_335:
+    x: '16'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_336:
+    x: '16'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_337:
+    x: '16'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_338:
+    x: '16'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_339:
+    x: '16'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_340:
+    x: '16'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_341:
+    x: '17'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_342:
+    x: '17'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_343:
+    x: '17'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_344:
+    x: '17'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_345:
+    x: '17'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_346:
+    x: '17'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_347:
+    x: '17'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_348:
+    x: '17'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_349:
+    x: '17'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_350:
+    x: '17'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_351:
+    x: '17'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_352:
+    x: '17'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_353:
+    x: '17'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_354:
+    x: '17'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_355:
+    x: '17'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_356:
+    x: '17'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_357:
+    x: '17'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_358:
+    x: '17'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_359:
+    x: '17'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_360:
+    x: '17'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_361:
+    x: '18'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_362:
+    x: '18'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_363:
+    x: '18'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_364:
+    x: '18'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_365:
+    x: '18'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_366:
+    x: '18'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_367:
+    x: '18'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_368:
+    x: '18'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_369:
+    x: '18'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_370:
+    x: '18'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_371:
+    x: '18'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_372:
+    x: '18'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_373:
+    x: '18'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_374:
+    x: '18'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_375:
+    x: '18'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_376:
+    x: '18'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_377:
+    x: '18'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_378:
+    x: '18'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_379:
+    x: '18'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_380:
+    x: '18'
+    y: '19'
+    Realm:  Lawn
+  Sector_Lawn_381:
+    x: '19'
+    y: '0'
+    Realm:  Lawn
+  Sector_Lawn_382:
+    x: '19'
+    y: '1'
+    Realm:  Lawn
+  Sector_Lawn_383:
+    x: '19'
+    y: '2'
+    Realm:  Lawn
+  Sector_Lawn_384:
+    x: '19'
+    y: '3'
+    Realm:  Lawn
+  Sector_Lawn_385:
+    x: '19'
+    y: '4'
+    Realm:  Lawn
+  Sector_Lawn_386:
+    x: '19'
+    y: '5'
+    Realm:  Lawn
+  Sector_Lawn_387:
+    x: '19'
+    y: '6'
+    Realm:  Lawn
+  Sector_Lawn_388:
+    x: '19'
+    y: '7'
+    Realm:  Lawn
+  Sector_Lawn_389:
+    x: '19'
+    y: '8'
+    Realm:  Lawn
+  Sector_Lawn_390:
+    x: '19'
+    y: '9'
+    Realm:  Lawn
+  Sector_Lawn_391:
+    x: '19'
+    y: '10'
+    Realm:  Lawn
+  Sector_Lawn_392:
+    x: '19'
+    y: '11'
+    Realm:  Lawn
+  Sector_Lawn_393:
+    x: '19'
+    y: '12'
+    Realm:  Lawn
+  Sector_Lawn_394:
+    x: '19'
+    y: '13'
+    Realm:  Lawn
+  Sector_Lawn_395:
+    x: '19'
+    y: '14'
+    Realm:  Lawn
+  Sector_Lawn_396:
+    x: '19'
+    y: '15'
+    Realm:  Lawn
+  Sector_Lawn_397:
+    x: '19'
+    y: '16'
+    Realm:  Lawn
+  Sector_Lawn_398:
+    x: '19'
+    y: '17'
+    Realm:  Lawn
+  Sector_Lawn_399:
+    x: '19'
+    y: '18'
+    Realm:  Lawn
+  Sector_Lawn_400:
+    x: '19'
+    y: '19'
+    Realm:  Lawn

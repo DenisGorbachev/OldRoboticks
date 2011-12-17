@@ -20,3 +20,6 @@ User:
   Gamemaster:
     username:			"gamemaster"
     password:			"asdf"
+  RiderOnTheStormBotUser:
+    username:           "RiderOnTheStormBotUser"
+    password:           "asdf"
