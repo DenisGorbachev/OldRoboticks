@@ -13,7 +13,7 @@ class TutorialCommand extends UserInterfaceCommand {
 	public function execute($options, $arguments) {
         $realmCreateCommand = new RealmCreateCommand();
         $realmCreateCommand->setOptions(array(
-            'type' => 'MapAndMoveTutorial'
+            'controller_class' => 'MapAndMoveTutorialRealmController'
         ));
         $realmCreateCommand->setArguments(array(
             'name' => 'Map-and-move tutorial for user #'.$this->getUserId(),

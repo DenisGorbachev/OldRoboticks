@@ -9,19 +9,20 @@ class TutorialSpec extends BaseSpec {
 				->and('User', 'Alice')
 			->when('Exec', 'tutorial')
             ->then('Success')
-            ->then('Contains', 'created')
-                ->and('Contains', 'mail')
-            ->when('Exec', 'receive')
-            ->then('Contains', 'realm')
-            ->given('Realm', 'New')
-            ->when('Exec', 'receive --realm')
-            ->then('Contains', 'move')
-            ->given('Robot', 'newborn') # TEA
-            ->when('Exec', 'mv 5,5')
-            ->then('Success')
-                ->and('Contains', 'mail')
-            ->when('Exec', 'receive --realm')
-            ->then('Contains', 'move')
+            ->markTestIncomplete()
+//            ->then('Contains', 'created')
+//                ->and('Contains', 'mail')
+//            ->when('Exec', 'receive')
+//            ->then('Contains', 'realm')
+//            ->given('Realm', 'New')
+//            ->when('Exec', 'receive --realm')
+//            ->then('Contains', 'move')
+//            ->given('Robot', 'newborn') # TEA
+//            ->when('Exec', 'mv 5,5')
+//            ->then('Success')
+//                ->and('Contains', 'mail')
+//            ->when('Exec', 'receive --realm')
+//            ->then('Contains', 'move')
 	;}
 
     /* Borderline */
