@@ -188,12 +188,20 @@ Mail:
 Bot:
   columns:
     controller_class:   { type: string(255), readonly: true }
-    user_id:				{ type: integer }
+    username:           { type: string(255), readonly: true }
+    password:           { type: string(255), readonly: true }
+    info:                 { type: array(65535) }
     active_at:           { type: integer, default: 0 }
-  relations:
-    User:
-      foreignAlias:		Bots
-      local:				user_id
-      foreign:			id
-      onDelete:			CASCADE
-      onUpdate:		CASCADE
+#  relations:
+#    User:
+#      foreignAlias:		Bots
+#      local:				user_id
+#      foreign:			id
+#      onDelete:			CASCADE
+#      onUpdate:		CASCADE
+#    Realms:
+#      foreignAlias:		Bots
+#      local:				user_id
+#      foreign:			user_id
+#      onDelete:			CASCADE
+#      onUpdate:		CASCADE

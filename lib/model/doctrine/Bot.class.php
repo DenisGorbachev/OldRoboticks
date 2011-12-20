@@ -12,7 +12,19 @@
  */
 class Bot extends BaseBot
 {
+    public $controller;
+
     public function __toString() {
         return '#'.$this->getId();
+    }
+
+    public function getController() {
+        if (empty($this->controller)) {
+            $controllerClass = $this->getControllerClass();
+            $clientFilename = sfConfig::get('sf_root_dir').'/client/roboticks';
+            $homeDirname = sfConfig::get('sf_cache_dir').'/bots/'.$this->getId();
+            $this->controller = new $controllerClass($this, $clientFilename, $homeDirname);
+        }
+        return $this->controller;
     }
 }

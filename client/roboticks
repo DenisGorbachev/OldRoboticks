@@ -1,8 +1,18 @@
 #!/usr/bin/env php
 <?php
+    umask(0);
+
+    $homedir = getenv('HOME');
+    if ($homedir) {
+        $cachedir = $homedir.'/.roboticks';
+        if (!file_exists($cachedir)) {
+            mkdir($cachedir, 0755, true);
+        }
+    }
+    
 	define('VERSION', '0.1a');
 	define('BASEDIR', dirname(__FILE__));
-	define('CACHEDIR', BASEDIR.'/cache');
+	define('CACHEDIR', (empty($cachedir)? BASEDIR.'/cache' : $cachedir));
 	define('LIBDIR', BASEDIR.'/lib');
 	define('DEBUG', file_exists(CACHEDIR.'/debug'));
 	try {

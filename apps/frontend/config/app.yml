@@ -13,4 +13,3 @@ all:
   turn_duration:
     increment:      2
     limit:              60
-
