@@ -10,6 +10,7 @@ class RiderOnTheStormBotController extends BaseBotController {
             $this->exec('select '.$robotId);
             $this->exec('mv 5,5');
         }
+        // TODO: setActiveAt
     }
 
 }
