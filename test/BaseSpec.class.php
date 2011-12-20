@@ -38,7 +38,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	}
 
     public function getClientCacheDir() {
-        return $this->getClientDir().'/cache';
+        return getenv('HOME').'/.roboticks';
     }
 
 	public function getRobotId($name) {
