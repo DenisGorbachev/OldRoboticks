@@ -14,6 +14,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
     public function setUp() {
         parent::setUp();
         $this->setDebug(true);
+        $this->unlinkIfExists($this->getClientCacheDir().'/cookie.jar');
         $this->unlinkIfExists($this->getClientCacheDir().'/realmId');
         $this->unlinkIfExists($this->getClientCacheDir().'/robotId');
     }
@@ -64,7 +65,6 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
         $dbname = $match[1];
         $cmd = "mysql -u $username ".($password? "-p$password" : "")." $dbname < $dump";
         `$cmd`;
-		file_put_contents($this->getClientDir().'/cache/cookie.jar', '');
 	}
 	
 	public function givenUser($login, $password = 'asdf') {
