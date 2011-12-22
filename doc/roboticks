@@ -1,0 +1,15 @@
+"Roboticks" is a highly dynamic game of skill, speed and systems thinking.
+
+It is both online and turn-based, two distinct concepts being brought to a harmony.
+
+The game is played by issuing commands to robots made of letters of English alphabet. The map is divided into sectors, some of which contain "extractable" letters. You can command the robot to extract the letter, pick it, move to other sector, drop the letter, extract another one — ultimately bringing a large number of different letters to one sector. Then you can assemble a new robot from these letters. The properties of a robot are determined by amount and identity of letters it contains. After you've assembled a numerous group of different robots, it's time to crush the opponents. Move closer to your enemies, then fire at their robots. Hitting at least on letter in a robot disables it. After the fight, the winner can disassemble remaining carcasses into letters, and assemble new robots to compensate for the losses.
+
+*You begin* by controlling a small robot. The map is divided into sectors, each of them 
+
+Goals vary from realm to realm and include the following:
+* Eliminating all of your opponents.
+* Constructing a full phrase.
+* Capturing and holding a sector.
+* Capturing and holding a letter.
+* Defending your stronghold from the waves of enemies.
+* 
