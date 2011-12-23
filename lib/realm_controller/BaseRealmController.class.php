@@ -39,4 +39,6 @@ abstract class BaseRealmController {
 
     abstract public function attachListeners();
 
+    abstract public function initialize();
+
 }

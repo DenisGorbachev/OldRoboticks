@@ -22,6 +22,10 @@ class RealmCreateSpec extends BaseSpec {
                 ->and('Contains', 'MapAndMoveTutorial')
 	;}
 
+    public function testPlayAfterCreate() {
+        
+    }
+
 	/* Borderline */
 
     public function testInvalidSameName() {

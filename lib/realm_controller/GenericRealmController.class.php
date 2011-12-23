@@ -28,4 +28,8 @@ class GenericRealmController extends BaseRealmController {
         return $this->generateNotification($event, 'repair', 'My robot '.$event->getSubject().' repaired your robot '.$event['target']->__toStatusString());
     }
 
+    public function initialize() {
+        
+    }
+
 }

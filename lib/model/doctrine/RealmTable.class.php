@@ -7,6 +7,15 @@
  */
 class RealmTable extends Doctrine_Table
 {
+    public function getUninitializedRealmsQuery() {
+        return $this->createQuery('r')
+            ->where('r.initialized = ?', false)
+    ;}
+
+    public function getUninitializedRealms() {
+        return $this->getUninitializedRealmsQuery()->execute();
+    }
+
     /**
      * Returns an instance of this class.
      *

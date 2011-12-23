@@ -21,6 +21,7 @@ Realm:
     password:                { type: string(255) }
     controller_class:	  { type: string(255), readonly: true } # Used for realm controllers initialization
     owner_id:                { type: integer }
+    initialized:            { type: boolean, default: false }
   relations:
     Owner:
       class:                  User
