@@ -5,12 +5,38 @@ require_once dirname(__FILE__).'/ServerCommand.class.php';
 abstract class UserInterfaceCommand extends ServerCommand {
     public $empty_cell_placeholder = '-';
 
+    public $notifications = array();
+
     public function selectRobotId($robotId) {
         file_put_contents(CACHEDIR . '/robotId', $robotId);
     }
 
     public function selectRealmId($realmId) {
         file_put_contents(CACHEDIR . '/realmId', $realmId);
+    }
+
+    public function request($controller, $parameters = array(), $method = 'GET', $options = array()) {
+        $response = parent::request($controller, $parameters, $method, $options);
+        $message = __($response['message']);
+        if ($response['success']) {
+            $this->echoln('Success: '.$message);
+            if (!empty($response['notifications'])) {
+                $this->notifications = array_merge($this->notifications, $response['notifications']);
+            }
+        } else {
+            $this->echoln('Failure: '.$message);
+            if (!empty($response['globalErrors'])) {
+                foreach ($response['globalErrors'] as $error) {
+                    $this->echoln('  - '.__($error));
+                }
+            }
+            if (!empty($response['errors'])) {
+                foreach ($response['errors'] as $field=>$error) {
+                    $this->echoln('  - '.__(array('text' => ucfirst($field), 'arguments' => array())).': '.__($error));
+                }
+            }
+        }
+        return $response;
     }
 
     public function table($table, $sortByColumnIndex = false)
@@ -52,6 +78,17 @@ abstract class UserInterfaceCommand extends ServerCommand {
 
     public function coords($sector) {
         return $this->sector($sector['x'], $sector['y']);
+    }
+
+    public function echoln($string = '') {
+        echo $string.PHP_EOL;
+    }
+
+    public function postExecute($options, $arguments) {
+        foreach ($this->notifications as $notification) {
+            $this->echoln(__($notification));
+        }
+        parent::postExecute($options, $arguments);
     }
 
 }

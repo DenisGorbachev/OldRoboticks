@@ -193,18 +193,19 @@ Bot:
     controller_class:   { type: string(255), readonly: true }
     username:           { type: string(255), readonly: true }
     password:           { type: string(255), readonly: true }
+    realm_id:           { type: integer }
     info:                 { type: array(65535) }
     active_at:           { type: integer, default: 0 }
-#  relations:
+  relations:
 #    User:
 #      foreignAlias:		Bots
 #      local:				user_id
 #      foreign:			id
 #      onDelete:			CASCADE
 #      onUpdate:		CASCADE
-#    Realms:
-#      foreignAlias:		Bots
-#      local:				user_id
-#      foreign:			user_id
-#      onDelete:			CASCADE
-#      onUpdate:		CASCADE
+    Realms:
+      foreignAlias:		Bots
+      local:				realm_id
+      foreign:			id
+      onDelete:			CASCADE
+      onUpdate:		CASCADE

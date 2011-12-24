@@ -7,7 +7,7 @@ class rsLaunchBotTask extends sfBaseTask {
 		));
 		
 		$this->addOptions(array(
-//			new sfCommandOption('daemonize', 'd', sfCommandOption::PARAMETER_NONE, 'Run in daemonized mode'),
+			new sfCommandOption('recover-info', 'r', sfCommandOption::PARAMETER_NONE, 'Drop the existing info, start anew'),
 //			new sfCommandOption('probability', 'p', sfCommandOption::PARAMETER_REQUIRED, 'Probability of a letter (float, from 0 to 1)', 0.02),
 //			new sfCommandOption('print-only', 'o', sfCommandOption::PARAMETER_NONE, 'Only print, do not insert into database'),
 		));
@@ -25,7 +25,12 @@ class rsLaunchBotTask extends sfBaseTask {
         $this->connection = Doctrine_Manager::connection();
 
         $bot = BotTable::getInstance()->find($arguments['bot_id']);
-        $bot->getController()->play();
+        $controller = $bot->getController();
+        if ($options['recover-info']) {
+            $info = $controller->recoverInfo();
+            $bot->setInfo($info);
+        }
+        $controller->play();
         $bot->save();
 	}
 

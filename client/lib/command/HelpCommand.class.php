@@ -49,18 +49,17 @@ class HelpCommand extends UserInterfaceCommand {
 			$argumentsSynopsys[] = $argument;
 			$argumentsDescription[] = '   '.$argument.str_repeat(' ', 14-strlen($argument)).$description;
 		}
-		echoln($arguments['command'].' - '.$cmd->getShortDescription().PHP_EOL);
-		echoln('usage: '.$argv[0].' '.$arguments['command'].($optionsSynopsys? ' '.implode(' ', $optionsSynopsys) : '').($argumentsSynopsys? ' '.implode(' ', $argumentsSynopsys) : '').PHP_EOL);
+		$this->echoln($arguments['command'].' - '.$cmd->getShortDescription().PHP_EOL);
+		$this->echoln('usage: '.$argv[0].' '.$arguments['command'].($optionsSynopsys? ' '.implode(' ', $optionsSynopsys) : '').($argumentsSynopsys? ' '.implode(' ', $argumentsSynopsys) : '').PHP_EOL);
 		if (($description = $this->getLongDescription())) {
-			echoln($description.PHP_EOL);
+			$this->echoln($description.PHP_EOL);
 		}
 		if ($argumentsDescription) {
-			echoln(implode(PHP_EOL, $argumentsDescription));
+			$this->echoln(implode(PHP_EOL, $argumentsDescription));
 		}
 		if ($optionsDescription) {
-			echoln(implode(PHP_EOL, $optionsDescription));
+			$this->echoln(implode(PHP_EOL, $optionsDescription));
 		}
-		echoln();
 	}
 	
 }
