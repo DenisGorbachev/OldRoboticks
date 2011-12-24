@@ -12,25 +12,15 @@ abstract class BaseBotController {
     }
 
     public function exec($command) {
-        $cmd = 'HOME='.escapeshellarg($this->homeDirname).'; '.$this->clientFilename.' '.$command;
-        $this->log('executing', $command.PHP_EOL);
+        $cmd = 'export HOME='.escapeshellarg($this->homeDirname).'; export RK_OUTPUT_FORMAT='.escapeshellarg('json').'; '.$this->clientFilename.' '.$command;
+        $this->log('executing', $command);
         $result = `$cmd`;
         $this->log('result', $result);
         return $result;
     }
 
-    public function split($infoString) {
-        $result = array();
-        foreach (explode("\n", $infoString) as $infoStringRow) {
-            $splinters = explode('  ', $infoStringRow);
-            array_walk($splinters, 'trim');
-            $result[] = $splinters;
-        }
-        return $result;
-    }
-
     public function log($type, $string) {
-        file_put_contents($this->homeDirname.'/log', date('Y-m-d H:i:s').' | '.$type.' | '.$string, FILE_APPEND);
+        file_put_contents($this->homeDirname.'/log', date('Y-m-d H:i:s').' | '.$type.' | '.trim($string).PHP_EOL, FILE_APPEND);
     }
 
     public function play() {
@@ -48,25 +38,19 @@ abstract class BaseBotController {
     }
 
     public function recoverInfo() {
+        $ls = $this->getInfoArray('ls');
         return array(
-            'robots' => $this->getInfoArray('ls')
+            'robots' => $ls['objects']
         );
     }
 
     public function getInfoArray($command) {
-        $splinters = $this->split($this->exec($command));
-        var_dump($splinters);
-        $numberedInfoarrays = array_slice($splinters, 2, count($splinters));
-        $names = array_shift($numberedInfoarrays);
-        $result = array();
-        foreach ($numberedInfoarrays as $numberedInfoarray) {
-            $infoarray = array();
-            foreach ($names as $i=>$name) {
-                $infoarray[$name] = $numberedInfoarray[$i];
-            }
-            $result[$numberedInfoarray[0]] = $infoarray;
-        }
-        return $result;
+        $infoArrays = $this->getInfoArrays($command);
+        return $infoArrays[0];
+    }
+
+    public function getInfoArrays($command) {
+        return json_decode($this->exec($command), true);
     }
 
     public function setBot($bot)

@@ -12,12 +12,12 @@ class RiderOnTheStormSpec extends BotBaseSpec {
     ;}
 
 	public function testNormal() {
-//        $this
-//		    ->when('NightComesDown')
+        $this
+		    ->when('MyNightComesDown')
 	;}
 
 	/* Borderline */
-    public function whenNightComesDown($times = 1) {
+    public function whenMyNightComesDown($times = 1) {
         return parent::whenNightComesDown($this->getBotId('RiderOnTheStorm'), $times);
     }
 
