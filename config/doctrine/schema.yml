@@ -19,9 +19,11 @@ Realm:
   columns:
     name:			         { type: string(255), minlength: 3, unique: true, readonly: true }
     password:                { type: string(255) }
+    width:                      { type: integer, default: 50, readonly: true }
+    height:                      { type: integer, default: 50, readonly: true }
+    options:                { type: array(65535), default: [] }
     controller_class:	  { type: string(255), readonly: true } # Used for realm controllers initialization
     owner_id:                { type: integer }
-    initialized:            { type: boolean, default: false }
   relations:
     Owner:
       class:                  User

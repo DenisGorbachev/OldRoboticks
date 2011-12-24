@@ -112,6 +112,10 @@ class Robot extends BaseRobot {
 		);
 	}
 
+    public function randomizeSector() {
+        $this->setSector(SectorTable::getInstance()->getRandomSector());
+    }
+
     public function hasInFireableRange(Robot $target) {
         return SectorTable::getInstance()->isInRange($this->getSector(), $target->getSector(), $this->getFireableRange());
     }

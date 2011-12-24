@@ -11,6 +11,12 @@ class RealmCreateSpec extends BaseSpec {
             ->then('Success')
 			    ->and('Contains', 'Afterlife')
                 ->and('Contains', 'Deathmatch')
+            ->given('Realm', 'Afterlife')
+            ->when('Exec', 'ls')
+            ->then('Contains', 'TEA')
+            ->given('Robot', 'justregistered') // TEA
+            ->when('Exec', 'mv 1,1')
+            ->then('Success')
 	;}
 
     public function testType() {
@@ -21,10 +27,6 @@ class RealmCreateSpec extends BaseSpec {
             ->then('Success')
                 ->and('Contains', 'MapAndMoveTutorial')
 	;}
-
-    public function testPlayAfterCreate() {
-        
-    }
 
 	/* Borderline */
 

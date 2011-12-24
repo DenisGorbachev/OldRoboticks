@@ -4,19 +4,16 @@ Realm:
     password:      ""
     controller_class:  "DeathmatchRealmController"
     Owner:            Gamemaster
-    initialized:        true
     Users:              [Alice, Mob, Friend, Foe, Stranger, Manipulator, Gamemaster]
   Etherworld:
     name:             "Etherworld"
     password:      ""
     controller_class:  "DeathmatchRealmController"
     Owner:            Gamemaster
-    initialized:        true
     Users:              [Alice, Gamemaster]
   Lawn:
     name:             "Lawn"
     password:      ""
     controller_class:  "DeathmatchRealmController"
     Owner:            Gamemaster
-    initialized:        true
     Users:              [Alice, Gamemaster, RiderOnTheStormBotUser]
