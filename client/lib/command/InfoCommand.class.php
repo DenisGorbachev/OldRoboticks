@@ -25,12 +25,12 @@ class InfoCommand extends UserInterfaceCommand {
 	public function execute($options, $arguments) {
 		global $argv;
 		if (!array_sum($options)) {
-			echoln('usage: '.$argv[0].' COMMAND [ARGS]');
-			echoln();
-			echoln('Available commands:');
+			$this->echoln('usage: '.$argv[0].' COMMAND [ARGS]');
+			$this->echoln();
+			$this->echoln('Available commands:');
 			walk_dir(dirname(__FILE__), array($this, 'outputCommandInfo'));
-			echoln();
-			echoln('Execute "'.$argv[0].' COMMAND --help" for more information on a specific command.');
+			$this->echoln();
+			$this->echoln('Execute "'.$argv[0].' COMMAND --help" for more information on a specific command.');
 		}
 		if (!empty($options['user'])) {
 			if (is_numeric($options['user'])) {
@@ -40,7 +40,7 @@ class InfoCommand extends UserInterfaceCommand {
 			}
 		}
 		if (!empty($options['version'])) {
-			echoln('Roboticks client v'.VERSION);
+			$this->echoln('Roboticks client v'.VERSION);
 		}
 	}
 	
@@ -54,7 +54,7 @@ class InfoCommand extends UserInterfaceCommand {
 		$cmdClass = $cmdName.'Command';
 		$cmd = new $cmdClass();
 		$parserConfig = $cmd->getParserConfig();
-		echoln('   '.$cmdName.str_repeat(' ', 11-strlen($cmdName)).$parserConfig['description']);
+		$this->echoln('   '.$cmdName.str_repeat(' ', 11-strlen($cmdName)).$parserConfig['description']);
 	}
 	
 }

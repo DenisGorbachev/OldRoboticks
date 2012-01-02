@@ -17,7 +17,7 @@ class TutorialSpec extends BaseSpec {
 //            ->given('Realm', 'New')
 //            ->when('Exec', 'receive --realm')
 //            ->then('Contains', 'move')
-//            ->given('Robot', 'newborn') # TEA
+//            ->given('Robot', 'justregistered') # TEA
 //            ->when('Exec', 'mv 5,5')
 //            ->then('Success')
 //                ->and('Contains', 'mail')

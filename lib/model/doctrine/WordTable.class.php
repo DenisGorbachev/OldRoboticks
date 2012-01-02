@@ -3,6 +3,7 @@
 
 class WordTable extends Doctrine_Table
 {
+    public $language = array();
 
     /**
      * @static
@@ -50,6 +51,10 @@ class WordTable extends Doctrine_Table
         }
         $previousLetter = $letters[$previousLetterIndex];
         return $previousLetter;
+    }
+
+    public function getRandomLetter() {
+        return $this->language['letters'][array_rand($this->language['letters'])];
     }
 
 }

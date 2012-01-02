@@ -51,10 +51,6 @@
 		die(call_user_func_array('vd', $args));
 	}
 
-	function echoln($s = '') {
-		echo $s.PHP_EOL;
-	}
-
 	function __(array $message) {
 		$translator = new Translator($message);
 		return $translator->translate();

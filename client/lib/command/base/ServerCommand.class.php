@@ -5,8 +5,6 @@ require_once dirname(__FILE__).'/Command.class.php';
 abstract class ServerCommand extends Command {
     public $user_id = null;
 
-    public $notifications = array();
-
     public function run() {
         $options = $this->getCurlOptions();
         $filename = $options[CURLOPT_COOKIEFILE];
@@ -21,7 +19,7 @@ abstract class ServerCommand extends Command {
         return parent::run();
     }
 
-	public function rawRequest($controller, $parameters = array(), $method = 'GET', $options = array()) {
+	public function request($controller, $parameters = array(), $method = 'GET', $options = array()) {
 		$method = strtoupper($method);
 		$host = Config::get('generic/server/host');
 		if (empty($host)) {
@@ -73,31 +71,6 @@ abstract class ServerCommand extends Command {
 		);
 	}
 	
-	public function request($controller, $parameters = array(), $method = 'GET', $options = array()) {
-		$response =  $this->rawRequest($controller, $parameters, $method, $options);
-		$message = __($response['message']);
-		if ($response['success']) {
-			echoln('Success: '.$message);
-            if (!empty($response['notifications'])) {
-                $this->notifications = array_merge($this->notifications, $response['notifications']);
-            }
-			return $response;
-		} else {
-			echoln('Failure: '.$message);
-			if (!empty($response['globalErrors'])) {
-				foreach ($response['globalErrors'] as $error) {
-					echoln('  - '.__($error));
-				}
-			}
-			if (!empty($response['errors'])) {
-				foreach ($response['errors'] as $field=>$error) {
-					echoln('  - '.__(array('text' => ucfirst($field), 'arguments' => array())).': '.__($error));
-				}
-			}
-			return false;
-		}
-	}
-	
 	public function get($controller, $parameters = array(), $options = array()) {
 		return $this->request($controller, $parameters, 'GET', $options);
 	}
@@ -128,11 +101,4 @@ abstract class ServerCommand extends Command {
         return $this->user_id;
     }
 
-    public function postExecute($options, $arguments)
-    {
-        foreach ($this->notifications as $notification) {
-            echoln(__($notification));
-        }
-        parent::postExecute($options, $arguments);
-    }
 }

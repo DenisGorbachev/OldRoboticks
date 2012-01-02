@@ -41,4 +41,24 @@ abstract class BaseRealmController {
 
     abstract public function initialize();
 
+    public function setDispatcher($dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
+
+    public function getDispatcher()
+    {
+        return $this->dispatcher;
+    }
+
+    public function setRealm($realm)
+    {
+        $this->realm = $realm;
+    }
+
+    public function getRealm()
+    {
+        return $this->realm;
+    }
+
 }

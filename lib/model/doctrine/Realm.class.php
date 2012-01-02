@@ -14,16 +14,28 @@ class Realm extends BaseRealm
 {
     public $controller;
 
+    public $salt = '301fd763d41594cacdedb18b53e265ee';
+
     public function construct()
     {
         parent::construct();
+        $this->initController();
+    }
+
+    public function initController() {
         if (sfContext::hasInstance() && !$this->isNew()) {
             $controllerClass = $this->getControllerClass();
             $this->controller = new $controllerClass($this, sfContext::getInstance()->getEventDispatcher());
         }
     }
 
-    public $salt = '301fd763d41594cacdedb18b53e265ee';
+    public function setController($controller) {
+        $this->controller = $controller;
+    }
+
+    public function getController() {
+        return $this->controller;
+    }
 
     public function __toString() {
         return '#'.$this->getId().' "'.$this->getName().'" ['.$this->getControllerClass().']';
@@ -35,6 +47,47 @@ class Realm extends BaseRealm
 
     public function checkPassword($password) {
       return $this->password == md5($password.$this->salt);
+    }
+
+    public function getOptions() {
+        $options = $this->_get('options');
+        return $options? $options : array(); // Doctrine returns null rather than empty array   
+    }
+
+    /**
+     * Available options:
+     * - letter_probability
+     *
+     * @param $name
+     * @param null $default
+     * @return string
+     */
+    public function getOption($name, $default = null) {
+        $options = $this->getOptions();
+        return array_key_exists($name, $options)? $options[$name] : $default;
+    }
+
+    public function postInsert($event) {
+        sfConfig::set('app_realm_id', $this->getId());
+        if (sfContext::hasInstance()) {
+            $this->initController();
+            $this->getController()->initialize();
+            $this->doJoin($this->getOwner());
+        }
+        parent::postInsert($event);
+    }
+
+    public function doJoin(User $user) {
+        $ownerUserRealm = new UserRealm();
+        $ownerUserRealm->setUser($user);
+        $ownerUserRealm->setRealm($this);
+        $ownerUserRealm->setRealm($this);
+        $ownerUserRealm->save();
+        $robot = new Robot();
+        $robot->setUser($user);
+        $robot->setRealm($this);
+        $robot->randomizeSector();
+        $robot->save();
     }
 
 }

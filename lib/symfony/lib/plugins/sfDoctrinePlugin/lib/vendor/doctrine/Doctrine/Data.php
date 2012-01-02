@@ -218,41 +218,45 @@ class Doctrine_Data
         $import = new Doctrine_Data_Import($directory);
         $import->setFormat($format);
         $import->setModels($models);
-        
-        return $import->doImport($append);
+
+        $conn = Doctrine_Manager::getInstance()->getCurrentConnection();
+        $conn->beginTransaction();
+        $result = $import->doImport($append);
+        $conn->commit();
+        return $result;
     }
 
     /**
      * isRelation
      *
      * Check if a fieldName on a Doctrine_Record is a relation, if it is we return that relationData
-     * 
-     * @param string $Doctrine_Record 
-     * @param string $fieldName 
+     *
+     * @param string $Doctrine_Record
+     * @param string $fieldName
      * @return void
      */
     public function isRelation(Doctrine_Record $record, $fieldName)
     {
         $relations = $record->getTable()->getRelations();
-        
+
         foreach ($relations as $relation) {
             $relationData = $relation->toArray();
-            
+
             if ($relationData['local'] === $fieldName) {
                 return $relationData;
             }
-            
+
         }
-        
+
         return false;
     }
 
     /**
      * purge
-     * 
+     *
      * Purge all data for loaded models or for the passed array of Doctrine_Records
      *
-     * @param string $models 
+     * @param string $models
      * @return void
      */
     public function purge($models = null)

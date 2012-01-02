@@ -25,7 +25,7 @@ class MapCommand extends ScanCommand {
 	
 	public function execute($options, $arguments) {
 		$response = parent::execute($options, $arguments);
-        if ($response) {
+        if ($response['success']) {
 		    $borders = $response['borders'];
             $xfill = array_fill_negative($borders['blX'], $borders['trX']-$borders['blX']+1, ' ');
             $info = array_fill_negative($borders['blY'], $borders['trY']-$borders['blY']+1, $xfill);

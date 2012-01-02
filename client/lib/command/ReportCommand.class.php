@@ -19,7 +19,7 @@ class ReportCommand extends ScanCommand {
 	
 	public function execute($options, $arguments) {
 		$response = parent::execute($options, $arguments);
-        if ($response) {
+        if ($response['success']) {
             $this->table($this->{'executeFor'.$options['for']}($response));
         }
 	}

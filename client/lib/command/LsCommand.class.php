@@ -10,9 +10,10 @@ class LsCommand extends RealmCommand {
 	}
 
 	public function execute($options, $arguments) {
-		if (($response = $this->get('robot/list', array(
+        $response = $this->get('robot/list', array(
             'realm_id' => $options['realm_id']
-        )))) {
+        ));
+		if ($response['success']) {
             $info = array(array('ID', 'Sector', 'Cargo', 'Funcs', 'Status', 'Name', 'Speed'));
 			foreach ($response['objects'] as $robot) {
 				$info[] = array(
