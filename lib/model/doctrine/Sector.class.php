@@ -15,12 +15,24 @@ class Sector extends BaseSector {
 		return $this->x.','.$this->y;
 	}
 
-    public function setDropsArray(array $drops) {
-        $this->setDrops(implode('', $drops));
+    public function setDropsArray(array $lettersArray) {
+        $this->setDrops(implode('', $lettersArray));
     }
 
     public function getDropsArray() {
         return str_split($this->getDrops());
     }
 
+    public function addToDrops($letters) {
+        $this->setDrops($this->getDrops().$letters);
+    }
+
+    public function removeFromDrops($letters) {
+        return $this->removeFromDropsArray(str_split($letters));
+    }
+    
+    public function removeFromDropsArray(array $lettersArray) {
+        $this->setDropsArray(array_diff($this->getDropsArray(), $lettersArray));
+    }
+    
 }

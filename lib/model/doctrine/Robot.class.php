@@ -144,26 +144,26 @@ class Robot extends BaseRobot {
 
     public function doExtractAction() {
         $sector = $this->getSector();
-        $sector->setDrops($sector->getDrops().$sector->getLetter());
+        $sector->addToDrops($sector->getLetter());
         $sector->save();
         return $sector->getLetter();
     }
 
     public function doDropAction($letter) {
         $sector = $this->getSector();
-        $sector->setDrops($sector->getDrops().$letter);
+        $sector->addToDrops($letter);
         $this->setCargo(preg_replace('/'.preg_quote($letter, '/').'/u', '', $this->getCargo(), 1));
     }
 
     public function doPickAction($letter) {
         $sector = $this->getSector();
-        $sector->setDrops(preg_replace('/'.preg_quote($letter, '/').'/u', '', $sector->getDrops(), 1));
+        $sector->removeFromDrops($letter);
         $this->setCargo($this->getCargo().$letter);
     }
 
     public function doAssembleAction($name) {
         $sector = $this->getSector();
-        $sector->setDropsArray(array_diff($sector->getDropsArray(), str_split($name)));
+        $sector->removeFromDrops($name);
         $sector->save();
         $robot = new Robot();
         $robot->setRealm($this->getRealm());
@@ -179,9 +179,6 @@ class Robot extends BaseRobot {
         $dispatcher->notify(new sfEvent($this, 'robot.pre_do_disassemble_action', array(
             'target' => $target,
         )));
-        $sector = $this->getSector();
-        $sector->setDrops($sector->getDrops().$target->getEffectiveStatus());
-        $sector->save();
         $target->delete();
         $dispatcher->notify(new sfEvent($this, 'robot.post_do_disassemble_action', array(
             'target' => $target,
@@ -220,7 +217,7 @@ class Robot extends BaseRobot {
         foreach (array_keys($target->getWord()->getNameArray(), $letter) as $key) {
             if ($statusArray[$key] == '_') {
                 $sector = $this->getSector();
-                $sector->setDrops(preg_replace('/'.preg_quote($letter, '/').'/u', '', $sector->getDrops(), 1));
+                $sector->removeFromDrops($letter);
                 $sector->save();
                 $statusArray[$key] = $letter;
                 $target->setStatus(implode('',  $statusArray));
@@ -253,5 +250,13 @@ class Robot extends BaseRobot {
 		$this->speed = $this->calculateSpeed();
         parent::preSave($event);
 	}
+
+    public function preDelete($event)
+    {
+        $sector = $this->getSector();
+        $sector->addToDrops($this->getEffectiveStatus().$this->getCargo());
+        $sector->save();
+        parent::preDelete($event);
+    }
 
 }

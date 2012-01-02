@@ -52,6 +52,8 @@ class FireSpec extends RobotBaseSpec {
 			->when('Exec', 'fire '.$this->getRobotId('fuel').' L')
             ->when('Exec', 'report --for robots')
             ->then('NotContains', $this->getRobotId('fuel'))
+            ->when('Exec', 'report --for drops')
+            ->then('Contains', '9,8     K X')
     ;}
 
 	/* Borderline */

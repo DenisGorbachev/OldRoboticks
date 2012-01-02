@@ -88,6 +88,7 @@ Robot:
   Fuel:
     Realm:         Universe
     status:			"FUEL"
+    cargo:			"X"
     Word:			FUEL
     EffectiveWord:	FUEL
     User:				Foe
