@@ -20,10 +20,6 @@ class RobotTable extends Doctrine_Table {
     	return WordTable::getInstance()->getFunctions();
     }
     
-    public function getVowels() {
-    	return WordTable::getInstance()->getVowels();
-    }
-    
     public function getFunctionDenotative($meaning) {
     	$array = $this->getFunctions();
     	return $array[$meaning];

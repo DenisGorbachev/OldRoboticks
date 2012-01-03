@@ -22,14 +22,6 @@ class WordTable extends Doctrine_Table
         return $this->language['letters'];
     }
 
-    public function getVowels() {
-    	return $this->language['vowels'];
-    }
-
-    public function getConsonants() {
-    	return array_diff($this->getLetters(), $this->getVowels());
-    }
-
     public function getFunctions() {
     	return $this->language['functions'];
     }
