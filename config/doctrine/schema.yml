@@ -49,6 +49,19 @@ UserRealm:
     symfony:
       filter: false
       form: false
+  relations:
+    Users:
+      class:                  User
+      foreignAlias:		UserRealms
+      local:			 user_id
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
+    Realms:
+      class:                  Realm
+      foreignAlias:		UserRealms
+      local:			 realm_id
+      onDelete:			CASCADE
+      onUpdate:		CASCADE
 
 Stance:
   columns:

@@ -3,6 +3,5 @@
 set -u
 set -e
 
-./symfony rs:truncate Word User Stance Sector Robot
+./symfony rs:truncate Word Bot Realm User Stance Sector Robot
 ./symfony rs:load-words
-./symfony rs:generate-sectors ${1:-20}

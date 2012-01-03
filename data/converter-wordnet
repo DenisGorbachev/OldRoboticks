@@ -1,0 +1,2 @@
+#!/bin/sh
+tail -n +30 $1 | grep -Po '^[^@~]+' | grep -Po '(?<=\s)[a-z]{3,}(?=\s)' | sort | uniq

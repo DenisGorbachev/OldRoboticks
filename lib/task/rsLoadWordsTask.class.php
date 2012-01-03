@@ -20,6 +20,7 @@ class rsLoadWordsTask extends sfBaseTask {
         $connection = Doctrine_Manager::connection();
         $table = WordTable::getInstance();
 
+        $this->logSection($this->namespace, 'Loading words from "'.$options['file'].'"...');
         $connection->getDbh()->query('TRUNCATE TABLE '.$table->getTableName());
         $connection->beginTransaction();
         $i = 0;
