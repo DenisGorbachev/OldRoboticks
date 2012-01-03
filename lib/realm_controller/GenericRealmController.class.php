@@ -30,12 +30,15 @@ class GenericRealmController extends BaseRealmController {
 
     public function initialize() {
         $realm = $this->getRealm();
+        $width = $realm->getWidth();
+        $height = $realm->getHeight();
+        $randomLettersProvider = WordTable::getInstance();
         $connection = Doctrine_Manager::getInstance()->getCurrentConnection();
         $connection->beginTransaction();
         try {
-            for ($x = 0; $x < $realm->getWidth(); $x++) {
-                for ($y = 0; $y < $realm->getHeight(); $y++) {
-                    $this->generateSector($x, $y, $connection);
+            for ($x = 0; $x < $width; $x++) {
+                for ($y = 0; $y < $height; $y++) {
+                    $this->generateSector($realm, $x, $y, $randomLettersProvider, $connection);
                 }
             }
         } catch (Exception $e) {
@@ -45,19 +48,20 @@ class GenericRealmController extends BaseRealmController {
         $connection->commit();
     }
 
-    public function generateSector($x, $y, $connection) {
-        $realm = $this->getRealm();
+    public function generateSector($realm, $x, $y, $randomLettersProvider, $connection) {
         $sector = new Sector();
-        $sector->setRealm($realm);
+        $sector->setRealmId($realm->getId());
         $sector->setX($x);
         $sector->setY($y);
         if ($this->getRandomTruth($realm->getOption('letter_probability', 0.1))) {
-            $sector->setLetter(WordTable::getInstance()->getRandomLetter());
+            $sector->setLetter($randomLettersProvider->getRandomLetter());
         }
         while ($this->getRandomTruth($realm->getOption('drop_probability', 0.1))) {
-            $sector->setDrops($sector->getDrops().WordTable::getInstance()->getRandomLetter());
+            $sector->setDrops($sector->getDrops(). $randomLettersProvider->getRandomLetter());
         }
         $sector->save($connection);
+        $sector->free(true);
+        unset($sector);
     }
 
     public function getRandomTruth($probability) {

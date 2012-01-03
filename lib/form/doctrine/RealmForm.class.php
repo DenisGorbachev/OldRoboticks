@@ -17,7 +17,7 @@ class RealmForm extends BaseRealmForm
     }
 
     public function configure()
-  {
-      parent::configure();
-  }
+    {
+        parent::configure();
+    }
 }

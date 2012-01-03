@@ -13,6 +13,7 @@ class realmActions extends rbActions {
 	}
 	
 	public function executeCreate(sfWebRequest $request) {
+        set_time_limit(0);
         return $this->executeAutoAjaxForm();
 	}
 
