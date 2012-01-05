@@ -72,22 +72,9 @@ class Realm extends BaseRealm
         if (sfContext::hasInstance()) {
             $this->initController();
             $this->getController()->getBuilder()->build();
-            $this->doJoin($this->getOwner());
+            $this->getController()->addUser($this->getOwner());
         }
         parent::postInsert($event);
-    }
-
-    public function doJoin(User $user) {
-        $ownerUserRealm = new UserRealm();
-        $ownerUserRealm->setUser($user);
-        $ownerUserRealm->setRealm($this);
-        $ownerUserRealm->setRealm($this);
-        $ownerUserRealm->save();
-        $robot = new Robot();
-        $robot->setUser($user);
-        $robot->setRealm($this);
-        $robot->randomizeSector();
-        $robot->save();
     }
 
 }

@@ -17,6 +17,20 @@ class RealmCreateCommand extends UserInterfaceCommand {
                 'description' => 'Controller class of new realm (defines the map layout and win conditions). List available controller classes using `rk realm:ls-cc`',
                 'action' => 'StoreString',
                 'default' => 'DeathmatchRealmController'
+            ),
+            'width' => array(
+                'short_name' => '-w',
+                'long_name' => '--width',
+                'description' => 'Width of new realm. Can be any integer from 10 to 1000',
+                'action' => 'StoreInt',
+                'default' => 50
+            ),
+            'height' => array(
+                'short_name' => '-h',
+                'long_name' => '--height',
+                'description' => 'Height of new realm. Can be any integer from 10 to 1000',
+                'action' => 'StoreInt',
+                'default' => 50
             )
         ));
     }
@@ -37,7 +51,9 @@ class RealmCreateCommand extends UserInterfaceCommand {
         $this->postForm('realm', 'realm/create', array(
             'name' => $arguments['name'],
             'password' => $arguments['password'],
-            'controller_class' => $options['controller_class']
+            'controller_class' => $options['controller_class'],
+            'width' => $options['width'],
+            'height' => $options['height'],
         ), array(
             CURLOPT_TIMEOUT => 180
         ));

@@ -91,7 +91,7 @@ abstract class UserInterfaceCommand extends ServerCommand {
             foreach ($row as $columnIndex => $cell) {
                 $rowString .= str_pad((string)$cell, min(40, $maxlengths[$columnIndex]) + 2); // spaces between columns
             }
-            $this->echoln($rowString.PHP_EOL);
+            $this->echoln($rowString);
         }
     }
 

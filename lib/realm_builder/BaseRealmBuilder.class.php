@@ -59,8 +59,8 @@ abstract class BaseRealmBuilder {
         $sector->setLetter($letter);
         $sector->setDrops($drops);
         $sector->save($this->getConnection());
-        $sector->free(true);
         $this->setSectorInfoByCoords($x, $y, $sector->toArray());
+        $sector->free(true);
         return $sector;
     }
 
@@ -76,7 +76,7 @@ abstract class BaseRealmBuilder {
 
     public function ensureLetter($blX, $trX, $blY, $trY, $letter) {
         $sieve = array();
-        $row = array_flip(range($blY, $trY));
+        $row = array_flip(range($blY, $trY-$blY+1));
         for ($x = $blX; $x <= $trX; $x++) {
             $existingSectors = $this->getSectorsInfoRow($x);
             $nonExistingSectors = array_diff_key($row, $existingSectors);
@@ -88,7 +88,7 @@ abstract class BaseRealmBuilder {
             throw new sfException('Can\'t ensure letter "'.$letter.'", because all sectors in ('.$blX.','.$blY.')-('.$trX.','.$trY.') square are already generated');
         }
         $letterSectorX = array_rand($sieve);
-        $letterSectorY = array_rand($sieve[$x]);
+        $letterSectorY = array_rand($sieve[$letterSectorX]);
         return $this->generateSector($letterSectorX, $letterSectorY, $letter, '');
     }
 

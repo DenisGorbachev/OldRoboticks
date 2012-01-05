@@ -46,6 +46,28 @@ abstract class BaseRealmController {
 
     abstract public function attachListeners();
 
+    public function addUser(User $user) {
+        $this->createUserRealmLink($user->getId())->save();
+        $this->createRobot($user->getId())->save();
+    }
+
+    public function createRobot($userId)
+    {
+        $robot = new Robot();
+        $robot->setUserId($userId);
+        $robot->setRealmId($this->getRealm()->getId());
+        $robot->randomizeSector();
+        return $robot;
+    }
+
+    public function createUserRealmLink($userId)
+    {
+        $userRealmLink = new UserRealm();
+        $userRealmLink->setUserId($userId);
+        $userRealmLink->setRealmId($this->getRealm()->getId());
+        return $userRealmLink;
+    }
+
     public function setDispatcher($dispatcher)
     {
         $this->dispatcher = $dispatcher;

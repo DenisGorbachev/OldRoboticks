@@ -57,3 +57,11 @@ Word:
     name:					"MEAT"
   STORM:
     name:					"STORM"
+  WATER:
+    name:					"WATER"
+  FIRE:
+    name:					"FIRE"
+  EARTH:
+    name:					"EARTH"
+  AIR:
+    name:					"AIR"

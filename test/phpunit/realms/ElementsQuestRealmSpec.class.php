@@ -7,15 +7,23 @@ class ElementsQuestRealmSpec extends RealmBaseSpec {
 		return $this
 			->given('Genesis')
             ->given('User', 'Alice')
-            ->when('Exec', 'realm:create -c ElementsQuestRealmController Afterlife asdf')
+            ->when('Exec', 'realm:create -c ElementsQuestRealmController -w 25 -h 25 Afterlife asdf')
             ->given('Realm', 'Afterlife')
+            ->when('Exec', 'bot:create -c ElementsQuestRealmController -w 25 -h 25 Afterlife asdf')
+//            ->given('Realm', 'Universe')
             ->given('Robot', 'justregistered')
 			->when('Exec', 'ls')
-                ->then('Contains', '10,10')
-            ->when('AssembleElement', 'WATER', 10, 10)
-            ->when('AssembleElement', 'FIRE', 10, 40)
-            ->when('AssembleElement', 'EARTH', 40, 40)
-            ->when('AssembleElement', 'AIR', 40, 10)
+                ->then('Contains', '5,5')
+            ->when('AssembleElement', 'WATER', 5, 5)
+            ->when('AssembleElement', 'FIRE', 5, 20)
+            ->when('Exec', 'report')
+            ->then('Contains', 'enemy')
+            ->when('AssembleElement', 'EARTH', 20, 20)
+            ->when('Exec', 'report')
+            ->then('Contains', 'enemy')
+            ->when('AssembleElement', 'AIR', 20, 5)
+            ->when('Exec', 'report')
+            ->then('Contains', 'enemy')
             ->when('Exec', 'win')
                 ->then('Success')
 	;}
@@ -23,20 +31,21 @@ class ElementsQuestRealmSpec extends RealmBaseSpec {
     public function whenAssembleElement($element, $x, $y) {
         $center = $x.','.$y;
         for ($i = 0; $i < 4; $i++) {
-            $this->when('Exec', 'mv '.$center);
+            $this->whenExec('mv '.$center);
         }
         $letters = str_split($element);
-        $elementMapMarking = implode('  -  ', $letters);
-        $this->when('Exec', 'map --for letters');
-        $this->then('Contains', $elementMapMarking);
+        $elementMapMarking = implode('  [-\w]  ', $letters);
+        $this->whenExec('map --for letters');
+        $this->thenMatches('/'.$elementMapMarking.'/u');
         for ($i = 0; $i < 5; $i++) {
-            $this->when('Exec', 'mv '.($x-4+$i*2).','.$y);
-            $this->when('Exec', 'extract');
-            $this->when('Exec', 'pick '.$letters[$i]);
-            $this->when('Exec', 'mv '.$center);
-            $this->when('Exec', 'drop '.$letters[$i]);
+            $this->whenExec('mv '.($x-4+$i*2).','.$y);
+            $this->whenExec('extract');
+            $this->whenExec('pick '.$letters[$i]);
+            $this->whenExec('mv '.$center);
+            $this->whenExec('drop '.$letters[$i]);
         }
-        $this->when('Exec', 'asm '.$element);
+        $this->whenExec('asm '.$element);
+        $this->thenSuccess();
         return $this;
     }
 

@@ -49,6 +49,10 @@ UserRealm:
     symfony:
       filter: false
       form: false
+  indexes:
+    one_in_realm:
+      fields:				[realm_id, user_id]
+      type:                 unique
   relations:
     Users:
       class:                  User
@@ -69,6 +73,10 @@ Stance:
     from_id:			{ type: integer }
     to_id:				{ type: integer }
     type:				{ type: enum, values: [ally, enemy] }
+  indexes:
+    one_in_realm:
+      fields:				[realm_id, from_id, to_id]
+      type:                 unique
   actAs:
     Restricted:
       column:       realm_id
@@ -106,6 +114,9 @@ Sector:
   indexes:
     coordinates:
       fields:				[x, y]
+    one_in_realm:
+      fields:				[realm_id, x, y]
+      type:                 unique
   actAs:
     Restricted:
       column:       realm_id

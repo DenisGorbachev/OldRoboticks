@@ -138,6 +138,14 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 		return $this->assertNotContains($needle, $this->world['lastResult'], $message, $ignoreCase);
 	}
 
+    public function thenMatches($pattern, $message = '', $ignoreCase = false) {
+        return $this->assertRegExp($pattern, $this->world['lastResult'], $message, $ignoreCase);
+    }
+
+    public function thenNotMatches($pattern, $message = '', $ignoreCase = false) {
+        return $this->assertNotRegExp($pattern, $this->world['lastResult'], $message, $ignoreCase);
+    }
+
     public function testDummy() {
         $this->assertTrue(true);
     }

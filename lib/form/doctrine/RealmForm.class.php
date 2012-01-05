@@ -14,6 +14,10 @@ class RealmForm extends BaseRealmForm
     {
         parent::setup();
         $this->validatorSchema['controller_class'] = new rsValidatorRealmControllerClass();
+        $this->validatorSchema['width']->setOption('min', 10);
+        $this->validatorSchema['width']->setOption('max', 1000);
+        $this->validatorSchema['height']->setOption('min', 10);
+        $this->validatorSchema['height']->setOption('max', 1000);
     }
 
     public function configure()
