@@ -3,13 +3,6 @@
 require_once __DIR__.'/../../RealmBaseSpec.class.php';
 
 class ElementsQuestRealmSpec extends RealmBaseSpec {
-    public $elementPositions = array(
-        'water' => array(10,10),
-        'fire' => array(10,40),
-        'earth' => array(40,40),
-        'air' => array(40,10),
-    );
-
 	public function testNormal() {
 		return $this
 			->given('Genesis')

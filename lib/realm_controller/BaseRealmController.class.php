@@ -2,7 +2,14 @@
  
 abstract class BaseRealmController {
     public $realm;
+
     public $dispatcher;
+
+    public $lettersProvider;
+
+    /** @var BaseRealmBuilder $builder */
+    public $builder;
+
 
     public function __construct(Realm $realm, sfEventDispatcher $dispatcher) {
         $this->realm = $realm;
@@ -39,8 +46,6 @@ abstract class BaseRealmController {
 
     abstract public function attachListeners();
 
-    abstract public function initialize();
-
     public function setDispatcher($dispatcher)
     {
         $this->dispatcher = $dispatcher;
@@ -59,6 +64,38 @@ abstract class BaseRealmController {
     public function getRealm()
     {
         return $this->realm;
+    }
+
+    public function getBuilder() {
+        if (empty($this->builder)) {
+            $this->builder = $this->createBuilder();
+        }
+        return $this->builder;
+    }
+
+    public function createBuilder() {
+        $builderClassname = str_replace('Controller', 'Builder', get_class($this));
+        return new $builderClassname($this);
+    }
+
+    public function setBuilder(BaseRealmBuilder $builder) {
+        $this->builder = $builder;
+    }
+
+    public function getLettersProvider()
+    {
+        if (empty($this->lettersProvider)) {
+            $this->lettersProvider = $this->createLettersProvider();
+        }
+        return $this->lettersProvider;
+    }
+
+    public function createLettersProvider() {
+        return WordTable::getInstance();
+    }
+
+    public function getConnection() {
+        return Doctrine_Manager::getInstance()->getCurrentConnection();
     }
 
 }

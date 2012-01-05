@@ -71,7 +71,7 @@ class Realm extends BaseRealm
         sfConfig::set('app_realm_id', $this->getId());
         if (sfContext::hasInstance()) {
             $this->initController();
-            $this->getController()->initialize();
+            $this->getController()->getBuilder()->build();
             $this->doJoin($this->getOwner());
         }
         parent::postInsert($event);
