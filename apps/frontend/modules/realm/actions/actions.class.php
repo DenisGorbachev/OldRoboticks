@@ -48,6 +48,25 @@ class realmActions extends rbActions {
         );
     }
 
+    public function prepareJoin() {
+        $this->prepareAutoObject();
+        $this->argument('password', '');
+    }
+
+    public function validateJoin() {
+        return $this->validateAutoObject($this->password);
+    }
+
+    public function executeJoin(sfWebRequest $request) {
+        $dbUser = $this->getUser()->getUser();
+        if (!$this->object->isMember($dbUser)) {
+            $this->object->getController()->addUser($dbUser);
+        }
+        return $this->success('joined realm %realm%.', array(
+            'realm' => (string)$this->object
+        ));
+    }
+
     public function prepareAutoObject($parameter = 'id', $varname = 'object') {
         $result = parent::prepareAutoObject($parameter, $varname);
         sfConfig::set('app_realm_id', $this->object->getId());

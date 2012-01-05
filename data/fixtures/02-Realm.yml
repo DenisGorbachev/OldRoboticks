@@ -13,7 +13,7 @@ Realm:
     Users:              [Alice, Gamemaster]
   Lawn:
     name:             "Lawn"
-    password:      ""
+    password:      "lawnpassword"
     controller_class:  "DeathmatchRealmController"
     Owner:            Gamemaster
     Users:              [Alice, Gamemaster, RiderOnTheStormBotUser]

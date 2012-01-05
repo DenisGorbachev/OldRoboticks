@@ -50,11 +50,15 @@ class Realm extends BaseRealm
     }
 
     public function setPassword($password) {
-        $this->_set('password', md5($password.$this->salt));
+        $this->_set('password', $this->generatePassword($password));
     }
 
     public function checkPassword($password) {
-      return $this->password == md5($password.$this->salt);
+        return $this->password == $this->generatePassword($password);
+    }
+
+    public function generatePassword($password) {
+        return md5($password.$this->salt);
     }
 
     public function getOptions() {

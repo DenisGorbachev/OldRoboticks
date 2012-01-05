@@ -14,6 +14,11 @@ class RealmGuard extends BaseGuard {
         return true;
     }
 
+    public function canJoin($password) {
+        $this->checkPassword($password);
+        return true;
+    }
+
     public function checkIsOwner() {
 	    if (!$this->isOwner('owner_id')) {
 			throw new rsSanityException('Realm %realm% is not owned by you.', array(
@@ -26,6 +31,15 @@ class RealmGuard extends BaseGuard {
     public function checkIsMember() {
 	    if (!$this->getObject()->isMember($this->getUser())) {
 			throw new rsSanityException('You are not a member of realm %realm%.', array(
+				'realm' => (string)$this->object
+			));
+		}
+		return true;
+    }
+
+    public function checkPassword($password) {
+	    if (!$this->getObject()->checkPassword($password)) {
+			throw new rsSanityException('Wrong password for realm %realm%.', array(
 				'realm' => (string)$this->object
 			));
 		}

@@ -17,6 +17,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
         $this->unlinkIfExists($this->getClientCacheDir().'/cookie.jar');
         $this->unlinkIfExists($this->getClientCacheDir().'/realmId');
         $this->unlinkIfExists($this->getClientCacheDir().'/robotId');
+        return $this;
     }
 
     public function tearDown() {

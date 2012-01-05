@@ -38,10 +38,11 @@ class RealmCreateCommand extends UserInterfaceCommand {
 	public function getArgumentConfigs() {
 		return array(
             'name' => array(
-                'description' => 'New realm name (must be unique on the server)'
+                'description' => 'New realm name (must be unique on the server)',
             ),
             'password' => array(
-                'description' => 'New realm password'
+                'description' => 'New realm password (optional)',
+                'optional' => true,
             )
         );
 	}
