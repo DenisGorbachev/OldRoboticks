@@ -4,7 +4,7 @@ set -e
 set -u
 
 echo "Running tests..."
-LOG=/tmp/roboticks-test-log
+LOG=/var/log/roboticks-tests
 if [[ -f "$LOG" ]];
 then
 	mv $LOG $LOG.old
@@ -20,4 +20,4 @@ do
 done;
 set -e
 
-grep -Po 'FAILURES|incomplete' /tmp/test-log
+grep -Po 'FAILURES|incomplete' $LOG
