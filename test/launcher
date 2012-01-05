@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+set -u
+
+echo "Running tests..."
+LOG=/tmp/roboticks-test-log
+if [[ -f "$LOG" ]];
+then
+	mv $LOG $LOG.old
+fi;
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]:-""}" )" && pwd )"
+
+set +e
+for i in $(find $DIR/phpunit -type f -name "*.php");
+do
+	echo $i;
+	phpunit $@ -c $DIR/phpunit.xml $i >> $LOG;
+done;
+set -e
+
+grep -Po 'FAILURES|incomplete' /tmp/test-log
