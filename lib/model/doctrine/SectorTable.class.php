@@ -79,4 +79,8 @@ class SectorTable extends Doctrine_Table {
         return pow($target->getX() - $source->getX(), 2) + pow($target->getY() - $source->getY(), 2) <= pow($range, 2);
     }
 
+    public function countByRealmId($realmId) {
+        return $this->createQuery('s')->where('s.realm_id = ?', $realmId)->count();
+    }
+
 }

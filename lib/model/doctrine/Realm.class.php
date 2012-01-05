@@ -16,6 +16,18 @@ class Realm extends BaseRealm
 
     public $salt = '301fd763d41594cacdedb18b53e265ee';
 
+    public function __toString() {
+        return strtr($this->getToStringFormat(), array(
+            '%id%' => $this->getId(),
+            '%name%' => $this->getName(),
+            '%controller_class%' => $this->getControllerClass(),
+        ));
+    }
+
+    public function getToStringFormat() {
+        return '#%id% "%name%" [%controller_class%]';
+    }
+
     public function construct()
     {
         parent::construct();
@@ -35,10 +47,6 @@ class Realm extends BaseRealm
 
     public function getController() {
         return $this->controller;
-    }
-
-    public function __toString() {
-        return '#'.$this->getId().' "'.$this->getName().'" ['.$this->getControllerClass().']';
     }
 
     public function setPassword($password) {
@@ -65,6 +73,22 @@ class Realm extends BaseRealm
     public function getOption($name, $default = null) {
         $options = $this->getOptions();
         return array_key_exists($name, $options)? $options[$name] : $default;
+    }
+
+    public function isMember(User $user) {
+        return UserRealmTable::getInstance()->countByUserIdAndRealmId($user->getId(), $this->getId());
+    }
+
+    public function getSectorsCount() {
+        return SectorTable::getInstance()->countByRealmId($this->getId());
+    }
+
+    public function getUsersCount() {
+        return UserRealmTable::getInstance()->countByRealmId($this->getId());
+    }
+
+    public function getRobotsCount() {
+        return RobotTable::getInstance()->countByRealmId($this->getId());
     }
 
     public function postInsert($event) {

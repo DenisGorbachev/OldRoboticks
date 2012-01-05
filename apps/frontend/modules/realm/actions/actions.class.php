@@ -30,4 +30,29 @@ class realmActions extends rbActions {
         return $this->executeAutoAjaxForm();
     }
 
+    public function prepareShow() {
+        $this->prepareAutoObject();
+    }
+
+    public function validateShow() {
+        return $this->validateAutoObject();
+    }
+
+    public function executeShow(sfWebRequest $request) {
+        return $this->success('realm '.$this->object->getToStringFormat().' [%width%x%height%] has %sectors_count% sectors, %users_count% users, %robots_count% robots.',
+            array_merge($this->object->toArray(), array(
+                'sectors_count' => $this->object->getSectorsCount(),
+                'users_count' => $this->object->getUsersCount(),
+                'robots_count' => $this->object->getRobotsCount(),
+            ))
+        );
+    }
+
+    public function prepareAutoObject($parameter = 'id', $varname = 'object') {
+        $result = parent::prepareAutoObject($parameter, $varname);
+        sfConfig::set('app_realm_id', $this->object->getId());
+        return $result;
+    }
+
+
 }

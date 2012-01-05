@@ -73,5 +73,9 @@ class RobotTable extends Doctrine_Table {
         }
         return $results;
     }
-    
+
+    public function countByRealmId($realmId) {
+        return $this->createQuery('r')->where('r.realm_id = ?', $realmId)->count();
+    }
+
 }

@@ -17,11 +17,19 @@ class UserRealmTable extends Doctrine_Table
         return Doctrine_Core::getTable('UserRealm');
     }
 
-    public function getByUserIdAndRealmIdQuery($userId, $realmId) {
+    public function getByRealmIdQuery($realmId) {
         return $this->createQuery('ur')
-            ->where('ur.user_id = ?', $userId)
             ->andWhere('ur.realm_id = ?', $realmId)
     ;}
+
+    public function getByUserIdAndRealmIdQuery($userId, $realmId) {
+        return $this->getByRealmIdQuery($realmId)
+            ->andWhere('ur.user_id = ?', $userId)
+    ;}
+
+    public function countByRealmId($realmId) {
+        return $this->getByRealmIdQuery($realmId)->count();
+    }
 
     public function countByUserIdAndRealmId($userId, $realmId) {
         return $this->getByUserIdAndRealmIdQuery($userId, $realmId)->count();

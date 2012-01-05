@@ -10,7 +10,7 @@ class ElementsQuestRealmController extends GenericRealmController {
 
     public function createRobot($userId) {
         $realm = $this->getRealm();
-        $count = UserRealmTable::getInstance()->countByUserIdAndRealmId($userId, $realm->getId());
+        $count = UserRealmTable::getInstance()->countByRealmId($realm->getId());
         $positionNumber = $count % 4 - 1;
         $positions = array_values($this->elements);
         $position = $positions[$positionNumber];

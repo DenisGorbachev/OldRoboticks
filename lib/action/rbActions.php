@@ -15,12 +15,12 @@ class rbActions extends tfExtendedActions {
 
     public function prepareAutoRealm() {
         $this->argumentUnless('realm_id');
-        $realm = RealmTable::getInstance()->find($this->realm_id);
-        $this->failureUnless($realm, 'Realm #%realm_id% doesn\'t exist', array(
+        $this->realm = RealmTable::getInstance()->find($this->realm_id);
+        $this->failureUnless($this->realm, 'Realm #%realm_id% doesn\'t exist', array(
             'realm_id' => (string)$this->realm_id
         ));
         $this->failureUnless(UserRealmTable::getInstance()->findOneByRealmIdAndUserId($this->realm_id, $this->getUser()->getUser()->getId()), 'You don\'t have access to realm %realm%', array(
-            'realm' => (string)$realm
+            'realm' => (string)$this->realm
         ));
         sfConfig::set('app_realm_id', $this->realm_id);
     }
