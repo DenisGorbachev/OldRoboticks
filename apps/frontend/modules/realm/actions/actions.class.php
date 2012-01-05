@@ -17,4 +17,17 @@ class realmActions extends rbActions {
         return $this->executeAutoAjaxForm();
 	}
 
+    public function prepareEdit() {
+        $this->prepareAutoEditForm();
+        $this->appendFormParameters($this->form, $this->form->getDefaults());
+    }
+
+    public function validateEdit() {
+        return $this->validateAutoObject();
+    }
+
+    public function executeEdit(sfWebRequest $request) {
+        return $this->executeAutoAjaxForm();
+    }
+
 }

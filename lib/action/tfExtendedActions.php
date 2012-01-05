@@ -222,7 +222,12 @@ class tfExtendedActions extends sfActions {
 		$this->getRequest()->setParameter($form->getName(), $parameters + $this->getRequest()->getParameter($form->getName(), array()));
 		return true;
 	}
-  
+
+    protected function appendFormParameters(sfForm $form, array $parameters) {
+		$this->getRequest()->setParameter($form->getName(), $this->getRequest()->getParameter($form->getName(), array()) + $parameters);
+		return true;
+	}
+
 	public function validateIndex() {
 		return $this->validateAutoStatic();
 	}
