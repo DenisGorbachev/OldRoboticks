@@ -9,6 +9,9 @@ abstract class BaseBotController {
         $this->bot = $bot;
         $this->clientFilename = $clientFilename;
         $this->homeDirname = $homeDirname;
+        if (!file_exists($this->homeDirname)) {
+            mkdir($this->homeDirname, 0755, true);
+        }
     }
 
     public function exec($command) {
