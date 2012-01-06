@@ -18,8 +18,14 @@ class DisasmSpec extends RobotBaseSpec {
 	;}
 
     public function testDisassembleOwnActiveRobot() {
-
-    }
+        return $this
+			->given('Genesis')
+				->and('User', 'Alice')
+				->and('Realm', 'Universe')
+                ->and('Robot', 'dirk')
+            ->when('Exec', 'disasm '.$this->getRobotId('tea'))
+			->then('Success')
+    ;}
 
 	/* Borderline */
 

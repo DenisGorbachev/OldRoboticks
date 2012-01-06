@@ -11,7 +11,7 @@ class RealmCreateSpec extends BaseSpec {
 			->given('Genesis')
 				->and('User', 'Alice')
 			->when('Exec', 'realm:create Afterlife asdf')
-            ->then('Success')
+            ->then('Contains', 'Success')
 			    ->and('Contains', 'Afterlife')
                 ->and('Contains', 'Deathmatch')
             ->given('Realm', 'Afterlife')
@@ -22,12 +22,20 @@ class RealmCreateSpec extends BaseSpec {
             ->then('Success')
 	;}
 
+    public function testWithoutPassword() {
+		return $this
+			->given('Genesis')
+				->and('User', 'Alice')
+			->when('Exec', 'realm:create Afterlife')
+            ->then('Contains', 'Success')
+    ;}
+
     public function testType() {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
 			->when('Exec', 'realm:create -c MapAndMoveTutorialRealmController Afterlife asdf')
-            ->then('Success')
+            ->then('Contains', 'Success')
                 ->and('Contains', 'MapAndMoveTutorial')
 	;}
 
@@ -39,7 +47,7 @@ class RealmCreateSpec extends BaseSpec {
                 ->and('User', 'Alice')
             ->when('Exec', 'realm:create Afterlife asdf')
             ->when('Exec', 'realm:create Afterlife asdf')
-            ->then('Failure')
+            ->then('Contains', 'Failure')
     ;}
 
     public function testInvalidControllerClass() {
@@ -47,7 +55,7 @@ class RealmCreateSpec extends BaseSpec {
             ->given('Genesis')
                 ->and('User', 'Alice')
             ->when('Exec', 'realm:create -c NonExistingRealmController Afterlife asdf')
-            ->then('Failure')
+            ->then('Contains', 'Failure')
     ;}
 
 }

@@ -4,7 +4,7 @@ set -e
 set -u
 
 echo "Running tests..."
-LOG=/var/log/roboticks-tests
+LOG=/tmp/roboticks-tests-log
 if [[ -f "$LOG" ]];
 then
 	mv $LOG $LOG.old

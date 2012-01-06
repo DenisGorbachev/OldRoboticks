@@ -37,12 +37,12 @@ abstract class UserInterfaceCommand extends ServerCommand {
             case 'human':
                 $message = __($response['message']);
                 if ($response['success']) {
-                    $this->echoln('Success: '.$message);
+                    $this->success($message);
                     if (!empty($response['notifications'])) {
                         $this->notifications = array_merge($this->notifications, $response['notifications']);
                     }
                 } else {
-                    $this->echoln('Failure: '.$message);
+                    $this->failure($message);
                     if (!empty($response['globalErrors'])) {
                         foreach ($response['globalErrors'] as $error) {
                             $this->echoln('  - '.__($error));
@@ -107,6 +107,18 @@ abstract class UserInterfaceCommand extends ServerCommand {
         if ($this->output_format == 'human') {
             echo $string.PHP_EOL;
         }
+    }
+
+    public function success($message) {
+        return $this->echoln('Success: '.$message);
+    }
+
+    public function failure($message) {
+        return $this->echoln('Failure: '.$message);
+    }
+
+    public function wait($message) {
+        return $this->echoln('Please wait: '.$message);
     }
 
     public function postExecute($options, $arguments) {

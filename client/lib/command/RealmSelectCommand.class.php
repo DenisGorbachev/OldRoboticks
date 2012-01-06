@@ -23,7 +23,7 @@ class RealmSelectCommand extends UserInterfaceCommand {
             throw new RoboticksArgumentException('Invalid argument "realm_id": expected integer, but got "'.$arguments['realm_id'].'"');
         }
         $this->selectRealmId($realmId);
-        $this->echoln('Success: selected realm #'.$realmId);
+        $this->success('selected realm #'.$realmId);
 	}
 
 }

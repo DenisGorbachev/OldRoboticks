@@ -18,6 +18,7 @@ class RealmForm extends BaseRealmForm
         $this->validatorSchema['width']->setOption('max', 1000);
         $this->validatorSchema['height']->setOption('min', 10);
         $this->validatorSchema['height']->setOption('max', 1000);
+        $this->validatorSchema['password']->setOption('required', false);
     }
 
     public function configure()

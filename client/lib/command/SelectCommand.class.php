@@ -23,7 +23,7 @@ class SelectCommand extends UserInterfaceCommand {
             throw new RoboticksArgumentException('Invalid argument "robot_id": expected integer, but got "'.$arguments['robot_id'].'"');
         }
         $this->selectRobotId($robotId);
-        $this->echoln('Success: selected robot #'.$robotId);
+        $this->success('selected robot #'.$robotId);
 	}
 
 }

@@ -48,7 +48,7 @@ class RealmCreateCommand extends UserInterfaceCommand {
 	}
 	
 	public function execute($options, $arguments) {
-        $this->echoln('Please wait, this may take a minute or two...');
+        $this->wait('creating new realm. This may take a minute or two...');
         $this->postForm('realm', 'realm/create', array(
             'name' => $arguments['name'],
             'password' => $arguments['password'],

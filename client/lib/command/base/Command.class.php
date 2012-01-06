@@ -9,17 +9,25 @@ abstract class Command {
 	public $arguments = array();
 
     public function __construct() {
-        
+        $this->options = $this->getDefaultOptions();
     }
 
 	public function setOptions($options) {
-		$this->options = $options;
+		$this->options = array_merge($this->getDefaultOptions(), $options);
 		return $this;
 	}
 	
 	public function getOptions() {
 		return $this->options;
 	}
+
+    public function getDefaultOptions() {
+        $defaultOptions = array();
+        foreach ($this->getOptionConfigs() as $option=>$config) {
+            $defaultOptions[$option] = empty($config['default'])? null : $config['default'];
+        }
+        return $defaultOptions;
+    }
 
 	public function setOption($option, $value) {
 		$this->options[$option] = $value;
@@ -60,7 +68,7 @@ abstract class Command {
 		);
 	}
 	
-	public function parse() {
+	public function parse($args) {
 		$parser = new Console_CommandLine($this->getParserConfig());
 		foreach ($this->getOptionConfigs() as $name=>$config) {
 			$parser->addOption($name, $config);
@@ -68,8 +76,6 @@ abstract class Command {
 		foreach ($this->getArgumentConfigs() as $name=>$config) {
 			$parser->addArgument($name, $config);
 		}
-		$args = $_SERVER['argv'];
-		unset($args[1]);
 		$result = $parser->parse(count($args), $args);
 		$this->setOptions($result->options);
 		$this->setArguments($result->args);

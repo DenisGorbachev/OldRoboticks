@@ -25,8 +25,24 @@
 	if (!file_exists($cmdFilename)) {
 		throw new RoboticksException('Command not found', 1);
 	}
-	
-	require_once $cmdFilename;
+    require_once $cmdFilename;
 	$cmd = new $cmdClass();
-	$cmd->parse();
-	$cmd->run();
+    $args = $_SERVER['argv'];
+    unset($args[1]);
+
+    try {
+        $cmd->parse($args);
+        $cmd->run();
+    } catch (Exception $e) {
+        if (Config::get('generic/debug')) {
+            throw $e;
+        } else {
+            $message = $e->getMessage();
+            if ($e instanceof Console_CommandLine_Exception) {
+                $message .= ' Use "--help" option to get info about a command.';
+            }
+            $cmd->failure($message);
+            exit($e->getCode());
+        }
+    }
+

@@ -49,7 +49,11 @@ class RobotGuard extends BaseGuard {
         $this->checkIsActive();
         $this->checkHasFunction('disassemble');
         $this->checkTargetIsInSameSector($target);
-        $this->checkTargetIsDisabled($target);
+        try {
+            $this->checkIsOwnerOfTarget($target);
+        } catch (rsSanityException $e) {
+            $this->checkTargetIsDisabled($target);
+        }
         return true;
     }
 
@@ -102,6 +106,15 @@ class RobotGuard extends BaseGuard {
 	    if (!$this->isOwner()) {
 			throw new rsSanityException('Robot %robot% is not owned by you.', array(
 				'robot' => (string)$this->object
+			));
+		}
+		return true;
+    }
+
+    public function checkIsOwnerOfTarget($target) {
+	    if ($target->getUserId() != $this->getUser()->getId()) {
+			throw new rsSanityException('Target robot %robot% is not owned by you.', array(
+				'robot' => (string)$target
 			));
 		}
 		return true;

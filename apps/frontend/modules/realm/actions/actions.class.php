@@ -6,6 +6,7 @@ class realmActions extends rbActions {
         $this->pushFormParameters($this->form, array(
             'owner_id' => $this->getUser()->getUser()->getId()
         ));
+        $this->appendFormParameters($this->form, $this->form->getDefaults());
 	}
 
     public function validateCreate() {

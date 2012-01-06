@@ -15,15 +15,6 @@
 	define('CACHEDIR', (empty($cachedir)? BASEDIR.'/cache' : $cachedir));
 	define('LIBDIR', BASEDIR.'/lib');
 	define('DEBUG', file_exists(CACHEDIR.'/debug'));
-	try {
-		require_once LIBDIR.'/util/config.php';
-		Config::load(BASEDIR.'/config');
-		require_once LIBDIR.'/util/runner.php';
-	} catch (RoboticksException $e) {
-		if (!Config::get('generic/debug') || $e instanceOf RoboticksException) {
-			echo '>> '.$e->getMessage().PHP_EOL;
-			exit($e->getCode());
-		} else {
-			throw $e;
-		}
-	}
+    require_once LIBDIR.'/util/config.php';
+    Config::load(BASEDIR.'/config');
+    require_once LIBDIR.'/util/runner.php';
