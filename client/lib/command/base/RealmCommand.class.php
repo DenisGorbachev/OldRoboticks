@@ -35,7 +35,7 @@ abstract class RealmCommand extends UserInterfaceCommand {
     public function preExecute($options, $arguments)
     {
         parent::preExecute($options, $arguments);
-        if ($this->getOption('realm_id') === null) {
+        if (!$this->getOption('realm_id')) {
             throw new RoboticksCacheException('No realm selected. '.PHP_EOL.'See a list of available realms using `rk realm:ls`, select a realm using `rk realm:select ID`. '.PHP_EOL.'Alternatively, you can select a realm for a specific command by adding `--realm-id|-m ID`.');
         }
     }

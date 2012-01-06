@@ -11,24 +11,21 @@ class RealmJoinSpec extends RealmBaseSpec {
 
     public function testNormal() {
         return $this
-            ->given('Realm', 'Lawn')
-			->when('Exec', 'realm:join lawnpassword')
+			->when('Exec', 'realm:join '.$this->getRealmId('Lawn').' lawnpassword')
             ->then('Success')
 	;}
 
     public function testWithoutPassword() {
         return $this
-            ->given('Realm', 'Etherworld')
-			->when('Exec', 'realm:join')
+			->when('Exec', 'realm:join '.$this->getRealmId('Etherworld'))
             ->then('Success')
 	;}
 
     public function testJoinTwiceWithoutError() {
         return $this
-            ->given('Realm', 'Lawn')
-			->when('Exec', 'realm:join lawnpassword')
+			->when('Exec', 'realm:join '.$this->getRealmId('Lawn').' lawnpassword')
             ->then('Success')
-            ->when('Exec', 'realm:join lawnpassword')
+            ->when('Exec', 'realm:join '.$this->getRealmId('Lawn').' lawnpassword')
             ->then('Success')
 	;}
 
@@ -36,8 +33,7 @@ class RealmJoinSpec extends RealmBaseSpec {
 
     public function testInvalidWrongPassword() {
         return $this
-            ->given('Realm', 'Lawn')
-			->when('Exec', 'realm:join wrongpassword')
+			->when('Exec', 'realm:join '.$this->getRealmId('Lawn').' wrongpassword')
             ->then('Failure')
 	;}
 
