@@ -18,12 +18,33 @@ abstract class UserInterfaceCommand extends ServerCommand {
         return parent::run();
     }
 
-    public function selectRobotId($robotId) {
-        file_put_contents(CACHEDIR . '/robotId', $robotId);
+    public function setVariable($name, $value) {
+        foreach ($this->getVariableFilenames($name) as $filename) {
+            file_put_contents($filename, $value);
+        }
     }
 
-    public function selectRealmId($realmId) {
-        file_put_contents(CACHEDIR . '/realmId', $realmId);
+    public function getVariable($name) {
+        foreach ($this->getVariableFilenames($name) as $filename) {
+            if (file_exists($filename)) {
+                return file_get_contents($filename);
+            }
+        }
+    }
+
+    public function getVariableFilenames($name) {
+        return array(
+            $this->getShellLevelVariableFilename($name),
+            $this->getGlobalLevelVariableFilename($name),
+        );
+    }
+
+    public function getShellLevelVariableFilename($name) {
+        return sys_get_temp_dir().'/'.$name.'.'.posix_getppid();
+    }
+
+    public function getGlobalLevelVariableFilename($name) {
+        return CACHEDIR . '/' . $name;
     }
 
     public function request($controller, $parameters = array(), $method = 'GET', $options = array()) {

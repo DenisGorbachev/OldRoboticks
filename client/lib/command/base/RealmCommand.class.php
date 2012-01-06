@@ -6,10 +6,7 @@ abstract class RealmCommand extends UserInterfaceCommand {
     public $realmId;
 
     public function __construct() {
-        $realmIdCacheFilename = CACHEDIR.'/realmId';
-        if (file_exists($realmIdCacheFilename)) {
-            $this->setRealmId((int)file_get_contents($realmIdCacheFilename));
-        }
+        $this->realmId = (int)$this->getVariable('realmId');
         parent::__construct();
     }
 

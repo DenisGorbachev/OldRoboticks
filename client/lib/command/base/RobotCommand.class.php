@@ -6,10 +6,7 @@ abstract class RobotCommand extends RealmCommand {
     public $robotId;
 
     public function __construct() {
-        $robotIdCacheFilename = CACHEDIR.'/robotId';
-        if (file_exists($robotIdCacheFilename)) {
-            $this->setRobotId((int)file_get_contents($robotIdCacheFilename));
-        }
+        $this->robotId = (int)$this->getVariable('robotId');
         parent::__construct();
     }
 
