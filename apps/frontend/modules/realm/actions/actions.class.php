@@ -40,7 +40,7 @@ class realmActions extends rbActions {
     }
 
     public function executeShow(sfWebRequest $request) {
-        return $this->success('realm '.$this->object->getToStringFormat().' [%width%x%height%] has %sectors_count% sectors, %users_count% users, %robots_count% robots.',
+        return $this->success('realm '.$this->object->getToStringFormat().' [%width%x%height%] is '.($this->object->getPassword()? 'free to join' : 'password-protected').' and has %sectors_count% sectors, %users_count% users, %robots_count% robots.',
             array_merge($this->object->toArray(), array(
                 'sectors_count' => $this->object->getSectorsCount(),
                 'users_count' => $this->object->getUsersCount(),
