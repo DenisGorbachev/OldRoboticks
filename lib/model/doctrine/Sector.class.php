@@ -32,7 +32,12 @@ class Sector extends BaseSector {
     }
     
     public function removeFromDropsArray(array $lettersArray) {
-        $this->setDropsArray(array_diff($this->getDropsArray(), $lettersArray));
+        $dropsArray = $this->getDropsArray();
+        foreach ($lettersArray as $letter) {
+            $index = array_search($letter, $dropsArray);
+            unset($dropsArray[$index]);
+        }
+        $this->setDropsArray(array_diff($dropsArray, $lettersArray));
     }
     
 }

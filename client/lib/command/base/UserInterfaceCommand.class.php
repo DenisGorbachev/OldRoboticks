@@ -19,16 +19,24 @@ abstract class UserInterfaceCommand extends ServerCommand {
     }
 
     public function setVariable($name, $value) {
-        foreach ($this->getVariableFilenames($name) as $filename) {
+        $this->putVariable($this->getVariableFilenames($name), $value);
+    }
+
+    public function putVariable($files, $value) {
+        foreach ($files as $filename) {
             file_put_contents($filename, $value);
         }
     }
 
     public function getVariable($name) {
+        $emptyFilenames = array();
         foreach ($this->getVariableFilenames($name) as $filename) {
             if (file_exists($filename)) {
-                return file_get_contents($filename);
+                $value = file_get_contents($filename);
+                $this->putVariable($emptyFilenames, $value);
+                return $value;
             }
+            $emptyFilenames[] = $filename;
         }
     }
 

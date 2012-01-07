@@ -5,11 +5,6 @@ require_once dirname(__FILE__).'/UserInterfaceCommand.class.php';
 abstract class RealmCommand extends UserInterfaceCommand {
     public $realmId;
 
-    public function __construct() {
-        $this->realmId = (int)$this->getVariable('realmId');
-        parent::__construct();
-    }
-
     public function getOptionConfigs() {
         return array(
             'realm_id' => array(
@@ -25,17 +20,21 @@ abstract class RealmCommand extends UserInterfaceCommand {
     public function setRealmId($realmId)
     {
         $this->realmId = $realmId;
+        $this->setVariable('realmId', $realmId);
     }
 
     public function getRealmId()
     {
+        if (empty($this->realmId)) {
+            $this->realmId = $this->getVariable('realmId');
+        }
         return $this->realmId;
     }
 
     public function preExecute($options, $arguments)
     {
         parent::preExecute($options, $arguments);
-        if (!$this->getOption('realm_id')) {
+        if ($this->getOption('realm_id') === null) {
             throw new RoboticksCacheException('No realm selected. '.PHP_EOL.'See a list of available realms using `rk realm:ls`, select a realm using `rk realm:select ID`. '.PHP_EOL.'Alternatively, you can select a realm for a specific command by adding `--realm-id|-m ID`.');
         }
     }
