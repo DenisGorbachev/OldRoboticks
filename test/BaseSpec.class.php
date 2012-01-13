@@ -136,6 +136,10 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 		return $this->assertStringStartsWith('Success:', $this->world['lastResult']);
 	}
 
+	public function thenNotice() {
+		return $this->assertStringStartsWith('Notice:', $this->world['lastResult']);
+	}
+
 	public function thenFailure() {
 		return $this->assertStringStartsWith('Failure:', $this->world['lastResult']);
 	}

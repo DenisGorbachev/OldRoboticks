@@ -190,16 +190,21 @@ class tfExtendedActions extends sfActions {
 	}
 	
 	public function success($text, array $arguments = array()) {
-		return $this->respond(true, $text, $arguments);
+		return $this->respond(true, __FUNCTION__, $text, $arguments);
+	}
+
+	public function notice($text, array $arguments = array()) {
+		return $this->respond(true, __FUNCTION__, $text, $arguments);
 	}
 
 	public function failure($text, array $arguments = array()) {
-		return $this->respond(false, $text, $arguments);
+		return $this->respond(false, __FUNCTION__, $text, $arguments);
 	}
 
-	public function respond($success, $text, array $arguments = array()) {
+	public function respond($success, $type, $text, array $arguments = array()) {
 		$this->packet['success'] = $success;
 		$this->packet['message'] = array(
+			'type' => $type,
 			'text' => $text,
 			'arguments' => $arguments
 		);

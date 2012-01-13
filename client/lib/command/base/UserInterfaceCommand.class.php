@@ -68,13 +68,13 @@ abstract class UserInterfaceCommand extends ServerCommand {
                 break;
             case 'human':
                 $message = __($response['message']);
+                $this->{$response['message']['type']}($message);
                 if ($response['success']) {
-                    $this->success($message);
+
                     if (!empty($response['notifications'])) {
                         $this->notifications = array_merge($this->notifications, $response['notifications']);
                     }
                 } else {
-                    $this->failure($message);
                     if (!empty($response['globalErrors'])) {
                         foreach ($response['globalErrors'] as $error) {
                             $this->echoln('  - '.__($error));
@@ -150,6 +150,10 @@ abstract class UserInterfaceCommand extends ServerCommand {
 
     public function success($message) {
         return $this->echoln('Success: '.$message);
+    }
+
+    public function notice($message) {
+        return $this->echoln('Notice: '.$message);
     }
 
     public function failure($message) {

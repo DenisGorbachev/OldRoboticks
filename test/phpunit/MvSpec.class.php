@@ -10,7 +10,7 @@ class MvSpec extends RobotBaseSpec {
 				->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
 			->when('Exec', 'mv 9,9')
-			->then('Success')
+			->then('Notice')
 				->and('Contains', '9,9')
 	;}
 	
