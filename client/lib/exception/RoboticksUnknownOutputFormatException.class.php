@@ -1,7 +1,7 @@
 <?php
 
-require_once dirname(__FILE__).'/RoboticksException.class.php';
+require_once dirname(__FILE__).'/RoboticksUserFriendlyException.class.php';
 
-class RoboticksUnknownOutputFormatException extends RoboticksException {
+class RoboticksUnknownOutputFormatException extends RoboticksUserFriendlyException {
 	
 }

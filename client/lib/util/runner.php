@@ -35,9 +35,7 @@
         $cmd->parse($args);
         $cmd->run();
     } catch (Exception $e) {
-        if (Config::get('generic/debug')) {
-            throw $e;
-        } else {
+        if ($e instanceof RoboticksUserFriendlyException || !DEBUG) {
             $message = $e->getMessage();
             if ($e instanceof Console_CommandLine_Exception) {
                 $message .= ' Use "--help" option to get info about a command.';
@@ -45,5 +43,6 @@
             $cmd->failure($message);
             exit($e->getCode());
         }
+        throw $e;
     }
 

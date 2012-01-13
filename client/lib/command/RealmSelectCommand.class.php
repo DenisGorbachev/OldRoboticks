@@ -22,7 +22,7 @@ class RealmSelectCommand extends UserInterfaceCommand {
         if ((string)$realmId != $arguments['realm_id']) {
             throw new RoboticksArgumentException('Invalid argument "realm_id": expected integer, but got "'.$arguments['realm_id'].'"');
         }
-        $this->setVariable('realmId', $realmId);
+        $this->setVariable('realm_id', $realmId);
         $this->success('selected realm #'.$realmId);
 	}
 

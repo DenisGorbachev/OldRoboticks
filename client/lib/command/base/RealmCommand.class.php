@@ -20,13 +20,13 @@ abstract class RealmCommand extends UserInterfaceCommand {
     public function setRealmId($realmId)
     {
         $this->realmId = $realmId;
-        $this->setVariable('realmId', $realmId);
+        $this->setVariable('realm_id', $realmId);
     }
 
     public function getRealmId()
     {
         if (empty($this->realmId)) {
-            $this->realmId = $this->getVariable('realmId');
+            $this->realmId = $this->getVariable('realm_id');
         }
         return $this->realmId;
     }

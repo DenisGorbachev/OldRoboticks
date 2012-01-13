@@ -1,0 +1,6 @@
+# Useful functions for selecting robots and realms on a per-console basis.
+# Activate them by running "source client/functions" (actual path may be different).
+# Alternatively, place them in your ~/.bashrc (for all your consoles) or even /etc/bashrc (for all consoles of all users)
+
+function robot() { export RK_ROBOT_ID=$1; }
+function realm() { export RK_REALM_ID=$1; }

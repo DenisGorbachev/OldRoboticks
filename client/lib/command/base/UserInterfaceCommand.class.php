@@ -19,39 +19,21 @@ abstract class UserInterfaceCommand extends ServerCommand {
     }
 
     public function setVariable($name, $value) {
-        $this->putVariable($this->getVariableFilenames($name), $value);
-    }
-
-    public function putVariable($files, $value) {
-        foreach ($files as $filename) {
-            file_put_contents($filename, $value);
-        }
+        file_put_contents($this->getVariableFilename($name), $value);
     }
 
     public function getVariable($name) {
-        $emptyFilenames = array();
-        foreach ($this->getVariableFilenames($name) as $filename) {
+        $value = getenv('RK_'.strtoupper($name));
+        if (!$value) {
+            $filename = $this->getVariableFilename($name);
             if (file_exists($filename)) {
                 $value = file_get_contents($filename);
-                $this->putVariable($emptyFilenames, $value);
-                return $value;
             }
-            $emptyFilenames[] = $filename;
         }
+        return $value;
     }
 
-    public function getVariableFilenames($name) {
-        return array(
-            $this->getShellLevelVariableFilename($name),
-            $this->getGlobalLevelVariableFilename($name),
-        );
-    }
-
-    public function getShellLevelVariableFilename($name) {
-        return sys_get_temp_dir().'/'.$name.'.'.posix_getppid();
-    }
-
-    public function getGlobalLevelVariableFilename($name) {
+    public function getVariableFilename($name) {
         return CACHEDIR . '/' . $name;
     }
 

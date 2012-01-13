@@ -20,13 +20,13 @@ abstract class RobotCommand extends RealmCommand {
     public function setRobotId($robotId)
     {
         $this->robotId = $robotId;
-        $this->setVariable('robotId', $robotId);
+        $this->setVariable('robot_id', $robotId);
     }
 
     public function getRobotId()
     {
         if (empty($this->robotId)) {
-            $this->robotId = $this->getVariable('robotId');
+            $this->robotId = $this->getVariable('robot_id');
         }
         return $this->robotId;
     }

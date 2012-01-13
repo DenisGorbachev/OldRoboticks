@@ -15,8 +15,10 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
         parent::setUp();
         $this->setDebug(true);
         $this->unlinkIfExists($this->getClientCacheDir().'/cookie.jar');
-        $this->unlinkIfExists($this->getClientCacheDir().'/realmId');
-        $this->unlinkIfExists($this->getClientCacheDir().'/robotId');
+        $this->unlinkIfExists($this->getClientCacheDir().'/realm_id');
+        $this->unlinkIfExists($this->getClientCacheDir().'/robot_id');
+        putenv('RK_REALM_ID=');
+        putenv('RK_ROBOT_ID=');
         return $this;
     }
 
