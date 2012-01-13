@@ -59,9 +59,13 @@ class userActions extends rbActions {
 	}
 	
 	public function executeProfile(sfWebRequest $request) {
-		return $this->message($this->getPartial('profile', array(
-			'user' => $this->getUser()->getUser()
-		)));
+		return $this->userInfo($this->getUser()->getUser());
 	}
+
+    public function userInfo(User $user) {
+        return $this->success('User %user% is nice.', array(
+            'user' => (string)$user
+        ));
+    }
 
 }

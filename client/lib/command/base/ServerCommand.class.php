@@ -21,11 +21,7 @@ abstract class ServerCommand extends Command {
 
 	public function request($controller, $parameters = array(), $method = 'GET', $options = array()) {
 		$method = strtoupper($method);
-		$host = Config::get('generic/server/host');
-		if (empty($host)) {
-			throw new RoboticksConnectionException('No host defined in generic.yml');
-		}
-		$uri = 'http://'.$host.(DEBUG? '/dev.php' : '').'/'.$controller;
+		$uri = 'http://'.$this->getHost().(DEBUG? '/dev.php' : '').'/'.$controller;
 		if ($method == 'GET') {
 			$uri .= '?'.http_build_query($parameters);
 		}
@@ -57,6 +53,14 @@ abstract class ServerCommand extends Command {
 		curl_close($ch);
 		return $json;
 	}
+
+    public function getHost() {
+        $host = Config::get('generic/server/host');
+        if (empty($host)) {
+            throw new RoboticksConnectionException('No host defined in generic.yml');
+        }
+        return $host;
+    }
 
     public function getCurlOptions() {
 		return array(

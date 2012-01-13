@@ -24,7 +24,7 @@
     ).'Command';
 	$cmdFilename = LIBDIR.'/command/'.$cmdClass.'.class.php';
 	if (!file_exists($cmdFilename)) {
-		throw new RoboticksException('Command not found', 1);
+		die('Failure: command not found'.PHP_EOL);
 	}
     require_once $cmdFilename;
 	$cmd = new $cmdClass();

@@ -3,7 +3,7 @@
 require_once dirname(__FILE__).'/ServerCommand.class.php';
 
 abstract class UserInterfaceCommand extends ServerCommand {
-    public $output_format = 'human';
+    public $output_format;
 
     public $empty_cell_placeholder = '-';
 
@@ -13,7 +13,7 @@ abstract class UserInterfaceCommand extends ServerCommand {
 
     public function run()
     {
-        $this->output_format = getenv('RK_OUTPUT_FORMAT') ?: $this->output_format;
+        $this->initOutputFormat();
         $this->initLogging();
         $this->log(PHP_EOL.implode(' ', $_SERVER['argv']));
         
@@ -24,15 +24,19 @@ abstract class UserInterfaceCommand extends ServerCommand {
         file_put_contents($this->getVariableFilename($name), $value);
     }
 
-    public function getVariable($name) {
+    public function getVariable($name, $default = null) {
         $value = getenv('RK_'.strtoupper($name));
-        if (!$value) {
-            $filename = $this->getVariableFilename($name);
-            if (file_exists($filename)) {
-                $value = file_get_contents($filename);
+        if ($value) {
+            return $value;
+        }
+        $filename = $this->getVariableFilename($name);
+        if (file_exists($filename)) {
+            $value = file_get_contents($filename);
+            if ($value) {
+                return $value;
             }
         }
-        return $value;
+        return $default;
     }
 
     public function getVariableFilename($name) {
@@ -181,6 +185,18 @@ abstract class UserInterfaceCommand extends ServerCommand {
                 break;
         }
         parent::postExecute($options, $arguments);
+    }
+
+    public function setOutputFormat($output_format) {
+        $this->output_format = $output_format;
+    }
+
+    public function getOutputFormat() {
+        return $this->output_format;
+    }
+
+    public function initOutputFormat() {
+        $this->output_format = getenv('RK_OUTPUT_FORMAT') ?: 'human';
     }
 
 }

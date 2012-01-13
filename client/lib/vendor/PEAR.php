@@ -538,7 +538,7 @@ class PEAR
 
     /**
      * Simpler form of raiseError with fewer options.  In most cases
-     * message, code and userinfo are enough.
+     * message, code and userInfo are enough.
      *
      * @param mixed $message a text error message or a PEAR error object
      *
