@@ -14,6 +14,8 @@ abstract class UserInterfaceCommand extends ServerCommand {
     public function run()
     {
         $this->output_format = getenv('RK_OUTPUT_FORMAT') ?: $this->output_format;
+        $this->initLogging();
+        $this->log(PHP_EOL.implode(' ', $_SERVER['argv']));
         
         return parent::run();
     }
@@ -35,6 +37,25 @@ abstract class UserInterfaceCommand extends ServerCommand {
 
     public function getVariableFilename($name) {
         return CACHEDIR . '/' . $name;
+    }
+
+    public function initLogging() {
+        foreach ($this->getLogFilenames() as $filename) {
+            $dirname = dirname($filename);
+            if (!file_exists($dirname)) {
+                mkdir($dirname, 0755, true);
+            }
+        }
+    }
+
+    public function getLogFilenames() {
+        return array(
+            $this->getBaseLogDirname().'/all'
+        );
+    }
+
+    public function getBaseLogDirname() {
+        return LOGDIR.'/'.Config::get('generic/server/host', 'undefined');
     }
 
     public function request($controller, $parameters = array(), $method = 'GET', $options = array()) {
@@ -114,10 +135,17 @@ abstract class UserInterfaceCommand extends ServerCommand {
         return $this->sector($sector['x'], $sector['y']);
     }
 
+    public function log($string = '') {
+        foreach ($this->getLogFilenames() as $filename) {
+            file_put_contents($filename, $string.PHP_EOL, FILE_APPEND);
+        }
+    }
+
     public function echoln($string = '') {
         if ($this->output_format == 'human') {
             echo $string.PHP_EOL;
         }
+        $this->log($string);
     }
 
     public function success($message) {

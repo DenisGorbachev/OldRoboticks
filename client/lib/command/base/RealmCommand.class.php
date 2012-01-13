@@ -31,6 +31,15 @@ abstract class RealmCommand extends UserInterfaceCommand {
         return $this->realmId;
     }
 
+    public function getLogFilenames() {
+        $logFilenames = parent::getLogFilenames();
+        $realmId = $this->getRealmId();
+        if ($realmId) {
+            $logFilenames[] = $this->getBaseLogDirname().'/realm/'.$realmId;
+        }
+        return $logFilenames;
+    }
+
     public function preExecute($options, $arguments)
     {
         parent::preExecute($options, $arguments);

@@ -31,6 +31,15 @@ abstract class RobotCommand extends RealmCommand {
         return $this->robotId;
     }
 
+    public function getLogFilenames() {
+        $logFilenames = parent::getLogFilenames();
+        $robotId = $this->getRobotId();
+        if ($robotId) {
+            $logFilenames[] = $this->getBaseLogDirname().'/robot/'.$robotId;
+        }
+        return $logFilenames;
+    }
+
     public function preExecute($options, $arguments)
     {
         parent::preExecute($options, $arguments);

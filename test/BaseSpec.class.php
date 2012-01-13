@@ -13,12 +13,13 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 
     public function setUp() {
         parent::setUp();
-        $this->setDebug(true);
-        $this->unlinkIfExists($this->getClientCacheDir().'/cookie.jar');
-        $this->unlinkIfExists($this->getClientCacheDir().'/realm_id');
-        $this->unlinkIfExists($this->getClientCacheDir().'/robot_id');
+        $clientHomeDir = $this->getClientHomeDir();
+        if (file_exists($clientHomeDir)) {
+            `rm -r $clientHomeDir`;
+        }
         putenv('RK_REALM_ID=');
         putenv('RK_ROBOT_ID=');
+        $this->setDebug(true);
         return $this;
     }
 
@@ -41,12 +42,22 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 		return __DIR__.'/../client';
 	}
 
+    public function getClientHomeDir() {
+        return getenv('HOME') . '/.roboticks';
+    }
+
     public function getClientCacheDir() {
-        $cachedir = getenv('HOME').'/.roboticks';
-        if (empty($cachedir)) {
-            mkdir($cachedir, 0755, true); // In case the tests are run before any interaction with client
+        return $this->getClientHomeDir() .'/cache';
+    }
+
+    public function getClientLogDir() {
+        return $this->getClientHomeDir().'/log';
+    }
+
+    public function createDirIfNotExists($dirname) {
+        if (!file_exists($dirname)) {
+            mkdir($dirname, 0755, true);
         }
-        return $cachedir;
     }
 
 	public function getRobotId($name) {
@@ -141,6 +152,10 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 		return $this->assertNotContains($needle, $this->world['lastResult'], $message, $ignoreCase);
 	}
 
+    public function thenLogContains($file, $needle, $message = '', $canonicalize = false, $ignoreCase = false) {
+        return $this->assertContains($needle, file_get_contents($this->getClientLogDir().'/roboticks'.$file), $message, $ignoreCase);
+    }
+
     public function thenMatches($pattern, $message = '', $ignoreCase = false) {
         return $this->assertRegExp($pattern, $this->world['lastResult'], $message, $ignoreCase);
     }
@@ -149,16 +164,13 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
         return $this->assertNotRegExp($pattern, $this->world['lastResult'], $message, $ignoreCase);
     }
 
-    public function testDummy() {
-        $this->assertTrue(true);
-    }
-
     public function getClientDebugFilename() {
         return $this->getClientCacheDir().'/debug';
     }
 
     public function setDebug($debug) {
         $debugFilename = $this->getClientDebugFilename();
+        $this->createDirIfNotExists(dirname($debugFilename));
         return $debug? touch($debugFilename) : unlink($debugFilename);
     }
 

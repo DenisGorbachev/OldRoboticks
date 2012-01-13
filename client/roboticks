@@ -4,15 +4,20 @@
 
     $homedir = getenv('HOME');
     if ($homedir) {
-        $cachedir = $homedir.'/.roboticks';
+        $cachedir = $homedir.'/.roboticks/cache';
         if (!file_exists($cachedir)) {
             mkdir($cachedir, 0755, true);
+        }
+        $logdir = $homedir.'/.roboticks/log';
+        if (!file_exists($logdir)) {
+            mkdir($logdir, 0755, true);
         }
     }
     
 	define('VERSION', '0.1a');
 	define('BASEDIR', dirname(__FILE__));
 	define('CACHEDIR', (empty($cachedir)? BASEDIR.'/cache' : $cachedir));
+	define('LOGDIR', (empty($logdir)? BASEDIR.'/log' : $logdir));
 	define('LIBDIR', BASEDIR.'/lib');
 	define('DEBUG', file_exists(CACHEDIR.'/debug'));
     require_once LIBDIR.'/util/config.php';
