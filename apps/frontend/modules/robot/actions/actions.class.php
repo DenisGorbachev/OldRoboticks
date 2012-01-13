@@ -37,8 +37,8 @@ class robotActions extends rkActions {
 	}
 	
 	public function executeMove(sfWebRequest $request) {
-        $this->object->doAction('Move', $this->x, $this->y);
-        if (!$this->object->isModified()) {
+        $result = $this->object->doAction('Move', $this->x, $this->y);
+        if ($result === false) {
 			return $this->notice('robot %robot% is already at %sector%', array(
 				'robot' => (string)$this->object,
 				'sector' => (string)$this->object->getSector(),

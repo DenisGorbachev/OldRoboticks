@@ -145,7 +145,7 @@ class Robot extends BaseRobot {
 		list($x, $y) = $sectorTable->getEffectiveCoordinates($sector->getX(), $sector->getY(), $x, $y, $this->getSpeed());
         $newSector = $sectorTable->findOneByXAndY($x, $y);
         $this->setSector($newSector);
-        return $newSector;
+        return $newSector->getId() == $sector->getId()? false : $newSector;
     }
 
     public function doExtractAction() {
