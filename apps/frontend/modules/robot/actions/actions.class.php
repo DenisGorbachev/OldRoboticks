@@ -1,6 +1,6 @@
 <?php
 
-class robotActions extends rbActions {
+class robotActions extends rkActions {
     public function prepare() {
         $this->prepareAutoRealm();
         return parent::prepare();

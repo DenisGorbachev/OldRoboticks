@@ -29,7 +29,7 @@ class ProjectConfiguration extends sfProjectConfiguration
   }
   
   public function configureDoctrine(Doctrine_Manager $manager) {
-  	$manager->setAttribute(Doctrine_Core::ATTR_TBLNAME_FORMAT, 'rb_%s');
+  	$manager->setAttribute(Doctrine_Core::ATTR_TBLNAME_FORMAT, 'rk_%s');
   	$manager->setAttribute(Doctrine_Core::ATTR_AUTO_ACCESSOR_OVERRIDE, true);
   	$manager->setAttribute(Doctrine::ATTR_DEFAULT_COLUMN_OPTIONS, array('notnull' => true));
   	$manager->setAttribute(Doctrine::ATTR_DEFAULT_TABLE_CHARSET, 'utf8');

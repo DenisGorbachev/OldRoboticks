@@ -1,6 +1,6 @@
 <?php
 
-class mailActions extends rbActions {
+class mailActions extends rkActions {
 	public function prepareSend() {
         $this->prepareAutoCreateForm();
         $this->pushFormParameters($this->form, array(

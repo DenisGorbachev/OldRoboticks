@@ -1,6 +1,6 @@
 <?php
 
-class userActions extends rbActions {
+class userActions extends rkActions {
 	public function prepareCreate() {
 		return parent::prepareAutoCreateForm();
 	}

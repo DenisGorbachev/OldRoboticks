@@ -1,6 +1,6 @@
 <?php
 
-class rbActions extends tfExtendedActions {
+class rkActions extends tfExtendedActions {
 	public function prepareFailed(rsException $e) {
 		return $this->somethingFailed($e);
 	}

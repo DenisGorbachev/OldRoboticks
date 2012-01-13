@@ -1,6 +1,6 @@
 <?php
 
-class realmActions extends rbActions {
+class realmActions extends rkActions {
 	public function prepareCreate() {
         $this->prepareAutoCreateForm();
         $this->pushFormParameters($this->form, array(
