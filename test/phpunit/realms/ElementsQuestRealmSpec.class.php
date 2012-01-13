@@ -21,7 +21,6 @@ class ElementsQuestRealmSpec extends RealmBaseSpec {
             ->given('Robot', 'justregistered')
 			->when('Exec', 'ls')
                 ->then('Contains', '5,5')
-            ->when('AssembleElement', 'WATER', 5, 5)
             ->when('AssembleElement', 'FIRE', 5, 20)
             ->when('Exec', 'report')
                 ->then('Contains', 'enemy')
@@ -31,6 +30,7 @@ class ElementsQuestRealmSpec extends RealmBaseSpec {
             ->when('AssembleElement', 'AIR', 20, 5)
             ->when('Exec', 'report')
                 ->then('Contains', 'enemy')
+            ->when('AssembleElement', 'WATER', 5, 5)
             ->when('Exec', 'realm:win')
                 ->then('Success')
 	;}

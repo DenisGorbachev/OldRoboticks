@@ -6,7 +6,7 @@ class LogSpec extends BaseSpec {
 	public function testGlobalScope() {
 		$this
             ->given('Genesis')
-			->when('Exec', 'ls')
+			->when('Exec', 'login nonexistinguser wrongpassword')
 			->then('LogContains', '/all', 'Failure')
 	;}
 
