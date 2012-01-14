@@ -10,16 +10,19 @@ class StatusCommand extends UserInterfaceCommand {
 	}
 
 	public function execute($options, $arguments) {
+        $maxlengths = array(10, 9);
+        $this->tableFixedColumnWidth(array(
+            array('Parameter', 'Value'),
+            array('Robot ID', $this->getVariable('robot_id', 'undefined')),
+            array('Realm ID', $this->getVariable('realm_id', 'undefined')),
+            array('Server', $this->getHost()),
+        ), false, $maxlengths);
         $this->setOutputFormat('none');
         $response = $this->get('user/profile');
         $this->initOutputFormat();
-        $this->table(array(
-            array('Parameter', 'Value'),
-            array('Host', $this->getHost()),
-            array('Auth?', $response['success']? 'yes' : 'no'),
-            array('Realm ID', $this->getVariable('realm_id', 'undefined')),
-            array('Robot ID', $this->getVariable('robot_id', 'undefined')),
-        ));
+        $this->tableFixedColumnWidth(array(
+            array('Logged in?', $response['success']? 'yes' : 'no'),
+        ), false, $maxlengths);
 	}
 
 }

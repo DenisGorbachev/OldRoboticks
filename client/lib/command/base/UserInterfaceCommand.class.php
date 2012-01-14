@@ -100,17 +100,6 @@ abstract class UserInterfaceCommand extends ServerCommand {
 
     public function table($table, $sortByColumnIndex = false)
     {
-        if ($sortByColumnIndex) {
-            usort($table, function($a, $b) use ($sortByColumnIndex)
-                {
-                    if ($a[$sortByColumnIndex] == $b[$sortByColumnIndex]) {
-                        return 0;
-                    }
-                    return ($a[$sortByColumnIndex] < $b[$sortByColumnIndex]) ? -1 : 1;
-                }
-            );
-        }
-
         foreach ($table as $row) {
             foreach ($row as $columnIndex => $cell) {
                 if (empty($maxlengths[$columnIndex])) {
@@ -120,6 +109,22 @@ abstract class UserInterfaceCommand extends ServerCommand {
                     $maxlengths[$columnIndex] = mb_strlen($cell);
                 }
             }
+        }
+
+        return $this->tableFixedColumnWidth($table, $sortByColumnIndex, $maxlengths);
+    }
+
+    public function tableFixedColumnWidth($table, $sortByColumnIndex, $maxlengths)
+    {
+        if ($sortByColumnIndex) {
+            usort($table, function($a, $b) use ($sortByColumnIndex)
+                {
+                    if ($a[$sortByColumnIndex] == $b[$sortByColumnIndex]) {
+                        return 0;
+                    }
+                    return ($a[$sortByColumnIndex] < $b[$sortByColumnIndex]) ? -1 : 1;
+                }
+            );
         }
 
         foreach ($table as $row) {
