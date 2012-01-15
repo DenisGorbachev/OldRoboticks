@@ -95,6 +95,10 @@ class Realm extends BaseRealm
         return RobotTable::getInstance()->countByRealmId($this->getId());
     }
 
+    public function getActiveRobotsCount() {
+        return RobotTable::getInstance()->countActiveByRealmId($this->getId());
+    }
+
     public function postInsert($event) {
         sfConfig::set('app_realm_id', $this->getId());
         if (sfContext::hasInstance()) {

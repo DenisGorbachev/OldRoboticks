@@ -78,4 +78,8 @@ class RobotTable extends Doctrine_Table {
         return $this->createQuery('r')->where('r.realm_id = ?', $realmId)->count();
     }
 
+    public function countActiveByRealmId($realmId) {
+        return $this->createQuery('r')->where('r.realm_id = ?', $realmId)->andWhere('r.effective_word_id IS NOT NULL')->count();
+    }
+
 }
