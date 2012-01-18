@@ -43,7 +43,7 @@ class ElementsQuestRealmController extends GenericRealmController {
         $robotTable = RobotTable::getInstance();
         foreach ($this->elements as $element=>$positions) {
             $elementCount = $robotTable->getActiveOwnedInRealmQuery($user->getId(), $this->getRealm()->getId())
-                ->leftJoin('r.EffectiveWord ew')
+                ->innerJoin('r.EffectiveWord ew')
                 ->andWhere('ew.name = ?', $element)
             ->count();
             $clearVictory = $clearVictory && ($elementCount >= 5);

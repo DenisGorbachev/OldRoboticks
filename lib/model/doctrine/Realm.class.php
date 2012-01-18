@@ -99,6 +99,10 @@ class Realm extends BaseRealm
         return RobotTable::getInstance()->countActiveByRealmId($this->getId());
     }
 
+    public function isTheOnlyActiveUser($userId) {
+        return $this->getTable()->isTheOnlyActiveUser($userId, $this->getId());
+    }
+
     public function doWin($userId) {
         $link = UserRealmTable::getInstance()->findOneByRealmIdAndUserId($this->getId(), $userId);
         $link->setIsWinner(true);
