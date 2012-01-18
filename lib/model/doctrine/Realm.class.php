@@ -99,6 +99,13 @@ class Realm extends BaseRealm
         return RobotTable::getInstance()->countActiveByRealmId($this->getId());
     }
 
+    public function doWin($userId) {
+        $link = UserRealmTable::getInstance()->findOneByRealmIdAndUserId($this->getId(), $userId);
+        $link->setIsWinner(true);
+        $link->save();
+        return $link;
+    }
+
     public function postInsert($event) {
         sfConfig::set('app_realm_id', $this->getId());
         if (sfContext::hasInstance()) {

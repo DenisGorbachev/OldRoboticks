@@ -85,6 +85,7 @@ class realmActions extends rkActions {
     }
 
     public function executeWin(sfWebRequest $request) {
+        $this->object->doWin($this->getUser()->getUser()->getId());
         return $this->success('claimed victory over realm %realm%.', array(
             'realm' => (string)$this->object
         ));
