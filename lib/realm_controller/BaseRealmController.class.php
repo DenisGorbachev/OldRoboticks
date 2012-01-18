@@ -46,6 +46,10 @@ abstract class BaseRealmController {
 
     abstract public function attachListeners();
 
+    abstract public function getWinningConditions();
+
+    abstract public function isWinner(User $user);
+
     public function addUser(User $user) {
         $this->createUserRealmLink($user->getId())->save();
         $this->createRobot($user->getId())->save();

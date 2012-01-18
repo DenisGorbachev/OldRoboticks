@@ -19,6 +19,12 @@ class RealmGuard extends BaseGuard {
         return true;
     }
 
+    public function canWin() {
+        $this->checkIsMember();
+        $this->checkIsWinner();
+        return true;
+    }
+
     public function checkIsOwner() {
 	    if (!$this->isOwner('owner_id')) {
 			throw new rsSanityException('Realm %realm% is not owned by you.', array(
@@ -32,6 +38,16 @@ class RealmGuard extends BaseGuard {
 	    if (!$this->getObject()->isMember($this->getUser())) {
 			throw new rsSanityException('You are not a member of realm %realm%.', array(
 				'realm' => (string)$this->object
+			));
+		}
+		return true;
+    }
+
+    public function checkIsWinner() {
+	    if (!$this->getObject()->getController()->isWinner($this->getUser())) {
+			throw new rsSanityException('You haven\'t met winning conditions for realm %realm%: %winning_conditions%.', array(
+				'realm' => (string)$this->object,
+                'winning_conditions' => $this->getObject()->getController()->getWinningConditions(),
 			));
 		}
 		return true;

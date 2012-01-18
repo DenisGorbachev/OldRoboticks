@@ -28,4 +28,27 @@ class ElementsQuestRealmController extends GenericRealmController {
         return $this->elements;
     }
 
+    public function getWinningConditions()
+    {
+        return array_merge(array(
+            array(
+                'text' => 'To build 5 robots for each element: FIRE, WATER, EARTH, AIR (20 robots in total)',
+            )
+        ), parent::getWinningConditions());
+    }
+
+    public function isWinner(User $user)
+    {
+        $clearVictory = true;
+        $robotTable = RobotTable::getInstance();
+        foreach ($this->elements as $element=>$positions) {
+            $elementCount = $robotTable->getActiveOwnedInRealmQuery($user->getId(), $this->getRealm()->getId())
+                ->leftJoin('r.EffectiveWord ew')
+                ->andWhere('ew.name = ?', $element)
+            ->count();
+            $clearVictory = $clearVictory && ($elementCount >= 5);
+        }
+        return $clearVictory || parent::isWinner($user);
+    }
+
 }

@@ -40,12 +40,13 @@ class realmActions extends rkActions {
     }
 
     public function executeShow(sfWebRequest $request) {
-        return $this->success('realm '.$this->object->getToStringFormat().' [%width%x%height%] is '.($this->object->getPassword()? 'free to join' : 'password-protected').' and has %sectors_count% sectors, %users_count% users, %active_robots_count% active robots, %robots_count% total robots.',
+        return $this->success('realm '.$this->object->getToStringFormat().' [%width%x%height%] is '.($this->object->getPassword()? 'free to join' : 'password-protected').' and has %sectors_count% sectors, %users_count% users, %active_robots_count% active robots, %robots_count% total robots. The winning conditions are: %winning_conditions%',
             array_merge($this->object->toArray(), array(
                 'sectors_count' => $this->object->getSectorsCount(),
                 'users_count' => $this->object->getUsersCount(),
                 'active_robots_count' => $this->object->getActiveRobotsCount(),
                 'robots_count' => $this->object->getRobotsCount(),
+                'winning_conditions' => $this->object->getController()->getWinningConditions(),
             ))
         );
     }
@@ -75,5 +76,18 @@ class realmActions extends rkActions {
         return $result;
     }
 
+    public function prepareWin() {
+        $this->prepareAutoObject();
+    }
+
+    public function validateWin() {
+        return $this->validateAutoObject();
+    }
+
+    public function executeWin(sfWebRequest $request) {
+        return $this->success('claimed victory over realm %realm%.', array(
+            'realm' => (string)$this->object
+        ));
+    }
 
 }

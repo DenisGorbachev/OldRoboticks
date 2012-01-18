@@ -59,7 +59,21 @@ class RobotTable extends Doctrine_Table {
     	return $this->createQuery('r')
     		->where('r.user_id = ?', $userId);
     }
-    
+
+    public function getOwnedInRealmQuery($userId, $realmId) {
+    	return $this->getOwnedQuery($userId)
+            ->andWhere('r.realm_id = ?', $realmId)
+    ;}
+
+    public function getActiveOwnedInRealmQuery($userId, $realmId) {
+    	return $this->getOwnedInRealmQuery($userId, $realmId)
+            ->andWhere('r.effective_word_id IS NOT NULL')
+    ;}
+
+    public function countOwnedInRealm($userId, $realmId) {
+        return $this->getOwnedInRealmQuery($userId, $realmId)->count();
+    }
+
     public function getListQuery($userId) {
     	return $this->getOwnedQuery($userId)
             ->leftJoin('r.Word w')

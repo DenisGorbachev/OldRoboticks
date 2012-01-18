@@ -15,6 +15,7 @@ class RealmShowSpec extends RealmBaseSpec {
             ->then('Contains', '400 sectors')
             ->then('Contains', '7 users')
             ->then('Contains', '54 robots')
+            ->then('Contains', 'eliminate')
 	;}
 
 	/* Borderline */

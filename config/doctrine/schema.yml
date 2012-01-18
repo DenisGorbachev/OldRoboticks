@@ -45,6 +45,7 @@ UserRealm:
   columns:
     user_id:		          	{ type: integer }
     realm_id:				{ type: integer }
+    is_winner:              { type: boolean, notnull: false }
   options:
     symfony:
       filter: false

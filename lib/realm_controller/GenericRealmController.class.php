@@ -7,6 +7,18 @@ class GenericRealmController extends BaseRealmController {
         $this->dispatcher->connect('robot.post_do_repair_action', array($this, 'generateRepairNotification'));
     }
 
+    public function getWinningConditions() {
+        return array(
+            array(
+                'text' => 'To eliminate all opponents.',
+            )
+        );
+    }
+
+    public function isWinner(User $user) {
+        return $this->getRealm()->getTable()->isTheOnlyActiveUser($user->getId());
+    }
+
     public function generateDisassembleNotification(sfEvent $event) {
         if (!$this->isOwnEvent($event->getSubject()->getRealmId())) {
             return;
