@@ -35,7 +35,7 @@ class RealmGuard extends BaseGuard {
     }
 
     public function checkIsMember() {
-	    if (!$this->getObject()->isMember($this->getUser())) {
+	    if (!$this->getObject()->isMember($this->getUser()->getUser())) {
 			throw new rsSanityException('You are not a member of realm %realm%.', array(
 				'realm' => (string)$this->object
 			));

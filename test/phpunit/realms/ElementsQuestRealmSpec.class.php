@@ -12,6 +12,8 @@ class ElementsQuestRealmSpec extends RealmBaseSpec {
             ->given('User', 'Alice')
             ->when('Exec', 'realm:create -c ElementsQuestRealmController -w 25 -h 25 Afterlife asdf')
             ->given('Realm', 'Afterlife')
+            ->when('Exec', 'realm:win')
+                ->then('Failure')
 //            ->when('Exec', 'bot:create -c GuardianBotController x=5 y=20 complexity=3')
 //                ->then('Success')
 //            ->when('Exec', 'bot:create -c GuardianBotController x=20 y=20 complexity=3')
