@@ -16,7 +16,7 @@ class GenericRealmController extends BaseRealmController {
     }
 
     public function isWinner(User $user) {
-        return $this->getRealm()->isTheOnlyActiveUser($user->getId());
+        return $this->getRealm()->isTheOnlyActiveUser($user->getId()) && $this->getRealm()->getUsersCount() > 1;
     }
 
     public function generateDisassembleNotification(sfEvent $event) {

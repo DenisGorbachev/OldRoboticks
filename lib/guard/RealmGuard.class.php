@@ -45,7 +45,7 @@ class RealmGuard extends BaseGuard {
 
     public function checkIsWinner() {
 	    if (!$this->getObject()->getController()->isWinner($this->getUser()->getUser())) {
-			throw new rsSanityException('You haven\'t met winning conditions for realm %realm%: %winning_conditions%.', array(
+			throw new rsSanityException('You haven\'t met any of the winning conditions for realm %realm%: %winning_conditions%', array(
 				'realm' => (string)$this->object,
                 'winning_conditions' => $this->getObject()->getController()->getWinningConditions(),
 			));
