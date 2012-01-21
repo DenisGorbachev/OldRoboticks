@@ -27,6 +27,9 @@ class RealmTable extends Doctrine_Table
     }
 
     public function isTheOnlyActiveUser($userId, $realmId) {
-        return RobotTable::getInstance()->getActiveOwnedInRealmQuery($userId, $realmId)->groupBy('r.user_id')->count() === 1;
+        return
+            RobotTable::getInstance()->createQuery('r')->groupBy('r.user_id')->count() === 1
+                &&
+            RobotTable::getInstance()->createQuery('r')->where('r.user_id')->count();
     }
 }
