@@ -20,8 +20,7 @@ class RobotGuard extends BaseGuard {
     public function canScan() {
         $this->checkIsOwner();
         $this->checkIsEnabled();
-        $this->checkIsActive();
-        return true;    
+        return true;
     }
 
     public function canExtract() {
