@@ -63,38 +63,41 @@ abstract class UserInterfaceCommand extends ServerCommand {
     }
 
     public function request($controller, $parameters = array(), $method = 'GET', $options = array()) {
-        $response = parent::request($controller, $parameters, $method, $options);
-        switch ($this->output_format) {
-            case 'none':
-                break;
-            case 'json':
-                $this->responses[] = $response;
-                break;
-            case 'human':
-                $message = __($response['message']);
-                $this->{$response['message']['type']}($message);
-                if ($response['success']) {
+        do {
+            $response = parent::request($controller, $parameters, $method, $options);
+            switch ($this->output_format) {
+                case 'none':
+                    break;
+                case 'json':
+                    $this->responses[] = $response;
+                    break;
+                case 'human':
+                    $message = __($response['message']);
+                    $this->{$response['message']['type']}($message);
+                    if ($response['success']) {
 
-                    if (!empty($response['notifications'])) {
-                        $this->notifications = array_merge($this->notifications, $response['notifications']);
-                    }
-                } else {
-                    if (!empty($response['globalErrors'])) {
-                        foreach ($response['globalErrors'] as $error) {
-                            $this->echoln('  - '.__($error));
+                        if (!empty($response['notifications'])) {
+                            $this->notifications = array_merge($this->notifications, $response['notifications']);
+                        }
+                    } else {
+                        if (!empty($response['globalErrors'])) {
+                            foreach ($response['globalErrors'] as $error) {
+                                $this->echoln('  - '.__($error));
+                            }
+                        }
+                        if (!empty($response['errors'])) {
+                            foreach ($response['errors'] as $field=>$error) {
+                                $this->echoln('  - '.__(array('text' => ucfirst($field), 'arguments' => array())).': '.__($error));
+                            }
                         }
                     }
-                    if (!empty($response['errors'])) {
-                        foreach ($response['errors'] as $field=>$error) {
-                            $this->echoln('  - '.__(array('text' => ucfirst($field), 'arguments' => array())).': '.__($error));
-                        }
-                    }
-                }
-                break;
-            default:
-                throw new RoboticksUnknownOutputFormatException('Unknown output format');
-                break;
-        }
+                    break;
+                default:
+                    throw new RoboticksUnknownOutputFormatException('Unknown output format');
+                    break;
+            }
+            $haveToWait = $response['message']['type'] == 'wait';
+        } while ($haveToWait && (sleep($response['message']['arguments']['amount']) === 0));
         return $response;
     }
 

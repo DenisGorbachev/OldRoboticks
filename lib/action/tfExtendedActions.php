@@ -197,6 +197,10 @@ class tfExtendedActions extends sfActions {
 		return $this->respond(true, __FUNCTION__, $text, $arguments);
 	}
 
+    public function wait($text, array $arguments = array()) {
+   		return $this->respond(false, __FUNCTION__, $text, $arguments);
+   	}
+
 	public function failure($text, array $arguments = array()) {
 		return $this->respond(false, __FUNCTION__, $text, $arguments);
 	}

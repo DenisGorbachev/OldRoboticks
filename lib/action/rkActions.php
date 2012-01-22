@@ -10,7 +10,11 @@ class rkActions extends tfExtendedActions {
 	}
 	
 	public function somethingFailed(rsException $e) {
-		return $this->failure($e->getText(), $e->getArguments());
+        $type = 'failure';
+        if ($e instanceof rsInactivityException) {
+            $type = 'wait';
+        }
+		return $this->{$type}($e->getText(), $e->getArguments());
 	}
 
     public function prepareAutoRealm() {

@@ -45,10 +45,11 @@ class TurnSpec extends BaseSpec {
                 ->and('User', 'Alice')
                 ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
-            ->when('Exec', 'mv 10,12')
+            ->when('Exec', 'mv 1,1')
             ->then('Success')
-            ->when('Exec', 'mv 10,12')
-            ->then('Failure')
+            ->when('Exec', 'mv 1,1')
+            ->then('PleaseWait')
+            ->then('Contains', 'Success') // Command waits until it can be completed
     ;}
 
     public function testInvalidSprayFire() {
@@ -60,7 +61,7 @@ class TurnSpec extends BaseSpec {
             ->when('Exec', 'fire '.$this->getRobotId('plush').' U')
             ->then('Failure')
             ->when('Exec', 'fire '.$this->getRobotId('fuel').' U')
-            ->then('Failure')
+            ->then('PleaseWait')
     ;}
 
     public function tearDown() {
