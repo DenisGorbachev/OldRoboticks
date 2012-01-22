@@ -2,14 +2,26 @@
 
 require_once 'Console/CommandLine.php';
 require_once 'Console/CommandLine/Action.php';
-require_once_dir(LIBDIR.'/action');
+require_once_dir(dirname(__FILE__).'/../../action');
 
 abstract class Command {
 	public $options = array();
 	public $arguments = array();
 
-    public function __construct() {
+    /** @var Config null */
+    public $config = null;
+
+    public function __construct(Config $config) {
+        $this->config = $config;
         $this->options = $this->getDefaultOptions();
+    }
+
+    public function setVariable($name, $value) {
+        $this->getConfig()->setVariable($name, $value);
+    }
+
+    public function getVariable($name, $default = null) {
+        return $this->getConfig()->getVariable($name, $default);
     }
 
 	public function setOptions($options) {
@@ -95,6 +107,22 @@ abstract class Command {
 	abstract public function execute($options, $arguments);
 
     public function postExecute($options, $arguments) {}
+
+    /**
+     * @param Config $config
+     */
+    public function setConfig(Config $config)
+    {
+        $this->config = $config;
+    }
+
+    /**
+     * @return Config
+     */
+    public function getConfig()
+    {
+        return $this->config;
+    }
 
 }
 

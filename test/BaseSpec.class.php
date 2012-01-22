@@ -43,15 +43,15 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	}
 
     public function getClientHomeDir() {
-        return getenv('HOME') . '/.roboticks';
+        return getenv('HOME').'/.roboticks';
     }
 
     public function getClientCacheDir() {
-        return $this->getClientHomeDir() .'/cache';
+        return $this->getClientHomeDir().'/roboticks/cache';
     }
 
     public function getClientLogDir() {
-        return $this->getClientHomeDir().'/log';
+        return $this->getClientHomeDir().'/roboticks/log';
     }
 
     public function createDirIfNotExists($dirname) {
@@ -83,6 +83,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
         $dbname = $match[1];
         $cmd = "mysql -u $username ".($password? "-p$password" : "")." $dbname < $dump";
         `$cmd`;
+        $this->exec('host roboticks');
 	}
 	
 	public function givenUser($login, $password = 'asdf') {
@@ -161,7 +162,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	}
 
     public function thenLogContains($file, $needle, $message = '', $canonicalize = false, $ignoreCase = false) {
-        return $this->assertContains($needle, file_get_contents($this->getClientLogDir().'/roboticks'.$file), $message, $ignoreCase);
+        return $this->assertContains($needle, file_get_contents($this->getClientLogDir().$file), $message, $ignoreCase);
     }
 
     public function thenMatches($pattern, $message = '', $ignoreCase = false) {
@@ -173,7 +174,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
     }
 
     public function getClientDebugFilename() {
-        return $this->getClientCacheDir().'/debug';
+        return $this->getClientHomeDir().'/debug';
     }
 
     public function setDebug($debug) {

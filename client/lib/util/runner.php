@@ -3,7 +3,9 @@
 	require_once_dir(dirname(__FILE__));
 	require_once_dir(dirname(__FILE__).'/../exception');
     set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__).'/../vendor');
-	
+
+    $config = new Config();
+
 	$executable = $_SERVER['argv'][0];
 	$cmdName = isset($_SERVER['argv'][1])? $_SERVER['argv'][1] : null;
 	if (empty($cmdName) || $cmdName[0] == '-') {
@@ -22,12 +24,12 @@
         ),
         $cmdName
     ).'Command';
-	$cmdFilename = LIBDIR.'/command/'.$cmdClass.'.class.php';
+	$cmdFilename = $config->getLibDirname().'/command/'.$cmdClass.'.class.php';
 	if (!file_exists($cmdFilename)) {
 		die('Failure: command not found'.PHP_EOL);
 	}
     require_once $cmdFilename;
-	$cmd = new $cmdClass();
+	$cmd = new $cmdClass($config);
     $args = $_SERVER['argv'];
     unset($args[1]);
 
@@ -35,7 +37,7 @@
         $cmd->parse($args);
         $cmd->run();
     } catch (Exception $e) {
-        if ($e instanceof RoboticksUserFriendlyException || !DEBUG) {
+        if ($e instanceof RoboticksUserFriendlyException || !$config->isDebug()) {
             $message = $e->getMessage();
             if ($e instanceof Console_CommandLine_Exception) {
                 $message .= ' Use "--help" option to get info about a command.';

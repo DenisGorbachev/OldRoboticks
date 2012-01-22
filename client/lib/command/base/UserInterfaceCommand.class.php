@@ -20,29 +20,6 @@ abstract class UserInterfaceCommand extends ServerCommand {
         return parent::run();
     }
 
-    public function setVariable($name, $value) {
-        file_put_contents($this->getVariableFilename($name), $value);
-    }
-
-    public function getVariable($name, $default = null) {
-        $value = getenv('RK_'.strtoupper($name));
-        if ($value) {
-            return $value;
-        }
-        $filename = $this->getVariableFilename($name);
-        if (file_exists($filename)) {
-            $value = file_get_contents($filename);
-            if ($value) {
-                return $value;
-            }
-        }
-        return $default;
-    }
-
-    public function getVariableFilename($name) {
-        return CACHEDIR . '/' . $name;
-    }
-
     public function initLogging() {
         foreach ($this->getLogFilenames() as $filename) {
             $dirname = dirname($filename);
@@ -59,7 +36,7 @@ abstract class UserInterfaceCommand extends ServerCommand {
     }
 
     public function getBaseLogDirname() {
-        return LOGDIR.'/'.Config::get('generic/server/host', 'undefined');
+        return $this->getConfig()->getLogDirname();
     }
 
     public function request($controller, $parameters = array(), $method = 'GET', $options = array()) {

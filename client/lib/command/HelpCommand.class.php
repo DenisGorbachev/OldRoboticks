@@ -20,7 +20,7 @@ class HelpCommand extends UserInterfaceCommand {
 	public function execute($options, $arguments) {
 		global $argv;
 		$cmdClass = ucfirst($arguments['command']).'Command';
-		$file = LIBDIR.'/command/'.$cmdClass.'.class.php';
+		$file = $this->getConfig()->getLibDirname().'/command/'.$cmdClass.'.class.php';
 		if (!file_exists($file)) {
 			throw new RoboticksException('No such command: "'.$arguments['command'].'"');
 		}

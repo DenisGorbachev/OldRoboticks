@@ -52,7 +52,7 @@ class InfoCommand extends UserInterfaceCommand {
 		require_once $file;
 		$cmdName = strtolower(str_replace('Command.class.php', '', basename($file)));
 		$cmdClass = $cmdName.'Command';
-		$cmd = new $cmdClass();
+		$cmd = new $cmdClass($this->getConfig());
 		$parserConfig = $cmd->getParserConfig();
 		$this->echoln('   '.$cmdName.str_repeat(' ', 11-strlen($cmdName)).$parserConfig['description']);
 	}

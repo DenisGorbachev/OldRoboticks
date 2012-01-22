@@ -6,8 +6,7 @@ abstract class ServerCommand extends Command {
     public $user_id = null;
 
     public function run() {
-        $options = $this->getCurlOptions();
-        $filename = $options[CURLOPT_COOKIEFILE];
+        $filename = $this->getCookieJar();
         if (file_exists($filename)) {
             $contents = file_get_contents($filename);
             preg_match('/user_id\t(.*)/u', $contents, $matches);
@@ -20,8 +19,12 @@ abstract class ServerCommand extends Command {
     }
 
 	public function request($controller, $parameters = array(), $method = 'GET', $options = array()) {
+        $host = $this->getHost();
+        if (!$host) {
+            throw new RoboticksConnectionException('host not set. You can set it using `rk host` command.');
+        }
 		$method = strtoupper($method);
-		$uri = 'http://'.$this->getHost().(DEBUG? '/dev.php' : '').'/'.$controller;
+		$uri = 'http://'.$host.($this->getConfig()->isDebug()? '/dev.php' : '').'/'.$controller;
 		if ($method == 'GET') {
 			$uri .= '?'.http_build_query($parameters);
 		}
@@ -55,11 +58,7 @@ abstract class ServerCommand extends Command {
 	}
 
     public function getHost() {
-        $host = Config::get('generic/server/host');
-        if (empty($host)) {
-            throw new RoboticksConnectionException('No host defined in generic.yml');
-        }
-        return $host;
+        return $this->getConfig()->getHost();
     }
 
     public function getCurlOptions() {
@@ -69,13 +68,17 @@ abstract class ServerCommand extends Command {
 			CURLOPT_MAXREDIRS => 5,
 			CURLOPT_CONNECTTIMEOUT => 15,
 			CURLOPT_TIMEOUT => 30,
-			CURLOPT_COOKIEFILE => CACHEDIR.'/cookie.jar',
-			CURLOPT_COOKIEJAR => CACHEDIR.'/cookie.jar',
+			CURLOPT_COOKIEFILE => $this->getCookieJar(),
+			CURLOPT_COOKIEJAR => $this->getCookieJar(),
 			CURLOPT_USERAGENT => 'Robotics client v'.VERSION
 		);
 	}
-	
-	public function get($controller, $parameters = array(), $options = array()) {
+
+    public function getCookieJar() {
+        return $this->getConfig()->getCacheDirname() . '/cookie.jar';
+    }
+
+    public function get($controller, $parameters = array(), $options = array()) {
 		return $this->request($controller, $parameters, 'GET', $options);
 	}
 

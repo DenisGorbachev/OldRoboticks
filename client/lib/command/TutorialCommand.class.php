@@ -11,7 +11,7 @@ class TutorialCommand extends UserInterfaceCommand {
 	}
 
 	public function execute($options, $arguments) {
-        $realmCreateCommand = new RealmCreateCommand();
+        $realmCreateCommand = new RealmCreateCommand($this->getConfig());
         $realmCreateCommand->setOptions(array(
             'controller_class' => 'MapAndMoveTutorialRealmController'
         ));
