@@ -29,6 +29,16 @@ class DisasmSpec extends RobotBaseSpec {
 
 	/* Borderline */
 
+    public function testInvalidHimself() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Friend')
+                ->and('Realm', 'Universe')
+                ->and('Robot', 'drake')
+			->when('Exec', 'disasm '.$this->getRobotId('drake'))
+            ->then('Failure')
+    ;}
+
     public function testInvalidNonDisassembliveRobot() {
         return $this
             ->given('Genesis')

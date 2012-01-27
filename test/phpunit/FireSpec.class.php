@@ -76,6 +76,7 @@ class FireSpec extends RobotBaseSpec {
                 ->and('Robot', 'tear')
             ->when('Exec', 'fire '.$this->getRobotId('plush').' U')
             ->then('Failure')
+            ->then('NotContains', 'PLUSH')
     ;}
 
     public function testInvalidNonExistingLetter() {

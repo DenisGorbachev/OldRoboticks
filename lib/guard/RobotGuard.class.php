@@ -47,6 +47,7 @@ class RobotGuard extends BaseGuard {
         $this->checkIsEnabled();
         $this->checkIsActive();
         $this->checkHasFunction('disassemble');
+        $this->checkIsNotHimself($target);
         $this->checkTargetIsInSameSector($target);
         try {
             $this->checkIsOwnerOfTarget($target);
@@ -269,6 +270,15 @@ class RobotGuard extends BaseGuard {
 			throw new rsSanityException('robot %robot% doesn\'t have a pinched out letter %letter%', array(
 				'robot' => $target->__toEnemyStatusString(),
                 'letter' => $letter,
+			));
+		}
+		return true;
+    }
+
+    public function checkIsNotHimself(Robot $target) {
+        if ($this->getObject()->getId() == $target->getId()) {
+			throw new rsSanityException('robot %robot% can\'t do this to himself', array(
+				'robot' => (string)$this->getObject(),
 			));
 		}
 		return true;
