@@ -8,7 +8,7 @@ abstract class PasswordCommand extends UserInterfaceCommand {
             'password' => array(
                 'short_name' => '-p',
                 'long_name' => '--password',
-                'description' => 'A secret phrase used for authentication',
+                'description' => 'A secret phrase used for authentication (asked at runtime if not provided)',
                 'action' => 'StoreString',
                 'default' => ''
             )
