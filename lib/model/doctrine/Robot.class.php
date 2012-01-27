@@ -19,6 +19,10 @@ class Robot extends BaseRobot {
         return sprintf($this->getTable()->getToStringFormat(), $this->id, $this->getStatus());
     }
 
+    public function __toEnemyStatusString() {
+        return sprintf($this->getTable()->getToEnemyStringFormat(), $this->id);
+    }
+
     public function getName() {
         return (string)$this->getEffectiveWord();
     }

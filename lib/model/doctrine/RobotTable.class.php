@@ -16,6 +16,10 @@ class RobotTable extends Doctrine_Table {
         return '#%d "%s"';
     }
 
+    public function getToEnemyStringFormat() {
+        return '#%d';
+    }
+
     public function getFunctions() {
     	return WordTable::getInstance()->getFunctions();
     }

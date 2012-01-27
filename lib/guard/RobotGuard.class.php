@@ -113,7 +113,7 @@ class RobotGuard extends BaseGuard {
     public function checkIsOwnerOfTarget($target) {
 	    if ($target->getUserId() != $this->getUser()->getId()) {
 			throw new rsSanityException('target robot %robot% is not owned by you.', array(
-				'robot' => (string)$target
+				'robot' => $target->__toEnemyStatusString()
 			));
 		}
 		return true;
@@ -238,7 +238,7 @@ class RobotGuard extends BaseGuard {
     public function checkTargetIsInRange(Robot $target) {
         if (!$this->getObject()->hasInFireableRange($target)) {
 			throw new rsInsanityException('robot %robot% is not in fireable range', array(
-				'robot' => (string)$target,
+				'robot' => $target->__toEnemyStatusString(),
 			));
 		}
 		return true;
@@ -247,7 +247,7 @@ class RobotGuard extends BaseGuard {
     public function checkTargetHasLetter(Robot $target, $letter) {
         if (!$target->hasLetter($letter)) {
 			throw new rsInsanityException('robot %robot% doesn\'t have letter %letter%', array(
-				'robot' => (string)$target,
+				'robot' => $target->__toEnemyStatusString(),
                 'letter' => $letter,
 			));
 		}
@@ -257,7 +257,7 @@ class RobotGuard extends BaseGuard {
     public function checkTargetHasLetterInWord(Robot $target, $letter) {
         if (!$target->getWord()->hasLetter($letter)) {
 			throw new rsSanityException('robot %robot% doesn\'t have letter %letter% in its base word', array(
-				'robot' => (string)$target,
+				'robot' => $target->__toEnemyStatusString(),
                 'letter' => $letter,
 			));
 		}
@@ -267,7 +267,7 @@ class RobotGuard extends BaseGuard {
     public function checkTargetHasLetterPinchedOut(Robot $target, $letter) {
         if (!$target->hasLetterPinchedOut($letter)) {
 			throw new rsSanityException('robot %robot% doesn\'t have a pinched out letter %letter%', array(
-				'robot' => (string)$target,
+				'robot' => $target->__toEnemyStatusString(),
                 'letter' => $letter,
 			));
 		}
@@ -277,7 +277,7 @@ class RobotGuard extends BaseGuard {
     public function checkTargetIsInSameSector(Robot $target) {
         if ($this->getObject()->getSectorId() != $target->getSectorId()) {
 			throw new rsSanityException('robot %robot% is not in the same sector', array(
-				'robot' => (string)$target,
+				'robot' => $target->__toEnemyStatusString(),
 			));
 		}
 		return true;
@@ -286,7 +286,7 @@ class RobotGuard extends BaseGuard {
     public function checkTargetIsDisabled(Robot $target) {
         if (!$target->isDisabled()) {
 			throw new rsSanityException('robot %robot% is not disabled (its status is a word)', array(
-				'robot' => (string)$target,
+				'robot' => $target->__toEnemyStatusString(),
 			));
 		}
 		return true;
