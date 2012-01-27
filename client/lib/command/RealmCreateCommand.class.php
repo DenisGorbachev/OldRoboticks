@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/base/UserInterfaceCommand.class.php';
+require_once dirname(__FILE__).'/base/PasswordCommand.class.php';
 
-class RealmCreateCommand extends UserInterfaceCommand {
+class RealmCreateCommand extends PasswordCommand {
 	public function getParserConfig() {
 		return array(
 			'description' => 'Create a new realm'
@@ -11,6 +11,13 @@ class RealmCreateCommand extends UserInterfaceCommand {
 
     public function getOptionConfigs() {
         return array_merge(parent::getOptionConfigs(), array(
+            'no_password' => array(
+                'short_name' => '-n',
+                'long_name' => '--no-password',
+                'description' => 'Create free-for-all realm and call the girls',
+                'action' => 'StoreTrue',
+                'default' => false
+            ),
             'controller_class' => array(
                 'short_name' => '-c',
                 'long_name' => '--controller-class',
@@ -40,18 +47,20 @@ class RealmCreateCommand extends UserInterfaceCommand {
             'name' => array(
                 'description' => 'New realm name (must be unique on the server)',
             ),
-            'password' => array(
-                'description' => 'New realm password (optional)',
-                'optional' => true,
-            )
         );
 	}
-	
+
+    public function promptPasswordIfEmpty() {
+        if (!$this->getOption('no_password')) {
+            parent::promptPasswordIfEmpty();
+        }
+    }
+
 	public function execute($options, $arguments) {
         $this->wait('creating new realm. This may take a minute or two...');
         $this->postForm('realm', 'realm/create', array(
             'name' => $arguments['name'],
-            'password' => $arguments['password'],
+            'password' => $options['password'],
             'controller_class' => $options['controller_class'],
             'width' => $options['width'],
             'height' => $options['height'],

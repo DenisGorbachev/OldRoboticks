@@ -39,6 +39,13 @@ abstract class UserInterfaceCommand extends ServerCommand {
         return $this->getConfig()->getLogDirname();
     }
 
+    public function promptSilent($value = '', $label = 'Enter password: ') {
+        while (empty($value)) {
+            $value = prompt_silent($label);
+        }
+        return $value;
+    }
+
     public function request($controller, $parameters = array(), $method = 'GET', $options = array()) {
         do {
             $response = parent::request($controller, $parameters, $method, $options);
