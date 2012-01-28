@@ -1,12 +1,12 @@
 <?php
 
-class rsTruncateTask extends sfBaseTask {
+class rkTruncateTask extends sfBaseTask {
 	protected function configure() {
         $this->addArguments(array(
 			new sfCommandArgument('models', sfCommandArgument::REQUIRED | sfCommandArgument::IS_ARRAY, 'Models to truncate'),
 		));
 
-		$this->namespace = 'rs';
+		$this->namespace = 'rk';
 		$this->name = 'truncate';
 		$this->briefDescription = '';
 

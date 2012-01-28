@@ -1,6 +1,6 @@
 <?php
 
-class rsLoadWordsTask extends sfBaseTask {
+class rkLoadWordsTask extends sfBaseTask {
 	protected function configure() {
 		parent::configure();
 		
@@ -8,7 +8,7 @@ class rsLoadWordsTask extends sfBaseTask {
 			new sfCommandOption('file', 'f', sfCommandOption::PARAMETER_REQUIRED, 'File to load', sfConfig::get('sf_data_dir').'/words'),
 		));
 
-		$this->namespace = 'rs';
+		$this->namespace = 'rk';
 		$this->name = 'load-words';
 		$this->briefDescription = '';
 		$this->detailedDescription = '';

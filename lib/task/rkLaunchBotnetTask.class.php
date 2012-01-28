@@ -1,6 +1,6 @@
 <?php
 
-class rsLaunchBotnetTask extends sfBaseTask {
+class rkLaunchBotnetTask extends sfBaseTask {
 	protected function configure() {
 		$this->addArguments(array(
 //			new sfCommandArgument('size', sfCommandArgument::REQUIRED, 'The width and height of the map'),
@@ -12,7 +12,7 @@ class rsLaunchBotnetTask extends sfBaseTask {
 //			new sfCommandOption('print-only', 'o', sfCommandOption::PARAMETER_NONE, 'Only print, do not insert into database'),
 		));
 
-		$this->namespace = 'rs';
+		$this->namespace = 'rk';
 		$this->name = 'launch-botnet';
 		$this->briefDescription = '';
 

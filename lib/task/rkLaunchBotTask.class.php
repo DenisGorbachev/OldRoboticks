@@ -1,6 +1,6 @@
 <?php
 
-class rsLaunchBotTask extends sfBaseTask {
+class rkLaunchBotTask extends sfBaseTask {
 	protected function configure() {
 		$this->addArguments(array(
 			new sfCommandArgument('bot_id', sfCommandArgument::REQUIRED, 'ID of bot to launch'),
@@ -12,7 +12,7 @@ class rsLaunchBotTask extends sfBaseTask {
 //			new sfCommandOption('print-only', 'o', sfCommandOption::PARAMETER_NONE, 'Only print, do not insert into database'),
 		));
 
-		$this->namespace = 'rs';
+		$this->namespace = 'rk';
 		$this->name = 'launch-bot';
 		$this->briefDescription = '';
 

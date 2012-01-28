@@ -3,5 +3,5 @@
 set -u
 set -e
 
-./symfony rs:truncate Word Bot Realm User Stance Sector Robot
-./symfony rs:load-words
+./symfony rk:truncate Word Bot Realm User Stance Sector Robot
+./symfony rk:load-words

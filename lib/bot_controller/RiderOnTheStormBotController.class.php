@@ -6,7 +6,8 @@ class RiderOnTheStormBotController extends BaseBotController {
         $info = $this->getInfo();
         foreach ($info['robots'] as $robotInfo) {
             $this->exec('select '.$robotInfo['id']);
-            $this->exec('mv 5,5');
+            $result = $this->exec('mv 5,5');
+            var_dump($result);
         }
         // TODO: setActiveAt
     }
