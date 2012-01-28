@@ -88,7 +88,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 	
 	public function givenUser($login, $password = 'asdf') {
 		$login = strtolower($login);
-		return $this->exec('login '.$login.' '.$password);
+		return $this->exec('login -p '.$password.' '.$login);
 	}
 
     public function givenRealm($name) {

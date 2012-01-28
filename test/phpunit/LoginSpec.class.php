@@ -6,7 +6,7 @@ class LoginSpec extends BaseSpec {
 	public function testNormal() {
 		$this
 			->given('Genesis')
-			->when('Exec', 'login alice asdf')
+			->when('Exec', 'login -p asdf alice')
 			->then('Success')
 	;}
 	
@@ -24,7 +24,7 @@ class LoginSpec extends BaseSpec {
 	public function testInvalidUserNotFound() {
 		$this
 			->given('Genesis')
-			->when('Exec', 'login usernotfound password')
+			->when('Exec', 'login -p password usernotfound')
 			->then('Failure')
 	;}
 	
@@ -32,7 +32,7 @@ class LoginSpec extends BaseSpec {
 	public function testInvalidWrongPassword() {
 		$this
 			->given('Genesis')
-			->when('Exec', 'login alice wrongpassword')
+			->when('Exec', 'login -p wrongpassword alice')
 			->then('Failure')
 	;}
 	

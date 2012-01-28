@@ -10,7 +10,7 @@ class RealmCreateSpec extends BaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'realm:create Afterlife asdf')
+			->when('Exec', 'realm:create -p asdf Afterlife')
             ->then('Contains', 'Success')
 			    ->and('Contains', 'Afterlife')
                 ->and('Contains', 'Deathmatch')
@@ -26,7 +26,7 @@ class RealmCreateSpec extends BaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'realm:create Afterlife')
+			->when('Exec', 'realm:create --no-password Afterlife')
             ->then('Contains', 'Success')
     ;}
 
@@ -34,7 +34,7 @@ class RealmCreateSpec extends BaseSpec {
 		return $this
 			->given('Genesis')
 				->and('User', 'Alice')
-			->when('Exec', 'realm:create -c MapAndMoveTutorialRealmController Afterlife asdf')
+			->when('Exec', 'realm:create -c MapAndMoveTutorialRealmController -p asdf Afterlife')
             ->then('Contains', 'Success')
                 ->and('Contains', 'MapAndMoveTutorial')
 	;}
@@ -45,8 +45,8 @@ class RealmCreateSpec extends BaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
-            ->when('Exec', 'realm:create Afterlife asdf')
-            ->when('Exec', 'realm:create Afterlife asdf')
+            ->when('Exec', 'realm:create -p asdf Afterlife')
+            ->when('Exec', 'realm:create -p asdf Afterlife')
             ->then('Contains', 'Failure')
     ;}
 
@@ -54,7 +54,7 @@ class RealmCreateSpec extends BaseSpec {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
-            ->when('Exec', 'realm:create -c NonExistingRealmController Afterlife asdf')
+            ->when('Exec', 'realm:create -c NonExistingRealmController -p asdf Afterlife')
             ->then('Contains', 'Failure')
     ;}
 

@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__FILE__).'/base/PasswordCommand.class.php';
+require_once dirname(__FILE__).'/base/PasswordOptionalCommand.class.php';
 
-class RealmCreateCommand extends PasswordCommand {
+class RealmCreateCommand extends PasswordOptionalCommand {
 	public function getParserConfig() {
 		return array(
 			'description' => 'Create a new realm'
@@ -11,13 +11,6 @@ class RealmCreateCommand extends PasswordCommand {
 
     public function getOptionConfigs() {
         return array_merge(parent::getOptionConfigs(), array(
-            'no_password' => array(
-                'short_name' => '-n',
-                'long_name' => '--no-password',
-                'description' => 'Create free-for-all realm and call the girls',
-                'action' => 'StoreTrue',
-                'default' => false
-            ),
             'controller_class' => array(
                 'short_name' => '-c',
                 'long_name' => '--controller-class',
@@ -49,12 +42,6 @@ class RealmCreateCommand extends PasswordCommand {
             ),
         );
 	}
-
-    public function promptPasswordIfEmpty() {
-        if (!$this->getOption('no_password')) {
-            parent::promptPasswordIfEmpty();
-        }
-    }
 
 	public function execute($options, $arguments) {
         $this->wait('creating new realm. This may take a minute or two...');

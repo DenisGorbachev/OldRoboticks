@@ -10,10 +10,10 @@ class ElementsQuestRealmSpec extends RealmBaseSpec {
 		return $this
 			->given('Genesis')
             ->given('User', 'Alice')
-            ->when('Exec', 'realm:create -c ElementsQuestRealmController -w 25 -h 25 Afterlife asdf')
+            ->when('Exec', 'realm:create -c ElementsQuestRealmController -p asdf -w 25 -h 25 Afterlife')
             ->given('Realm', 'Afterlife')
             ->given('User', 'Mob')
-            ->when('Exec', 'realm:join '.$this->getRealmId('Afterlife').' asdf')
+            ->when('Exec', 'realm:join -p asdf '.$this->getRealmId('Afterlife'))
             ->given('User', 'Alice')
             ->when('Exec', 'realm:win')
                 ->then('Failure')

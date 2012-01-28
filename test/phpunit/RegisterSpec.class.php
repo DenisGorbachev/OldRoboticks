@@ -6,7 +6,7 @@ class RegisterSpec extends BaseSpec {
 	public function testRegister() {
 		return $this
 			->given('Genesis')
-			->when('Exec', 'register player asdf')
+			->when('Exec', 'register -p asdf player')
 			->then('Success')
             ->given('User', 'player')
             ->then('Success')
@@ -17,24 +17,24 @@ class RegisterSpec extends BaseSpec {
     public function testInvalidValidations() {
 		return $this
 			->given('Genesis')
-			->when('Exec', 'register "player%" asdf')
+			->when('Exec', 'register -p asdf "player%"')
 			->then('Failure')
-            ->when('Exec', 'register player "asdf&"')
+            ->when('Exec', 'register -p "asdf&" player')
 			->then('Failure')
-            ->when('Exec', 'register p asdf')
+            ->when('Exec', 'register -p asdf p')
 			->then('Failure')
-            ->when('Exec', 'register player a')
+            ->when('Exec', 'register -p a player')
 			->then('Failure')
-            ->when('Exec', 'register playplayplayplayplayplayplayplayplayplayplayplayplayplayplayplay66 asdf')
+            ->when('Exec', 'register -p asdf playplayplayplayplayplayplayplayplayplayplayplayplayplayplayplay66')
 			->then('Failure')
-            ->when('Exec', 'register player asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf66')
+            ->when('Exec', 'register -p asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf66 player')
 			->then('Failure')
 	;}
 
 	public function testInvalidSameUsername() {
 		$this
     		->testRegister()
-			->when('Exec', 'register player asdf')
+			->when('Exec', 'register -p asdf player')
 			->then('Failure')
 	;}
 	

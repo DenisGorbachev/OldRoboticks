@@ -24,9 +24,9 @@ class RealmEditSpec extends RealmBaseSpec {
 			->when('Exec', 'realm:edit name=Newname password=newpassword')
             ->then('Success')
             ->given('User', 'Mob')
-            ->when('Exec', 'realm:join '.$this->getRealmId('Etherworld'))
+            ->when('Exec', 'realm:join --no-password '.$this->getRealmId('Etherworld'))
             ->then('Failure')
-            ->when('Exec', 'realm:join '.$this->getRealmId('Etherworld').' newpassword')
+            ->when('Exec', 'realm:join -p newpassword '.$this->getRealmId('Etherworld'))
             ->then('Success')
 	;}
 

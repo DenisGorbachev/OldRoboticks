@@ -28,7 +28,7 @@ abstract class BaseBotController {
 
     public function play() {
         $this->exec('host roboticks');
-        $this->exec('login '.$this->getBot()->getUsername().' '.$this->getBot()->getPassword());
+        $this->exec('login -p '.$this->getBot()->getPassword().' '.$this->getBot()->getUsername());
         $this->exec('realm:select '.$this->getBot()->getRealmId());
     }
 
