@@ -43,8 +43,10 @@ abstract class BaseBotController {
 
     public function recoverInfo() {
         $ls = $this->getInfoArray('ls');
+        $realmShow = $this->getInfoArray('realm:show');
         return array(
-            'robots' => $ls['objects']
+            'robots' => $ls['objects'],
+            'realm' => $realmShow['message']['arguments']
         );
     }
 
