@@ -79,6 +79,10 @@ class SectorTable extends Doctrine_Table {
         return pow($target->getX() - $source->getX(), 2) + pow($target->getY() - $source->getY(), 2) <= pow($range, 2);
     }
 
+    public function getSquaredDistanceBetweenCoordinates($x1, $y1, $x2, $y2) {
+        return pow($x1 - $x2, 2) + pow($y1 - $y2, 2);
+    }
+
     public function countByRealmId($realmId) {
         return $this->createQuery('s')->where('s.realm_id = ?', $realmId)->count();
     }

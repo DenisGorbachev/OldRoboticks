@@ -2,6 +2,8 @@
  
 abstract class BaseBotController {
     public $bot;
+    public $info = array();
+    public $activeAt;
     public $clientFilename;
     public $homeDirname;
 
@@ -14,49 +16,42 @@ abstract class BaseBotController {
         }
     }
 
-    public function exec($command) {
+    public function execAndReturnEverything($command) {
         $cmd = 'export HOME='.escapeshellarg($this->homeDirname).'; export RK_OUTPUT_FORMAT='.escapeshellarg('json').'; '.$this->clientFilename.' '.$command;
-        $this->log('executing', $command);
-        $result = `$cmd`;
-        $this->log('result', $result);
-        return $result;
+        $resultsInJson = `$cmd`;
+        $results = json_decode($resultsInJson, true);
+        foreach ($results as $result) {
+            if (!empty($result['active_at'])) {
+                if ($result['active_at'] < $this->activeAt || is_null($this->activeAt)) {
+                    $this->activeAt = $result['active_at'];
+                }
+            }
+        }
+        return $results;
     }
 
-    public function log($type, $string) {
-        file_put_contents($this->homeDirname.'/log', date('Y-m-d H:i:s').' | '.$type.' | '.trim($string).PHP_EOL, FILE_APPEND);
+    public function exec($command) {
+        return array_pop($this->execAndReturnEverything($command));
     }
 
-    public function play() {
+    public function connect() {
         $this->exec('host roboticks');
         $this->exec('login -p '.$this->getBot()->getPassword().' '.$this->getBot()->getUsername());
         $this->exec('realm:select '.$this->getBot()->getRealmId());
     }
 
-    public function getInfo() {
-        $info = $this->getBot()->getInfo();
-        if (empty($info)) {
-            $info = $this->recoverInfo();
-            $this->getBot()->setInfo($info);
+    abstract public function play();
+
+    public function refresh() {
+        if (empty($this->info['realm'])) {
+            $realmShow = $this->exec('realm:show');
+            $this->info['realm'] = $realmShow['message']['arguments'];
         }
-        return $info;
-    }
-
-    public function recoverInfo() {
-        $ls = $this->getInfoArray('ls');
-        $realmShow = $this->getInfoArray('realm:show');
-        return array(
-            'robots' => $ls['objects'],
-            'realm' => $realmShow['message']['arguments']
-        );
-    }
-
-    public function getInfoArray($command) {
-        $infoArrays = $this->getInfoArrays($command);
-        return $infoArrays[0];
-    }
-
-    public function getInfoArrays($command) {
-        return json_decode($this->exec($command), true);
+        if (empty($this->info['plans'])) {
+            $this->info['plans'] = array();
+        }
+        $ls = $this->exec('ls');
+        $this->info['robots'] = $ls['objects'];
     }
 
     public function setBot($bot)
@@ -67,6 +62,16 @@ abstract class BaseBotController {
     public function getBot()
     {
         return $this->bot;
+    }
+
+    public function setInfo($info)
+    {
+        $this->info = $info;
+    }
+
+    public function getInfo()
+    {
+        return $this->info;
     }
 
     public function setClientFilename($clientFilename)
@@ -87,6 +92,14 @@ abstract class BaseBotController {
     public function getHomeDirname()
     {
         return $this->homeDirname;
+    }
+
+    public function setActiveAt($activeAt) {
+        $this->activeAt = $activeAt;
+    }
+
+    public function getActiveAt() {
+        return $this->activeAt;
     }
 
 }

@@ -29,7 +29,7 @@ class rkLaunchBotnetTask extends sfBaseTask {
             $bots = BotTable::getInstance()->getActiveBotsOnDemand();
             foreach ($bots as $bot) {
                 $bin = $_SERVER['argv'][0];
-                $command = $bin.' rs:launch-bot '.$bot['id'].' >> '.sfConfig::get('sf_log_dir').'/bot_'.$bot['id'].'.log';
+                $command = $bin.' rk:launch-bot '.$bot['id'];
                 $this->logSection($this->name, 'Launching bot #'.$bot['id']);
                 $at_command = 'echo '.escapeshellarg($command);
                 `$at_command | at now`;

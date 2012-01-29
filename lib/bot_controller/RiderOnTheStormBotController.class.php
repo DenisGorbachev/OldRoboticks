@@ -9,34 +9,51 @@ class RiderOnTheStormBotController extends BaseBotController {
     );
 
     public function play() {
-        parent::play();
-        $info = $this->getInfo();
-        $realmWidth = $info['realm']['width'];
-        $realmHeight = $info['realm']['height'];
-        foreach ($info['robots'] as &$robotInfo) {
+        foreach ($this->info['robots'] as $robotInfo) {
             $this->exec('select '.$robotInfo['id']);
-            if (!isset($robotInfo['nextSectorIndex'])) {
-                for ($i = 0; $i < count($this->sectorPercents); $i++) {
-                    $targetX = round($realmWidth*$this->sectorPercents[$i][0]);
-                    $targetY = round($realmHeight*$this->sectorPercents[$i][1]);
-                    var_dump($targetX);
-                    var_dump($targetY);
-                    if ($robotInfo['Sector']['x'] == $targetX && $robotInfo['Sector']['y'] == $targetY) {
-                        break;
-                    }
-                }
-                $robotInfo['nextSectorIndex'] = $i;
+            $nextSector = $this->info['plans'][$robotInfo['id']]['nextSector'];
+            if ($this->getSquaredDistanceBetweenRobotAndSectorPercent($robotInfo, $this->sectorPercents[$nextSector]) == 0) {
+                $nextSector++;
             }
-            $robotInfo['nextSectorIndex']++;
-            if ($robotInfo['nextSectorIndex'] >= count($this->sectorPercents)) {
-                $robotInfo['nextSectorIndex'] = 0;
+            if ($nextSector >= count($this->sectorPercents)) {
+                $nextSector = 0;
             }
-            $result = $this->exec('mv '.round($realmWidth*$this->sectorPercents[$robotInfo['nextSectorIndex']][0]).','.round($realmHeight*$this->sectorPercents[$robotInfo['nextSectorIndex']][1]));
-            var_dump($result);
-            var_dump($robotInfo['nextSectorIndex']);
+            $result = $this->exec('mv '.$this->getSectorPercentX($this->sectorPercents[$nextSector]).','.$this->getSectorPercentY($this->sectorPercents[$nextSector]));
+            $this->info['plans'][$robotInfo['id']]['nextSector'] = $nextSector;
         }
-        $this->getBot()->setInfo($info);
-        // TODO: setActiveAt
+    }
+
+    public function refresh() {
+        parent::refresh();
+        foreach ($this->info['robots'] as $robotInfo) {
+            if (isset($this->info['plans'][$robotInfo['id']])) {
+                continue;
+            }
+            $minDistance = SectorTable::getInstance()->getSquaredDistanceBetweenCoordinates(0, 0, $this->info['realm']['width'], $this->info['realm']['height']);
+            $nearestSector = 0;
+            for ($i = 0; $i < count($this->sectorPercents); $i++) {
+                $distance = $this->getSquaredDistanceBetweenRobotAndSectorPercent($robotInfo, $this->sectorPercents[$i]);
+                if ($distance < $minDistance) {
+                    $nearestSector = $i;
+                    $minDistance = $distance;
+                }
+            }
+            $this->info['plans'][$robotInfo['id']] = array(
+                'nextSector' => $nearestSector
+            );
+        }
+    }
+
+    public function getSquaredDistanceBetweenRobotAndSectorPercent($robotInfo, $sectorPercent) {
+        return SectorTable::getInstance()->getSquaredDistanceBetweenCoordinates($robotInfo['Sector']['x'], $robotInfo['Sector']['y'], $this->getSectorPercentX($sectorPercent), $this->getSectorPercentY($sectorPercent));
+    }
+
+    public function getSectorPercentX($sectorPercent) {
+        return round($this->info['realm']['width'] * $sectorPercent[0]);
+    }
+
+    public function getSectorPercentY($sectorPercent) {
+        return round($this->info['realm']['height'] * $sectorPercent[1]);
     }
 
 }

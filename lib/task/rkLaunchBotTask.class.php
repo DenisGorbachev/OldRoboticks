@@ -7,7 +7,7 @@ class rkLaunchBotTask extends sfBaseTask {
 		));
 		
 		$this->addOptions(array(
-			new sfCommandOption('recover-info', 'r', sfCommandOption::PARAMETER_NONE, 'Drop the existing info, start anew'),
+			new sfCommandOption('drop-info', 'r', sfCommandOption::PARAMETER_NONE, 'Stop drinking, start a new life'),
 //			new sfCommandOption('probability', 'p', sfCommandOption::PARAMETER_REQUIRED, 'Probability of a letter (float, from 0 to 1)', 0.02),
 //			new sfCommandOption('print-only', 'o', sfCommandOption::PARAMETER_NONE, 'Only print, do not insert into database'),
 		));
@@ -26,11 +26,16 @@ class rkLaunchBotTask extends sfBaseTask {
 
         $bot = BotTable::getInstance()->find($arguments['bot_id']);
         $controller = $bot->getController();
-        if ($options['recover-info']) {
-            $info = $controller->recoverInfo();
-            $bot->setInfo($info);
+        if ($options['drop-info']) {
+            $controller->setInfo(array());
+        } else {
+            $controller->setInfo($bot->getInfo());
         }
-        $controller->play();
+        $controller->connect();
+        $controller->refresh();
+        $controller->play(); // TODO: setActiveAt
+        $bot->setInfo($controller->getInfo());
+        $bot->setActiveAt($controller->getActiveAt());
         $bot->save();
 	}
 

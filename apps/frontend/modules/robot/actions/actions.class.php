@@ -171,4 +171,12 @@ class robotActions extends rkActions {
         return parent::validateFailed($e);
     }
 
+    public function respond($success, $type, $text, array $arguments = array()) {
+        if (isset($this->object)) {
+            $this->add('active_at', $this->object->getActiveAt());
+        }
+        return parent::respond($success, $type, $text, $arguments);
+    }
+
+
 }
