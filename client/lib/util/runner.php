@@ -24,7 +24,17 @@
         ),
         $cmdName
     ).'Command';
-	$cmdFilename = $config->getLibDirname().'/command/'.$cmdClass.'.class.php';
+	$cmdFilename = $config->getLibDirname().'/command/'.preg_replace(
+        array(
+            '#([^:]+)$#e',
+            '#([^:]+):#e',
+        ),
+        array(
+            '',
+            "lcfirst('\\1').'/'",
+        ),
+        $cmdName
+    ).$cmdClass.'.class.php';
 	if (!file_exists($cmdFilename)) {
 		die('Failure: command not found'.PHP_EOL);
 	}

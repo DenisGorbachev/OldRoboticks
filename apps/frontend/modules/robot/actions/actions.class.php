@@ -44,7 +44,10 @@ class robotActions extends rkActions {
 				'sector' => (string)$this->object->getSector(),
 			));
 		}
-        return $this->success('moved robot '.$this->object.' at '.$this->object->getSector());
+        return $this->success('moved robot %robot% at sector %sector%', array(
+            'robot' => (string)$this->object,
+            'sector' => (string)$this->object->getSector()
+        ));
 	}
 
 	public function prepareScan() {
@@ -172,7 +175,7 @@ class robotActions extends rkActions {
     }
 
     public function respond($success, $type, $text, array $arguments = array()) {
-        if (isset($this->object)) {
+        if (!empty($this->object)) {
             $this->add('active_at', $this->object->getActiveAt());
         }
         return parent::respond($success, $type, $text, $arguments);

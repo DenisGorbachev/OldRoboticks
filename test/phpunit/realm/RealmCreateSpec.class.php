@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../BaseSpec.class.php';
+require_once __DIR__.'/../../BaseSpec.class.php';
 
 /**
  * @group time-consuming

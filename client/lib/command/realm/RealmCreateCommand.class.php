@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__).'/base/PasswordOptionalCommand.class.php';
+require_once dirname(__FILE__).'/../base/PasswordOptionalCommand.class.php';
 
 class RealmCreateCommand extends PasswordOptionalCommand {
 	public function getParserConfig() {

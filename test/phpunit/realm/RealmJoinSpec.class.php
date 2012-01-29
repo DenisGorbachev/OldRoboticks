@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../RealmBaseSpec.class.php';
+require_once __DIR__.'/../../RealmBaseSpec.class.php';
 
 class RealmJoinSpec extends RealmBaseSpec {
     public function setUp() {

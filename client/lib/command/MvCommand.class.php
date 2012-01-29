@@ -32,7 +32,7 @@ class MvCommand extends RobotCommand {
 		$coords = explode(',', $arguments['sector']);
         $x = $coords[0];
         $y = $coords[1];
-		$this->post('robot/move', array(
+		return $this->post('robot/move', array(
             'id' => $options['robot_id'],
 			'x' => $x,
 			'y' => $y,

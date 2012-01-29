@@ -1,7 +1,7 @@
 <?php
 
 require_once dirname(__FILE__).'/base/UserInterfaceCommand.class.php';
-require_once dirname(__FILE__).'/RealmCreateCommand.class.php';
+require_once dirname(__FILE__).'/realm/RealmCreateCommand.class.php';
 
 class TutorialCommand extends UserInterfaceCommand {
 	public function getParserConfig() {

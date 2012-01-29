@@ -3,22 +3,33 @@
 require_once __DIR__.'/../BotBaseSpec.class.php';
 
 class RiderOnTheStormSpec extends BotBaseSpec {
+    public function __construct() {
+        parent::__construct();
+        $this->selectBot('RiderOnTheStorm');
+    }
+
     public function setUp() {
         parent::setUp();
         return $this
             ->given('Genesis')
-            ->and('User', 'RiderOnTheStormBotUser')
-            ->and('Robot', 'storm')
+            ->given('User', 'RiderOnTheStormBotUser')
+            ->given('Robot', 'storm')
     ;}
 
 	public function testNormal() {
         $this
-		    ->when('MyNightComesDown')
+		    ->when('MyNightComesDown', 1)
+            ->then('LogContains', '/all', '4,16')
+            ->when('MyNightComesDown', 3)
+            ->then('LogContains', '/all', '16,16')
+            ->when('MyNightComesDown', 3)
+            ->then('LogContains', '/all', '16,4')
+            ->when('MyNightComesDown', 3)
+            ->then('LogContains', '/all', '4,4')
+            ->when('MyNightComesDown', 3)
+            ->then('LogContains', '/all', '4,16')
 	;}
 
 	/* Borderline */
-    public function whenMyNightComesDown($times = 1) {
-        return parent::whenNightComesDown($this->getBotId('RiderOnTheStorm'), $times);
-    }
 
 }

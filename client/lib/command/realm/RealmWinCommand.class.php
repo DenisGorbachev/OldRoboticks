@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__).'/base/RealmCommand.class.php';
+require_once dirname(__FILE__).'/../base/RealmCommand.class.php';
 
 class RealmWinCommand extends RealmCommand {
 	public function getParserConfig() {
