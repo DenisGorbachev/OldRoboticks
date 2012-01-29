@@ -31,7 +31,8 @@ abstract class BaseBotController {
     }
 
     public function exec($command) {
-        return array_pop($this->execAndReturnEverything($command));
+        $results = $this->execAndReturnEverything($command);
+        return array_pop($results);
     }
 
     public function connect() {

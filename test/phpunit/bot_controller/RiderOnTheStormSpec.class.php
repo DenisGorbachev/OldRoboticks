@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../BotBaseSpec.class.php';
+require_once __DIR__.'/../../BotBaseSpec.class.php';
 
 class RiderOnTheStormSpec extends BotBaseSpec {
     public function __construct() {
