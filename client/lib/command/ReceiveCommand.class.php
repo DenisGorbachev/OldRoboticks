@@ -13,7 +13,7 @@ class ReceiveCommand extends MailCommand {
         if ($options['realm']) {
             $arguments['realm_id'] = $options['realm_id'];
         }
-    	$this->get('mail/receive', $arguments);
+    	return $this->get('mail/receive', $arguments);
 	}
 	
 }

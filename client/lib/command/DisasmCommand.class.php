@@ -22,7 +22,7 @@ class DisasmCommand extends RobotCommand {
 	}
 	
 	public function execute($options, $arguments) {
-		$this->post('robot/disassemble', array(
+		return $this->post('robot/disassemble', array(
 			'id' => $options['robot_id'],
 			'target_id' => $arguments['target_robot_id'],
 		));

@@ -24,6 +24,7 @@ class SelectCommand extends UserInterfaceCommand {
         }
         $this->setVariable('robot_id', $robotId);
         $this->success('selected robot #'.$robotId);
+        return true;
 	}
 
 }

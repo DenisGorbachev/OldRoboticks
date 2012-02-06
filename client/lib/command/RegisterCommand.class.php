@@ -18,7 +18,7 @@ class RegisterCommand extends PasswordCommand {
 	}
 	
 	public function execute($options, $arguments) {
-        $this->postForm('user', 'user/create', array(
+        return $this->postForm('user', 'user/create', array(
             'username' => $arguments['username'],
             'password' => $options['password'],
         ));

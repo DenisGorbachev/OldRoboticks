@@ -22,7 +22,7 @@ class AsmCommand extends RobotCommand {
 	}
 	
 	public function execute($options, $arguments) {
-		$this->post('robot/assemble', array(
+		return $this->post('robot/assemble', array(
 			'id' => $options['robot_id'],
 			'name' => $arguments['name'],
 		));

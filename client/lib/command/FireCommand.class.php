@@ -25,7 +25,7 @@ class FireCommand extends RobotCommand {
 	}
 	
 	public function execute($options, $arguments) {
-		$this->post('robot/fire', array(
+		return $this->post('robot/fire', array(
 			'id' => $options['robot_id'],
 			'target_id' => $arguments['target_robot_id'],
 			'letter' => $arguments['letter'],

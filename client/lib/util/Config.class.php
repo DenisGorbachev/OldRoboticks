@@ -73,6 +73,22 @@ class Config {
         return $this->getHomeDirname() . '/' . $this->getHost() . '/log';
     }
 
+    public function getRobotFunCache($robotId) {
+        $filename = $this->getRobotFunCacheFilename($robotId);
+        if (file_exists($filename)) {
+            return unserialize(file_get_contents($filename));
+        }
+        return array();
+    }
+
+    public function setRobotFunCache($robotId, array $cache) {
+        file_put_contents($this->getRobotFunCacheFilename($robotId), serialize($cache));
+    }
+
+    public function getRobotFunCacheFilename($robotId) {
+        return $this->getCacheDirname() . '/' . $robotId . '.fun';
+    }
+
     public function isDebug() {
         return file_exists($this->getHomeDirname().'/debug');
     }

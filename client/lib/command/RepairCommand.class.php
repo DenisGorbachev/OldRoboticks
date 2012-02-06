@@ -25,7 +25,7 @@ class RepairCommand extends RobotCommand {
 	}
 	
 	public function execute($options, $arguments) {
-		$this->post('robot/repair', array(
+		return $this->post('robot/repair', array(
 			'id' => $options['robot_id'],
 			'target_id' => $arguments['target_robot_id'],
 			'letter' => $arguments['letter'],

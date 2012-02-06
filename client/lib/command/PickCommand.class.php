@@ -22,7 +22,7 @@ class PickCommand extends RobotCommand {
 	}
 	
 	public function execute($options, $arguments) {
-		$this->post('robot/pick', array(
+		return $this->post('robot/pick', array(
 			'id' => $options['robot_id'],
 			'letter' => $arguments['letter'],
 		));

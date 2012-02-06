@@ -18,7 +18,7 @@ class ExtractCommand extends RobotCommand {
     }
 
 	public function execute($options, $arguments) {
-		$this->post('robot/extract', array(
+		return $this->post('robot/extract', array(
 			'id' => $options['robot_id'],
 		));
 	}

@@ -28,6 +28,7 @@ class LsCommand extends RealmCommand {
 			}
             $this->table($info);
 		}
+        return $response;
 	}
 	
 

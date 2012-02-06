@@ -40,6 +40,7 @@ class MapCommand extends ScanCommand {
             $info[] = $lowerCoordinatesRow;
             $this->table($info);
         }
+        return $response;
 	}
 
     public function executeForRobots($response, $info)

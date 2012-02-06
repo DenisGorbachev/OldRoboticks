@@ -26,7 +26,7 @@ class FunMvCommand extends FunCommand {
         if (isset($result['message']['arguments']['sector']) && $result['message']['arguments']['sector'] == $this->getArgument('sector')) {
             return false;
         }
-        sleep(max($result['active_at'] - time(), 0));
+        return $result;
     }
 
 }

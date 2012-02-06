@@ -21,6 +21,7 @@ class HostCommand extends UserInterfaceCommand {
         $host = $arguments['host'];
         $this->getConfig()->setHost($host);
         $this->success('selected host '.$host);
+        return true;
 	}
 
 }

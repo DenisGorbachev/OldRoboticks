@@ -18,7 +18,7 @@ class LoginCommand extends PasswordCommand {
 	}
 	
 	public function execute($options, $arguments) {
-		$this->get('user/login', array_merge($options, $arguments));
+		return $this->get('user/login', array_merge($options, $arguments));
 	}
 	
 }

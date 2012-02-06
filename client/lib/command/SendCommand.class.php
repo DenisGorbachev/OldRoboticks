@@ -27,7 +27,7 @@ class SendCommand extends MailCommand {
         if ($options['realm']) {
             $arguments['realm_id'] = $options['realm_id'];
         }
-		$this->postForm('mail', 'mail/send', $arguments);
+		return $this->postForm('mail', 'mail/send', $arguments);
 	}
 	
 }

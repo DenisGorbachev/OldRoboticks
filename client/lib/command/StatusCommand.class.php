@@ -23,6 +23,7 @@ class StatusCommand extends UserInterfaceCommand {
         $this->tableFixedColumnWidth(array(
             array('Logged in?', $response['success']? 'yes' : 'no'),
         ), false, $maxlengths);
+        return true;
 	}
 
 }

@@ -22,7 +22,7 @@ class DropCommand extends RobotCommand {
 	}
 	
 	public function execute($options, $arguments) {
-		$this->post('robot/drop', array(
+		return $this->post('robot/drop', array(
 			'id' => $options['robot_id'],
 			'letter' => $arguments['letter'],
 		));

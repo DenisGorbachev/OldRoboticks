@@ -22,6 +22,7 @@ class ReportCommand extends ScanCommand {
         if ($response['success']) {
             $this->table($this->{'executeFor'.$options['for']}($response));
         }
+        return $response;
 	}
 	
     public function executeForRobots($response)
