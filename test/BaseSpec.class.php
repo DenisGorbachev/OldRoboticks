@@ -33,7 +33,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 		echo PHP_EOL.$cmd.PHP_EOL;
 		$result = `$cmd`;
 		echo $result.PHP_EOL;
-		$this->world['results'][$command] = $result;
+		$this->world['results'][] = $result;
 		$this->world['lastResult'] = $result;
 		return $result;
 	}
