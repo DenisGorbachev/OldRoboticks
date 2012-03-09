@@ -69,6 +69,14 @@ function prompt_silent($prompt = "Enter password: ") {
     }
 }
 
+function coords_string_to_array($string) {
+    $coords = explode(',', $string);
+    return array(
+        'x' => $coords[0],
+        'y' => $coords[1],
+    );
+}
+
 function vd() {
     $args = func_get_args();
     foreach ($args as &$arg) {

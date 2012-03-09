@@ -7,6 +7,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
     public $realms = array(null, 'Universe', 'Etherworld', 'Lawn', 'Afterlife');
     
 	protected $world = array(
+        'output' => '',
 		'results' => array(),
 		'lastResult' => ''
 	);
@@ -33,6 +34,7 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
 		echo PHP_EOL.$cmd.PHP_EOL;
 		$result = `$cmd`;
 		echo $result.PHP_EOL;
+        $this->world['output'] .= $result;
 		$this->world['results'][] = $result;
 		$this->world['lastResult'] = $result;
 		return $result;

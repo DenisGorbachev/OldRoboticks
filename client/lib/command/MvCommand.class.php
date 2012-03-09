@@ -29,13 +29,14 @@ class MvCommand extends RobotCommand {
 	}
 	
 	public function execute($options, $arguments) {
-		$coords = explode(',', $arguments['sector']);
-        $x = $coords[0];
-        $y = $coords[1];
+        $coords = $this->getArgument('sector');
+        if (is_string($coords)) {
+            $coords = coords_string_to_array($coords);
+        }
 		return $this->post('robot/move', array(
             'id' => $options['robot_id'],
-			'x' => $x,
-			'y' => $y,
+			'x' => $coords['x'],
+			'y' => $coords['y'],
 			'relative' => $options['relative']
 		));
 	}
