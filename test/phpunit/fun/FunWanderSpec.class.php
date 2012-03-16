@@ -13,13 +13,6 @@ class FunWanderSpec extends FunBaseSpec {
             ->when('Exec', 'mv 6,6')
     ;}
 
-    public function testNormal() {
-        $this
-            ->when('Exec', 'fun:wander 9,9 "RK_OUTPUT_FORMAT=json rk report"')
-//			->when('Exec', 'fun:wander "rk ls | grep -P \'^'.$this->getRobotId('tea').'\'"')
-            ->then('ContainsAllSectors', 0, 0, 19, 19)
-	;}
-
     public function testBase() {
         $this
 			->when('Exec', 'fun:wander --steps 1 10,10 "rk ls"')
@@ -33,18 +26,25 @@ class FunWanderSpec extends FunBaseSpec {
             ->when('Exec', 'fun:wander --steps 1 8,8 "rk ls"')
             ->then('Contains', '8,8')
             ->when('Exec', 'fun:wander --steps 1 8,8 "rk ls"')
-            ->then('Contains', '8,19')
+            ->then('Contains', 'TEAR')
 	;}
 
     public function testStepping() {
         $this
-            ->when('Exec', 'fun:wander --steps 3 8,8 "rk ls"')
-            ->then('Contains', '19,19')
+            ->when('Exec', 'fun:wander --steps 4 8,8 "rk ls"')
+            ->then('Contains', '8,19')
             ->when('Exec', 'fun:wander --steps 1 8,8 "rk ls"')
-            ->then('Contains', '19,8')
-            ->when('Exec', 'fun:wander --steps 3 8,8 "rk ls"')
-            ->then('Contains', '0,0')
+            ->then('Contains', 'TEETER')
+            ->when('Exec', 'fun:wander --steps 2 8,8 "rk ls"')
+            ->then('Contains', '19,19')
    	;}
+
+    public function testFullCycle() {
+        $this
+            ->when('Exec', 'fun:wander 9,9 "RK_OUTPUT_FORMAT=json rk report"')
+//			->when('Exec', 'fun:wander "rk ls | grep -P \'^'.$this->getRobotId('tea').'\'"')
+            ->then('ContainsAllSectors', 0, 0, 19, 19)
+	;}
 
     public function testBorders() {
         // 20x20 realm, `rk fun:wander 19,19`, ?
