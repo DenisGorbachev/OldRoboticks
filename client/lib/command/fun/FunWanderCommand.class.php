@@ -35,9 +35,12 @@ class FunWanderCommand extends FunCommand {
 
     public function step($options, $arguments) {
         if (empty($this->cache['base']) || $this->cache['base'] != $this->getArgument('base')) {
+            $localTarget = coords_string_to_array($this->getArgument('base'));
             $this->cache = array(
                 'base' => $this->getArgument('base'),
-                'target' => coords_string_to_array($this->getArgument('base')),
+                'target' => $localTarget,
+                'local_target' => $localTarget,
+                'failed_targets' => array()
             );
         }
         if (empty($this->cache['target_reached'])) {
@@ -46,8 +49,13 @@ class FunWanderCommand extends FunCommand {
                 'sector' => $this->cache['target']
             ));
             $result = $command->run();
-            if (isset($result['message']['arguments']['sector']) && coords_string_to_array($result['message']['arguments']['sector']) == $this->cache['target']) {
-                $this->cache['target_reached'] = true;
+            if ($result['success']) {
+                if (isset($result['message']['arguments']['sector']) && coords_string_to_array($result['message']['arguments']['sector']) == $this->cache['target']) {
+                    $this->cache['target_reached'] = true;
+                }
+                $this->cache['failed_targets'] = array();
+            } else {
+                $this->cache['failed_targets'][] = $this->cache['target'];
             }
         } else {
             $command = $this->getArgument('command');

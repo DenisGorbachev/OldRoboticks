@@ -50,6 +50,10 @@ class FunWanderSpec extends FunBaseSpec {
         // 20x20 realm, `rk fun:wander 19,19`, ?
     ;}
 
+    public function testInvalidBase() {
+        // 20x20 realm, `rk fun:wander 25,25`, ?
+    ;}
+
     public function thenContainsAllSectors($blX, $blY, $trX, $trY, $message = '', $ignoreCase = false) {
         for ($x = $blX; $x <= $trX; $x++) {
             for ($y = $blY; $y <= $trY; $y++) {
