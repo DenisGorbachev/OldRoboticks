@@ -35,9 +35,6 @@ class FunWanderCommand extends FunCommand {
 	}
 
     public function step($options, $arguments) {
-
-        // Accurate stepping needed. Tests would assure this.
-
         if (empty($this->cache['base']) || $this->cache['base'] != $this->getArgument('base')) {
             $command = new RealmShowCommand($this->getConfig());
             $result = $command->run();
@@ -76,28 +73,30 @@ class FunWanderCommand extends FunCommand {
                 $halfTargetY = $targetX;
                 $diffX = $targetX - $baseX;
                 $diffY = $targetY - $baseY;
-                var_dump($diffX);
-                var_dump($diffY);
                 $increment = 2 * $this->getOption('range') + 1;
                 $halfIncrement = $this->getOption('range') + 1;
                 if (abs($diffX) > abs($diffY)) {
+                    var_dump('in 1');
                     $targetY += ($diffX > 0? -1 : 1) * $increment;
-                    $halfTargetX += ($diffX > 0? -1 : 1) * $halfIncrement;
-                    $halfTargetY = $targetY;
+                    $halfTargetY += ($diffX > 0? -1 : 1) * $halfIncrement; // It's like a jump in wrong direction: 19,13 instead of 19,2 (from 19,8)
+                    $halfTargetX = $targetX;
                 } else if (abs($diffX) < abs($diffY)) {
+                    var_dump('in 2');
                     $targetX += ($diffY > 0? 1 : -1) * $increment;
                     $halfTargetX = $targetX;
                     $halfTargetY += ($diffY > 0? -1 : 1) * $halfIncrement;
                 } else if ($diffX == $diffY) {
+                    var_dump('in 3');
                     $targetY += ($diffX > 0? -1 : 1) * $increment;
-                    $halfTargetX += ($diffX > 0? -1 : 1) * $halfIncrement;
+                    $halfTargetX += ($diffX > 0? -1 : 1) * $halfIncrement; // I guess we should move along Y now?
                     $halfTargetY += ($diffY > 0? -1 : 1) * $halfIncrement;
                 } else if ($diffX == abs($diffY)) {
+                    var_dump('in 4');
                     $targetX += ($diffY > 0? 1 : -1) * $increment;
                     $halfTargetX += ($diffX > 0? -1 : 1) * $halfIncrement;
                     $halfTargetY += ($diffY > 0? -1 : 1) * $halfIncrement;
                 } else {
-                    var_dump('ITERATION '.$iterations);
+                    var_dump('in 5, ITERATIONS='.$iterations);
                     $targetY += $increment;
                     $halfTargetX += $targetX;
                     $halfTargetY += $halfIncrement;
@@ -111,8 +110,10 @@ class FunWanderCommand extends FunCommand {
                     'x' => $halfTargetX,
                     'y' => $halfTargetY,
                 );
+                var_dump($halfTarget);
                 foreach (array($target, $halfTarget) as $localTarget) {
                     if ($localTarget['x'] > 0 && $localTarget['x'] < $this->cache['realm']['width'] && $localTarget['y'] > 0 && $localTarget['y'] < $this->cache['realm']['height']) {
+                        var_dump($localTarget);
                         $this->cache['target'] = $target;
                         $this->cache['local_target'] = $localTarget;
                         $this->cache['local_target_reached'] = false;

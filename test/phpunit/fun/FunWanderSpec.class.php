@@ -40,10 +40,28 @@ class FunWanderSpec extends FunBaseSpec {
    	;}
 
     public function testFullCycle() {
+//        $command = 'fun:wander --steps 3 8,8 "RK_OUTPUT_FORMAT=json rk report"';
+        $command = 'fun:wander --steps 3 8,8 "echo checkpoint"';
         $this
-            ->when('Exec', 'fun:wander 9,9 "RK_OUTPUT_FORMAT=json rk report"')
-//			->when('Exec', 'fun:wander "rk ls | grep -P \'^'.$this->getRobotId('tea').'\'"')
-            ->then('ContainsAllSectors', 0, 0, 19, 19)
+            ->when('Exec', $command)
+			->then('Contains', '8,8')
+            ->when('Exec', $command)
+            ->then('Contains', '8,19')
+            ->when('Exec', $command)
+            ->then('Contains', '19,19')
+            ->when('Exec', $command)
+            ->then('Contains', '19,8')
+            ->when('Exec', $command)
+            ->then('Contains', '19,2')
+            ->when('Exec', $command)
+            ->then('Contains', '8,2')
+            ->when('Exec', $command)
+            ->then('Contains', '2,2')
+            ->when('Exec', $command)
+            ->then('Contains', '2,8')
+            ->when('Exec', $command)
+            ->then('Contains', '2,19')
+//            ->then('ContainsAllSectors', 0, 0, 19, 19)
 	;}
 
     public function testBorders() {
