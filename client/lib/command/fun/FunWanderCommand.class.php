@@ -65,6 +65,7 @@ class FunWanderCommand extends FunCommand {
             echo `$command`;
             $targetX = $this->cache['target']['x'];
             $targetY = $this->cache['target']['y'];
+            var_dump($this->cache['target']);
             $baseX = $this->cache['base']['x'];
             $baseY = $this->cache['base']['y'];
             $iterations = 0;
@@ -75,16 +76,19 @@ class FunWanderCommand extends FunCommand {
                 $diffY = $targetY - $baseY;
                 $increment = 2 * $this->getOption('range') + 1;
                 $halfIncrement = $this->getOption('range') + 1;
+
+                // Need to implement multiple halfTargets
+
                 if (abs($diffX) > abs($diffY)) {
                     var_dump('in 1');
                     $targetY += ($diffX > 0? -1 : 1) * $increment;
-                    $halfTargetY += ($diffX > 0? -1 : 1) * $halfIncrement; // It's like a jump in wrong direction: 19,13 instead of 19,2 (from 19,8)
-                    $halfTargetX = $targetX;
+                    $halfTargetX += ($diffX > 0? -1 : 1) * $halfIncrement;
+                    $halfTargetY = $targetY;
                 } else if (abs($diffX) < abs($diffY)) {
                     var_dump('in 2');
-                    $targetX += ($diffY > 0? 1 : -1) * $increment;
+                    $targetX += ($diffY > 0? 1 : -1) * $increment; // Maybe >=
                     $halfTargetX = $targetX;
-                    $halfTargetY += ($diffY > 0? -1 : 1) * $halfIncrement;
+                    $halfTargetY += ($diffY > 0? -1 : 1) * $halfIncrement; // Maybe >=
                 } else if ($diffX == $diffY) {
                     var_dump('in 3');
                     $targetY += ($diffX > 0? -1 : 1) * $increment;
@@ -106,6 +110,7 @@ class FunWanderCommand extends FunCommand {
                     'x' => $targetX,
                     'y' => $targetY,
                 );
+                var_dump($target);
                 $halfTarget = array(
                     'x' => $halfTargetX,
                     'y' => $halfTargetY,
