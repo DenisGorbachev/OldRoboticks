@@ -3,6 +3,9 @@
 require_once __DIR__.'/../../FunBaseSpec.class.php';
 
 class FunWanderSpec extends FunBaseSpec {
+    public $command = 'RK_OUTPUT_FORMAT=json rk report';
+//    public $command = 'echo checkpoint';
+
     public function setUp() {
         parent::setUp();
         return $this
@@ -29,6 +32,14 @@ class FunWanderSpec extends FunBaseSpec {
             ->then('Contains', 'TEAR')
 	;}
 
+    public function testFullReset() {
+        $this
+            ->when('Exec', 'fun:wander --reset --steps 1 8,8 "rk ls"')
+            ->then('Contains', '8,8')
+            ->when('Exec', 'fun:wander --reset --steps 1 8,8 "rk ls"')
+            ->then('Contains', '8,8')
+	;}
+
     public function testStepping() {
         $this
             ->when('Exec', 'fun:wander --steps 4 8,8 "rk ls"')
@@ -39,36 +50,44 @@ class FunWanderSpec extends FunBaseSpec {
             ->then('Contains', '19,19')
    	;}
 
+    /**
+     * The robot doesn't exactly move in squares if it encounters obstacles (it bounces for 1 sector). This behavior is normal.
+     */
     public function testFullCycle() {
-//        $command = 'fun:wander --steps 3 8,8 "RK_OUTPUT_FORMAT=json rk report"';
         $this
-            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
+            ->when('Exec', 'fun:wander --steps 3 8,8 "'.$this->command.'"')
 			->then('Contains', '8,8')
-            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
+            ->when('Exec', 'fun:wander --steps 3 8,8 "'.$this->command.'"')
             ->then('Contains', '8,19')
-            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
+            ->when('Exec', 'fun:wander --steps 3 8,8 "'.$this->command.'"')
             ->then('Contains', '19,19')
-            ->when('Exec', 'fun:wander --steps 2 8,8 "echo checkpoint"')
+            ->when('Exec', 'fun:wander --steps 2 8,8 "'.$this->command.'"')
             ->then('Contains', '19,8')
-            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
+            ->when('Exec', 'fun:wander --steps 3 8,8 "'.$this->command.'"')
             ->then('Contains', '19,2')
-            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
-            ->then('Contains', '8,2')
-            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
-            ->then('Contains', '2,2')
-            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
-            ->then('Contains', '2,8')
-            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
-            ->then('Contains', '2,19')
-//            ->then('ContainsAllSectors', 0, 0, 19, 19)
+            ->when('Exec', 'fun:wander --steps 2 8,8 "'.$this->command.'"')
+            ->then('Contains', '8,3')
+            ->when('Exec', 'fun:wander --steps 2 8,8 "'.$this->command.'"')
+            ->then('Contains', '2,3')
+            ->when('Exec', 'fun:wander --steps 3 8,8 "'.$this->command.'"')
+            ->then('Contains', '3,8')
+            ->when('Exec', 'fun:wander --steps 3 8,8 "'.$this->command.'"')
+            ->then('Contains', '3,19')
+            ->when('Exec', 'fun:wander --steps 6 8,8 "'.$this->command.'"')
+            ->then('NotContains', 'Success')
+            ->then('ContainsAllSectors', 0, 0, 19, 19)
 	;}
 
     public function testBorders() {
-        // 20x20 realm, `rk fun:wander 19,19`, ?
+        $this
+            ->when('Exec', 'fun:wander 19,19 "'.$this->command.'"')
+            ->then('ContainsAllSectors', 0, 0, 19, 19)
     ;}
 
     public function testInvalidBase() {
-        // 20x20 realm, `rk fun:wander 25,25`, ?
+        $this
+            ->when('Exec', 'fun:wander 25,25 "'.$this->command.'"')
+            ->then('Contains', 'Failure')
     ;}
 
     public function thenContainsAllSectors($blX, $blY, $trX, $trY, $message = '', $ignoreCase = false) {

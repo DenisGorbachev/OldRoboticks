@@ -65,73 +65,54 @@ class FunWanderCommand extends FunCommand {
             echo `$command`;
             $targetX = $this->cache['target']['x'];
             $targetY = $this->cache['target']['y'];
-            var_dump($this->cache['target']);
             $baseX = $this->cache['base']['x'];
             $baseY = $this->cache['base']['y'];
-            $iterations = 0;
-            $targets = array_fill(0, 4, array('x' => $targetX, 'y' => $targetY));
+            $increment = 2 * $this->getOption('range') + 1;
+            $halfIncrement = $this->getOption('range') + 1;
+            $cycles = 0;
+            $targets = array(array('x' => $targetX, 'y' => $targetY));
             do {
-                var_dump('gogogo');
+                $targets = array_fill(0, 4, $targets[0]);
                 $diffX = $targets[0]['x'] - $baseX;
                 $diffY = $targets[0]['y'] - $baseY;
-                $increment = 2 * $this->getOption('range') + 1;
-                if (abs($diffX) > abs($diffY) || abs($diffX) == $diffY) {
-                    var_dump('in 1');
-                    $targets[0]['x'] = $targets[0]['x'];
+                $isUpperLeftCorner = abs($diffX) == $diffY;
+                $cycles += $isUpperLeftCorner;
+                if (abs($diffX) > abs($diffY) || $diffX == $diffY || $isUpperLeftCorner) {
                     $sign = $diffX > 0 ? -1 : 1;
+                    $targets[0]['x'] = $targets[0]['x'];
                     $targets[0]['y'] += $sign * $increment;
 
-                    $targets[1]['x'] += round($sign * $increment/2);
+                    $targets[1]['x'] += $sign * $halfIncrement;
                     $targets[1]['y'] += $sign * $increment;
 
                     $targets[2]['x'] = $targets[2]['x'];
-                    $targets[2]['y'] += round($sign * $increment/2);
+                    $targets[2]['y'] += $sign * $halfIncrement;
 
-                    $targets[3]['x'] += round($sign * $increment/2);
-                    $targets[3]['y'] += round($sign * $increment/2);
+                    $targets[3]['x'] += $sign * $halfIncrement;
+                    $targets[3]['y'] += $sign * $halfIncrement;
                 } else {
-//                } else if (abs($diffX) < abs($diffY) || $diffX == abs($diffY)) {
-                    var_dump('in 2');
                     $sign = $diffY > 0 ? 1 : -1;
                     $targets[0]['x'] += $sign * $increment;
                     $targets[0]['y'] = $targets[0]['y'];
 
                     $targets[1]['x'] += $sign * $increment;
-                    $targets[1]['y'] += round(-1 * $sign * $increment/2);
+                    $targets[1]['y'] -= $sign * $halfIncrement;
 
-                    $targets[2]['x'] += round($sign * $increment/2);
+                    $targets[2]['x'] += $sign * $halfIncrement;
                     $targets[2]['y'] = $targets[0]['y'];
 
-                    $targets[3]['x'] += round($sign * $increment/2);
-                    $targets[3]['y'] += round(-1 * $sign * $increment/2);
-//                } else if () {
-//                    var_dump('in 3');
-//                    $targets[0]['y'] += ($diffX > 0? -1 : 1) * $increment;
-//                    $targets[1]['x'] += ($diffX > 0? -1 : 1) * $halfIncrement; // I guess we should move along Y now?
-//                    $targets[1]['y'] += ($diffY > 0? -1 : 1) * $halfIncrement;
-//                } else if () {
-//                    var_dump('in 4');
-//                    $targets[0]['x'] += ($diffY > 0? 1 : -1) * $increment;
-//                    $targets[1]['x'] += ($diffX > 0? -1 : 1) * $halfIncrement;
-//                    $targets[1]['y'] += ($diffY > 0? -1 : 1) * $halfIncrement;
-//                } else {
-//                    var_dump('in 5, ITERATIONS='.$iterations);
-//                    $targets[0]['y'] += $increment;
-//                    $targets[1]['x'] += $targets[0]['x'];
-//                    $targets[1]['y'] += $halfIncrement;
-//                    $iterations++;
+                    $targets[3]['x'] += $sign * $halfIncrement;
+                    $targets[3]['y'] -= $sign * $halfIncrement;
                 }
-                var_dump($targets);
                 foreach ($targets as $localTarget) {
                     if ($localTarget['x'] > 0 && $localTarget['x'] < $this->cache['realm']['width'] && $localTarget['y'] > 0 && $localTarget['y'] < $this->cache['realm']['height']) {
-                        var_dump($localTarget);
                         $this->cache['target'] = $targets[0];
                         $this->cache['local_target'] = $localTarget;
                         $this->cache['local_target_reached'] = false;
                         return;
                     }
                 }
-            } while ($iterations < 2);
+            } while ($cycles < 2);
             return false;
         }
     }

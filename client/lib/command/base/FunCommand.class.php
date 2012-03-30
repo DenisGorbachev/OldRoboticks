@@ -14,12 +14,19 @@ abstract class FunCommand extends RobotCommand {
                 'action' => 'StoreInt',
                 'default' => null
             )
-        )
-        );
+        ),array(
+            'reset' => array(
+                'short_name' => '-r',
+                'long_name' => '--reset',
+                'description' => 'Reset the cache, start the function anew',
+                'action' => 'StoreTrue',
+                'default' => false
+            )
+        ));
     }
 
     public function execute($options, $arguments) {
-        $this->cache = $this->getConfig()->getRobotFunCache($this->getOption('robot_id'));
+        $this->cache = $this->getOption('reset')? array() : $this->getConfig()->getRobotFunCache($this->getOption('robot_id'));
         while (is_null($options['steps']) || $options['steps']--) {
             $result = $this->step($options, $arguments);
             if ($result === false) {
