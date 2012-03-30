@@ -56,6 +56,10 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
         return $this->getClientHomeDir().'/roboticks/log';
     }
 
+    public function getServerCacheDir() {
+        return __DIR__.'/../cache';
+    }
+
     public function createDirIfNotExists($dirname) {
         if (!file_exists($dirname)) {
             mkdir($dirname, 0755, true);
@@ -175,18 +179,18 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
         return $this->assertNotRegExp($pattern, $this->world['lastResult'], $message, $ignoreCase);
     }
 
-    public function getClientDebugFilename() {
-        return $this->getClientHomeDir().'/debug';
+    public function getServerDebugFilename() {
+        return $this->getServerCacheDir().'/debug';
     }
 
     public function setDebug($debug) {
-        $debugFilename = $this->getClientDebugFilename();
+        $debugFilename = $this->getServerDebugFilename();
         $this->createDirIfNotExists(dirname($debugFilename));
         return $debug? touch($debugFilename) : unlink($debugFilename);
     }
 
     public function getDebug() {
-        return file_exists($this->getClientDebugFilename());
+        return file_exists($this->getServerDebugFilename());
     }
 
     public function unlinkIfExists($filename) {

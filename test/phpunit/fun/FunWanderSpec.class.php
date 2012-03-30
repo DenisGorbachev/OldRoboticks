@@ -41,25 +41,24 @@ class FunWanderSpec extends FunBaseSpec {
 
     public function testFullCycle() {
 //        $command = 'fun:wander --steps 3 8,8 "RK_OUTPUT_FORMAT=json rk report"';
-        $command = 'fun:wander --steps 3 8,8 "echo checkpoint"';
         $this
-            ->when('Exec', $command)
+            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
 			->then('Contains', '8,8')
-            ->when('Exec', $command)
+            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
             ->then('Contains', '8,19')
-            ->when('Exec', $command)
+            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
             ->then('Contains', '19,19')
-            ->when('Exec', $command)
+            ->when('Exec', 'fun:wander --steps 2 8,8 "echo checkpoint"')
             ->then('Contains', '19,8')
-            ->when('Exec', $command)
+            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
             ->then('Contains', '19,2')
-            ->when('Exec', $command)
+            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
             ->then('Contains', '8,2')
-            ->when('Exec', $command)
+            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
             ->then('Contains', '2,2')
-            ->when('Exec', $command)
+            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
             ->then('Contains', '2,8')
-            ->when('Exec', $command)
+            ->when('Exec', 'fun:wander --steps 3 8,8 "echo checkpoint"')
             ->then('Contains', '2,19')
 //            ->then('ContainsAllSectors', 0, 0, 19, 19)
 	;}

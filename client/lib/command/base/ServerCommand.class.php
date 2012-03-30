@@ -24,7 +24,7 @@ abstract class ServerCommand extends Command {
             throw new RoboticksConnectionException('host not set. You can set it using `rk host` command.');
         }
 		$method = strtoupper($method);
-		$uri = 'http://'.$host.($this->getConfig()->isDebug()? '/dev.php' : '').'/'.$controller;
+		$uri = 'http://'.$host.'/'.$controller;
 		if ($method == 'GET') {
 			$uri .= '?'.http_build_query($parameters);
 		}
