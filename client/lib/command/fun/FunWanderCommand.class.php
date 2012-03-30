@@ -35,15 +35,15 @@ class FunWanderCommand extends FunCommand {
 	}
 
     public function step($options, $arguments) {
-        if (empty($this->cache['base']) || $this->cache['base'] != $this->getArgument('base')) {
+        $base = coords_string_to_array($this->getArgument('base'));
+        if (empty($this->cache['base']) || $this->cache['base'] != $base) {
             $command = new RealmShowCommand($this->getConfig());
             $result = $command->run();
-            $localTarget = coords_string_to_array($this->getArgument('base'));
             $this->cache = array(
                 'realm' => $result['message']['arguments'],
-                'base' => $this->getArgument('base'),
-                'target' => $localTarget,
-                'local_target' => $localTarget,
+                'base' => $base,
+                'target' => $base,
+                'local_target' => $base,
                 'local_target_reached' => false
             );
         }
@@ -112,7 +112,7 @@ class FunWanderCommand extends FunCommand {
                         return;
                     }
                 }
-            } while ($cycles < 2);
+            } while ($cycles < 3);
             return false;
         }
     }

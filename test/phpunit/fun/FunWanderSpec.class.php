@@ -51,7 +51,9 @@ class FunWanderSpec extends FunBaseSpec {
    	;}
 
     /**
-     * The robot doesn't exactly move in squares if it encounters obstacles (it bounces for 1 sector). This behavior is normal.
+     *
+     * The robot doesn't exactly move in squares if it encounters obstacles (it bounces for 1 sector).
+     * This behavior is normal.
      */
     public function testFullCycle() {
         $this
