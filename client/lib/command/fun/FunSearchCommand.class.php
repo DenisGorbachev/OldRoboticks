@@ -1,8 +1,9 @@
 <?php
 
-require_once dirname(__FILE__) . '/../base/FunCommand.class.php';
+require_once dirname(__FILE__) . '/FunWanderCommand.class.php';
+require_once dirname(__FILE__) . '/../ReportCommand.class.php';
 
-class FunSearchCommand extends FunCommand {
+class FunSearchCommand extends FunWanderCommand {
     public $defaultFields = array(
         'robots' => 'Status',
         'letters' => 'Letter',
@@ -34,27 +35,24 @@ class FunSearchCommand extends FunCommand {
 	}
 	
 	public function getArgumentConfigs() {
-		return array_merge(parent::getArgumentConfigs(), array(
-			'letters' => array(
-				'description' => 'A string of letters to search for (example: ABC)'
+        $argumentConfigs = parent::getArgumentConfigs();
+        unset($argumentConfigs['command']);
+        return array_merge($argumentConfigs, array(
+			'regex' => array(
+				'description' => 'A regular expression to look for the match (example: A|B|C)'
 			)
 		));
 	}
 
-    public function step($options, $arguments) {
-        if (empty($this->cache['base'])) {
-
-        }
-        return $this->stepReport();
-    }
-
-    public function stepReport() {
+    public function checkpoint() {
         $command = new ReportCommand($this->getConfig());
         $command->setOptions(array(
             'for' => $this->getOption('in')
-        )
-        );
+        ));
         $result = $command->run();
+        if ($result['success']) {
+            
+        }
         return $result;
     }
 

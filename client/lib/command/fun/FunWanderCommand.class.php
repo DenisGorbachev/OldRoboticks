@@ -61,8 +61,7 @@ class FunWanderCommand extends FunCommand {
                 return false;
             }
         } else {
-            $command = $this->getArgument('command');
-            echo `$command`;
+            $this->checkpoint();
             $targetX = $this->cache['target']['x'];
             $targetY = $this->cache['target']['y'];
             $baseX = $this->cache['base']['x'];
@@ -115,6 +114,11 @@ class FunWanderCommand extends FunCommand {
             } while ($cycles < 3);
             return false;
         }
+    }
+
+    public function checkpoint() {
+        $command = $this->getArgument('command');
+        echo `$command`;
     }
 
 }
