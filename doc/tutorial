@@ -1,6 +1,10 @@
-Hello there!
+h2. Hello there!
 
-As you already know, this Roboticks thing is a simulation of a real conflict. So you'd better log in to the server and create yourself a tutorial realm.
+Download the Roboticks client _here_.
+
+h2. Fire at will
+
+As you already know, this Roboticks thing is a simulation of a real conflict. So you'd better log in to the server and create yourself a tutorial realm right now.
 
 rk host roboticks.faster-than-wind.ru	# Setup the server name
 rk register YourNicknameHere		# Register new account
@@ -8,13 +12,13 @@ rk login YourNickNameHere		# Log in
 rk realm:create -c TutorialRealmController YourNicknameHere_Tutorial # Create a tutorial realm
 realm YourRealmID			# Select the newly created realm (YourRealmID is available in the output of previous command)
 
-The first robot (the precursor of an army!) is already assembled. To select it, you should first get its ID.
+The first robot "SOLDIER" (the precursor of an army!) is already assembled. Select it by ID from previous command output.
 
 robot YourRobotID
 
 Now that you're all set up, it's time to learn the most important thing: how to *fire at enemies*. Real examples are far more superior than any theoretical explanations, so:
 
-rk fire 9,9 A
+rk fire 9,9 P
 
 Wonder what you've just did? YOU HIT THAT OTHER ROBOT. Hear that? It's been damaged and can't function. Which also means it can't fire back at us. Yummy.
 
@@ -26,9 +30,38 @@ rk report
 
 See? There's the robot you already hit, and there are other robots marked as "enemy". And hey, look, it's pretty interesting: there's a second "own" robot! We'll talk about controlling multiple robots later.
 
+Let's try dealing more damage. There are three robots standing on the same sector 7,5. Placing a shot there would hit them all:
 
+rk fire 7,5 E
 
+Any robot in sector 7,5 with letter E in its name has been hit. Luckily, that sector had only enemies. If there were own robots on it, Is there any more enemies out there? It turns out, a single BRANCH on 6,8 is still functioning. But trying to finish him off:
+
+rk fire 6,8 B
+
+... is a no-go with currently selected robot. You see, robots can only fire at the letters next to those that appear in their own name. That's complex, so I'll give a few examples:
+* SINK can fire at T,J,O,L.
+* SHIP can fire at T,I,J,Q.
+* LEVIATHAN can fire at M,F,W,J,B,U,I,O (that's a lot!)
+* ANTIDISESTABLISHMENTARIANISM can fire at B,O,U,J,E,T,F,C,M,I,N,S (holy freak)
+* TEA can... oops, it can't fire: only robots consisting of 4 or more letters can fire.
+* RIFLE can fire at S,J,G,M,F.
+
+How did I get all those results? Look, the first letter in RIFLE is R, and the alphabet says "P-Q-R-S-T", so S is next to R, so RIFLE can fire at S. The practical result from all this theory is that our SOLDIER can't hit BRANCH. But we have another "own" robot — BEAR — which can fire at C,F,B,S. And that means it can hit BRANCH, too. Nice.
+
+robot BearRobotId
+rk fire 6,8 B
+
+Sector clear!
+
+So far, we've been only looking around the map with our first robot, "SOLDIER". But it has a limited scan range (in fact, every robot has a rectangular scan range of 5 sectors). So you are encouraged to try scanning with currently selected robot, "BEAR":
+
+rk report
+
+There! New enemy! Neutralize him quickly.
+
+rk fire 2,2 F
 
 
 
 # Check if I've covered all commands
+# 'Antidisestablishmentarianism'.toUpperCase().toArray().uniq().collect(function(a) { return String.fromCharCode(a.charCodeAt(0)+1) }).join(',')
