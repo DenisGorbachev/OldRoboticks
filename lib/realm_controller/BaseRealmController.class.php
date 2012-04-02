@@ -10,7 +10,6 @@ abstract class BaseRealmController {
     /** @var BaseRealmBuilder $builder */
     public $builder;
 
-
     public function __construct(Realm $realm, sfEventDispatcher $dispatcher) {
         $this->realm = $realm;
         $this->dispatcher = $dispatcher;
@@ -51,8 +50,11 @@ abstract class BaseRealmController {
     abstract public function isWinner(User $user);
 
     public function addUser(User $user) {
-        $this->createUserRealmLink($user->getId())->save();
-        $this->createRobot($user->getId())->save();
+        $userRealmLink = $this->createUserRealmLink($user->getId());
+        $userRealmLink->save();
+        $robot = $this->createRobot($user->getId());
+        $robot->save();
+        return $robot;
     }
 
     public function createRobot($userId)

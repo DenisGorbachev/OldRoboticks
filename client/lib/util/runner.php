@@ -47,6 +47,7 @@
         $cmd->parse($args);
         $cmd->run();
     } catch (Exception $e) {
+        var_dump('asdf');
         if ($e instanceof RoboticksUserFriendlyException || !$config->isDebug()) {
             $message = $e->getMessage();
             if ($e instanceof Console_CommandLine_Exception) {

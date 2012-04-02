@@ -13,6 +13,7 @@ class RealmJoinSpec extends RealmBaseSpec {
         return $this
 			->when('Exec', 'realm:join -p lawnpassword '.$this->getRealmId('Lawn'))
             ->then('Success')
+            ->then('Contains', 'TEA')
 	;}
 
     public function testWithoutPassword() {

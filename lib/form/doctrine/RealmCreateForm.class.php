@@ -11,13 +11,15 @@
 class RealmCreateForm extends RealmForm
 {
     public function getSuccessText() {
-        return 'created realm %realm% for %owner%';
+        return 'created realm %realm% for %owner%, got new robot %robot%.';
     }
 
     public function getSuccessArguments() {
+        $list = RobotTable::getInstance()->getOwned($this->getObject()->getOwnerId());
         return array(
             'realm' => (string)$this->getObject(),
-            'owner' => (string)$this->getObject()->getOwner()
+            'owner' => (string)$this->getObject()->getOwner(),
+            'robot' => (string)$list[0],
         );
     }
 

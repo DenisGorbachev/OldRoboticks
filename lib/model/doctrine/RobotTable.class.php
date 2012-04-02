@@ -83,7 +83,11 @@ class RobotTable extends Doctrine_Table {
             ->leftJoin('r.Word w')
     		->leftJoin('r.Sector s')
     ;}
-    
+
+    public function getOwned($userId) {
+        return $this->getOwnedQuery($userId)->execute();
+    }
+
     public function getList($userId) {
     	$results = $this->getListQuery($userId)->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
         foreach ($results as &$object) {

@@ -90,7 +90,7 @@ class Config {
     }
 
     public function isDebug() {
-        return file_exists($this->getHomeDirname().'/debug');
+        return true; // file_exists($this->getHomeDirname().'/debug');
     }
 
 }

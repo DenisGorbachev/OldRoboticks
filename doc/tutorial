@@ -1,0 +1,34 @@
+Hello there!
+
+As you already know, this Roboticks thing is a simulation of a real conflict. So you'd better log in to the server and create yourself a tutorial realm.
+
+rk host roboticks.faster-than-wind.ru	# Setup the server name
+rk register YourNicknameHere		# Register new account
+rk login YourNickNameHere		# Log in
+rk realm:create -c TutorialRealmController YourNicknameHere_Tutorial # Create a tutorial realm
+realm YourRealmID			# Select the newly created realm (YourRealmID is available in the output of previous command)
+
+The first robot (the precursor of an army!) is already assembled. To select it, you should first get its ID.
+
+robot YourRobotID
+
+Now that you're all set up, it's time to learn the most important thing: how to *fire at enemies*. Real examples are far more superior than any theoretical explanations, so:
+
+rk fire 9,9 A
+
+Wonder what you've just did? YOU HIT THAT OTHER ROBOT. Hear that? It's been damaged and can't function. Which also means it can't fire back at us. Yummy.
+
+Actually, there are some intercontinental rules about warning shots and the like, but that's full-scale WAR, period. We're not here for mere WARNINGS.
+
+Okay, you've got your first target. But I reckon there are more enemies in this area. To scan the surroundings and reveal those unworthy rascals, issue the following command:
+
+rk report
+
+See? There's the robot you already hit, and there are other robots marked as "enemy". And hey, look, it's pretty interesting: there's a second "own" robot! We'll talk about controlling multiple robots later.
+
+
+
+
+
+
+# Check if I've covered all commands

@@ -14,6 +14,7 @@ class RealmCreateSpec extends BaseSpec {
             ->then('Contains', 'Success')
 			    ->and('Contains', 'Afterlife')
                 ->and('Contains', 'Deathmatch')
+                ->and('Contains', 'TEA')
             ->given('Realm', 'Afterlife')
             ->when('Exec', 'ls')
             ->then('Contains', 'TEA')

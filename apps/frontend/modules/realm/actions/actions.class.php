@@ -62,12 +62,18 @@ class realmActions extends rkActions {
 
     public function executeJoin(sfWebRequest $request) {
         $dbUser = $this->getUser()->getUser();
-        if (!$this->object->isMember($dbUser)) {
-            $this->object->getController()->addUser($dbUser);
+        if ($this->object->isMember($dbUser)) {
+            return $this->success('already a member of realm %realm%.', array(
+                'realm' => (string)$this->object
+            ));
+        } else {
+            $robot = $this->object->getController()->addUser($dbUser);
+            return $this->success('joined realm %realm%, got new robot %robot%.', array(
+                'realm' => (string)$this->object,
+                'robot' => (string)$robot,
+            ));
         }
-        return $this->success('joined realm %realm%.', array(
-            'realm' => (string)$this->object
-        ));
+
     }
 
     public function prepareAutoObject($parameter = 'id', $varname = 'object') {
