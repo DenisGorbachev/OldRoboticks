@@ -1,20 +1,20 @@
 <?php
 
 class rkLoadWordsTask extends sfBaseTask {
-	protected function configure() {
-		parent::configure();
-		
-		$this->addOptions(array(
-			new sfCommandOption('file', 'f', sfCommandOption::PARAMETER_REQUIRED, 'File to load', sfConfig::get('sf_data_dir').'/words'),
-		));
+    protected function configure() {
+        parent::configure();
 
-		$this->namespace = 'rk';
-		$this->name = 'load-words';
-		$this->briefDescription = '';
-		$this->detailedDescription = '';
-	}
+        $this->addOptions(array(
+            new sfCommandOption('file', 'f', sfCommandOption::PARAMETER_REQUIRED, 'File to load', sfConfig::get('sf_data_dir').'/words'),
+        ));
 
-	protected function execute($arguments = array(), $options = array()) {
+        $this->namespace = 'rk';
+        $this->name = 'load-words';
+        $this->briefDescription = '';
+        $this->detailedDescription = '';
+    }
+
+    protected function execute($arguments = array(), $options = array()) {
         $this->databaseManager = new sfDatabaseManager($this->configuration);
         $this->databaseManager->getDatabase('doctrine')->getConnection();
         $connection = Doctrine_Manager::connection();
@@ -25,7 +25,7 @@ class rkLoadWordsTask extends sfBaseTask {
         $connection->beginTransaction();
         $i = 0;
         $fp = fopen($options['file'], 'r');
-		while ($name = mb_strtoupper(str_replace("\n", '', fgets($fp)))) {
+        while ($name = mb_strtoupper(str_replace("\n", '', fgets($fp)))) {
             $word = new Word();
             $word->setName($name);
             $word->save();
@@ -36,6 +36,6 @@ class rkLoadWordsTask extends sfBaseTask {
             }
         }
         $connection->commit();
-	}
-	
+    }
+
 }

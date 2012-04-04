@@ -11,9 +11,9 @@
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 class Robot extends BaseRobot {
-	public function __toString() {
-		return sprintf($this->getTable()->getToStringFormat(), $this->id, $this->getStatus());
-	}
+    public function __toString() {
+        return sprintf($this->getTable()->getToStringFormat(), $this->id, $this->getStatus());
+    }
 
     public function __toStatusString() {
         return sprintf($this->getTable()->getToStringFormat(), $this->id, $this->getStatus());
@@ -58,9 +58,9 @@ class Robot extends BaseRobot {
         return $this->getTable()->hasFunction($this->getName(), $meaning);
     }
 
-	public function getFunctions() {
+    public function getFunctions() {
         return $this->getTable()->getFunctionsForName($this->getName());
-	}
+    }
 
     public function getEffectiveStatus() {
         return preg_replace('/_/u', '', $this->getStatus());
@@ -98,23 +98,23 @@ class Robot extends BaseRobot {
         return in_array($letter, array_diff_assoc($this->getWord()->getNameArray(), $this->getStatusArray()));
     }
 
-	public function calculateSpeed() {
-		return $this->isDisabled()? 0 : max(0, sfConfig::get('app_speed_limit') - sfConfig::get('app_speed_increment')*mb_strlen($this->getName()));
-	}
+    public function calculateSpeed() {
+        return $this->isDisabled()? 0 : max(0, sfConfig::get('app_speed_limit') - sfConfig::get('app_speed_increment')*mb_strlen($this->getName()));
+    }
 
     public function getFireableRange() {
         return $this->isDisabled()? 0 : max(0, sfConfig::get('app_fire_range_increment')*mb_strlen($this->getName()) - sfConfig::get('app_fire_range_limit'));
     }
 
-	public function getScanBorders() {
-		$base = $this->Sector;
-		return array(
-			'blX' => $base->x - sfConfig::get('app_scan_size'),
-			'blY' => $base->y - sfConfig::get('app_scan_size'),
-			'trX' => $base->x + sfConfig::get('app_scan_size'),
-			'trY' => $base->y + sfConfig::get('app_scan_size'),
-		);
-	}
+    public function getScanBorders() {
+        $base = $this->Sector;
+        return array(
+            'blX' => $base->x - sfConfig::get('app_scan_size'),
+            'blY' => $base->y - sfConfig::get('app_scan_size'),
+            'trX' => $base->x + sfConfig::get('app_scan_size'),
+            'trY' => $base->y + sfConfig::get('app_scan_size'),
+        );
+    }
 
     public function randomizeSector() {
         $this->setSector(SectorTable::getInstance()->getRandomSector());
@@ -132,9 +132,9 @@ class Robot extends BaseRobot {
         try {
             $result = call_user_func_array(array($this, 'do'.$action.'Action'), $arguments);
             if ($result !== false) {
-				$this->setActiveAt(time() + $this->getUser()->getRobotInactivityInterval($this->getRealmId()));
-				$this->save();
-			}
+                $this->setActiveAt(time() + $this->getUser()->getRobotInactivityInterval($this->getRealmId()));
+                $this->save();
+            }
         } catch (Exception $e) {
             $connection->rollback();
             throw $e;
@@ -146,7 +146,7 @@ class Robot extends BaseRobot {
     public function doMoveAction($x, $y) {
         $sectorTable = SectorTable::getInstance();
         $sector = $this->getSector();
-		list($x, $y) = $sectorTable->getEffectiveCoordinates($sector->getX(), $sector->getY(), $x, $y, $this->getSpeed());
+        list($x, $y) = $sectorTable->getEffectiveCoordinates($sector->getX(), $sector->getY(), $x, $y, $this->getSpeed());
         $newSector = $sectorTable->findOneByXAndY($x, $y);
         $this->setSector($newSector);
         return $newSector->getId() == $sector->getId()? false : $newSector;
@@ -201,14 +201,14 @@ class Robot extends BaseRobot {
             'target' => $target,
             'letter' => $letter
         )));
-		$target->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '_', $target->getStatus(), 1));
+        $target->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '_', $target->getStatus(), 1));
         $destroyed = false;
-		if (preg_match('/'.implode('|', WordTable::getInstance()->getLetters()).'/u', $target->getStatus())) {
-			$target->save();
-		} else {
-			$target->delete();
+        if (preg_match('/'.implode('|', WordTable::getInstance()->getLetters()).'/u', $target->getStatus())) {
+            $target->save();
+        } else {
+            $target->delete();
             $destroyed = true;
-		}
+        }
         $dispatcher->notify(new sfEvent($this, 'robot.post_do_fire_action', array(
             'target' => $target,
             'letter' => $letter,
@@ -248,7 +248,7 @@ class Robot extends BaseRobot {
 
     public function preInsert($event) {
         if (!$this->getWord()->getId()) {
-			$word = WordTable::getInstance()->findOneBy('name', $this->getStatus());
+            $word = WordTable::getInstance()->findOneBy('name', $this->getStatus());
             $this->setWord($word);
             $this->setEffectiveWord($word);
         }
@@ -256,10 +256,10 @@ class Robot extends BaseRobot {
         parent::preInsert($event);
     }
 
-	public function preSave($event) {
-		$this->speed = $this->calculateSpeed();
+    public function preSave($event) {
+        $this->speed = $this->calculateSpeed();
         parent::preSave($event);
-	}
+    }
 
     public function preDelete($event)
     {

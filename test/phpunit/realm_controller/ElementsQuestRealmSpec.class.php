@@ -6,9 +6,9 @@ require_once __DIR__.'/../../RealmBaseSpec.class.php';
  * @group time-consuming
  */
 class ElementsQuestRealmSpec extends RealmBaseSpec {
-	public function testNormal() {
-		return $this
-			->given('Genesis')
+    public function testNormal() {
+        return $this
+            ->given('Genesis')
             ->given('User', 'Alice')
             ->when('Exec', 'realm:create -c ElementsQuestRealmController -p asdf -w 25 -h 25 Afterlife')
             ->given('Realm', 'Afterlife')
@@ -24,7 +24,7 @@ class ElementsQuestRealmSpec extends RealmBaseSpec {
 //            ->when('Exec', 'bot:create -c GuardianBotController x=20 y=5 complexity=3')
 //                ->then('Success')
             ->given('Robot', 'justregistered')
-			->when('Exec', 'ls')
+            ->when('Exec', 'ls')
                 ->then('Contains', '5,5')
             ->when('AssembleElement', 'FIRE', 5, 20)
             ->when('Exec', 'report')
@@ -38,7 +38,7 @@ class ElementsQuestRealmSpec extends RealmBaseSpec {
             ->when('AssembleElement', 'WATER', 5, 5)
             ->when('Exec', 'realm:win')
                 ->then('Success')
-	;}
+    ;}
 
     public function whenAssembleElement($element, $x, $y, $times = 5) {
         $center = $x.','.$y;
@@ -69,6 +69,6 @@ class ElementsQuestRealmSpec extends RealmBaseSpec {
         return $this;
     }
 
-	/* Borderline */
+    /* Borderline */
 
 }

@@ -1,21 +1,21 @@
 <?php
 
 class rkActions extends tfExtendedActions {
-	public function prepareFailed(rsException $e) {
-		return $this->somethingFailed($e);
-	}
-	
-	public function validateFailed(rsException $e) {
-		return $this->somethingFailed($e);
-	}
-	
-	public function somethingFailed(rsException $e) {
+    public function prepareFailed(rsException $e) {
+        return $this->somethingFailed($e);
+    }
+
+    public function validateFailed(rsException $e) {
+        return $this->somethingFailed($e);
+    }
+
+    public function somethingFailed(rsException $e) {
         $type = 'failure';
         if ($e instanceof rsInactivityException) {
             $type = 'wait';
         }
-		return $this->{$type}($e->getText(), $e->getArguments());
-	}
+        return $this->{$type}($e->getText(), $e->getArguments());
+    }
 
     public function prepareAutoRealm() {
         $this->argumentUnless('realm_id');
@@ -29,7 +29,7 @@ class rkActions extends tfExtendedActions {
         sfConfig::set('app_realm_id', $this->realm_id);
     }
 
-	public function success($text, array $arguments = array()) {
+    public function success($text, array $arguments = array()) {
         if ($this->getUser()->isAuthenticated()) {
             $realm_id = $this->getRequestParameter('realm_id');
             $counts = MailTable::getInstance()->getNotificationCounts($this->getUser()->getUser()->getId(), $realm_id);
@@ -42,7 +42,7 @@ class rkActions extends tfExtendedActions {
             }
             $this->add('notifications', array_merge($this->get('notifications', array()), $notifications));
         }
-		return parent::success($text, $arguments);
-	}
+        return parent::success($text, $arguments);
+    }
 
 }

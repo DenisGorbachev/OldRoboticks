@@ -14,7 +14,7 @@ class FunSearchSpec extends FunBaseSpec {
 
     public function testNormal() {
         $this
-			->when('Exec', 'fun:search "U|F|B"')
+            ->when('Exec', 'fun:search "U|F|B"')
             ->then('Contains', 'FINGER')
             ->then('Contains', 'FUEL')
             ->then('Contains', 'GRUNT')
@@ -23,14 +23,14 @@ class FunSearchSpec extends FunBaseSpec {
             ->then('Contains', 'PLUSH')
             ->then('Contains', 'PUSH')
             ->then('Contains', 'RUSH')
-	;}
+    ;}
 
     public function testStopWhenFound() {
         $this
-			->when('Exec', 'fun:search --stop-when-found "U|F|B"')
+            ->when('Exec', 'fun:search --stop-when-found "U|F|B"')
             ->then('Contains', 'FUEL')
             ->then('NotContains', 'PLUSH')
-	;}
+    ;}
 
     public function testForLetters() {
 
@@ -45,6 +45,6 @@ class FunSearchSpec extends FunBaseSpec {
             ->when('Exec', 'fun:search --steps 1 "U|F|B"')
             ->then('Contains', 'FUEL')
             ->then('NotContains', 'PLUSH')
-   	;}
+       ;}
 
 }

@@ -3,30 +3,30 @@
 require_once dirname(__FILE__).'/base/ScanCommand.class.php';
 
 class MapCommand extends ScanCommand {
-	public $stance_values = array(
-		'enemy' => 1,
+    public $stance_values = array(
+        'enemy' => 1,
         'ally' => 2,
         'own' => 4
-	);
-	
-	public function getParserConfig() {
-		return array(
-			'description' => 'Show a map of robot surroundings'
-		) + parent::getParserConfig();
-	}
+    );
 
-	public function getOptionConfigs() {
-		return parent::getOptionConfigs();
-	}
-	
-	public function getArgumentConfigs() {
-		return parent::getArgumentConfigs();
-	}
-	
-	public function execute($options, $arguments) {
-		$response = parent::execute($options, $arguments);
+    public function getParserConfig() {
+        return array(
+            'description' => 'Show a map of robot surroundings'
+        ) + parent::getParserConfig();
+    }
+
+    public function getOptionConfigs() {
+        return parent::getOptionConfigs();
+    }
+
+    public function getArgumentConfigs() {
+        return parent::getArgumentConfigs();
+    }
+
+    public function execute($options, $arguments) {
+        $response = parent::execute($options, $arguments);
         if ($response['success']) {
-		    $borders = $response['borders'];
+            $borders = $response['borders'];
             $xfill = array_fill_negative($borders['blX'], $borders['trX']-$borders['blX']+1, ' ');
             $info = array_fill_negative($borders['blY'], $borders['trY']-$borders['blY']+1, $xfill);
             $info = array_reverse($info, true);
@@ -41,7 +41,7 @@ class MapCommand extends ScanCommand {
             $this->table($info);
         }
         return $response;
-	}
+    }
 
     public function executeForRobots($response, $info)
     {
@@ -53,7 +53,7 @@ class MapCommand extends ScanCommand {
                 continue;
             }
             foreach ($sector['Robots'] as $robot) {
-				if ($info[$y][$x] == ' ') {
+                if ($info[$y][$x] == ' ') {
                     $info[$y][$x] = 0;
                 }
                 $stance = $this->getStance($robot);
@@ -71,7 +71,7 @@ class MapCommand extends ScanCommand {
             $info[$y][$x] = empty($sector['letter'])? $this->empty_cell_placeholder : $sector['letter'];
         }
         return $info;
-	}
+    }
 
     public function executeForDrops($response, $info)
     {
@@ -81,6 +81,6 @@ class MapCommand extends ScanCommand {
             $info[$y][$x] = empty($sector['drops'])? $this->empty_cell_placeholder : min(ceil(mb_strlen($sector['drops']) / 10), 9);
         }
         return $info;
-	}
+    }
 
 }

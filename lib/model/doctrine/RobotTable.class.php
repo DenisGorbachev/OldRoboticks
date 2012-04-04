@@ -2,7 +2,7 @@
 
 
 class RobotTable extends Doctrine_Table {
-	public $language;
+    public $language;
 
     /**
      * @static
@@ -21,16 +21,16 @@ class RobotTable extends Doctrine_Table {
     }
 
     public function getFunctions() {
-    	return WordTable::getInstance()->getFunctions();
+        return WordTable::getInstance()->getFunctions();
     }
     
     public function getFunctionDenotative($meaning) {
-    	$array = $this->getFunctions();
-    	return $array[$meaning];
+        $array = $this->getFunctions();
+        return $array[$meaning];
     }
 
     public function getFunctionMeaning($denotative) {
-    	return array_search($denotative, $this->getFunctions());
+        return array_search($denotative, $this->getFunctions());
     }
 
     public function hasDenotative($name, $denotative) {
@@ -55,22 +55,22 @@ class RobotTable extends Doctrine_Table {
         return $functions;
     }
 
-	public function canFire($name, $letter) {
-		return $this->hasDenotative($name, WordTable::getInstance()->getPreviousLetter($letter));
-	}
+    public function canFire($name, $letter) {
+        return $this->hasDenotative($name, WordTable::getInstance()->getPreviousLetter($letter));
+    }
 
     public function getOwnedQuery($userId) {
-    	return $this->createQuery('r')
-    		->where('r.user_id = ?', $userId);
+        return $this->createQuery('r')
+            ->where('r.user_id = ?', $userId);
     }
 
     public function getOwnedInRealmQuery($userId, $realmId) {
-    	return $this->getOwnedQuery($userId)
+        return $this->getOwnedQuery($userId)
             ->andWhere('r.realm_id = ?', $realmId)
     ;}
 
     public function getActiveOwnedInRealmQuery($userId, $realmId) {
-    	return $this->getOwnedInRealmQuery($userId, $realmId)
+        return $this->getOwnedInRealmQuery($userId, $realmId)
             ->andWhere('r.effective_word_id IS NOT NULL')
     ;}
 
@@ -79,9 +79,9 @@ class RobotTable extends Doctrine_Table {
     }
 
     public function getListQuery($userId) {
-    	return $this->getOwnedQuery($userId)
+        return $this->getOwnedQuery($userId)
             ->leftJoin('r.Word w')
-    		->leftJoin('r.Sector s')
+            ->leftJoin('r.Sector s')
     ;}
 
     public function getOwned($userId) {
@@ -89,7 +89,7 @@ class RobotTable extends Doctrine_Table {
     }
 
     public function getList($userId) {
-    	$results = $this->getListQuery($userId)->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
+        $results = $this->getListQuery($userId)->execute(array(), Doctrine_Core::HYDRATE_ARRAY);
         foreach ($results as &$object) {
             $object['functions'] = implode(',', $this->getFunctionsForName($object['Word']['name']));
         }

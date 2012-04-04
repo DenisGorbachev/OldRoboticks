@@ -16,9 +16,9 @@ class RiderOnTheStormSpec extends BotBaseSpec {
             ->given('Robot', 'storm')
     ;}
 
-	public function testNormal() {
+    public function testNormal() {
         $this
-		    ->when('MyNightComesDown', 1)
+            ->when('MyNightComesDown', 1)
             ->then('LogContains', '/all', '4,16')
             ->when('MyNightComesDown', 3)
             ->then('LogContains', '/all', '16,16')
@@ -28,8 +28,8 @@ class RiderOnTheStormSpec extends BotBaseSpec {
             ->then('LogContains', '/all', '4,4')
             ->when('MyNightComesDown', 3)
             ->then('LogContains', '/all', '4,16')
-	;}
+    ;}
 
-	/* Borderline */
+    /* Borderline */
 
 }

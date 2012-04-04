@@ -3,13 +3,13 @@
 require_once dirname(__FILE__).'/base/UserInterfaceCommand.class.php';
 
 class StatusCommand extends UserInterfaceCommand {
-	public function getParserConfig() {
-		return array(
-			'description' => 'Display various client parameters'
-		) + parent::getParserConfig();
-	}
+    public function getParserConfig() {
+        return array(
+            'description' => 'Display various client parameters'
+        ) + parent::getParserConfig();
+    }
 
-	public function execute($options, $arguments) {
+    public function execute($options, $arguments) {
         $maxlengths = array(10, 9);
         $this->tableFixedColumnWidth(array(
             array('Parameter', 'Value'),
@@ -24,6 +24,6 @@ class StatusCommand extends UserInterfaceCommand {
             array('Logged in?', $response['success']? 'yes' : 'no'),
         ), false, $maxlengths);
         return true;
-	}
+    }
 
 }

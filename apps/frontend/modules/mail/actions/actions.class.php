@@ -1,30 +1,30 @@
 <?php
 
 class mailActions extends rkActions {
-	public function prepareSend() {
+    public function prepareSend() {
         $this->prepareAutoCreateForm();
         $this->pushFormParameters($this->form, array(
             'sender_id' => $this->getUser()->getUser()->getId()
         ));
-	}
+    }
 
     public function validateSend() {
-		return $this->validateAutoStatic();
-	}
-	
-	public function executeSend(sfWebRequest $request) {
+        return $this->validateAutoStatic();
+    }
+
+    public function executeSend(sfWebRequest $request) {
         return $this->executeAutoAjaxForm();
-	}
+    }
 
     public function prepareReceive() {
         $this->argument('realm_id');
-	}
+    }
 
     public function validateReceive() {
-		return $this->validateAutoStatic();
-	}
+        return $this->validateAutoStatic();
+    }
 
-	public function executeReceive(sfWebRequest $request) {
+    public function executeReceive(sfWebRequest $request) {
         $this->object = MailTable::getInstance()->getNextUnreadMail($this->getUser()->getUser()->getId(), $this->realm_id);
         if ($this->object) {
             $this->object->setIsRead(true);
@@ -39,6 +39,6 @@ class mailActions extends rkActions {
         } else {
             return $this->success('no unread messages');
         }
-	}
+    }
 
 }

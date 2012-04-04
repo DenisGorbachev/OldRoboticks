@@ -11,26 +11,26 @@
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 class User extends BaseUser {
-	public $salt = '343b02c254cc227f0bd461cd6d95cdc6';
-	
-	public function __toString() {
-		return '#'.$this->id.' "'.$this->username.'"';
-	}
-	
-	public function setPassword($password) {
-		$this->_set('password', md5($password.$this->salt));
-	}
+    public $salt = '343b02c254cc227f0bd461cd6d95cdc6';
 
-	public function checkPassword($password) {
+    public function __toString() {
+        return '#'.$this->id.' "'.$this->username.'"';
+    }
+
+    public function setPassword($password) {
+        $this->_set('password', md5($password.$this->salt));
+    }
+
+    public function checkPassword($password) {
       return $this->password == md5($password.$this->salt);
-	}
+    }
 
-	public function countRobotsInRealm($realmId) {
-		return RobotTable::getInstance()->createQuery('r')
-			->where('r.user_id = ?', $this->id)
+    public function countRobotsInRealm($realmId) {
+        return RobotTable::getInstance()->createQuery('r')
+            ->where('r.user_id = ?', $this->id)
             ->andWhere('r.realm_id = ?', $realmId)
-			->count();
-	}
+            ->count();
+    }
     
     public function getRobotInactivityInterval($realmId) {
         if (!sfContext::hasInstance() || sfContext::getInstance()->getConfiguration()->isDebug()) {

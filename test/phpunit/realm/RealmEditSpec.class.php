@@ -11,28 +11,28 @@ class RealmEditSpec extends RealmBaseSpec {
             ->given('Realm', 'Etherworld')
     ;}
 
-	public function testNormal() {
-		return $this
-			->when('Exec', 'realm:edit name=Newname')
+    public function testNormal() {
+        return $this
+            ->when('Exec', 'realm:edit name=Newname')
             ->then('Success')
             ->when('Exec', 'realm:show')
             ->then('Contains', 'Newname')
-	;}
+    ;}
 
     public function testPassword() {
-		return $this
-			->when('Exec', 'realm:edit name=Newname password=newpassword')
+        return $this
+            ->when('Exec', 'realm:edit name=Newname password=newpassword')
             ->then('Success')
             ->given('User', 'Mob')
             ->when('Exec', 'realm:join --no-password '.$this->getRealmId('Etherworld'))
             ->then('Failure')
             ->when('Exec', 'realm:join -p newpassword '.$this->getRealmId('Etherworld'))
             ->then('Success')
-	;}
+    ;}
 
     public function testOwnerId() {
         return $this
-			->when('Exec', 'realm:edit owner_id=1')
+            ->when('Exec', 'realm:edit owner_id=1')
             ->then('Success')
             ->when('Exec', 'realm:edit owner_id=1')
             ->then('Failure')
@@ -41,7 +41,7 @@ class RealmEditSpec extends RealmBaseSpec {
             ->then('Success')
     ;}
 
-	/* Borderline */
+    /* Borderline */
 
     public function testInvalidNotOwner() {
         return $this

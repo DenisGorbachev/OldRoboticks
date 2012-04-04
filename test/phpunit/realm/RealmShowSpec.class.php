@@ -3,12 +3,12 @@
 require_once __DIR__.'/../../RealmBaseSpec.class.php';
 
 class RealmShowSpec extends RealmBaseSpec {
-	public function testNormal() {
+    public function testNormal() {
         return $this
             ->given('Genesis')
             ->given('User', 'Alice')
             ->given('Realm', 'Universe')
-			->when('Exec', 'realm:show')
+            ->when('Exec', 'realm:show')
             ->then('Success')
             ->then('Contains', 'Universe')
             ->then('Contains', 'DeathmatchRealmController')
@@ -17,8 +17,8 @@ class RealmShowSpec extends RealmBaseSpec {
             ->then('Contains', '53 active robots')
             ->then('Contains', '54 total robots')
             ->then('Contains', 'eliminate')
-	;}
+    ;}
 
-	/* Borderline */
+    /* Borderline */
 
 }

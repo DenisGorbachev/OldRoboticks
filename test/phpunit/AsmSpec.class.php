@@ -3,15 +3,15 @@
 require_once __DIR__.'/../RobotBaseSpec.class.php';
 
 class AsmSpec extends RobotBaseSpec {
-	public function testNormal() {
-		return $this
-			->given('Genesis')
-				->and('User', 'Alice')
-				->and('Realm', 'Universe')
+    public function testNormal() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
-			->when('Exec', 'mv 10,12')
+            ->when('Exec', 'mv 10,12')
                 ->and('Exec', 'asm BEAR')
-			->then('Success')
+            ->then('Success')
             ->when('Exec', 'report --for robots')
             ->then('Contains', 'own     BEAR')
             ->when('Exec', 'report --for drops')
@@ -19,9 +19,9 @@ class AsmSpec extends RobotBaseSpec {
             ->when('SelectRobotByName', 'BEAR')
                 ->and('Exec', 'mv 9,9')
             ->then('Success')
-	;}
+    ;}
 
-	/* Borderline */
+    /* Borderline */
 
     public function testInvalidNonAssembliveRobot() {
         return $this
@@ -41,7 +41,7 @@ class AsmSpec extends RobotBaseSpec {
                 ->and('Robot', 'tea')
             ->when('Exec', 'asm PEAR')
             ->then('Failure')
-	;}
+    ;}
 
     public function testInvalidNotAWord() {
         return $this
@@ -51,7 +51,7 @@ class AsmSpec extends RobotBaseSpec {
                 ->and('Robot', 'tea')
             ->when('Exec', 'asm ASDF')
             ->then('Failure')
-	;}
+    ;}
 
     public function getRobotTestCommand() {
         return 'asm BEAR';

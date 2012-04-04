@@ -18,19 +18,19 @@ class FunWanderSpec extends FunBaseSpec {
 
     public function testBase() {
         $this
-			->when('Exec', 'fun:wander --steps 1 10,10 "rk ls"')
+            ->when('Exec', 'fun:wander --steps 1 10,10 "rk ls"')
             ->then('Contains', '10,10')
-	;}
+    ;}
 
     public function testBaseReset() {
         $this
-			->when('Exec', 'fun:wander --steps 1 10,10 "rk ls"')
+            ->when('Exec', 'fun:wander --steps 1 10,10 "rk ls"')
             ->then('Contains', '10,10')
             ->when('Exec', 'fun:wander --steps 1 8,8 "rk ls"')
             ->then('Contains', '8,8')
             ->when('Exec', 'fun:wander --steps 1 8,8 "rk ls"')
             ->then('Contains', 'TEAR')
-	;}
+    ;}
 
     public function testFullReset() {
         $this
@@ -38,7 +38,7 @@ class FunWanderSpec extends FunBaseSpec {
             ->then('Contains', '8,8')
             ->when('Exec', 'fun:wander --reset --steps 1 8,8 "rk ls"')
             ->then('Contains', '8,8')
-	;}
+    ;}
 
     public function testStepping() {
         $this
@@ -48,7 +48,7 @@ class FunWanderSpec extends FunBaseSpec {
             ->then('Contains', 'TEETER')
             ->when('Exec', 'fun:wander --steps 2 8,8 "rk ls"')
             ->then('Contains', '19,19')
-   	;}
+       ;}
 
     /**
      *
@@ -58,7 +58,7 @@ class FunWanderSpec extends FunBaseSpec {
     public function testFullCycle() {
         $this
             ->when('Exec', 'fun:wander --steps 3 8,8 "'.$this->command.'"')
-			->then('Contains', '8,8')
+            ->then('Contains', '8,8')
             ->when('Exec', 'fun:wander --steps 3 8,8 "'.$this->command.'"')
             ->then('Contains', '8,19')
             ->when('Exec', 'fun:wander --steps 3 8,8 "'.$this->command.'"')
@@ -78,7 +78,7 @@ class FunWanderSpec extends FunBaseSpec {
             ->when('Exec', 'fun:wander --steps 6 8,8 "'.$this->command.'"')
             ->then('NotContains', 'Success')
             ->then('ContainsAllSectors', 0, 0, 19, 19)
-	;}
+    ;}
 
     public function testBorders() {
         $this

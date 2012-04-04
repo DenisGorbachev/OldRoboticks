@@ -1,7 +1,7 @@
 <?php
 
 class MailGuard extends BaseGuard {
-	public static function canSend() {
+    public static function canSend() {
         return true;
     }
 

@@ -3,11 +3,11 @@
 require_once dirname(__FILE__).'/../base/PasswordOptionalCommand.class.php';
 
 class RealmCreateCommand extends PasswordOptionalCommand {
-	public function getParserConfig() {
-		return array(
-			'description' => 'Create a new realm'
-		) + parent::getParserConfig();
-	}
+    public function getParserConfig() {
+        return array(
+            'description' => 'Create a new realm'
+        ) + parent::getParserConfig();
+    }
 
     public function getOptionConfigs() {
         return array_merge(parent::getOptionConfigs(), array(
@@ -35,15 +35,15 @@ class RealmCreateCommand extends PasswordOptionalCommand {
         ));
     }
 
-	public function getArgumentConfigs() {
-		return array(
+    public function getArgumentConfigs() {
+        return array(
             'name' => array(
                 'description' => 'New realm name (must be unique on the server)',
             ),
         );
-	}
+    }
 
-	public function execute($options, $arguments) {
+    public function execute($options, $arguments) {
         $this->wait('creating new realm. This may take a minute or two...');
         $this->postForm('realm', 'realm/create', array(
             'name' => $arguments['name'],
@@ -54,6 +54,6 @@ class RealmCreateCommand extends PasswordOptionalCommand {
         ), array(
             CURLOPT_TIMEOUT => 180
         ));
-	}
+    }
 
 }

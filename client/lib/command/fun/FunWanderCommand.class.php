@@ -5,11 +5,11 @@ require_once dirname(__FILE__) . '/../MvCommand.class.php';
 require_once dirname(__FILE__) . '/../realm/RealmShowCommand.class.php';
 
 class FunWanderCommand extends FunCommand {
-	public function getParserConfig() {
-		return array_merge(parent::getParserConfig(), array(
-			'description' => 'Move in circles and execute a supplied command at each checkpoint. Example action succession: mv 10,10; command; mv 10,21; command; mv 21,21; command; mv 21,10; command; ...'
-		));
-	}
+    public function getParserConfig() {
+        return array_merge(parent::getParserConfig(), array(
+            'description' => 'Move in circles and execute a supplied command at each checkpoint. Example action succession: mv 10,10; command; mv 10,21; command; mv 21,21; command; mv 21,10; command; ...'
+        ));
+    }
 
     public function getOptionConfigs() {
         return array_merge(parent::getOptionConfigs(), array(
@@ -23,16 +23,16 @@ class FunWanderCommand extends FunCommand {
         ));
     }
 
-	public function getArgumentConfigs() {
-		return array_merge(parent::getArgumentConfigs(), array(
+    public function getArgumentConfigs() {
+        return array_merge(parent::getArgumentConfigs(), array(
             'base' => array(
                 'description' => 'The center of circle'
             ),
             'command' => array(
                 'description' => 'The command to execute at checkpoint'
             ),
-		));
-	}
+        ));
+    }
 
     public function step($options, $arguments) {
         $base = coords_string_to_array($this->getArgument('base'));

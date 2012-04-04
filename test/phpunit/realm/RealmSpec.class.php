@@ -3,19 +3,19 @@
 require_once __DIR__.'/../../BaseSpec.class.php';
 
 class RealmSpec extends BaseSpec {
-	public function testNormal() {
-		return $this
-			->given('Genesis')
-				->and('User', 'Alice')
+    public function testNormal() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
                 ->and('Realm', 'Etherworld')
                 ->and('Robot', 'meat')
-			->when('Exec', 'report')
-			->then('NotContains', 'TEA')
-			->when('Exec', 'ls')
+            ->when('Exec', 'report')
             ->then('NotContains', 'TEA')
-	;}
+            ->when('Exec', 'ls')
+            ->then('NotContains', 'TEA')
+    ;}
 
-	/* Borderline */
+    /* Borderline */
 
     public function testInvalidFireThroughRealms() {
         return $this

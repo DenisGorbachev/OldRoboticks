@@ -3,12 +3,12 @@
 require_once __DIR__.'/../BaseSpec.class.php';
 
 class LogSpec extends BaseSpec {
-	public function testGlobalScope() {
-		$this
+    public function testGlobalScope() {
+        $this
             ->given('Genesis')
-			->when('Exec', 'login -p wrongpassword nonexistinguser')
-			->then('LogContains', '/all', 'Failure')
-	;}
+            ->when('Exec', 'login -p wrongpassword nonexistinguser')
+            ->then('LogContains', '/all', 'Failure')
+    ;}
 
     public function testRealmScope() {
         $this

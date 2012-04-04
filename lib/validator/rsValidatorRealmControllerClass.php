@@ -26,5 +26,5 @@ class rsValidatorRealmControllerClass extends sfValidatorString {
             ));
         }
         return $controllerClass;
-	}
+    }
 }

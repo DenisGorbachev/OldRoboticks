@@ -1,25 +1,25 @@
 User:
   Alice:
-    username:			"alice"
-    password:			"asdf"
+    username:            "alice"
+    password:            "asdf"
   Mob:
-    username:			"mob"
-    password:			"asdf"
+    username:            "mob"
+    password:            "asdf"
   Friend:
-    username:			"friend"
-    password:			"asdf"
+    username:            "friend"
+    password:            "asdf"
   Foe:
-    username:			"foe"
-    password:			"asdf"
+    username:            "foe"
+    password:            "asdf"
   Stranger:
-    username:			"stranger"
-    password:			"asdf"
+    username:            "stranger"
+    password:            "asdf"
   Manipulator:
-    username:			"manipulator"
-    password:			"asdf"
+    username:            "manipulator"
+    password:            "asdf"
   Gamemaster:
-    username:			"gamemaster"
-    password:			"asdf"
+    username:            "gamemaster"
+    password:            "asdf"
   RiderOnTheStormBotUser:
     username:           "RiderOnTheStormBotUser"
     password:           "asdf"

@@ -1,7 +1,7 @@
 <?php
 
 class RealmGuard extends BaseGuard {
-	public static function canCreate() {
+    public static function canCreate() {
         return true;
     }
 
@@ -26,40 +26,40 @@ class RealmGuard extends BaseGuard {
     }
 
     public function checkIsOwner() {
-	    if (!$this->isOwner('owner_id')) {
-			throw new rsSanityException('Realm %realm% is not owned by you.', array(
-				'realm' => (string)$this->object
-			));
-		}
-		return true;
+        if (!$this->isOwner('owner_id')) {
+            throw new rsSanityException('Realm %realm% is not owned by you.', array(
+                'realm' => (string)$this->object
+            ));
+        }
+        return true;
     }
 
     public function checkIsMember() {
-	    if (!$this->getObject()->isMember($this->getUser()->getUser())) {
-			throw new rsSanityException('You are not a member of realm %realm%.', array(
-				'realm' => (string)$this->object
-			));
-		}
-		return true;
+        if (!$this->getObject()->isMember($this->getUser()->getUser())) {
+            throw new rsSanityException('You are not a member of realm %realm%.', array(
+                'realm' => (string)$this->object
+            ));
+        }
+        return true;
     }
 
     public function checkIsWinner() {
-	    if (!$this->getObject()->getController()->isWinner($this->getUser()->getUser())) {
-			throw new rsSanityException('You haven\'t met any of the winning conditions for realm %realm%: %winning_conditions%', array(
-				'realm' => (string)$this->object,
+        if (!$this->getObject()->getController()->isWinner($this->getUser()->getUser())) {
+            throw new rsSanityException('You haven\'t met any of the winning conditions for realm %realm%: %winning_conditions%', array(
+                'realm' => (string)$this->object,
                 'winning_conditions' => $this->getObject()->getController()->getWinningConditions(),
-			));
-		}
-		return true;
+            ));
+        }
+        return true;
     }
 
     public function checkPassword($password) {
-	    if (!$this->getObject()->checkPassword($password)) {
-			throw new rsSanityException('Wrong password for realm %realm%.', array(
-				'realm' => (string)$this->object
-			));
-		}
-		return true;
+        if (!$this->getObject()->checkPassword($password)) {
+            throw new rsSanityException('Wrong password for realm %realm%.', array(
+                'realm' => (string)$this->object
+            ));
+        }
+        return true;
     }
 
 }

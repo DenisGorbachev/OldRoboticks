@@ -11,33 +11,33 @@ class TurnSpec extends BaseSpec {
         $this->setDebug(false);
     }
 
-	public function testNormal() {
-		return $this
-			->given('Genesis')
-				->and('User', 'Stranger')
-				->and('Realm', 'Universe')
+    public function testNormal() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Stranger')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'mouse')
-			->when('Exec', 'mv 10,12')
+            ->when('Exec', 'mv 10,12')
             ->then('Success')
             ->when('Wait', 2)
             ->when('Exec', 'mv 10,12')
-			->then('Success')
-	;}
+            ->then('Success')
+    ;}
 
     public function testLimit() {
-		return $this
-			->given('Genesis')
-				->and('User', 'Manipulator')
-				->and('Realm', 'Universe')
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Manipulator')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'finger1')
-			->when('Exec', 'mv 10,12')
+            ->when('Exec', 'mv 10,12')
             ->then('Success')
             ->when('Wait', 61)
             ->when('Exec', 'mv 10,12')
             ->then('Success')
-	;}
+    ;}
 
-	/* Borderline */
+    /* Borderline */
 
     public function testInvalidPrematureAction() {
         return $this

@@ -24,8 +24,8 @@ test:
 
 all:
   .actions:
-    login_module:				user
-    login_action:				loginMessage
+    login_module:                user
+    login_action:                loginMessage
   .settings:
     # Output escaping settings
     escaping_strategy:      true

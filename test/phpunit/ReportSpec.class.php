@@ -3,48 +3,48 @@
 require_once __DIR__.'/../ScanBaseSpec.class.php';
 
 class ReportSpec extends ScanBaseSpec {
-	public function testRobots() {
-		return $this
-			->given('Genesis')
-				->and('User', 'Alice')
-				->and('Realm', 'Universe')
+    public function testRobots() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
-			->when('Exec', 'report')
-			->then('Success')
+            ->when('Exec', 'report')
+            ->then('Success')
                 ->and('Contains', $this->getRobotId('stake').'   ally    STAKE     8,9     friend    STAKE     4')
                 ->and('Contains', ' FUEL ')
-				->and('NotContains', ' GRUNT ')
+                ->and('NotContains', ' GRUNT ')
                 ->and('NotContains', ' PLUSH ')
-	;}
+    ;}
 
-	public function testRobotsAfterMove() {
-		return $this
-			->given('Genesis')
-				->and('User', 'Alice')
-				->and('Realm', 'Universe')
+    public function testRobotsAfterMove() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
-			->when('Exec', 'mv --relative 3,0')
+            ->when('Exec', 'mv --relative 3,0')
                 ->and('Exec', 'report')
-			->then('Success')
+            ->then('Success')
                 ->and('Contains', ' PLUSH ')
-	;}
-	
-	public function testLetters() {
-		return $this
-			->given('Genesis')
-				->and('User', 'Alice')
-				->and('Realm', 'Universe')
+    ;}
+
+    public function testLetters() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
-			->when('Exec', 'report --for letters')
-			->then('Success')
-				->and('Contains', '9,9     T')
+            ->when('Exec', 'report --for letters')
+            ->then('Success')
+                ->and('Contains', '9,9     T')
                 ->and('Contains', 'E')
                 ->and('Contains', 'A')
                 ->and('Contains', 'D')
                 ->and('Contains', 'S')
-	;}
-	
-	public function testDrops() {
+    ;}
+
+    public function testDrops() {
         return $this
             ->given('Genesis')
                 ->and('User', 'Alice')
@@ -56,9 +56,9 @@ class ReportSpec extends ScanBaseSpec {
                 ->and('Contains', 'H O Q Z J G I R N Q J D E T O O')
                 ->and('NotContains', 'P')
 
-	;}
-	
-	/* Borderline */
+    ;}
+
+    /* Borderline */
 
     public function getRobotTestCommand() {
         return 'report';

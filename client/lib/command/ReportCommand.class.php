@@ -3,28 +3,28 @@
 require_once dirname(__FILE__).'/base/ScanCommand.class.php';
 
 class ReportCommand extends ScanCommand {
-	public function getParserConfig() {
-		return array(
-			'description' => 'Show a report of robots surroundings'
-		) + parent::getParserConfig();
-	}
+    public function getParserConfig() {
+        return array(
+            'description' => 'Show a report of robots surroundings'
+        ) + parent::getParserConfig();
+    }
 
-	public function getOptionConfigs() {
-		return parent::getOptionConfigs();
-	}
-	
-	public function getArgumentConfigs() {
-		return parent::getArgumentConfigs();
-	}
-	
-	public function execute($options, $arguments) {
-		$response = parent::execute($options, $arguments);
+    public function getOptionConfigs() {
+        return parent::getOptionConfigs();
+    }
+
+    public function getArgumentConfigs() {
+        return parent::getArgumentConfigs();
+    }
+
+    public function execute($options, $arguments) {
+        $response = parent::execute($options, $arguments);
         if ($response['success']) {
             $this->table($this->{'executeFor'.$options['for']}($response));
         }
         return $response;
-	}
-	
+    }
+
     public function executeForRobots($response)
     {
         $info = array(array('ID', 'Stance', 'Status', 'Sector', 'Owner', 'Name', 'Speed',));
@@ -57,7 +57,7 @@ class ReportCommand extends ScanCommand {
             $info[] = array($this->coords($sector), $sector['letter']);
         }
         return $info;
-	}
+    }
 
     public function executeForDrops($response)
     {
@@ -69,6 +69,6 @@ class ReportCommand extends ScanCommand {
             $info[] = array($this->coords($sector), implode(' ', str_split($sector['drops'])));
         }
         return $info;
-	}
+    }
 
 }

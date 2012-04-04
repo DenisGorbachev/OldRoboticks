@@ -4,19 +4,19 @@ require_once dirname(__FILE__) . '/../base/FunCommand.class.php';
 require_once dirname(__FILE__) . '/../MvCommand.class.php';
 
 class FunMvCommand extends FunCommand {
-	public function getParserConfig() {
-		return array_merge(parent::getParserConfig(), array(
-			'description' => 'Move until destination sector is reached'
-		));
-	}
+    public function getParserConfig() {
+        return array_merge(parent::getParserConfig(), array(
+            'description' => 'Move until destination sector is reached'
+        ));
+    }
 
-	public function getArgumentConfigs() {
-		return array_merge(parent::getArgumentConfigs(), array(
+    public function getArgumentConfigs() {
+        return array_merge(parent::getArgumentConfigs(), array(
             'sector' => array(
                 'description' => 'Destination sector coordinates (example: 45,230)'
             )
-		));
-	}
+        ));
+    }
 
     public function step($options, $arguments) {
         $command = new MvCommand($this->getConfig());

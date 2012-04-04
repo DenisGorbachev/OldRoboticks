@@ -1,25 +1,25 @@
 <?php
 
 class rkLaunchBotnetTask extends sfBaseTask {
-	protected function configure() {
-		$this->addArguments(array(
-//			new sfCommandArgument('size', sfCommandArgument::REQUIRED, 'The width and height of the map'),
-		));
-		
-		$this->addOptions(array(
-			new sfCommandOption('daemonize', 'd', sfCommandOption::PARAMETER_NONE, 'Run in daemonized mode'),
-//			new sfCommandOption('probability', 'p', sfCommandOption::PARAMETER_REQUIRED, 'Probability of a letter (float, from 0 to 1)', 0.02),
-//			new sfCommandOption('print-only', 'o', sfCommandOption::PARAMETER_NONE, 'Only print, do not insert into database'),
-		));
+    protected function configure() {
+        $this->addArguments(array(
+//            new sfCommandArgument('size', sfCommandArgument::REQUIRED, 'The width and height of the map'),
+        ));
 
-		$this->namespace = 'rk';
-		$this->name = 'launch-botnet';
-		$this->briefDescription = '';
+        $this->addOptions(array(
+            new sfCommandOption('daemonize', 'd', sfCommandOption::PARAMETER_NONE, 'Run in daemonized mode'),
+//            new sfCommandOption('probability', 'p', sfCommandOption::PARAMETER_REQUIRED, 'Probability of a letter (float, from 0 to 1)', 0.02),
+//            new sfCommandOption('print-only', 'o', sfCommandOption::PARAMETER_NONE, 'Only print, do not insert into database'),
+        ));
 
-		$this->detailedDescription = '';
-	}
+        $this->namespace = 'rk';
+        $this->name = 'launch-botnet';
+        $this->briefDescription = '';
 
-	protected function execute($arguments = array(), $options = array()) {
+        $this->detailedDescription = '';
+    }
+
+    protected function execute($arguments = array(), $options = array()) {
         $this->databaseManager = new sfDatabaseManager($this->configuration);
         $this->databaseManager->getDatabase('doctrine')->getConnection();
         $this->connection = Doctrine_Manager::connection();
@@ -38,6 +38,6 @@ class rkLaunchBotnetTask extends sfBaseTask {
             gc_collect_cycles();
         }
         while (!empty($options['daemonize']) && sleep(1) !== null);
-	}
+    }
 
 }

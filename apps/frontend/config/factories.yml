@@ -40,7 +40,7 @@ all:
       level: debug
       loggers:
         sf_web_debug:
-          enabled:		false
+          enabled:        false
           class: sfWebDebugLogger
           param:
             level: debug
@@ -60,6 +60,6 @@ all:
   request:
     class: sfWebRequest
     param:
-      default_format:						json
+      default_format:                        json
   user:
     class: tfUser

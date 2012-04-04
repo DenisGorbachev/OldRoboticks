@@ -8,19 +8,19 @@ class robotActions extends rkActions {
 
 
     public function prepareList() {
-		return ($this->objects = RobotTable::getInstance()->getList($this->getUser()->getId()));
-	}
+        return ($this->objects = RobotTable::getInstance()->getList($this->getUser()->getId()));
+    }
 
     public function validateList() {
-		return $this->validateAutoStatic();
-	}
-	
-	public function executeList(sfWebRequest $request) {
-		$this->add('objects', $this->objects);
-		return $this->success('got own robots list');
-	}
-	
-	public function prepareMove() {
+        return $this->validateAutoStatic();
+    }
+
+    public function executeList(sfWebRequest $request) {
+        $this->add('objects', $this->objects);
+        return $this->success('got own robots list');
+    }
+
+    public function prepareMove() {
         $this->prepareAutoObject();
         $this->argumentUnless('x');
         $this->argumentUnless('y');
@@ -30,56 +30,56 @@ class robotActions extends rkActions {
             $this->x += $sector->getX();
             $this->y += $sector->getY();
         }
-	;}
-	
-	public function validateMove() {
-		return $this->validateAutoObject($this->x, $this->y);
-	}
-	
-	public function executeMove(sfWebRequest $request) {
+    ;}
+
+    public function validateMove() {
+        return $this->validateAutoObject($this->x, $this->y);
+    }
+
+    public function executeMove(sfWebRequest $request) {
         $result = $this->object->doAction('Move', $this->x, $this->y);
         if ($result === false) {
-			return $this->notice('robot %robot% is already at %sector%', array(
-				'robot' => (string)$this->object,
-				'sector' => (string)$this->object->getSector(),
-			));
-		}
+            return $this->notice('robot %robot% is already at %sector%', array(
+                'robot' => (string)$this->object,
+                'sector' => (string)$this->object->getSector(),
+            ));
+        }
         return $this->success('moved robot %robot% at sector %sector%', array(
             'robot' => (string)$this->object,
             'sector' => (string)$this->object->getSector()
         ));
-	}
-
-	public function prepareScan() {
-		$this->prepareAutoObject();
-	}
-
-	public function validateScan() {
-		return $this->validateAutoObject();
-	}
-	
-	public function executeScan(sfWebRequest $request) {
-		$borders = $this->object->getScanBorders();
-		$this->add('borders', $borders);
-		$arguments = $borders + array(
-			'userId' => $this->getUser()->getId()
-		);
-		$this->add('results', call_user_func_array(array(SectorTable::getInstance(), 'getScanQueryResults'), $arguments));
-		return $this->success('scanned surroundings from '.$this->object->getSector());
-	}
-
-	public function prepareExtract() {
-		$this->prepareAutoObject();
-	}
-
-	public function validateExtract() {
-		return $this->validateAutoObject();
     }
 
-	public function executeExtract(sfWebRequest $request) {
-		$letter = $this->object->doAction('Extract');
-		return $this->success('extracted letter "'.$letter.'"');
-	}
+    public function prepareScan() {
+        $this->prepareAutoObject();
+    }
+
+    public function validateScan() {
+        return $this->validateAutoObject();
+    }
+
+    public function executeScan(sfWebRequest $request) {
+        $borders = $this->object->getScanBorders();
+        $this->add('borders', $borders);
+        $arguments = $borders + array(
+            'userId' => $this->getUser()->getId()
+        );
+        $this->add('results', call_user_func_array(array(SectorTable::getInstance(), 'getScanQueryResults'), $arguments));
+        return $this->success('scanned surroundings from '.$this->object->getSector());
+    }
+
+    public function prepareExtract() {
+        $this->prepareAutoObject();
+    }
+
+    public function validateExtract() {
+        return $this->validateAutoObject();
+    }
+
+    public function executeExtract(sfWebRequest $request) {
+        $letter = $this->object->doAction('Extract');
+        return $this->success('extracted letter "'.$letter.'"');
+    }
 
     public function prepareDrop() {
         $this->prepareAutoObject();
@@ -125,7 +125,7 @@ class robotActions extends rkActions {
 
     public function prepareDisassemble() {
         $this->prepareAutoObject();
-		$this->prepareAutoObject('target_id', 'target')
+        $this->prepareAutoObject('target_id', 'target')
     ;}
 
     public function validateDisassemble() {
@@ -139,7 +139,7 @@ class robotActions extends rkActions {
 
     public function prepareFire() {
         $this->prepareAutoObject();
-		$this->prepareAutoObject('target_id', 'target');
+        $this->prepareAutoObject('target_id', 'target');
         $this->argumentUnless('letter');
     }
 
@@ -154,7 +154,7 @@ class robotActions extends rkActions {
 
     public function prepareRepair() {
         $this->prepareAutoObject();
-		$this->prepareAutoObject('target_id', 'target');
+        $this->prepareAutoObject('target_id', 'target');
         $this->argumentUnless('letter');
     }
 

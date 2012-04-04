@@ -11,9 +11,9 @@
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 class Sector extends BaseSector {
-	public function __toString() {
-		return $this->x.','.$this->y;
-	}
+    public function __toString() {
+        return $this->x.','.$this->y;
+    }
 
     public function setDropsArray(array $lettersArray) {
         $this->setDrops(implode('', $lettersArray));

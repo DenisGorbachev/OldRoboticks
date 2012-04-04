@@ -3,31 +3,31 @@
 require_once __DIR__.'/../RobotBaseSpec.class.php';
 
 class DisasmSpec extends RobotBaseSpec {
-	public function testNormal() {
-		return $this
-			->given('Genesis')
-				->and('User', 'Friend')
-				->and('Realm', 'Universe')
+    public function testNormal() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Friend')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'disasm '.$this->getRobotId('sedative'))
-			->then('Success')
+            ->then('Success')
             ->when('Exec', 'report --for drops')
             ->then('Contains', '12,5    B E A R I S E D A T V E F')
             ->when('Exec', 'report --for robots')
             ->then('NotContains', 'SEDATIVE')
-	;}
+    ;}
 
     public function testDisassembleOwnActiveRobot() {
         return $this
-			->given('Genesis')
-				->and('User', 'Alice')
-				->and('Realm', 'Universe')
+            ->given('Genesis')
+                ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'dirk')
             ->when('Exec', 'disasm '.$this->getRobotId('tea'))
-			->then('Success')
+            ->then('Success')
     ;}
 
-	/* Borderline */
+    /* Borderline */
 
     public function testInvalidHimself() {
         return $this
@@ -35,7 +35,7 @@ class DisasmSpec extends RobotBaseSpec {
                 ->and('User', 'Friend')
                 ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
-			->when('Exec', 'disasm '.$this->getRobotId('drake'))
+            ->when('Exec', 'disasm '.$this->getRobotId('drake'))
             ->then('Failure')
     ;}
 
@@ -45,9 +45,9 @@ class DisasmSpec extends RobotBaseSpec {
                 ->and('User', 'Alice')
                 ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
-			->when('Exec', 'mv 12,5')
-			->when('Exec', 'mv 12,5')
-			->when('Exec', 'mv 12,5')
+            ->when('Exec', 'mv 12,5')
+            ->when('Exec', 'mv 12,5')
+            ->when('Exec', 'mv 12,5')
             ->when('Exec', 'disasm '.$this->getRobotId('sedative'))
             ->then('Failure')
     ;}
@@ -59,10 +59,10 @@ class DisasmSpec extends RobotBaseSpec {
                 ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'mv 9,8')
-			->when('Exec', 'mv 9,8')
+            ->when('Exec', 'mv 9,8')
             ->when('Exec', 'disasm '.$this->getRobotId('fuel'))
             ->then('Failure')
-	;}
+    ;}
 
     public function testInvalidNotInTheSameSector() {
         return $this
@@ -73,7 +73,7 @@ class DisasmSpec extends RobotBaseSpec {
             ->when('Exec', 'mv 9,8')
             ->when('Exec', 'disasm '.$this->getRobotId('sedative'))
             ->then('Failure')
-	;}
+    ;}
 
     public function getRobotTestCommand() {
         return 'disasm '.$this->getRobotId('sedative');

@@ -1,26 +1,26 @@
 <?php
 
 class rsInitializeRealmsTask extends sfBaseTask {
-	protected function configure() {
-//		$this->addArguments(array(
-//			new sfCommandArgument('size', sfCommandArgument::REQUIRED, 'The width and height of the map'),
-//		));
+    protected function configure() {
+//        $this->addArguments(array(
+//            new sfCommandArgument('size', sfCommandArgument::REQUIRED, 'The width and height of the map'),
+//        ));
 //
-//		$this->addOptions(array(
-//			new sfCommandOption('default', 'd', sfCommandOption::PARAMETER_REQUIRED, 'Default letter', ''),
-//			new sfCommandOption('probability', 'p', sfCommandOption::PARAMETER_REQUIRED, 'Probability of a letter (float, from 0 to 1)', 0.02),
-//			new sfCommandOption('print-only', 'o', sfCommandOption::PARAMETER_NONE, 'Only print, do not insert into database'),
-//		));
+//        $this->addOptions(array(
+//            new sfCommandOption('default', 'd', sfCommandOption::PARAMETER_REQUIRED, 'Default letter', ''),
+//            new sfCommandOption('probability', 'p', sfCommandOption::PARAMETER_REQUIRED, 'Probability of a letter (float, from 0 to 1)', 0.02),
+//            new sfCommandOption('print-only', 'o', sfCommandOption::PARAMETER_NONE, 'Only print, do not insert into database'),
+//        ));
 
-		$this->namespace = 'rs';
-		$this->name = 'initialize-realms';
-		$this->briefDescription = '';
+        $this->namespace = 'rs';
+        $this->name = 'initialize-realms';
+        $this->briefDescription = '';
 
-		$this->detailedDescription = '';
-	}
+        $this->detailedDescription = '';
+    }
 
-	protected function execute($arguments = array(), $options = array()) {
-		$databaseManager = new sfDatabaseManager($this->configuration);
+    protected function execute($arguments = array(), $options = array()) {
+        $databaseManager = new sfDatabaseManager($this->configuration);
         $connection = $databaseManager->getDatabase('doctrine')->getConnection();
 
         $uninitializedRealms = RealmTable::getInstance()->getUninitializedRealms();
@@ -36,7 +36,7 @@ class rsInitializeRealmsTask extends sfBaseTask {
             }
             $connection->commit();
         }
-		return 0;
-	}
+        return 0;
+    }
 
 }

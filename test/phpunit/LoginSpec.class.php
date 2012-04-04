@@ -3,14 +3,14 @@
 require_once __DIR__.'/../BaseSpec.class.php';
 
 class LoginSpec extends BaseSpec {
-	public function testNormal() {
-		$this
-			->given('Genesis')
-			->when('Exec', 'login -p asdf alice')
-			->then('Success')
-	;}
-	
-	/* Borderline */
+    public function testNormal() {
+        $this
+            ->given('Genesis')
+            ->when('Exec', 'login -p asdf alice')
+            ->then('Success')
+    ;}
+
+    /* Borderline */
 
     public function testInvalidActionWithoutAuthentication() {
         $this
@@ -21,19 +21,19 @@ class LoginSpec extends BaseSpec {
             ->then('Failure')
     ;}
 
-	public function testInvalidUserNotFound() {
-		$this
-			->given('Genesis')
-			->when('Exec', 'login -p password usernotfound')
-			->then('Failure')
-	;}
-	
-	
-	public function testInvalidWrongPassword() {
-		$this
-			->given('Genesis')
-			->when('Exec', 'login -p wrongpassword alice')
-			->then('Failure')
-	;}
-	
+    public function testInvalidUserNotFound() {
+        $this
+            ->given('Genesis')
+            ->when('Exec', 'login -p password usernotfound')
+            ->then('Failure')
+    ;}
+
+
+    public function testInvalidWrongPassword() {
+        $this
+            ->given('Genesis')
+            ->when('Exec', 'login -p wrongpassword alice')
+            ->then('Failure')
+    ;}
+
 }

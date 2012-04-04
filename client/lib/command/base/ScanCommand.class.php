@@ -3,27 +3,27 @@
 require_once dirname(__FILE__).'/RobotCommand.class.php';
 
 class ScanCommand extends RobotCommand {
-	public function getOptionConfigs() {
-		return array_merge(parent::getOptionConfigs(), array(
-			'for' => array(
-				'short_name' => '-f',
-				'long_name' => '--for',
-				'description' => 'Type of scan to perform. Possible values are: robots, letters, drops',
-				'action' => 'StoreString',
-				'default' => 'robots'
-			)
-		));
-	}
-	
+    public function getOptionConfigs() {
+        return array_merge(parent::getOptionConfigs(), array(
+            'for' => array(
+                'short_name' => '-f',
+                'long_name' => '--for',
+                'description' => 'Type of scan to perform. Possible values are: robots, letters, drops',
+                'action' => 'StoreString',
+                'default' => 'robots'
+            )
+        ));
+    }
+
     public function getArgumentConfigs() {
         return array_merge(array(), parent::getArgumentConfigs());
     }
-	
-	public function execute($options, $arguments) {
-		return $this->get('robot/scan', array(
-			'id' => $options['robot_id']
-		));
-	}
+
+    public function execute($options, $arguments) {
+        return $this->get('robot/scan', array(
+            'id' => $options['robot_id']
+        ));
+    }
 
     public function getStance($robot)
     {

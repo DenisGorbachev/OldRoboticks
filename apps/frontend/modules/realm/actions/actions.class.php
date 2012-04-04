@@ -1,22 +1,22 @@
 <?php
 
 class realmActions extends rkActions {
-	public function prepareCreate() {
+    public function prepareCreate() {
         $this->prepareAutoCreateForm();
         $this->pushFormParameters($this->form, array(
             'owner_id' => $this->getUser()->getUser()->getId()
         ));
         $this->appendFormParameters($this->form, $this->form->getDefaults());
-	}
+    }
 
     public function validateCreate() {
-		return $this->validateAutoStatic();
-	}
-	
-	public function executeCreate(sfWebRequest $request) {
+        return $this->validateAutoStatic();
+    }
+
+    public function executeCreate(sfWebRequest $request) {
         set_time_limit(0);
         return $this->executeAutoAjaxForm();
-	}
+    }
 
     public function prepareEdit() {
         $this->prepareAutoEditForm();

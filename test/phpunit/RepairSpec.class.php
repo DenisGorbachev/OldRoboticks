@@ -3,29 +3,29 @@
 require_once __DIR__.'/../RobotBaseSpec.class.php';
 
 class RepairSpec extends RobotBaseSpec {
-	public function testNormal() {
-		return $this
-			->given('Genesis')
-				->and('User', 'Friend')
-				->and('Realm', 'Universe')
+    public function testNormal() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Friend')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' I')
-			->then('Success')
+            ->then('Success')
             ->when('Exec', 'report --for drops')
             ->then('NotContains', 'I')
             ->given('User', 'Alice')
             ->given('Robot', 'sedative')
             ->when('Exec', 'asm BEAR')
             ->then('Success')
-	;}
+    ;}
 
-	/* Borderline */
+    /* Borderline */
 
     public function testInvalidArgumentsNotALetter() {
         return $this
-			->given('Genesis')
-				->and('User', 'Friend')
-				->and('Realm', 'Universe')
+            ->given('Genesis')
+                ->and('User', 'Friend')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' _')
             ->then('Failure')
@@ -37,9 +37,9 @@ class RepairSpec extends RobotBaseSpec {
                 ->and('User', 'Alice')
                 ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
-			->when('Exec', 'mv 12,5')
-			->when('Exec', 'mv 12,5')
-			->when('Exec', 'mv 12,5')
+            ->when('Exec', 'mv 12,5')
+            ->when('Exec', 'mv 12,5')
+            ->when('Exec', 'mv 12,5')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' I')
             ->then('Failure')
     ;}
@@ -51,16 +51,16 @@ class RepairSpec extends RobotBaseSpec {
                 ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'mv 9,8')
-			->when('Exec', 'mv 9,8')
+            ->when('Exec', 'mv 9,8')
             ->when('Exec', 'repair '.$this->getRobotId('fuel').' F')
             ->then('Failure')
-	;}
+    ;}
 
     public function testInvalidLetterNotPunchedOut() {
         return $this
-			->given('Genesis')
-				->and('User', 'Friend')
-				->and('Realm', 'Universe')
+            ->given('Genesis')
+                ->and('User', 'Friend')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' E')
             ->then('Failure')
@@ -68,9 +68,9 @@ class RepairSpec extends RobotBaseSpec {
 
     public function testInvalidLetterNotInRobotWord() {
         return $this
-			->given('Genesis')
-				->and('User', 'Friend')
-				->and('Realm', 'Universe')
+            ->given('Genesis')
+                ->and('User', 'Friend')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' G')
             ->then('Failure')
@@ -78,9 +78,9 @@ class RepairSpec extends RobotBaseSpec {
 
     public function testInvalidLetterNotInDrops() {
         return $this
-			->given('Genesis')
-				->and('User', 'Friend')
-				->and('Realm', 'Universe')
+            ->given('Genesis')
+                ->and('User', 'Friend')
+                ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
             ->when('Exec', 'fire '.$this->getRobotId('sedative').' S')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' S')
@@ -96,7 +96,7 @@ class RepairSpec extends RobotBaseSpec {
             ->when('Exec', 'mv 9,8')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' I')
             ->then('Failure')
-	;}
+    ;}
 
     public function getRobotTestCommand() {
         return 'repair '.$this->getRobotId('sedative').' I';

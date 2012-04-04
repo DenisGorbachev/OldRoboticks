@@ -3,11 +3,11 @@
 require_once __DIR__.'/../BaseSpec.class.php';
 
 class MailSpec extends BaseSpec {
-	public function testGeneral() {
-		return $this
-			->given('Genesis')
-				->and('User', 'Alice')
-			->when('Exec', 'send 3 "Hello, my name is Alice" "I am a student. I live in Russia. I am learning English."')
+    public function testGeneral() {
+        return $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
+            ->when('Exec', 'send 3 "Hello, my name is Alice" "I am a student. I live in Russia. I am learning English."')
             ->then('Success')
             ->given('User', 'Friend')
             ->when('Exec', 'receive')
@@ -17,7 +17,7 @@ class MailSpec extends BaseSpec {
             ->when('Exec', 'receive')
             ->then('Success')
                 ->and('Contains', 'no unread messages')
-	;}
+    ;}
 
     public function testLevels() {
         return $this
@@ -82,14 +82,14 @@ class MailSpec extends BaseSpec {
         return $this;
     }
 
-	/* Borderline */
+    /* Borderline */
 
     public function testInvalidReadOthersMail() {
         return $this
-			->given('Genesis')
-				->and('User', 'Alice')
+            ->given('Genesis')
+                ->and('User', 'Alice')
             ->when('Exec', 'send 2 "Go away" "I won\'t tolerate your presence here."')
-			->when('Exec', 'send 3 "Hello, my name is Alice" "I am a student. I live in Russia. I am learning English."')
+            ->when('Exec', 'send 3 "Hello, my name is Alice" "I am a student. I live in Russia. I am learning English."')
              ->given('User', 'Friend')
             ->when('Exec', 'receive')
             ->then('Contains', 'Hello')
