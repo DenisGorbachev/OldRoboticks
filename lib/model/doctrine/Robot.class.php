@@ -120,8 +120,8 @@ class Robot extends BaseRobot {
         $this->setSector(SectorTable::getInstance()->getRandomSector());
     }
 
-    public function hasInFireableRange(Robot $target) {
-        return SectorTable::getInstance()->isInRange($this->getSector(), $target->getSector(), $this->getFireableRange());
+    public function hasInFireableRange(Sector $target) {
+        return SectorTable::getInstance()->isInRange($this->getSector(), $target, $this->getFireableRange());
     }
 
     public function doAction($action /* ... */) {
@@ -143,13 +143,13 @@ class Robot extends BaseRobot {
         return $result;
     }
 
-    public function doMoveAction($x, $y) {
+    public function doMoveAction($targetSector) {
         $sectorTable = SectorTable::getInstance();
-        $sector = $this->getSector();
-        list($x, $y) = $sectorTable->getEffectiveCoordinates($sector->getX(), $sector->getY(), $x, $y, $this->getSpeed());
-        $newSector = $sectorTable->findOneByXAndY($x, $y);
-        $this->setSector($newSector);
-        return $newSector->getId() == $sector->getId()? false : $newSector;
+        $currentSector = $this->getSector();
+        list($effectiveX, $effectiveY) = $sectorTable->getEffectiveCoordinates($currentSector->getX(), $currentSector->getY(), $targetSector->getX(), $targetSector->getY(), $this->getSpeed());
+        $effectiveTargetSector = $sectorTable->findOneByXAndY($effectiveX, $effectiveY);
+        $this->setSector($effectiveTargetSector);
+        return $effectiveTargetSector->getId() == $currentSector->getId()? false : $effectiveTargetSector;
     }
 
     public function doExtractAction() {
@@ -195,26 +195,37 @@ class Robot extends BaseRobot {
         )));
     }
 
-    public function doFireAction(Robot $target, $letter) {
+    public function doFireAction(Sector $sector, $letter) {
         $dispatcher = sfContext::getInstance()->getEventDispatcher();
         $dispatcher->notify(new sfEvent($this, 'robot.pre_do_fire_action', array(
-            'target' => $target,
+            'target' => $sector,
             'letter' => $letter
         )));
-        $target->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '_', $target->getStatus(), 1));
-        $destroyed = false;
-        if (preg_match('/'.implode('|', WordTable::getInstance()->getLetters()).'/u', $target->getStatus())) {
-            $target->save();
-        } else {
-            $target->delete();
-            $destroyed = true;
+        $statistics = array('hit' => array(), 'destroyed' => array());
+        foreach ($sector->getRobots() as $robot) {
+            $robot->setStatus(preg_replace('/'.preg_quote($letter, '/').'/u', '_', $robot->getStatus()));
+            if (preg_match('/[^_]/u', $robot->getStatus())) {
+                $robot->save();
+                $statistics['hit'][] = $robot;
+                $dispatcher->notify(new sfEvent($this, 'robot.hit', array(
+                    'target' => $robot,
+                    'letter' => $letter,
+                )));
+            } else {
+                $robot->delete();
+                $statistics['destroyed'][] = $robot;
+                $dispatcher->notify(new sfEvent($this, 'robot.destroyed', array(
+                    'target' => $robot,
+                    'letter' => $letter,
+                )));
+            }
         }
         $dispatcher->notify(new sfEvent($this, 'robot.post_do_fire_action', array(
-            'target' => $target,
+            'target' => $sector,
             'letter' => $letter,
-            'destroyed' => $destroyed
+            'statistics' => $statistics
         )));
-        return $destroyed? null : $target;
+        return $statistics;
     }
 
     public function doRepairAction(Robot $target, $letter) {

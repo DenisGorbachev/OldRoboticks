@@ -69,17 +69,6 @@ class MvSpec extends RobotBaseSpec {
                 ->and('Contains', '3,3')
     ;}
 
-    public function testRelativeMove() {
-        $this
-            ->given('Genesis')
-                ->and('User', 'Alice')
-                ->and('Realm', 'Universe')
-                ->and('Robot', 'tea')
-            ->when('Exec', 'mv --relative 1,1')
-            ->then('Success')
-                ->and('Contains', '10,10')
-    ;}
-
     /*
      * This test covers the float comparison, which is erroneous because of inherent computer math inconsistencies
      */
@@ -100,7 +89,7 @@ class MvSpec extends RobotBaseSpec {
 
     /* Borderline */
 
-    public function testInvalidPositiveCoordinates() {
+    public function testInvalidNonExistingSector() {
         $this
             ->given('Genesis')
                 ->and('User', 'Alice')

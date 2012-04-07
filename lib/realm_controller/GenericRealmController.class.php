@@ -3,8 +3,9 @@
 class GenericRealmController extends BaseRealmController {
     public function attachListeners() {
         $this->dispatcher->connect('robot.post_do_disassemble_action', array($this, 'generateDisassembleNotification'));
-        $this->dispatcher->connect('robot.post_do_fire_action', array($this, 'generateFireNotification'));
         $this->dispatcher->connect('robot.post_do_repair_action', array($this, 'generateRepairNotification'));
+        $this->dispatcher->connect('robot.hit', array($this, 'generateHitNotification'));
+        $this->dispatcher->connect('robot.destroyed', array($this, 'generateDestroyedNotification'));
     }
 
     public function getWinningConditions() {
@@ -26,11 +27,18 @@ class GenericRealmController extends BaseRealmController {
         return $this->generateNotification($event, 'disasm', 'My robot '.$event->getSubject().' disassembled your robot '.$event['target']);
     }
 
-    public function generateFireNotification(sfEvent $event) {
+    public function generateHitNotification(sfEvent $event) {
         if (!$this->isOwnEvent($event->getSubject()->getRealmId())) {
             return;
         }
-        return $this->generateNotification($event, 'fire', 'My robot '.$event->getSubject().' fired at your robot '.$event['target']->__toStatusString());
+        return $this->generateNotification($event, 'hit', 'My robot '.$event->getSubject().' hit your robot '.$event['target']->__toStatusString());
+    }
+
+    public function generateDestroyedNotification(sfEvent $event) {
+        if (!$this->isOwnEvent($event->getSubject()->getRealmId())) {
+            return;
+        }
+        return $this->generateNotification($event, 'destroyed', 'My robot '.$event->getSubject().' destroyed your robot '.$event['target']->__toStatusString());
     }
 
     public function generateRepairNotification(sfEvent $event) {

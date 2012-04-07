@@ -29,6 +29,16 @@ class rkActions extends tfExtendedActions {
         sfConfig::set('app_realm_id', $this->realm_id);
     }
 
+    public function prepareAutoSector() {
+        $this->argumentUnless('x');
+        $this->argumentUnless('y');
+        $this->sector = SectorTable::getInstance()->findOneByXAndY($this->x, $this->y);
+        $this->failureUnless($this->sector, 'sector %x%,%y% doesn\'t exist', array(
+            'x' => $this->x,
+            'y' => $this->y,
+        ));
+    }
+
     public function success($text, array $arguments = array()) {
         if ($this->getUser()->isAuthenticated()) {
             $realm_id = $this->getRequestParameter('realm_id');

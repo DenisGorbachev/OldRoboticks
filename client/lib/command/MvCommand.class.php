@@ -10,14 +10,7 @@ class MvCommand extends RobotCommand {
     }
 
     public function getOptionConfigs() {
-        return array_merge(parent::getOptionConfigs(), array(
-            'relative' => array(
-                'short_name' => '-l',
-                'long_name' => '--relative',
-                'description' => 'Use relative movement',
-                'action' => 'StoreTrue'
-            )
-        ));
+        return array_merge(parent::getOptionConfigs(), array());
     }
 
     public function getArgumentConfigs() {
@@ -29,15 +22,11 @@ class MvCommand extends RobotCommand {
     }
 
     public function execute($options, $arguments) {
-        $coords = $this->getArgument('sector');
-        if (is_string($coords)) {
-            $coords = coords_string_to_array($coords);
-        }
+        $sector = $this->getSectorArgument('sector');
         return $this->post('robot/move', array(
             'id' => $options['robot_id'],
-            'x' => $coords['x'],
-            'y' => $coords['y'],
-            'relative' => $options['relative']
+            'x' => $sector['x'],
+            'y' => $sector['y'],
         ));
     }
 

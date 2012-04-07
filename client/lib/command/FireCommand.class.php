@@ -15,19 +15,21 @@ class FireCommand extends RobotCommand {
 
     public function getArgumentConfigs() {
         return array_merge(parent::getArgumentConfigs(), array(
-            'target_robot_id' => array(
-                'description' => 'ID of robot to fire at (example: 3)'
+            'sector' => array(
+                'description' => 'Target sector coordinates (example: 45,230)'
             ),
             'letter' => array(
-                'description' => 'Letter in target robot to fire at'
+                'description' => 'Letter in target sector to fire at'
             )
         ));
     }
 
     public function execute($options, $arguments) {
+        $sector = $this->getSectorArgument('sector');
         return $this->post('robot/fire', array(
             'id' => $options['robot_id'],
-            'target_id' => $arguments['target_robot_id'],
+            'x' => $sector['x'],
+            'y' => $sector['y'],
             'letter' => $arguments['letter'],
         ));
     }

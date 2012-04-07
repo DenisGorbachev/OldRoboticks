@@ -8,13 +8,12 @@ class RobotGuard extends BaseGuard {
         return true;
     }
 
-    public function canMove($x, $y) {
+    public function canMove($sector) {
         $this->checkIsOwner();
         $this->checkIsEnabled();
         $this->checkIsActive();
         $this->checkIsMobile();
-        $this->checkSectorExists($x, $y);
-        $this->checkSectorHasEnoughSpace($x, $y);
+        $this->checkSectorHasEnoughSpace($sector);
         return true;
     }
 
@@ -80,14 +79,13 @@ class RobotGuard extends BaseGuard {
         return true;
     }
 
-    public function canFire(Robot $target, $letter) {
+    public function canFire(Sector $sector, $letter) {
         $this->checkIsOwner();
         $this->checkIsEnabled();
         $this->checkIsActive();
         $this->checkIsLetter($letter);
         $this->checkIsFireableLetter($letter);
-        $this->checkTargetIsInRange($target);
-        $this->checkTargetHasLetter($target, $letter);
+        $this->checkSectorIsInRange($sector);
         return true;
     }
 
@@ -150,21 +148,10 @@ class RobotGuard extends BaseGuard {
         return true;
     }
 
-    public function checkSectorExists($x, $y) {
-        if (!SectorTable::getInstance()->findOneByXAndY($x, $y)) {
-            throw new rsSanityException('sector %x%,%y% doesn\'t exist', array(
-                'x' => $x,
-                'y' => $y,
-            ));
-        }
-        return true;
-    }
-
-    public function checkSectorHasEnoughSpace($x, $y) {
-        if (!SectorTable::getInstance()->hasEnoughSpace($x, $y)) {
-            throw new rsSanityException('sector %x%,%y% doesn\'t have enough space (max %max% robots in sector)', array(
-                'x' => $x,
-                'y' => $y,
+    public function checkSectorHasEnoughSpace($sector) {
+        if (!SectorTable::getInstance()->hasEnoughSpace($sector)) {
+            throw new rsSanityException('sector %sector% doesn\'t have enough space (max %max% robots in sector)', array(
+                'sector' => (string)$sector,
                 'max' => sfConfig::get('app_space_limit'),
             ));
         }
@@ -172,8 +159,7 @@ class RobotGuard extends BaseGuard {
     }
 
     public function checkCurrentSectorHasEnoughSpace() {
-        $sector = $this->getObject()->getSector();
-        return $this->checkSectorHasEnoughSpace($sector->getX(), $sector->getY());
+        return $this->checkSectorHasEnoughSpace($this->getObject()->getSector());
     }
 
     public function checkHasFunction($meaning) {
@@ -254,20 +240,10 @@ class RobotGuard extends BaseGuard {
         return true;
     }
 
-    public function checkTargetIsInRange(Robot $target) {
-        if (!$this->getObject()->hasInFireableRange($target)) {
-            throw new rsInsanityException('robot %robot% is not in fireable range', array(
-                'robot' => $target->__toEnemyStatusString(),
-            ));
-        }
-        return true;
-    }
-
-    public function checkTargetHasLetter(Robot $target, $letter) {
-        if (!$target->hasLetter($letter)) {
-            throw new rsInsanityException('robot %robot% doesn\'t have letter %letter%', array(
-                'robot' => $target->__toEnemyStatusString(),
-                'letter' => $letter,
+    public function checkSectorIsInRange(Sector $sector) {
+        if (!$this->getObject()->hasInFireableRange($sector)) {
+            throw new rsInsanityException('sector %sector% is not in fireable range', array(
+                'sector' => (string)$sector,
             ));
         }
         return true;

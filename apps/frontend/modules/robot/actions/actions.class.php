@@ -22,22 +22,15 @@ class robotActions extends rkActions {
 
     public function prepareMove() {
         $this->prepareAutoObject();
-        $this->argumentUnless('x');
-        $this->argumentUnless('y');
-        $this->argument('relative', false);
-        if ($this->relative) {
-            $sector = $this->object->getSector();
-            $this->x += $sector->getX();
-            $this->y += $sector->getY();
-        }
+        $this->prepareAutoSector();
     ;}
 
     public function validateMove() {
-        return $this->validateAutoObject($this->x, $this->y);
+        return $this->validateAutoObject($this->sector);
     }
 
     public function executeMove(sfWebRequest $request) {
-        $result = $this->object->doAction('Move', $this->x, $this->y);
+        $result = $this->object->doAction('Move', $this->sector);
         if ($result === false) {
             return $this->notice('robot %robot% is already at %sector%', array(
                 'robot' => (string)$this->object,
@@ -139,17 +132,26 @@ class robotActions extends rkActions {
 
     public function prepareFire() {
         $this->prepareAutoObject();
-        $this->prepareAutoObject('target_id', 'target');
+        $this->prepareAutoSector();
         $this->argumentUnless('letter');
     }
 
     public function validateFire() {
-        return $this->validateAutoObject($this->target, $this->letter);
+        return $this->validateAutoObject($this->sector, $this->letter);
     }
 
     public function executeFire(sfWebRequest $request) {
-        $returnedTarget = $this->object->doAction('Fire', $this->target, $this->letter);
-        return $this->success('fired at robot '.$this->target->__toStatusString().($returnedTarget? '' : ' and destroyed it'));
+        $statistics = $this->object->doAction('Fire', $this->sector, $this->letter);
+        $arguments = array(
+            'sector' => (string)$this->sector,
+            'hit_count' => count($statistics['hit']),
+            'destroyed_count' => count($statistics['destroyed']),
+        );
+        $text = 'fired at sector %sector%, hit %hit_count% robot'.($arguments['hit_count'] == 1? '' : 's').', destroyed %destroyed_count% robot'.($arguments['destroyed_count'] == 1? '' : 's').'.';
+        if ($arguments['hit_count'] + $arguments['destroyed_count'] == 0) {
+            return $this->notice($text, $arguments);
+        }
+        return $this->success($text, $arguments);
     }
 
     public function prepareRepair() {

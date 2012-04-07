@@ -11,6 +11,14 @@ abstract class UserInterfaceCommand extends ServerCommand {
 
     public $responses = array();
 
+    public function getSectorArgument($name) {
+        $value = $this->getArgument($name);
+        if (is_string($value)) {
+            $value = coords_string_to_array($value);
+        }
+        return $value;
+    }
+
     public function run()
     {
         $this->initOutputFormat();
