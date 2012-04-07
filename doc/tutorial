@@ -7,14 +7,14 @@ h2. Fire at will
 As you already know, this Roboticks thing is a simulation of a real conflict. So you'd better log in to the server and create yourself a tutorial realm right now.
 
 rk host roboticks.faster-than-wind.ru	# Setup the server name
-rk register YourNicknameHere		# Register new account
-rk login YourNickNameHere		# Log in
-rk realm:create -c TutorialRealmController YourNicknameHere_Tutorial # Create a tutorial realm
-realm YourRealmID			# Select the newly created realm (YourRealmID is available in the output of previous command)
+rk register [YourNicknameHere]		# Register new account
+rk login [YourNicknameHere]		# Log in
+rk realm:create -c TutorialRealmController [YourNicknameHere]_Tutorial # Create a tutorial realm
+realm [YourRealmID]			# Select the newly created realm ([YourRealmID] is available in the output of previous command)
 
-The first robot "SOLDIER" (the precursor of an army!) is already assembled. Select it by ID from previous command output.
+The first robot "TOASTER" is already assembled. Select it by ID from previous command output.
 
-robot YourRobotID
+robot [ToasterRobotID]
 
 Now that you're all set up, it's time to learn the most important thing: how to *fire at enemies*. Real examples are far more superior than any theoretical explanations, so:
 
@@ -32,13 +32,13 @@ See? There's the robot you already hit, and there are other robots marked as "en
 
 Let's try dealing more damage. There are three robots standing on the same sector 7,5. Placing a shot there would hit them all:
 
-rk fire 7,5 E
+rk fire 7,5 U
 
-Any robot in sector 7,5 with letter E in its name has been hit. Luckily, that sector had only enemies. If there were own robots on it, Is there any more enemies out there? It turns out, a single BRANCH on 6,8 is still functioning. But trying to finish him off:
+Every robot in sector 7,5 with letter U in its name has been hit. Luckily, that sector had only enemies. If there were own robots in it, they would also be hit (so keep distance). Is there any more enemies out there? It turns out, a single annoying ORANGE on 6,8 is still alive. But trying to finish him off:
 
-rk fire 6,8 B
+rk fire 6,8 O
 
-... is a no-go with currently selected robot. You see, robots can only fire at the letters next to those that appear in their own name. That's complex, so I'll give a few examples:
+... is a no-go with currently selected robot. You see, robots can only fire at letters that are next-by-alphabet to those that appear in their own name. For example, the first letter in RIFLE is R, and the alphabet says "P-Q-R-S-T", so S is next to R, so RIFLE can fire at S. That's complex, so I'll give a few examples:
 * SINK can fire at T,J,O,L.
 * SHIP can fire at T,I,J,Q.
 * LEVIATHAN can fire at M,F,W,J,B,U,I,O (that's a lot!)
@@ -46,12 +46,14 @@ rk fire 6,8 B
 * TEA can... oops, it can't fire: only robots consisting of 4 or more letters can fire.
 * RIFLE can fire at S,J,G,M,F.
 
-How did I get all those results? Look, the first letter in RIFLE is R, and the alphabet says "P-Q-R-S-T", so S is next to R, so RIFLE can fire at S. The practical result from all this theory is that our SOLDIER can't hit BRANCH. But we have another "own" robot — BEAR — which can fire at C,F,B,S. And that means it can hit BRANCH, too. Nice.
+The practical result from all this theory is that our SOLDIER can't hit BRANCH. But we have another "own" robot — BEAR — which can fire at C,F,B,S. And that means it can hit BRANCH, too. Nice.
 
-robot BearRobotId
+robot [BearRobotID]
 rk fire 6,8 B
 
 Sector clear!
+
+h2. Moving on
 
 So far, we've been only looking around the map with our first robot, "SOLDIER". But it has a limited scan range (in fact, every robot has a rectangular scan range of 5 sectors). So you are encouraged to try scanning with currently selected robot, "BEAR":
 
@@ -61,7 +63,79 @@ There! New enemy! Neutralize him quickly.
 
 rk fire 2,2 F
 
+Fine, I feel more secure now. But the realm is larger than you can scan, and some cunning enemies might be hiding in the corners... So you have to move.
 
+rk mv 12,12
+rk mv 12,14
 
+And while moving, you'd better look around.
+
+rk report
+
+Ah, what's that? Looks like we've found yet another own robot, but it's been shot down by that pesky CUCUMBER! Revenge is a dish best served cold:
+
+rk fire 15,13 C
+
+Now we should provide first aid. "TE_"... let's try guessing the last letter. Now, TED is a human name (no robot would accept it), TEL is an abbreviation, TEN is a number, TEE is a program... I think it was called "TEA". And, by a fortunate coincidence, our currently selected robot ("BEAR") has letter R, which means it can repair! We can do this by inserting a knocked-off letter into a damaged robot. Let's see if there are any "A" drops around.
+
+rk report --for drops
+
+Just garbage, not exactly what we need. But, as "BEAR" also has letter E and thus is able to extract letters from the underground, let's try searching for them.
+
+rk report --for letters
+
+That's great. An A letter in the same sector as "TE_". It's tough luck, and we have to use it.
+
+rk mv 14,14
+rk extract
+
+When you extract a letter, it's added to drops (free, usable letters) in this sector. You can extract as many letters as you wish, they regenerate. But the total number of drops in a sector is limited by 65535 (I don't know why, ask the scientists). However, I've only seen such a huge pile of drops while being in China operation, and that was some bizarre fighting, I can tell you. They sent sheer numbers of small 4-letter robots (TANK, RAID, BEAT...) at our massive 13-letter carriers (VULCANIZATION being the most impressive). We just plunged them into fire. Each sector recieved at least one shell every two seconds. Slowly, our robots began to advance. In an hour, they reached a factory of around twenty assemblers doing their job, spread around three sectors. When the fight was over, there still were around 40000 drops in each of them. Anyway, back to our business.
+
+rk repair [TeaRobotID] A
+
+Voila, TEA is ready to serve its master (namely, you). And that's a good thing indeed, as TEA is a maniac. Sure, it can't fire (only 3 letters...), but it can extract, just like "BEAR", and assemble new robots (letter A), and pick the drops and carry them to other sectors (letter T, for "transport").
+
+h2. Good old assembly
+
+In most realms, you receive a single TEA at the beginning. Frequently (but not always) the best strategy is to replicate: create more TEAs, so that if one is shot, the others can build a squad for counter-offensive. Let's assemble another TEA.
+
+robot [TeaRobotID]
+rk extract				# Another letter A
+rk report --for drops			# Cool, letter T in 14,13
+rk mv 14,13
+rk pick T
+rk mv 14,14
+rk drop T
+rk report --for letters			# No letter E drops, looking for extractable letters
+robot [BearRobotID]			# Switching to another robot for speedup
+rk mv 12,13
+robot [TeaRobotID]			# Switching back
+rk mv 12,13
+robot [BearRobotID]			# Flip-flop, time is precious
+rk extract
+robot [TeaRobotID]			# Collaboration. I see. What's next? Scalability?
+rk pick E
+rk mv 14,14
+rk drop E
+rk asm TEA				# Yeah!
+
+You may have noticed that there's a timeout between command executions. In normal realms, it's equal to 2*NumberOfRobots seconds. That means, if you have 3 active robots, each one has a timeout of 6 seconds. The timeouts are not shared, so you can hang around with a bunch of robots while having a couple sitting quietly in an ambush, ready to act anytime.
+
+h3. La vendetta
+
+Wait a minute. Now I see: the CUCUMBER we've shot recently had nothing to do with wounding our TEA. There's no letter Z in CUCUMBER. So it must have been another robot.
+
+In contrary, "TEA", being a 3-letter smallie, is the fastest robot around: covers 8 sectors in a single jump. General rule: each letter reduces the speed by 2.
+
+h2. One last thing
+
+For now, you should be pretty familiar with the controls. The best way to apply your skills is to fight another pilots in a simulation realm. Better be prepared when the big thing happens.
+
+One last thing. I've left three sectors full of enemies: from 19,17 to 19,19. Please don't do anything to them, will you? Anyway, why am I telling you this?..
+
+# One enemy, one shot. I call it "vigilante"-style.
 # Check if I've covered all commands
+# Check if I've covered all rules
+# Check that tutorial is linear, i.e. no additional enemies are seen before moving own robots.
+# Don't forget creating three sectors of enemies — fruits, vegetables, etc.
 # 'Antidisestablishmentarianism'.toUpperCase().toArray().uniq().collect(function(a) { return String.fromCharCode(a.charCodeAt(0)+1) }).join(',')
