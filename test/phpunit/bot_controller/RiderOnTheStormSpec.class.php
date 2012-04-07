@@ -2,6 +2,9 @@
 
 require_once __DIR__.'/../../BotBaseSpec.class.php';
 
+/**
+ * @group bot_controller
+ */
 class RiderOnTheStormSpec extends BotBaseSpec {
     public function __construct() {
         parent::__construct();

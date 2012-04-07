@@ -53,6 +53,18 @@ class AsmSpec extends RobotBaseSpec {
             ->then('Failure')
     ;}
 
+    public function testInvalidNotEnoughSpace() {
+        $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
+                ->and('Robot', 'radio')
+            ->when('Exec', 'mv 19,16')
+            ->then('Success')
+            ->when('Exec', 'asm TEA')
+            ->then('Failure')
+    ;}
+
     public function getRobotTestCommand() {
         return 'asm BEAR';
     }

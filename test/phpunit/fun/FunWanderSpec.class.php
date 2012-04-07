@@ -2,6 +2,9 @@
 
 require_once __DIR__.'/../../FunBaseSpec.class.php';
 
+/**
+ * @group fun
+ */
 class FunWanderSpec extends FunBaseSpec {
     public $command = 'RK_OUTPUT_FORMAT=json rk report';
 //    public $command = 'echo checkpoint';

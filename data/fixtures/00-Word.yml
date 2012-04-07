@@ -53,6 +53,8 @@ Word:
     name:                    "CAR"
   FINGER:
     name:                    "FINGER"
+  RADIO:
+    name:                    "RADIO"
   MEAT:
     name:                    "MEAT"
   STORM:

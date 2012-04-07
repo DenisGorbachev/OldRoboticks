@@ -1599,10 +1599,12 @@ Sector:
   Sector_Universe_397:
     x: '19'
     y: '16'
+    drops: 'TEA'
     Realm:  Universe
   Sector_Universe_398:
     x: '19'
     y: '17'
+    drops: 'TEAI'
     Realm:  Universe
   Sector_Universe_399:
     x: '19'

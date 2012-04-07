@@ -4,6 +4,8 @@
 all:
   scan:
     size:                5
+  space:
+    limit:               9
   speed:
     limit:            14
     increment:  2

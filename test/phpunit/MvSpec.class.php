@@ -120,6 +120,16 @@ class MvSpec extends RobotBaseSpec {
             ->then('Failure')
     ;}
 
+    public function testInvalidNotEnoughSpace() {
+        $this
+            ->given('Genesis')
+                ->and('User', 'Alice')
+                ->and('Realm', 'Universe')
+                ->and('Robot', 'radio')
+            ->when('Exec', 'mv 19,19')
+            ->then('Failure')
+    ;}
+
     public function getRobotTestCommand() {
         return 'mv 10,10';
     }

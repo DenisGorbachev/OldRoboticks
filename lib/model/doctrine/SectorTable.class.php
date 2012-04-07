@@ -87,4 +87,13 @@ class SectorTable extends Doctrine_Table {
         return $this->createQuery('s')->where('s.realm_id = ?', $realmId)->count();
     }
 
+    public function hasEnoughSpace($x, $y) {
+        return $this->createQuery('s')
+            ->leftJoin('s.Robots r')
+            ->andWhere('s.x = ?', $x)
+            ->andWhere('s.y = ?', $y)
+            ->groupBy('r.id')
+            ->count() < sfConfig::get('app_space_limit');
+    }
+
 }

@@ -5,4 +5,6 @@ set -e
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]:-""}" )" && pwd )"
 
-$DIR/launcher --exclude-group time-consuming 
+echo "Using fast mode..."
+
+$DIR/launcher --exclude-group time_consuming realm_controller bot_controller fun

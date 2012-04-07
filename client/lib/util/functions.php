@@ -77,6 +77,10 @@ function coords_string_to_array($string) {
     );
 }
 
+function distance_between_sectors($sectorA, $sectorB) {
+    return sqrt(pow($sectorA['x']-$sectorB['x'], 2) + pow($sectorA['y']-$sectorB['y'], 2));
+}
+
 function vd() {
     $args = func_get_args();
     foreach ($args as &$arg) {

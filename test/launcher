@@ -17,7 +17,7 @@ set +e
 for i in $(find $DIR/phpunit -type f -name "*.php");
 do
 	echo $i;
-	phpunit $@ -c $DIR/phpunit.xml $i >> $LOG;
+	phpunit $@ -c $DIR/phpunit.xml $i 2>&1 >> $LOG;
 done;
 set -e
 

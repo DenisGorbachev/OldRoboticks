@@ -3,7 +3,7 @@
 require_once __DIR__.'/../../BaseSpec.class.php';
 
 /**
- * @group time-consuming
+ * @group time_consuming
  */
 class RealmCreateSpec extends BaseSpec {
     public function testNormal() {

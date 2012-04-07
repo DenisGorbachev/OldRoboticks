@@ -48,16 +48,26 @@ class FunWanderCommand extends FunCommand {
             );
         }
         if (empty($this->cache['local_target_reached'])) {
-            $command = new MvCommand($this->getConfig());
-            $command->setArguments(array(
-                'sector' => $this->cache['local_target']
-            ));
-            $result = $command->run();
-            if ($result['success']) {
-                if (isset($result['message']['arguments']['sector']) && coords_string_to_array($result['message']['arguments']['sector']) == $this->cache['local_target']) {
-                    $this->cache['local_target_reached'] = true;
+            foreach (array(0, -1, 1) as $incX) {
+                foreach (array(0, -1, 1) as $incY) {
+                    $localTarget = $this->cache['local_target'];
+                    $localTarget['x'] += $incX;
+                    $localTarget['y'] += $incY;
+                    $command = new MvCommand($this->getConfig());
+                    $command->setArguments(array(
+                        'sector' => $localTarget
+                    ));
+                    $result = $command->run();
+                    if ($result['success']) {
+                        $reachedSector = coords_string_to_array($result['message']['arguments']['sector']);
+                        if (isset($result['message']['arguments']['sector']) && distance_between_sectors($reachedSector, $this->cache['local_target']) <= 1) {
+                            $this->cache['local_target_reached'] = true;
+                        }
+                        break 2;
+                    }
                 }
-            } else {
+            }
+            if (!$result['success']) {
                 return false;
             }
         } else {

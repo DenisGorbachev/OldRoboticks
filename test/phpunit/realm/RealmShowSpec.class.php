@@ -14,8 +14,8 @@ class RealmShowSpec extends RealmBaseSpec {
             ->then('Contains', 'DeathmatchRealmController')
             ->then('Contains', '400 sectors')
             ->then('Contains', '7 users')
-            ->then('Contains', '53 active robots')
-            ->then('Contains', '54 total robots')
+            ->then('Contains', '54 active robots')
+            ->then('Contains', '55 total robots')
             ->then('Contains', 'eliminate')
     ;}
 

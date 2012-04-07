@@ -2,6 +2,9 @@
 
 require_once __DIR__.'/../BaseSpec.class.php';
 
+/**
+ * @group time_consuming
+ */
 class TutorialSpec extends BaseSpec {
     public function testMapAndMove() {
         return $this

@@ -14,6 +14,7 @@ class RobotGuard extends BaseGuard {
         $this->checkIsActive();
         $this->checkIsMobile();
         $this->checkSectorExists($x, $y);
+        $this->checkSectorHasEnoughSpace($x, $y);
         return true;
     }
 
@@ -38,7 +39,8 @@ class RobotGuard extends BaseGuard {
         $this->checkIsActive();
         $this->checkHasFunction('assemble');
         $this->checkIsWord($name);
-        $this->checkSectorHasDrops(str_split($name));
+        $this->checkCurrentSectorHasDrops(str_split($name));
+        $this->checkCurrentSectorHasEnoughSpace();
         return true;
     }
 
@@ -73,7 +75,7 @@ class RobotGuard extends BaseGuard {
         $this->checkIsActive();
         $this->checkHasFunction('transport');
         $this->checkIsLetter($letter);
-        $this->checkSectorHasDrops(array($letter));
+        $this->checkCurrentSectorHasDrops(array($letter));
         $this->checkHasFreeCargoSpace();
         return true;
     }
@@ -98,7 +100,7 @@ class RobotGuard extends BaseGuard {
         $this->checkTargetIsInSameSector($target);
         $this->checkTargetHasLetterInWord($target, $letter);
         $this->checkTargetHasLetterPinchedOut($target, $letter);
-        $this->checkSectorHasDrops(array($letter));
+        $this->checkCurrentSectorHasDrops(array($letter));
         return true;
     }
 
@@ -150,12 +152,28 @@ class RobotGuard extends BaseGuard {
 
     public function checkSectorExists($x, $y) {
         if (!SectorTable::getInstance()->findOneByXAndY($x, $y)) {
-            throw new rsSanityException('sector with coordinates "%x%,%y%" doesn\'t exist', array(
+            throw new rsSanityException('sector %x%,%y% doesn\'t exist', array(
                 'x' => $x,
                 'y' => $y,
             ));
         }
         return true;
+    }
+
+    public function checkSectorHasEnoughSpace($x, $y) {
+        if (!SectorTable::getInstance()->hasEnoughSpace($x, $y)) {
+            throw new rsSanityException('sector %x%,%y% doesn\'t have enough space (max %max% robots in sector)', array(
+                'x' => $x,
+                'y' => $y,
+                'max' => sfConfig::get('app_space_limit'),
+            ));
+        }
+        return true;
+    }
+
+    public function checkCurrentSectorHasEnoughSpace() {
+        $sector = $this->getObject()->getSector();
+        return $this->checkSectorHasEnoughSpace($sector->getX(), $sector->getY());
     }
 
     public function checkHasFunction($meaning) {
@@ -195,7 +213,7 @@ class RobotGuard extends BaseGuard {
         return true;
     }
 
-    public function checkSectorHasDrops(array $drops) {
+    public function checkCurrentSectorHasDrops(array $drops) {
         $diff = array_diff($drops, $this->getObject()->getSector()->getDropsArray());
         if ($diff) {
             throw new rsSanityException('Sector %sector% has no %diff% drops', array(

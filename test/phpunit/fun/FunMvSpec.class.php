@@ -2,6 +2,9 @@
 
 require_once __DIR__.'/../../FunBaseSpec.class.php';
 
+/**
+ * @group fun
+ */
 class FunMvSpec extends FunBaseSpec {
     public function testNormal() {
         $this
