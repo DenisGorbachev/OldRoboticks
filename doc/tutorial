@@ -46,22 +46,22 @@ rk fire 6,8 O
 * TEA can... oops, it can't fire: only robots consisting of 4 or more letters can fire.
 * RIFLE can fire at S,J,G,M,F.
 
-The practical result from all this theory is that our SOLDIER can't hit BRANCH. But we have another "own" robot — BEAR — which can fire at C,F,B,S. And that means it can hit BRANCH, too. Nice.
+The practical result from all this theory is that our TOASTER can't hit ORANGE. But we have another "own" robot — FORK — which can fire at G,P,L,S. And that means it can hit ORANGE, too. Nice.
 
-robot [BearRobotID]
-rk fire 6,8 B
+robot [ForkRobotID]
+rk fire 6,8 G
 
 Sector clear!
 
 h2. Moving on
 
-So far, we've been only looking around the map with our first robot, "SOLDIER". But it has a limited scan range (in fact, every robot has a rectangular scan range of 5 sectors). So you are encouraged to try scanning with currently selected robot, "BEAR":
+So far, we've been only looking around the map with our first robot, TOASTER. But it has a limited scan range (in fact, every robot has a rectangular scan range of 5 sectors). So you are encouraged to try scanning with currently selected robot, FORK:
 
 rk report
 
 There! New enemy! Neutralize him quickly.
 
-rk fire 2,2 F
+rk fire 2,2 P
 
 Fine, I feel more secure now. But the realm is larger than you can scan, and some cunning enemies might be hiding in the corners... So you have to move.
 
@@ -72,15 +72,15 @@ And while moving, you'd better look around.
 
 rk report
 
-Ah, what's that? Looks like we've found yet another own robot, but it's been shot down by that pesky CUCUMBER! Revenge is a dish best served cold:
+Ah, what's that? Looks like we've found yet another own robot, but it's been shot down by that pesky POTATO! Revenge is a dish best served cold:
 
-rk fire 15,13 C
+rk fire 15,13 P
 
-Now we should provide first aid. "TE_"... let's try guessing the last letter. Now, TED is a human name (no robot would accept it), TEL is an abbreviation, TEN is a number, TEE is a program... I think it was called "TEA". And, by a fortunate coincidence, our currently selected robot ("BEAR") has letter R, which means it can repair! We can do this by inserting a knocked-off letter into a damaged robot. Let's see if there are any "A" drops around.
+Now we should provide first aid. "TE_"... let's try guessing the last letter. Now, TED is a human name (no robot would accept it), TEL is an abbreviation, TEN is a number, TEE is a program... I think it was called "TEA". And, by a fortunate coincidence, our currently selected robot ("FORK") has letter R, which means it can repair! We can do this by inserting a knocked-off letter into a damaged robot. Let's see if there are any "A" drops around.
 
 rk report --for drops
 
-Just garbage, not exactly what we need. But, as "BEAR" also has letter E and thus is able to extract letters from the underground, let's try searching for them.
+Just garbage, not exactly what we need. But, as "FORK" also has letter E and thus is able to extract letters from the underground, let's try searching for them.
 
 rk report --for letters
 
@@ -93,7 +93,7 @@ When you extract a letter, it's added to drops (free, usable letters) in this se
 
 rk repair [TeaRobotID] A
 
-Voila, TEA is ready to serve its master (namely, you). And that's a good thing indeed, as TEA is a maniac. Sure, it can't fire (only 3 letters...), but it can extract, just like "BEAR", and assemble new robots (letter A), and pick the drops and carry them to other sectors (letter T, for "transport").
+Voila, TEA is ready to serve its master (namely, you). And that's a good thing indeed, as TEA is a maniac. Sure, it can't fire (only 3 letters...), but it can extract, just like "FORK", and assemble new robots (letter A), and pick the drops and carry them to other sectors (letter T, for "transport").
 
 h2. Good old assembly
 
@@ -107,11 +107,11 @@ rk pick T
 rk mv 14,14
 rk drop T
 rk report --for letters			# No letter E drops, looking for extractable letters
-robot [BearRobotID]			# Switching to another robot for speedup
+robot [ForkRobotID]			# Switching to another robot for speedup
 rk mv 12,13
 robot [TeaRobotID]			# Switching back
 rk mv 12,13
-robot [BearRobotID]			# Flip-flop, time is precious
+robot [ForkRobotID]			# Flip-flop, time is precious
 rk extract
 robot [TeaRobotID]			# Collaboration. I see. What's next? Scalability?
 rk pick E
