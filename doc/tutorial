@@ -34,7 +34,7 @@ Let's try dealing more damage. There are three robots standing on the same secto
 
 rk fire 7,5 U
 
-Every robot in sector 7,5 with letter U in its name has been hit. Luckily, that sector had only enemies. If there were own robots in it, they would also be hit (so keep distance). Is there any more enemies out there? It turns out, a single annoying ORANGE on 6,8 is still alive. But trying to finish him off:
+Every robot in sector 7,5 with letter U in its name has been hit. Luckily, that sector had only enemies. If there were own robots in it, they would also be hit (so keep distance). Still, is there anybody out there? It turns out, a single annoying ORANGE on 6,8 is still alive. But trying to finish him off:
 
 rk fire 6,8 O
 
@@ -46,16 +46,16 @@ rk fire 6,8 O
 * TEA can... oops, it can't fire: only robots consisting of 4 or more letters can fire.
 * RIFLE can fire at S,J,G,M,F.
 
-The practical result from all this theory is that our TOASTER can't hit ORANGE. But we have another "own" robot — FORK — which can fire at G,P,L,S. And that means it can hit ORANGE, too. Nice.
+The practical result from all this theory is that our TOASTER can't hit ORANGE. But we have another "own" robot — DYER — which can fire at G,P,L,S. And that means it can hit ORANGE, too. Nice.
 
-robot [ForkRobotID]
+robot [DyerRobotID]
 rk fire 6,8 G
 
 Sector clear!
 
 h2. Moving on
 
-So far, we've been only looking around the map with our first robot, TOASTER. But it has a limited scan range (in fact, every robot has a rectangular scan range of 5 sectors). So you are encouraged to try scanning with currently selected robot, FORK:
+So far, we've been only looking around the map with our first robot, TOASTER. But it has a limited scan range (in fact, every robot has a rectangular scan range of 5 sectors). So you are encouraged to try scanning with currently selected robot, DYER:
 
 rk report
 
@@ -76,11 +76,11 @@ Ah, what's that? Looks like we've found yet another own robot, but it's been sho
 
 rk fire 15,13 P
 
-Now we should provide first aid. "TE_"... let's try guessing the last letter. Now, TED is a human name (no robot would accept it), TEL is an abbreviation, TEN is a number, TEE is a program... I think it was called "TEA". And, by a fortunate coincidence, our currently selected robot ("FORK") has letter R, which means it can repair! We can do this by inserting a knocked-off letter into a damaged robot. Let's see if there are any "A" drops around.
+Now we should provide first aid. "TE_"... let's try guessing the last letter. Now, TED is a human name (no robot would ever accept it), TEL is an abbreviation, TEN is a number, TEE is a program... I think it was called "TEA". And, by a fortunate coincidence, our currently selected robot ("DYER") has letter R, which means it can repair! We can do this by inserting a knocked-off letter into a damaged robot. Let's see if there are any "A" drops around.
 
 rk report --for drops
 
-Just garbage, not exactly what we need. But, as "FORK" also has letter E and thus is able to extract letters from the underground, let's try searching for them.
+Just garbage, not exactly what we need. But "DYER" also has letter E: it is able to extract letters from the underground. Let's try searching for them.
 
 rk report --for letters
 
@@ -89,11 +89,11 @@ That's great. An A letter in the same sector as "TE_". It's tough luck, and we h
 rk mv 14,14
 rk extract
 
-When you extract a letter, it's added to drops (free, usable letters) in this sector. You can extract as many letters as you wish, they regenerate. But the total number of drops in a sector is limited by 65535 (I don't know why, ask the scientists). However, I've only seen such a huge pile of drops while being in China operation, and that was some bizarre fighting, I can tell you. They sent sheer numbers of small 4-letter robots (TANK, RAID, BEAT...) at our massive 13-letter carriers (VULCANIZATION being the most impressive). We just plunged them into fire. Each sector recieved at least one shell every two seconds. Slowly, our robots began to advance. In an hour, they reached a factory of around twenty assemblers doing their job, spread around three sectors. When the fight was over, there still were around 40000 drops in each of them. Anyway, back to our business.
+When you extract a letter, it's added to drops (free, usable letters) in this sector. You can extract as many letters as you wish, they regenerate. But the total number of drops in a sector is limited by 65535 (I don't know why, ask the scientists). However, I've only seen such a huge pile of drops while being in China operation, and that was some bizarre fighting, I can tell you. They sent sheer numbers of small 4-letter robots (TANK, RAID, BEAT...) at our massive 13-letter carriers (VULCANIZATION being the most impressive). We just plunged them into fire. Each sector recieved at least one shell every two seconds. Slowly, our robots began to advance. In an hour, they reached a factory of around eighteen assemblers doing their job, spread around three sectors. When the fight was over, there still were ~40000 drops in each of them. Anyway, back to our business.
 
 rk repair [TeaRobotID] A
 
-Voila, TEA is ready to serve its master (namely, you). And that's a good thing indeed, as TEA is a maniac. Sure, it can't fire (only 3 letters...), but it can extract, just like "FORK", and assemble new robots (letter A), and pick the drops and carry them to other sectors (letter T, for "transport").
+Voila, TEA is ready to serve its master (namely, you). And that's a good thing indeed, as TEA is a maniac. Sure, it can't fire (only 3 letters...), but it can extract, just like "DYER", and assemble new robots (letter A), and pick the drops and carry them to other sectors (letter T, for "transport").
 
 h2. Good old assembly
 
@@ -107,23 +107,36 @@ rk pick T
 rk mv 14,14
 rk drop T
 rk report --for letters			# No letter E drops, looking for extractable letters
-robot [ForkRobotID]			# Switching to another robot for speedup
+robot [DyerRobotID]			# Switching to another robot for speedup
 rk mv 12,13
 robot [TeaRobotID]			# Switching back
 rk mv 12,13
-robot [ForkRobotID]			# Flip-flop, time is precious
+robot [DyerRobotID]			# Flip-flop, time is precious
 rk extract
 robot [TeaRobotID]			# Collaboration. I see. What's next? Scalability?
 rk pick E
 rk mv 14,14
 rk drop E
-rk asm TEA				# Yeah!
+rk asm TEA					# Yeah, second TEA!
 
 You may have noticed that there's a timeout between command executions. In normal realms, it's equal to 2*NumberOfRobots seconds. That means, if you have 3 active robots, each one has a timeout of 6 seconds. The timeouts are not shared, so you can hang around with a bunch of robots while having a couple sitting quietly in an ambush, ready to act anytime.
 
 h3. La vendetta
 
-Wait a minute. Now I see: the CUCUMBER we've shot recently had nothing to do with wounding our TEA. There's no letter Z in CUCUMBER. So it must have been another robot.
+Wait a minute. Now I see: the POTATO we've shot recently had nothing to do with wounding our TEA. There's no letter Z in POTATO. So it must have been another robot. Google hasn't indexed the realm yet, so we'll be doing the search manually.
+
+rk mv 19,14					# Right
+rk report
+rk mv 14,19					# Up
+rk report
+rk mv 9,14					# Left
+rk report
+
+Clearly, it wasn't POTATO, it was ZUCCHINI! Show no mercy.
+
+rk fire C
+
+Argh, no use.
 
 In contrary, "TEA", being a 3-letter smallie, is the fastest robot around: covers 8 sectors in a single jump. General rule: each letter reduces the speed by 2.
 
