@@ -46,22 +46,24 @@ rk fire 6,8 O
 * TEA can... oops, it can't fire: only robots consisting of 4 or more letters can fire.
 * RIFLE can fire at S,J,G,M,F.
 
-The practical result from all this theory is that our TOASTER can't hit ORANGE. But we have another "own" robot — DYER — which can fire at E,Z,F,S. And that means it can hit ORANGE, too. Nice.
+The practical result from all this theory is that our TOASTER can't hit ORANGE. But we have another "own" robot — ZEBRA — which can fire at A,F,C,S,B. And that means it can hit ORANGE, too. Nice.
 
-robot [DyerRobotID]
-rk fire 6,8 G
+robot [ZebraRobotID]
+rk fire 6,8 A
 
 Sector clear!
 
+By the way... The choice of target letter is important. There is a chance that enemy robot would still be functional after being hit. It happens when the remaining letters still form a word. For example, if you shoot at R in CART, you will leave CA_T, which can still jump away.
+
 h2. Moving on
 
-So far, we've been only looking around the map with our first robot, TOASTER. But it has a limited scan range (in fact, every robot has a rectangular scan range of 5 sectors). So you are encouraged to try scanning with currently selected robot, DYER:
+So far, we've been only looking around the map with our first robot, TOASTER. But it has a limited scan range (in fact, every robot has a rectangular scan range of 5 sectors). So you are encouraged to try scanning with currently selected robot, ZEBRA:
 
 rk report
 
 There! New enemy! Neutralize him quickly.
 
-rk fire 2,2 P
+rk fire 2,2 F
 
 Fine, I feel more secure now. But the realm is larger than you can scan, and some cunning enemies might be hiding in the corners... So you have to move.
 
@@ -74,17 +76,17 @@ rk report
 
 Ah, what's that? Looks like we've found yet another own robot, but it's been shot down by that pesky POTATO! Revenge is a dish best served cold:
 
-rk fire 15,13 P
+rk fire 15,13 A
 
-Now we should provide first aid. "TE_"... let's try guessing the last letter. Now, TED is a human name (no robot would ever accept it), TEL is an abbreviation, TEN is a number, TEE is a program... I think it was called "TEA". And, by a fortunate coincidence, our currently selected robot ("DYER") has letter R, which means it can repair! We can do this by inserting a knocked-off letter into a damaged robot. Let's see if there are any "A" drops around.
+Now we should provide first aid. "TE_"... let's try guessing the last letter. Now, TED is a human name (no robot would ever accept it), TEL is an abbreviation, TEN is a number, TEE is a program... I think it was called "TEA". And, by a fortunate coincidence, our currently selected robot ("ZEBRA") has letter R, which means it can repair! We can do this by inserting a knocked-off letter into a damaged robot. Let's see if there are any "A" drops around.
 
 rk report --for drops
 
-Just garbage, not exactly what we need. But "DYER" also has letter E: it is able to extract letters from the underground. Let's try searching for them.
+Just garbage, not exactly what we need. But "ZEBRA" also has letter E: it is able to extract letters from the underground. Let's try searching for them.
 
 rk report --for letters
 
-That's great. An A letter in the same sector as "TE_". It's tough luck, and we have to use it.
+That's great. An A letter in the same sector as "TE_". Tough luck. Also, it's a good thing that we can move into the same sector: only 9 robots at a time can occupy a sector, and the repairer must be close to its target.
 
 rk mv 14,14
 rk extract
@@ -93,7 +95,7 @@ When you extract a letter, it's added to drops (free, usable letters) in this se
 
 rk repair [TeaRobotID] A
 
-Voila, TEA is ready to serve its master (namely, you). And that's a good thing indeed, as TEA is a maniac. Sure, it can't fire (only 3 letters...), but it can extract, just like "DYER", and assemble new robots (letter A), and pick the drops and carry them to other sectors (letter T, for "transport").
+Voila, TEA is ready to serve its master (namely, you). And that's a good thing indeed, as TEA is a maniac. Sure, it can't fire (only 3 letters...), but it can extract, just like "ZEBRA", and assemble new robots (letter A), and pick the drops and carry them to other sectors (letter T, for "transport"). The number of simultaneously carried drops is equal to letter T count in a word: thus, TEA can carry 1 drop, while TENT can carry 2.
 
 h2. Good old assembly
 
@@ -107,21 +109,21 @@ rk pick T
 rk mv 14,14
 rk drop T
 rk report --for letters			# No letter E drops, looking for extractable letters
-robot [DyerRobotID]			# Switching to another robot for speedup
+robot [ZebraRobotID]			# Switching to another robot for speedup
 rk mv 12,13
 robot [TeaRobotID]			# Switching back
 rk mv 12,13
-robot [DyerRobotID]			# Flip-flop, time is precious
+robot [ZebraRobotID]			# Flip-flop, time is precious
 rk extract
 robot [TeaRobotID]			# Collaboration. I see. What's next? Scalability?
 rk pick E
 rk mv 14,14
 rk drop E
-rk asm TEA					# Yeah, second TEA!
+rk asm TEA				# Yeah, second TEA!
 
 You may have noticed that there's a timeout between command executions. In normal realms, it's equal to 2*NumberOfRobots seconds. That means, if you have 3 active robots, each one has a timeout of 6 seconds. The timeouts are not shared, so you can hang around with a bunch of robots while having a couple sitting quietly in an ambush, ready to act anytime.
 
-h3. La vendetta
+h2. La vendetta
 
 Wait a minute. Now I see: the POTATO we've shot recently had nothing to do with wounding our TEA. There's no letter Z in POTATO. So it must have been another robot. Google hasn't indexed the realm yet, so we'll be doing the search manually.
 
@@ -132,23 +134,72 @@ rk report
 rk mv 9,14					# Left
 rk report
 
-Clearly, it wasn't POTATO, it was ZUCCHINI! Show no mercy.
+Heck, it wasn't POTATO, it was ZUCCHINI! Show no mercy.
 
 rk fire C
 
-Argh, no use.
+Argh, no use. Let's switch back to ZEBRA.
 
-In contrary, "TEA", being a 3-letter smallie, is the fastest robot around: covers 8 sectors in a single jump. General rule: each letter reduces the speed by 2.
+robot [ZebraRobotID]
+rk mv 9,14
+rk fire C
+
+Fine, now the deciever is non-functional.
+
+h2. Tear to pieces
+
+I've got an idea: let's disassemble ZU__HINI and use the letters to build our own robot. To do so, we must first assemble a disassembler (ahem). Switch back to TEA and try searching for letter D:
+
+robot [TeaRobotID]
+rk report --for letters
+
+There it is, at 13,13. Also note letter T at 13,12. This area would make a perfect base. Now, it's rather efficient to build DATE: just like TEA with "disassemble" function. So we'll repeat the same steps that we took to build TEA plus a trip to fetch letter T and D.
+
+Have you already thought of assembling new robots in cycle? That's how the world goes, in fact. But don't overproduce: the timeouts make enormous armies pretty useless.
+
+rk extract				# Letter A, remember?
+rk mv 13,12
+rk extract				# It's T time
+rk pick T
+rk mv 14,14
+rk drop T
+rk mv 12,13				# Setting course for E
+rk extract
+rk pick E
+rk mv 14,14
+rk drop E
+rk mv 13,13				# Jumping to sector D
+rk extract
+rk pick D
+rk mv 14,14
+rk drop D
+rk asm DATE				# We're the princes of the universe
+robot [DateRobotID]
+rk mv 7,14
+rk mv 7,14				# DATE's speed is 6
+rk report				# Note ZUCCHINI robot ID
+rk disasm [ZucchiniRobotID]
+rk report --for drops			# Letters Z,U,H,I,N,I appeared along with some other drops
+rk asm HEN				# Why not?
+
+It took DATE two jumps to get to 7,14. Well, more letters mean lower speed: each letter reduces the speed by 2. Our TEA, being a 3-letter smallie, is the fastest robot around: covers 8 sectors in a single jump. 
+
+But in return for lowered speed, massive robots gain a fire range boost: each letter extends it by 3.
+
+Note that it's possible to fire at unscanned sector. The best tactic is to use small robots as scouts and big robots as artillery.
+
+Now that you've completed this realm, take a look at your whole squad:
+
+rk ls
+
+A victory is twice itself when the achiever brings home full numbers.
 
 h2. One last thing
 
 For now, you should be pretty familiar with the controls. The best way to apply your skills is to fight another pilots in a simulation realm. Better be prepared when the big thing happens.
 
-One last thing. I've left three sectors full of enemies: from 19,17 to 19,19. Please don't do anything to them, will you? Anyway, why am I telling you this?..
+One last thing. I've left three sectors full of enemies: from 19,17 to 19,19. I've "borrowed" them from a test depot... Have fun, but don't tell the officials!
 
-# One enemy, one shot. I call it "vigilante"-style.
-# Check if I've covered all commands
-# Check if I've covered all rules
 # Check that tutorial is linear, i.e. no additional enemies are seen before moving own robots.
 # Don't forget creating three sectors of enemies — fruits, vegetables, etc.
 # 'Antidisestablishmentarianism'.toUpperCase().toArray().uniq().collect(function(a) { return String.fromCharCode(a.charCodeAt(0)+1) }).join(',')
