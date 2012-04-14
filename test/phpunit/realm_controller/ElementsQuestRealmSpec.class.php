@@ -10,6 +10,8 @@ class ElementsQuestRealmSpec extends RealmBaseSpec {
         return $this
             ->given('Genesis')
             ->given('User', 'Alice')
+            ->addRealm('Afterlife')
+            ->addRobot('tea_in_Afterlife')
             ->when('Exec', 'realm:create -c ElementsQuestRealmController -p asdf -w 25 -h 25 Afterlife')
             ->given('Realm', 'Afterlife')
             ->given('User', 'Mob')
@@ -23,7 +25,7 @@ class ElementsQuestRealmSpec extends RealmBaseSpec {
 //                ->then('Success')
 //            ->when('Exec', 'bot:create -c GuardianBotController x=20 y=5 complexity=3')
 //                ->then('Success')
-            ->given('Robot', 'justregistered')
+            ->given('Robot', 'tea_in_Afterlife')
             ->when('Exec', 'ls')
                 ->then('Contains', '5,5')
             ->when('AssembleElement', 'FIRE', 5, 20)

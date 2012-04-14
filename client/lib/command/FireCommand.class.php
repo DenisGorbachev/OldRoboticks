@@ -5,7 +5,7 @@ require_once dirname(__FILE__).'/base/RobotCommand.class.php';
 class FireCommand extends RobotCommand {
     public function getParserConfig() {
         return array_merge(parent::getParserConfig(), array(
-            'description' => 'Fire at target robot'
+            'description' => 'Fire at target sector'
         ));
     }
 
@@ -19,7 +19,7 @@ class FireCommand extends RobotCommand {
                 'description' => 'Target sector coordinates (example: 45,230)'
             ),
             'letter' => array(
-                'description' => 'Letter in target sector to fire at'
+                'description' => 'Letter in target sector to fire at (example: T)'
             )
         ));
     }

@@ -39,7 +39,7 @@ class ExtractSpec extends RobotBaseSpec {
                 ->and('User', 'Alice')
                 ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
-            ->when('Exec', 'mv --relative 1,0')
+            ->when('Exec', 'mv 10,9')
             ->when('Exec', 'extract')
             ->then('Failure')
             ->when('Exec', 'report --for drops')

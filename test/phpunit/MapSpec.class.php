@@ -30,7 +30,7 @@ class MapSpec extends ScanBaseSpec {
                 ->and('User', 'Alice')
                 ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
-            ->when('Exec', 'mv --relative 3,0')
+            ->when('Exec', 'mv 12,9')
                 ->and('Exec', 'map')
             ->then('Success')
                 ->and('HasCoordinatesWithMesh', '7,14', '17,14', '7,4', '17,4')

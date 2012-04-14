@@ -19,13 +19,11 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
         foreach ($realmFixtures['Realm'] as $name=>$properties) {
             $this->realms[] = $name;
         }
-        $this->realms[] = 'Afterlife';
         $this->robots[] = null;
         $robotFixtures = sfYaml::load($this->getServerFixturesDir().'/05-Robot.yml');
         foreach ($robotFixtures['Robot'] as $name=>$properties) {
             $this->robots[] = strtolower($name);
         }
-        $this->robots[] = 'justregistered';
     }
 
     public function setUp() {
@@ -43,6 +41,16 @@ class BaseSpec extends PHPUnit_Extensions_Story_TestCase {
     public function tearDown() {
         $this->setDebug(false);
         parent::tearDown();
+    }
+
+    public function addRealm($name) {
+        $this->realms[] = $name;
+        return $this;
+    }
+
+    public function addRobot($name) {
+        $this->robots[] = $name;
+        return $this;
     }
 
     public function exec($command) {

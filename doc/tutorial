@@ -9,7 +9,7 @@ As you already know, this Roboticks thing is a simulation of a real conflict. So
 rk host roboticks.faster-than-wind.ru	# Setup the server name
 rk register [YourNicknameHere]		# Register new account
 rk login [YourNicknameHere]		# Log in
-rk realm:create -c TutorialRealmController [YourNicknameHere]_Tutorial # Create a tutorial realm
+rk realm:create -c TutorialRealmController [YourNicknameHere]_Tutorial  # Create a tutorial realm (choose any password)
 realm [YourRealmID]			# Select the newly created realm ([YourRealmID] is available in the output of previous command)
 
 The first robot "TOASTER" is already assembled. Select it by ID from previous command output.
@@ -136,13 +136,13 @@ rk report
 
 Heck, it wasn't POTATO, it was ZUCCHINI! Show no mercy.
 
-rk fire C
+rk fire 7,14 C
 
 Argh, no use. Let's switch back to ZEBRA.
 
 robot [ZebraRobotID]
 rk mv 9,14
-rk fire C
+rk fire 7,14 C
 
 Fine, now the deciever is non-functional.
 

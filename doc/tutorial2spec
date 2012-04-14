@@ -1,0 +1,6 @@
+#!/bin/bash
+
+grep -P "^(rk|robot)" doc/tutorial | perl -p -e "s/\s+#.*//g;" -e "s/rk (.*)/->when('Exec', '\1')/g;" -e "s/robot \[(\w+)\]/\t->given('Robot', '\1')/g;" -e "s/\[(\w+)\]/'.\\\$this->getRobotId('\1').'/g;" -e "s/(\w+)RobotID/lc(\$1)/ge;" -e "s/tea/tea1/g;" -e "s/.''//g;" -e "s/(.*)/\1\n->then('Success')/;"
+
+
+

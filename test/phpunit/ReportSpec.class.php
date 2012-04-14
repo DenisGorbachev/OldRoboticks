@@ -23,7 +23,7 @@ class ReportSpec extends ScanBaseSpec {
                 ->and('User', 'Alice')
                 ->and('Realm', 'Universe')
                 ->and('Robot', 'tea')
-            ->when('Exec', 'mv --relative 3,0')
+            ->when('Exec', 'mv 12,9')
                 ->and('Exec', 'report')
             ->then('Success')
                 ->and('Contains', ' PLUSH ')

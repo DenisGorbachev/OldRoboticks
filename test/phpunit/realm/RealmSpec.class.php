@@ -17,16 +17,6 @@ class RealmSpec extends BaseSpec {
 
     /* Borderline */
 
-    public function testInvalidFireThroughRealms() {
-        return $this
-            ->given('Genesis')
-                ->and('User', 'Alice')
-                ->and('Realm', 'Etherworld')
-                ->and('Robot', 'meat')
-            ->when('Exec', 'fire 11 U')
-            ->then('Failure')
-    ;}
-
     public function testInvalidPlayOnInaccessibleRealm() {
         return $this
             ->given('Genesis')

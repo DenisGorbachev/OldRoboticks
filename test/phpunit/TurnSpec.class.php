@@ -58,9 +58,9 @@ class TurnSpec extends BaseSpec {
                 ->and('User', 'Alice')
                 ->and('Realm', 'Universe')
                 ->and('Robot', 'tear')
-            ->when('Exec', 'fire '.$this->getRobotId('plush').' U')
+            ->when('Exec', 'fire 15,4 U')
             ->then('Failure')
-            ->when('Exec', 'fire '.$this->getRobotId('fuel').' U')
+            ->when('Exec', 'fire 9,8 U')
             ->then('PleaseWait')
     ;}
 

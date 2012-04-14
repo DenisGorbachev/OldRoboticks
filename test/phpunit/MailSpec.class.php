@@ -63,7 +63,7 @@ class MailSpec extends BaseSpec {
 
     public function testNotification() {
         $commands = array(
-            'fire '.$this->getRobotId('sedative').' S',
+            'fire 12,5 S',
             'repair '.$this->getRobotId('sedative').' I',
             'disasm '.$this->getRobotId('sedative'),
         );

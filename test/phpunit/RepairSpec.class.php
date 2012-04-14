@@ -82,7 +82,7 @@ class RepairSpec extends RobotBaseSpec {
                 ->and('User', 'Friend')
                 ->and('Realm', 'Universe')
                 ->and('Robot', 'drake')
-            ->when('Exec', 'fire '.$this->getRobotId('sedative').' S')
+            ->when('Exec', 'fire 12,5 S')
             ->when('Exec', 'repair '.$this->getRobotId('sedative').' S')
             ->then('Failure')
     ;}
