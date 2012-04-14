@@ -46,7 +46,7 @@ rk fire 6,8 O
 * TEA can... oops, it can't fire: only robots consisting of 4 or more letters can fire.
 * RIFLE can fire at S,J,G,M,F.
 
-The practical result from all this theory is that our TOASTER can't hit ORANGE. But we have another "own" robot — DYER — which can fire at G,P,L,S. And that means it can hit ORANGE, too. Nice.
+The practical result from all this theory is that our TOASTER can't hit ORANGE. But we have another "own" robot — DYER — which can fire at E,Z,F,S. And that means it can hit ORANGE, too. Nice.
 
 robot [DyerRobotID]
 rk fire 6,8 G
