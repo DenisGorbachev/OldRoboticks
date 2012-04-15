@@ -67,10 +67,14 @@ class realmActions extends rkActions {
                 'realm' => (string)$this->object
             ));
         } else {
-            $robot = $this->object->getController()->addUser($dbUser);
-            return $this->success('joined realm %realm%, got new robot %robot%.', array(
+            $robots = $this->object->getController()->addUser($dbUser);
+            $robotStrings = array();
+            foreach ($robots as $robot) {
+                $robotStrings[] = (string)$robot;
+            }
+            return $this->success('joined realm %realm%, got new robots: %robots%.', array(
                 'realm' => (string)$this->object,
-                'robot' => (string)$robot,
+                'robots' => implode(', ', $robotStrings),
             ));
         }
 

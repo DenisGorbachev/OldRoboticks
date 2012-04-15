@@ -16,7 +16,6 @@ class TutorialSpec extends BaseSpec {
                 ->addRobot('tea1')
                 ->addRobot('tea2')
                 ->addRobot('date')
-            ->markTestIncomplete()
             ->when('Exec', 'realm:create -c TutorialRealmController --no-password Alice_Tutorial')
             ->then('Success')
                 ->given('Realm', 'Alice_Tutorial')

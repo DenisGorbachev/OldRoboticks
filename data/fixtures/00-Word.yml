@@ -67,3 +67,13 @@ Word:
     name:                    "EARTH"
   AIR:
     name:                    "AIR"
+  TOASTER:
+    name:                    "TOASTER"
+  ORANGE:
+    name:                    "ORANGE"
+  ZEBRA:
+    name:                    "ZEBRA"
+  POTATO:
+    name:                    "POTATO"
+  ZUCCHINI:
+    name:                    "ZUCCHINI"

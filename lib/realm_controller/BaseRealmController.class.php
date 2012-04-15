@@ -52,17 +52,30 @@ abstract class BaseRealmController {
     public function addUser(User $user) {
         $userRealmLink = $this->createUserRealmLink($user->getId());
         $userRealmLink->save();
-        $robot = $this->createRobot($user->getId());
-        $robot->save();
-        return $robot;
+        $robots = $this->createRobots($user->getId());
+        foreach ($robots as $robot) {
+            $robot->save();
+        }
+        return $robots;
     }
 
-    public function createRobot($userId)
+    public function createRobots($userId)
+    {
+        $sector = SectorTable::getInstance()->getRandomSector();
+        $robot = $this->generateRobot('TEA', $userId, $sector->getId());
+        return array($robot);
+    }
+
+    public function generateRobot($status, $userId, $sectorId, $wordId = null, $cargo = '', $activeAt = 0)
     {
         $robot = new Robot();
+        $robot->setStatus($status);
+        $robot->setCargo($cargo);
+        $robot->setWordId($wordId);
         $robot->setUserId($userId);
+        $robot->setSectorId($sectorId);
         $robot->setRealmId($this->getRealm()->getId());
-        $robot->randomizeSector();
+        $robot->setActiveAt($activeAt);
         return $robot;
     }
 

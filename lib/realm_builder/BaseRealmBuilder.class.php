@@ -51,7 +51,7 @@ abstract class BaseRealmBuilder {
         return $drops;
     }
 
-    public function generateSector($x, $y, $letter, $drops) {
+    public function generateSector($x, $y, $letter = '', $drops = '') {
         $sector = new Sector();
         $sector->setRealmId($this->getRealm()->getId());
         $sector->setX($x);

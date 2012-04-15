@@ -8,16 +8,18 @@ class ElementsQuestRealmController extends GenericRealmController {
         'AIR' => array(0.8,0.2),
     );
 
-    public function createRobot($userId) {
+    public function createRobots($userId) {
         $realm = $this->getRealm();
         $count = UserRealmTable::getInstance()->countByRealmId($realm->getId());
         $positionNumber = $count % 4 - 1;
         $positions = array_values($this->elements);
         $position = $positions[$positionNumber];
-        $robot = parent::createRobot($userId);
         $sector = SectorTable::getInstance()->findOneByXAndY(ceil($realm->getWidth()*$position[0]), ceil($realm->getHeight()*$position[1]));
-        $robot->setSector($sector);
-        return $robot;
+        $robots = parent::createRobots($userId);
+        foreach ($robots as $robot) {
+            $robot->setSector($sector);
+        }
+        return $robots;
     }
 
     public function setElements($elements) {

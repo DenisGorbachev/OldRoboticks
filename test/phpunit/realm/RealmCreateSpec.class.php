@@ -39,9 +39,9 @@ class RealmCreateSpec extends BaseSpec {
             ->given('Genesis')
                 ->and('User', 'Alice')
                 ->addRealm('Afterlife')
-            ->when('Exec', 'realm:create -c MapAndMoveTutorialRealmController -p asdf Afterlife')
+            ->when('Exec', 'realm:create -c TutorialRealmController -p asdf Afterlife')
             ->then('Contains', 'Success')
-                ->and('Contains', 'MapAndMoveTutorial')
+                ->and('Contains', 'Tutorial')
     ;}
 
     /* Borderline */
