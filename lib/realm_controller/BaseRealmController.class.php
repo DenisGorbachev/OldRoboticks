@@ -66,7 +66,11 @@ abstract class BaseRealmController {
         return array($robot);
     }
 
-    public function generateRobot($status, $userId, $sectorId, $wordId = null, $cargo = '', $activeAt = 0)
+    public function generateRobot($status, User $user, Sector $sector, Word $word = null, $cargo = '', $activeAt = 0) {
+        return $this->generateRobotByIds($status, $user->getId(), $sector->getId(), $word->getId(), $cargo, $activeAt);
+    }
+
+    public function generateRobotByIds($status, $userId, $sectorId, $wordId = null, $cargo = '', $activeAt = 0)
     {
         $robot = new Robot();
         $robot->setStatus($status);

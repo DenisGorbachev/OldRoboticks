@@ -11,6 +11,7 @@ rk register [YourNicknameHere]		# Register new account
 rk login [YourNicknameHere]		# Log in
 rk realm:create -c TutorialRealmController [YourNicknameHere]_Tutorial  # Create a tutorial realm (choose any password)
 realm [YourRealmID]			# Select the newly created realm ([YourRealmID] is available in the output of previous command)
+rk bot:add -c TutorialBotController
 
 The first robot "TOASTER" is already assembled. Select it by ID from previous command output.
 
@@ -203,3 +204,4 @@ One last thing. I've left three sectors full of enemies: from 19,17 to 19,19. I'
 # Check that tutorial is linear, i.e. no additional enemies are seen before moving own robots.
 # Don't forget creating three sectors of enemies — fruits, vegetables, etc.
 # 'Antidisestablishmentarianism'.toUpperCase().toArray().uniq().collect(function(a) { return String.fromCharCode(a.charCodeAt(0)+1) }).join(',')
+# U,P,B,T,F,S,A,C,E
