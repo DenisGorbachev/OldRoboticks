@@ -14,7 +14,7 @@ class TutorialRealmController extends GenericRealmController {
                 $robots[] = $this->generateRobotByIds('TE_', $userId, $sectorTable->findOneByXAndY(14, 14)->getId(), WordTable::getInstance()->findOneBy('name', 'TEA')->getId());
                 break;
             case 2:
-                $robots[] = $this->generateRobotByIds('PEAR', $userId, $sectorTable->findOneByXAndY(9, 9)->getId());
+                $robots[] = $this->generateRobotByIds('PEANUT', $userId, $sectorTable->findOneByXAndY(9, 9)->getId());
                 for ($i = 0; $i < 3; $i++) {
                     $robots[] = $this->generateRobotByIds('CUCUMBER', $userId, $sectorTable->findOneByXAndY(7, 5)->getId());
                 }
@@ -34,6 +34,10 @@ class TutorialRealmController extends GenericRealmController {
                 break;
         }
         return $robots;
+    }
+
+    public function getRobotInactivityInterval($userId) {
+        return min(parent::getRobotInactivityInterval($userId), 2);
     }
 
 }

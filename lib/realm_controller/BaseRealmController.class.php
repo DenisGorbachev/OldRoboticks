@@ -91,6 +91,13 @@ abstract class BaseRealmController {
         return $userRealmLink;
     }
 
+    public function getRobotInactivityInterval($userId) {
+        if (!sfContext::hasInstance() || sfContext::getInstance()->getConfiguration()->isDebug()) {
+            return 0;
+        }
+        return min(sfConfig::get('app_turn_duration_limit'), sfConfig::get('app_turn_duration_increment') * RobotTable::getInstance()->countOwnedInRealm($userId, $this->getRealm()->getId()));
+    }
+
     public function setDispatcher($dispatcher)
     {
         $this->dispatcher = $dispatcher;

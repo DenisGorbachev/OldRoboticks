@@ -25,18 +25,4 @@ class User extends BaseUser {
       return $this->password == md5($password.$this->salt);
     }
 
-    public function countRobotsInRealm($realmId) {
-        return RobotTable::getInstance()->createQuery('r')
-            ->where('r.user_id = ?', $this->id)
-            ->andWhere('r.realm_id = ?', $realmId)
-            ->count();
-    }
-    
-    public function getRobotInactivityInterval($realmId) {
-        if (!sfContext::hasInstance() || sfContext::getInstance()->getConfiguration()->isDebug()) {
-            return 0;
-        }
-        return min(sfConfig::get('app_turn_duration_limit'), sfConfig::get('app_turn_duration_increment') * $this->countRobotsInRealm($realmId));
-    }
-
 }

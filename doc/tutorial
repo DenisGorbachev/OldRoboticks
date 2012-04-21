@@ -1,28 +1,37 @@
-h2. Hello there!
+h2. Hello code!
 
 These .deb and .rpm packages are cool. Still, no programmer should resist the urge to download the source code and... just run it, without any compiling.
 
+<pre>
 git clone git://github.com/DenisGorbachev/Roboticks.git Roboticks
 sudo ./Roboticks/client/install.sh
+source ./Roboticks/client/functions
+</pre>
 
 h2. Fire at will
 
 As you already know, this Roboticks thing is a simulation of a real conflict. So you'd better log in to the server and create yourself a tutorial realm right now.
 
+<pre>
 rk host roboticks.faster-than-wind.ru    # Set the server name
 rk register [YourNicknameHere]        # Register new account
 rk login [YourNicknameHere]        # Log in
-rk realm:create -c TutorialRealmController [YourNicknameHere]_Tutorial  # Create a tutorial realm (choose any password)
+rk realm:create -c TutorialRealmController [YourNicknameHere]Tutorial  # Create a tutorial realm (choose any password)
 realm [YourRealmID]            # Select the newly created realm ([YourRealmID] is available in the output of previous command)
 rk bot:add Mannequin
+</pre>
 
-The first robot "TOASTER" is already assembled. Select it by ID from previous command output.
+The first robot "TOASTER" is already assembled. Select it by ID from "realm:create" command output.
 
+<pre>
 robot [ToasterRobotID]
+</pre>
 
 Now that you're all set up, it's time to learn the most important thing: how to *fire at enemies*. Real examples are far more superior than any theoretical explanations, so:
 
+<pre>
 rk fire 9,9 P
+</pre>
 
 Wonder what you've just did? YOU HIT THAT OTHER ROBOT. Hear that? It's been damaged and can't function. Which also means it can't fire back at us. Yummy.
 
@@ -30,13 +39,17 @@ Actually, there are some intercontinental rules about warning shots and the like
 
 Okay, you've got your first target. But I reckon there are more enemies in this area. To scan the surroundings and reveal those unworthy rascals, issue the following command:
 
+<pre>
 rk report
+</pre>
 
 See? There's the robot you already hit, and there are other robots marked as "enemy". And hey, look, it's pretty interesting: there's a second "own" robot! We'll talk about controlling multiple robots later.
 
 Let's try dealing more damage. There are three robots standing on the same sector 7,5. Placing a shot there would hit them all:
 
+<pre>
 rk fire 7,5 U
+</pre>
 
 Every robot in sector 7,5 with letter U in its name has been hit. Luckily, that sector had only enemies. If there were own robots in it, they would also be hit (so keep distance). Still, is there anybody out there? It turns out, a single annoying ORANGE on 6,8 is still alive. But trying to finish him off is a no-go with currently selected robot.
 
@@ -50,8 +63,10 @@ You see, robots can only fire at letters that are next-by-alphabet to those that
 
 The practical result from all this theory is that our TOASTER can't hit ORANGE. But we have another "own" robot — ZEBRA — which can fire at A,F,C,S,B. And that means it can hit ORANGE, too. Nice.
 
+<pre>
 robot [ZebraRobotID]
 rk fire 6,8 A
+</pre>
 
 Sector clear!
 
@@ -61,42 +76,60 @@ h2. Moving on
 
 So far, we've been only looking around the map with our first robot, TOASTER. But it has a limited scan range (in fact, every robot has a rectangular scan range of 5 sectors). So you are encouraged to try scanning with currently selected robot, ZEBRA:
 
+<pre>
 rk report
+</pre>
 
 There! New enemy! Neutralize him quickly.
 
+<pre>
 rk fire 2,2 F
+</pre>
 
 Fine, I feel more secure now. But the realm is larger than you can scan, and some cunning enemies might be hiding in the corners... So you have to move.
 
+<pre>
 rk mv 7,7
 rk mv 10,10
+</pre>
 
 And while moving, you'd better look around.
 
+<pre>
 rk report
+</pre>
 
 Ah, what's that? Looks like we've found yet another own robot, but it's been shot down by that pesky POTATO! Revenge is a dish best served cold:
 
+<pre>
 rk fire 15,13 A
+</pre>
 
 Now we should provide first aid. "TE_"... let's try guessing the last letter. Now, TED is a human name (no robot would ever accept it), TEL is an abbreviation, TEN is a number, TEE is a program... I think it was called "TEA". And, by a fortunate coincidence, our currently selected robot ("ZEBRA") has letter R, which means it can repair! We can do this by inserting a knocked-off letter into a damaged robot. Let's see if there are any "A" drops around.
 
+<pre>
 rk report --for drops
+</pre>
 
 Just garbage, not exactly what we need. But "ZEBRA" also has letter E: it is able to extract letters from the underground. Let's try searching for them.
 
+<pre>
 rk report --for letters
+</pre>
 
 That's great. An A letter in the same sector as "TE_". Tough luck. Also, it's a good thing that we can move into the same sector: only 9 robots at a time can occupy a sector, and the repairer must be close to its target.
 
+<pre>
 rk mv 14,14
 rk mv 14,14
 rk extract
+</pre>
 
 When you extract a letter, it's added to drops (free, usable letters) in this sector. You can extract as many letters as you wish, they regenerate. But the total number of drops in a sector is limited by 65535 (I don't know why, ask the scientists). However, I've only seen such a huge pile of drops while being in China operation, and that was some bizarre fighting, I can tell you. They sent sheer numbers of small 4-letter robots (TANK, RAID, BEAT...) at our massive 13-letter carriers (VULCANIZATION being the most impressive). We just plunged them into fire. Each sector recieved at least one shell every two seconds. Slowly, our robots began to advance. In an hour, they reached a factory of around eighteen assemblers doing their job, spread around three sectors. When the fight was over, there still were ~40000 drops in each of them. Anyway, back to our business.
 
+<pre>
 rk repair [TeaRobotID] A
+</pre>
 
 Voila, TEA is ready to serve its master (namely, you). And that's a good thing indeed, as TEA is a maniac. Sure, it can't fire (only 3 letters...), but it can extract, just like "ZEBRA", and assemble new robots (letter A), and pick the drops and carry them to other sectors (letter T, for "transport"). The number of simultaneously carried drops is equal to letter T count in a word: thus, TEA can carry 1 drop, while TENT can carry 2.
 
@@ -104,6 +137,7 @@ h2. Good old assembly
 
 In most realms, you receive a single TEA at the beginning. Frequently (but not always) the best strategy is to replicate: create more TEAs, so that if one is shot, the others can build a squad for counter-offensive. Let's assemble another TEA.
 
+<pre>
 robot [TeaRobotID]
 rk extract                # Another letter A
 rk report --for drops            # Cool, letter T in 14,13
@@ -123,13 +157,15 @@ rk pick E
 rk mv 14,14
 rk drop E
 rk asm TEA                # Yeah, second TEA!
+</pre>
 
-You may have noticed that there's a timeout between command executions. In normal realms, it's equal to 2*NumberOfRobots seconds. That means, if you have 3 active robots, each one has a timeout of 6 seconds. The timeouts are not shared, so you can hang around with a bunch of robots while having a couple sitting quietly in an ambush, ready to act anytime.
+You've surely noticed the timeout between command executions. In this realm, it's always 2 seconds. But in most realms, it's equal to 2*NumberOfRobots seconds. That means, if you have 3 active robots, each one has a timeout of 6 seconds. The timeouts are not shared, so you can hang around with a bunch of robots while having a couple sitting quietly in an ambush, ready to act anytime.
 
 h2. La vendetta
 
 Wait a minute. Now I see: the POTATO we've shot recently had nothing to do with wounding our TEA. There's no letter Z in POTATO. So it must have been another robot. Google hasn't indexed the realm yet, so we'll be doing the search manually.
 
+<pre>
 robot [ZebraRobotID]   # Switching back to the fighter
 rk mv 18,14                    # Right
 rk report
@@ -137,10 +173,13 @@ rk mv 14,18                    # Up
 rk report
 rk mv 10,14                    # Left
 rk report
+</pre>
 
 Heck, it wasn't POTATO, it was ZUCCHINI! Show no mercy.
 
+<pre>
 rk fire 7,18 C
+</pre>
 
 Fine, now the deciever is non-functional.
 
@@ -148,13 +187,16 @@ h2. Tear to pieces
 
 I've got an idea: let's disassemble ZU__HINI and use the letters to build our own robot. To do so, we must first assemble a disassembler (ahem). Switch back to TEA and try searching for letter D:
 
+<pre>
 robot [TeaRobotID]
 rk report --for letters
+</pre>
 
 There it is, at 13,13. Also note letter T at 13,12. This area would make a perfect base. Now, it's rather efficient to build DATE: just like TEA with "disassemble" function. So we'll repeat the same steps that we took to build TEA plus a trip to fetch letter T and D.
 
 Have you already thought of assembling new robots in cycle? That's how the world goes, in fact. But don't overproduce: the timeouts make enormous armies pretty useless.
 
+<pre>
 rk extract                # Letter A, remember?
 rk mv 13,12
 rk extract                # It's T time
@@ -179,16 +221,17 @@ rk report                # Note ZUCCHINI robot ID
 rk disasm [ZucchiniRobotID]
 rk report --for drops            # Letters Z,U,H,I,N,I appeared along with some other drops
 rk asm HEN                # Why not?
+</pre>
 
-It took DATE two jumps to get to 7,18. Well, more letters mean lower speed: each letter reduces the speed by 2. Our TEA, being a 3-letter smallie, is the fastest robot around: covers 8 sectors in a single jump.
+It took DATE two jumps to get to 7,18. Well, more letters mean lower speed: each letter reduces the speed by 2. Our TEA, being a 3-letter smallie, is the fastest robot around: covers 8 sectors in a single jump. But in return for lowered speed, massive robots gain a fire range boost: each letter extends it by 3.
 
-But in return for lowered speed, massive robots gain a fire range boost: each letter extends it by 3.
-
-Note that it's possible to fire at unscanned sector. The best tactic is to use small robots as scouts and big robots as artillery.
+Note that it's possible to fire at unscanned sector. A common tactic is to use small robots as scouts and big robots as artillery.
 
 Now that you've completed this realm, take a look at your whole squad:
 
+<pre>
 rk ls
+</pre>
 
 A victory is twice itself when the achiever brings home full numbers.
 
@@ -196,9 +239,5 @@ h2. One last thing
 
 For now, you should be pretty familiar with the controls. The best way to apply your skills is to fight another pilots in a simulation realm. Better be prepared when the big thing happens.
 
-One last thing. I've left three sectors full of enemies: from 1,19 to 3,19. I've "borrowed" them from a test depot... Have fun, but don't tell the officials!
+One last thing. I've left three sectors full of enemies: from 1,19 to 3,19 ("borrowed" them from a test depot...). Have fun, but don't tell the officials!
 
-# Check that tutorial is linear, i.e. no additional enemies are seen before moving own robots.
-# Don't forget creating three sectors of enemies — fruits, vegetables, etc.
-# 'Antidisestablishmentarianism'.toUpperCase().toArray().uniq().collect(function(a) { return String.fromCharCode(a.charCodeAt(0)+1) }).join(',')
-# U,P,B,T,F,S,A,C,E

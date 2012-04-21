@@ -128,7 +128,7 @@ class Robot extends BaseRobot {
         try {
             $result = call_user_func_array(array($this, 'do'.$action.'Action'), $arguments);
             if ($result !== false) {
-                $this->setActiveAt(time() + $this->getUser()->getRobotInactivityInterval($this->getRealmId()));
+                $this->setActiveAt(time() + $this->getRealm()->getController()->getRobotInactivityInterval($this->getUserId(), $this->getRealmId()));
                 $this->save();
             }
         } catch (Exception $e) {
