@@ -11,19 +11,15 @@ class BotAddCommand extends RealmCommand {
 
     public function getOptionConfigs() {
         return array_merge(parent::getOptionConfigs(), array(
-            'controller_class' => array(
-                'short_name' => '-c',
-                'long_name' => '--controller-class',
-                'description' => 'Controller class of a bot (defines its behavior). List available controller classes using `rk bot:ls-cc`',
-                'action' => 'StoreString',
-                'default' => 'DeathmatchBotController'
-            ),
+            
         ));
     }
 
     public function getArgumentConfigs() {
         return array_merge(parent::getArgumentConfigs(), array(
-
+            'name' => array(
+                'description' => 'Controller class of a bot (defines its behavior). List available controller classes using `rk bot:ls-cc`',
+            )
         ));
     }
 

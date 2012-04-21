@@ -15,7 +15,7 @@ class Bot extends BaseBot
     public $controller;
 
     public function __toString() {
-        return '#'.$this->getId();
+        return sprintf($this->getTable()->getToStringFormat(), $this->getId(), $this->getName());
     }
 
     public function getController() {

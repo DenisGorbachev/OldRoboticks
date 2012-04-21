@@ -4,7 +4,7 @@
  * @method Bot getObject()
  */
 class BotGuard extends BaseGuard {
-    public static function canAdd() {
+    public function canAdd() {
         return true;
     }
 

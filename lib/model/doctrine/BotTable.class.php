@@ -17,6 +17,10 @@ class BotTable extends Doctrine_Table
         return Doctrine_Core::getTable('Bot');
     }
 
+    public function getToStringFormat() {
+        return '#%id "%s"';
+    }
+
     public function getActiveBotsQuery() {
         return $this->createQuery('b')
             ->andWhere('b.active_at <= ?', time())

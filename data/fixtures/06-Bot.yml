@@ -1,6 +1,4 @@
 Bot:
   RiderOnTheStorm:
-    controller_class:   RiderOnTheStormBotController
-    username:      "RiderOnTheStormBotUser"
-    password:      "asdf"
-    Realm:              Lawn
+    name:           RiderOnTheStorm
+    host:           bots.roboticks

@@ -1,21 +1,26 @@
 <?php
 
 class botActions extends rkActions {
+    public function prepareAutoObjectByName() {
+        return $this->prepareAutoObject('name', 'object', 'name');
+    }
+
     public function prepareAdd() {
-        $this->prepareAutoAddForm();
-        $this->pushFormParameters($this->form, array(
-            'realm_id' => $this->realm_id
-        ));
-        $this->appendFormParameters($this->form, $this->form->getDefaults());
+        return $this->prepareAutoObjectByName();
     }
 
     public function validateAdd() {
-        return $this->validateAutoStatic();
+        return $this->validateAutoObject();
     }
 
     public function executeAdd(sfWebRequest $request) {
         set_time_limit(0);
-        return $this->executeAutoAjaxForm();
+//        $this->bot->checkConnection();
+        $this->bot->addToRealm($this->realm);
+        return $this->success('Added bot %bot% to realm %realm%', array(
+            'bot' => (string)$this->bot,
+            'realm' => (string)$this->realm,
+        ));
     }
 
 }
