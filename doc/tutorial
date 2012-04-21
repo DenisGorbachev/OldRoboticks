@@ -1,6 +1,9 @@
 h2. Hello there!
 
-Download the Roboticks client _here_.
+These .deb and .rpm packages are cool. Still, no programmer should resist the urge to download the source code and... just run it, without any compiling.
+
+git clone git clone git://github.com/DenisGorbachev/Roboticks.git Roboticks
+sudo ./Roboticks/client/install.sh
 
 h2. Fire at will
 
