@@ -55,13 +55,13 @@ UserRealm:
       fields:                [realm_id, user_id]
       type:                 unique
   relations:
-    Users:
+    User:
       class:                  User
       foreignAlias:        UserRealms
       local:             user_id
       onDelete:            CASCADE
       onUpdate:        CASCADE
-    Realms:
+    Realm:
       class:                  Realm
       foreignAlias:        UserRealms
       local:             realm_id
@@ -221,11 +221,28 @@ Bot:
     Users:
       class:                User
       foreignAlias:        Bots
-      refClass:            BotUser
+      refClass:            UserBot
       onDelete:            CASCADE
       onUpdate:        CASCADE
 
-BotUser:
+UserBot:
   columns:
-    bot_id:             { type: integer }
     user_id:            { type: integer }
+    bot_id:             { type: integer }
+  indexes:
+    the_one:
+      fields:                [bot_id, user_id]
+      type:                 unique
+  relations:
+    User:
+      class:                  User
+      foreignAlias:        UserBots
+      local:             user_id
+      onDelete:            CASCADE
+      onUpdate:        CASCADE
+    Bot:
+      class:                  Bot
+      foreignAlias:        UserBots
+      local:             bot_id
+      onDelete:            CASCADE
+      onUpdate:        CASCADE

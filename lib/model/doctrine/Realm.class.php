@@ -80,7 +80,7 @@ class Realm extends BaseRealm
     }
 
     public function isMember(User $user) {
-        return UserRealmTable::getInstance()->countByUserIdAndRealmId($user->getId(), $this->getId());
+        return (bool)UserRealmTable::getInstance()->findOneByUserIdAndRealmId($user->getId(), $this->getId());
     }
 
     public function getSectorsCount() {
@@ -108,6 +108,26 @@ class Realm extends BaseRealm
         $link->setIsWinner(true);
         $link->save();
         return $link;
+    }
+
+    public function addBot(Bot $bot) {
+        $userInfo = array();
+        $userTable = UserTable::getInstance();
+        $user = $userTable->getFreeBotUserForRealm($bot->getId(), $this->getId());
+        if (empty($user)) {
+            $user = new User();
+            $user->setUsername($bot->getName().'Bot'.(1+UserBotTable::getInstance()->getByBotIdQuery($bot->getId())->count()));
+            $password = $userTable->generatePassword();
+            $user->setPassword($password);
+            $userInfo['password'] = $password;
+            $userBotLink = new UserBot();
+            $userBotLink->setUser($user);
+            $userBotLink->setBot($bot);
+            $userBotLink->save();
+        }
+        $this->getController()->addUser($user);
+        $userInfo['username'] = $user->getUsername();
+        return $userInfo;
     }
 
     public function postInsert($event) {

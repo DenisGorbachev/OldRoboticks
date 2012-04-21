@@ -1,4 +1,7 @@
 Bot:
+  Mannequin:
+    name:           Mannequin
+    host:           bots.roboticks
   RiderOnTheStorm:
     name:           RiderOnTheStorm
     host:           bots.roboticks

@@ -35,4 +35,8 @@ class UserRealmTable extends Doctrine_Table
         return $this->getByUserIdAndRealmIdQuery($userId, $realmId)->count();
     }
 
+    public function getUserIdsByRealmId($realmId) {
+        return (array)$this->getByRealmIdQuery($realmId)->select('ur.user_id')->execute(array(), Doctrine::HYDRATE_SINGLE_SCALAR);
+    }
+
 }

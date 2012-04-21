@@ -2,11 +2,13 @@
 
 class botActions extends rkActions {
     public function prepareAutoObjectByName() {
-        return $this->prepareAutoObject('name', 'object', 'name');
+        set_time_limit(180);
+        $this->prepareAutoRealm();
+        $this->prepareAutoObject('name', 'object', 'name');
     }
 
     public function prepareAdd() {
-        return $this->prepareAutoObjectByName();
+        $this->prepareAutoObjectByName();
     }
 
     public function validateAdd() {
@@ -14,11 +16,9 @@ class botActions extends rkActions {
     }
 
     public function executeAdd(sfWebRequest $request) {
-        set_time_limit(0);
-//        $this->bot->checkConnection();
-        $this->bot->addToRealm($this->realm);
+        $this->realm->addBot($this->object);
         return $this->success('Added bot %bot% to realm %realm%', array(
-            'bot' => (string)$this->bot,
+            'bot' => (string)$this->object,
             'realm' => (string)$this->realm,
         ));
     }

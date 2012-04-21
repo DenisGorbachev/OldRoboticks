@@ -18,7 +18,7 @@ class BotTable extends Doctrine_Table
     }
 
     public function getToStringFormat() {
-        return '#%id "%s"';
+        return '#%d "%s"';
     }
 
     public function getActiveBotsQuery() {

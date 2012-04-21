@@ -69,11 +69,40 @@ Word:
     name:                    "AIR"
   TOASTER:
     name:                    "TOASTER"
-  ORANGE:
-    name:                    "ORANGE"
   ZEBRA:
     name:                    "ZEBRA"
+  DATE:
+    name:                    "DATE"
+  HEN:
+    name:                    "HEN"
+  ORANGE:
+    name:                    "ORANGE"
+  CUCUMBER:
+    name:                    "CUCUMBER"
+  ORANGE:
+    name:                    "ORANGE"
+  FEIJOA:
+    name:                    "FEIJOA"
   POTATO:
     name:                    "POTATO"
   ZUCCHINI:
     name:                    "ZUCCHINI"
+  LIME:
+    name:                    "LIME"
+  PLUM:
+    name:                    "PLUM"
+  CHERRY:
+    name:                    "CHERRY"
+  AVOCADO:
+    name:                    "AVOCADO"
+  GOOSEBERRY:
+    name:                    "GOOSEBERRY"
+  POMEGRANATE:
+    name:                    "POMEGRANATE"
+  LEMON:
+    name:                    "LEMON"
+  BANANA:
+    name:                    "BANANA"
+  APPLE:
+    name:                    "APPLE"
+                  

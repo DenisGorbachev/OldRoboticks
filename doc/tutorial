@@ -11,7 +11,7 @@ rk register [YourNicknameHere]		# Register new account
 rk login [YourNicknameHere]		# Log in
 rk realm:create -c TutorialRealmController [YourNicknameHere]_Tutorial  # Create a tutorial realm (choose any password)
 realm [YourRealmID]			# Select the newly created realm ([YourRealmID] is available in the output of previous command)
-rk bot:add -c TutorialBotController
+rk bot:add Mannequin
 
 The first robot "TOASTER" is already assembled. Select it by ID from previous command output.
 
@@ -35,11 +35,9 @@ Let's try dealing more damage. There are three robots standing on the same secto
 
 rk fire 7,5 U
 
-Every robot in sector 7,5 with letter U in its name has been hit. Luckily, that sector had only enemies. If there were own robots in it, they would also be hit (so keep distance). Still, is there anybody out there? It turns out, a single annoying ORANGE on 6,8 is still alive. But trying to finish him off:
+Every robot in sector 7,5 with letter U in its name has been hit. Luckily, that sector had only enemies. If there were own robots in it, they would also be hit (so keep distance). Still, is there anybody out there? It turns out, a single annoying ORANGE on 6,8 is still alive. But trying to finish him off is a no-go with currently selected robot.
 
-rk fire 6,8 O
-
-... is a no-go with currently selected robot. You see, robots can only fire at letters that are next-by-alphabet to those that appear in their own name. For example, the first letter in RIFLE is R, and the alphabet says "P-Q-R-S-T", so S is next to R, so RIFLE can fire at S. That's complex, so I'll give a few examples:
+You see, robots can only fire at letters that are next-by-alphabet to those that appear in their own name. For example, the first letter in RIFLE is R, and the alphabet says "P-Q-R-S-T", so S is next to R, so RIFLE can fire at S. That's complex, so I'll give a few examples:
 * SINK can fire at T,J,O,L.
 * SHIP can fire at T,I,J,Q.
 * LEVIATHAN can fire at M,F,W,J,B,U,I,O (that's a lot!)
@@ -68,8 +66,8 @@ rk fire 2,2 F
 
 Fine, I feel more secure now. But the realm is larger than you can scan, and some cunning enemies might be hiding in the corners... So you have to move.
 
-rk mv 12,12
-rk mv 12,14
+rk mv 7,7
+rk mv 10,10
 
 And while moving, you'd better look around.
 
@@ -89,6 +87,7 @@ rk report --for letters
 
 That's great. An A letter in the same sector as "TE_". Tough luck. Also, it's a good thing that we can move into the same sector: only 9 robots at a time can occupy a sector, and the repairer must be close to its target.
 
+rk mv 14,14
 rk mv 14,14
 rk extract
 
@@ -128,22 +127,17 @@ h2. La vendetta
 
 Wait a minute. Now I see: the POTATO we've shot recently had nothing to do with wounding our TEA. There's no letter Z in POTATO. So it must have been another robot. Google hasn't indexed the realm yet, so we'll be doing the search manually.
 
-rk mv 19,14					# Right
+robot [ZebraRobotID]   # Switching back to the fighter
+rk mv 18,14					# Right
 rk report
-rk mv 14,19					# Up
+rk mv 14,18					# Up
 rk report
-rk mv 9,14					# Left
+rk mv 10,14					# Left
 rk report
 
 Heck, it wasn't POTATO, it was ZUCCHINI! Show no mercy.
 
-rk fire 7,14 C
-
-Argh, no use. Let's switch back to ZEBRA.
-
-robot [ZebraRobotID]
-rk mv 9,14
-rk fire 7,14 C
+rk fire 7,18 C
 
 Fine, now the deciever is non-functional.
 
@@ -176,14 +170,14 @@ rk mv 14,14
 rk drop D
 rk asm DATE				# We're the princes of the universe
 robot [DateRobotID]
-rk mv 7,14
-rk mv 7,14				# DATE's speed is 6
+rk mv 7,18
+rk mv 7,18				# DATE's speed is 6
 rk report				# Note ZUCCHINI robot ID
 rk disasm [ZucchiniRobotID]
 rk report --for drops			# Letters Z,U,H,I,N,I appeared along with some other drops
 rk asm HEN				# Why not?
 
-It took DATE two jumps to get to 7,14. Well, more letters mean lower speed: each letter reduces the speed by 2. Our TEA, being a 3-letter smallie, is the fastest robot around: covers 8 sectors in a single jump. 
+It took DATE two jumps to get to 7,18. Well, more letters mean lower speed: each letter reduces the speed by 2. Our TEA, being a 3-letter smallie, is the fastest robot around: covers 8 sectors in a single jump.
 
 But in return for lowered speed, massive robots gain a fire range boost: each letter extends it by 3.
 
@@ -199,7 +193,7 @@ h2. One last thing
 
 For now, you should be pretty familiar with the controls. The best way to apply your skills is to fight another pilots in a simulation realm. Better be prepared when the big thing happens.
 
-One last thing. I've left three sectors full of enemies: from 19,17 to 19,19. I've "borrowed" them from a test depot... Have fun, but don't tell the officials!
+One last thing. I've left three sectors full of enemies: from 1,19 to 3,19. I've "borrowed" them from a test depot... Have fun, but don't tell the officials!
 
 # Check that tutorial is linear, i.e. no additional enemies are seen before moving own robots.
 # Don't forget creating three sectors of enemies — fruits, vegetables, etc.

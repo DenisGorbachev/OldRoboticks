@@ -80,8 +80,8 @@ class realmActions extends rkActions {
 
     }
 
-    public function prepareAutoObject($parameter = 'id', $varname = 'object') {
-        $result = parent::prepareAutoObject($parameter, $varname);
+    public function prepareAutoObject($parameter = 'id', $varname = 'object', $field = 'id') {
+        $result = parent::prepareAutoObject($parameter, $varname, $field);
         sfConfig::set('app_realm_id', $this->object->getId());
         return $result;
     }

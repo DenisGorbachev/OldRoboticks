@@ -18,15 +18,15 @@ class BotAddCommand extends RealmCommand {
     public function getArgumentConfigs() {
         return array_merge(parent::getArgumentConfigs(), array(
             'name' => array(
-                'description' => 'Controller class of a bot (defines its behavior). List available controller classes using `rk bot:ls-cc`',
+                'description' => 'Name of a bot. List available bots using `rk bot:ls-cc`',
             )
         ));
     }
 
     public function execute($options, $arguments) {
         $this->wait('adding a bot. This may take a minute or two...');
-        $this->postForm('bot', 'bot/create', array(
-            'controller_class' => $options['controller_class'],
+        $this->post('bot/add', array(
+            'name' => $arguments['name'],
         ), array(
             CURLOPT_TIMEOUT => 180
         ));

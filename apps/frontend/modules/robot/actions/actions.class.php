@@ -6,7 +6,6 @@ class robotActions extends rkActions {
         return parent::prepare();
     }
 
-
     public function prepareList() {
         return ($this->objects = RobotTable::getInstance()->getList($this->getUser()->getId()));
     }

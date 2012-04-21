@@ -11,7 +11,7 @@ class TutorialRealmBuilder extends GenericRealmBuilder {
         $this->generateSector(12, 13, 'E', '');
         $this->generateSector(13, 12, 'T', '');
         $this->generateSector(13, 13, 'D', '');
-        $this->generateSector(7, 14, '', 'EFG');
+        $this->generateSector(7, 18, '', 'EFG');
         $this->generateSectors(0, 0, $width - 1, $height - 1, 0, 0);
     }
 

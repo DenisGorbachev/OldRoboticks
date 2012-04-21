@@ -254,7 +254,8 @@ class Robot extends BaseRobot {
     }
 
     public function preInsert($event) {
-        if (!$this->getWord()->getId()) {
+        if (!$this->getWordId() && !$this->getWord()->getId()) {
+            file_put_contents(sfConfig::get('sf_cache_dir').'/status', $this->getStatus());
             $word = WordTable::getInstance()->findOneBy('name', $this->getStatus());
             $this->setWord($word);
             $this->setEffectiveWord($word);
