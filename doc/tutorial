@@ -2,18 +2,18 @@ h2. Hello there!
 
 These .deb and .rpm packages are cool. Still, no programmer should resist the urge to download the source code and... just run it, without any compiling.
 
-git clone git clone git://github.com/DenisGorbachev/Roboticks.git Roboticks
+git clone git://github.com/DenisGorbachev/Roboticks.git Roboticks
 sudo ./Roboticks/client/install.sh
 
 h2. Fire at will
 
 As you already know, this Roboticks thing is a simulation of a real conflict. So you'd better log in to the server and create yourself a tutorial realm right now.
 
-rk host roboticks.faster-than-wind.ru	# Setup the server name
-rk register [YourNicknameHere]		# Register new account
-rk login [YourNicknameHere]		# Log in
+rk host roboticks.faster-than-wind.ru    # Set the server name
+rk register [YourNicknameHere]        # Register new account
+rk login [YourNicknameHere]        # Log in
 rk realm:create -c TutorialRealmController [YourNicknameHere]_Tutorial  # Create a tutorial realm (choose any password)
-realm [YourRealmID]			# Select the newly created realm ([YourRealmID] is available in the output of previous command)
+realm [YourRealmID]            # Select the newly created realm ([YourRealmID] is available in the output of previous command)
 rk bot:add Mannequin
 
 The first robot "TOASTER" is already assembled. Select it by ID from previous command output.
@@ -105,24 +105,24 @@ h2. Good old assembly
 In most realms, you receive a single TEA at the beginning. Frequently (but not always) the best strategy is to replicate: create more TEAs, so that if one is shot, the others can build a squad for counter-offensive. Let's assemble another TEA.
 
 robot [TeaRobotID]
-rk extract				# Another letter A
-rk report --for drops			# Cool, letter T in 14,13
+rk extract                # Another letter A
+rk report --for drops            # Cool, letter T in 14,13
 rk mv 14,13
 rk pick T
 rk mv 14,14
 rk drop T
-rk report --for letters			# No letter E drops, looking for extractable letters
-robot [ZebraRobotID]			# Switching to another robot for speedup
+rk report --for letters            # No letter E drops, looking for extractable letters
+robot [ZebraRobotID]            # Switching to another robot for speedup
 rk mv 12,13
-robot [TeaRobotID]			# Switching back
+robot [TeaRobotID]            # Switching back
 rk mv 12,13
-robot [ZebraRobotID]			# Flip-flop, time is precious
+robot [ZebraRobotID]            # Flip-flop, time is precious
 rk extract
-robot [TeaRobotID]			# Collaboration. I see. What's next? Scalability?
+robot [TeaRobotID]            # Collaboration. I see. What's next? Scalability?
 rk pick E
 rk mv 14,14
 rk drop E
-rk asm TEA				# Yeah, second TEA!
+rk asm TEA                # Yeah, second TEA!
 
 You may have noticed that there's a timeout between command executions. In normal realms, it's equal to 2*NumberOfRobots seconds. That means, if you have 3 active robots, each one has a timeout of 6 seconds. The timeouts are not shared, so you can hang around with a bunch of robots while having a couple sitting quietly in an ambush, ready to act anytime.
 
@@ -131,11 +131,11 @@ h2. La vendetta
 Wait a minute. Now I see: the POTATO we've shot recently had nothing to do with wounding our TEA. There's no letter Z in POTATO. So it must have been another robot. Google hasn't indexed the realm yet, so we'll be doing the search manually.
 
 robot [ZebraRobotID]   # Switching back to the fighter
-rk mv 18,14					# Right
+rk mv 18,14                    # Right
 rk report
-rk mv 14,18					# Up
+rk mv 14,18                    # Up
 rk report
-rk mv 10,14					# Left
+rk mv 10,14                    # Left
 rk report
 
 Heck, it wasn't POTATO, it was ZUCCHINI! Show no mercy.
@@ -155,30 +155,30 @@ There it is, at 13,13. Also note letter T at 13,12. This area would make a perfe
 
 Have you already thought of assembling new robots in cycle? That's how the world goes, in fact. But don't overproduce: the timeouts make enormous armies pretty useless.
 
-rk extract				# Letter A, remember?
+rk extract                # Letter A, remember?
 rk mv 13,12
-rk extract				# It's T time
+rk extract                # It's T time
 rk pick T
 rk mv 14,14
 rk drop T
-rk mv 12,13				# Setting course for E
+rk mv 12,13                # Setting course for E
 rk extract
 rk pick E
 rk mv 14,14
 rk drop E
-rk mv 13,13				# Jumping to sector D
+rk mv 13,13                # Jumping to sector D
 rk extract
 rk pick D
 rk mv 14,14
 rk drop D
-rk asm DATE				# We're the princes of the universe
+rk asm DATE                # We're the princes of the universe
 robot [DateRobotID]
 rk mv 7,18
-rk mv 7,18				# DATE's speed is 6
-rk report				# Note ZUCCHINI robot ID
+rk mv 7,18                # DATE's speed is 6
+rk report                # Note ZUCCHINI robot ID
 rk disasm [ZucchiniRobotID]
-rk report --for drops			# Letters Z,U,H,I,N,I appeared along with some other drops
-rk asm HEN				# Why not?
+rk report --for drops            # Letters Z,U,H,I,N,I appeared along with some other drops
+rk asm HEN                # Why not?
 
 It took DATE two jumps to get to 7,18. Well, more letters mean lower speed: each letter reduces the speed by 2. Our TEA, being a 3-letter smallie, is the fastest robot around: covers 8 sectors in a single jump.
 

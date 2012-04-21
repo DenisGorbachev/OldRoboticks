@@ -6,6 +6,7 @@ then
 	exit 1
 fi
 
+apt-get install php5-cli php5-curl
 CLIENT_DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 if [ ! -e /usr/bin/rk ];
 then

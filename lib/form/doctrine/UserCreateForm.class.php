@@ -10,7 +10,6 @@ class UserCreateForm extends UserForm {
     public function getSuccessText() {
         return
             'registered user %user%.'
-            .PHP_EOL.'If you play Roboticks for the first time, begin the tutorial by typing `rk begin`.'
     ;}
 
     public function getSuccessArguments() {
