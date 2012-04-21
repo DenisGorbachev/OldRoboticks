@@ -21,6 +21,7 @@ class RiderOnTheStormSpec extends BotBaseSpec {
 
     public function testNormal() {
         $this
+            ->markTestIncomplete()
             ->when('MyNightComesDown', 1)
             ->then('LogContains', '/all', '4,16')
             ->when('MyNightComesDown', 3)
