@@ -17,7 +17,7 @@ else
         then
             echo 'Lite build started'
             ./symfony doctrine:build  --all --no-confirmation
-            mysql -u root pollza < ./test/dump.sql
+            mysql -u root roboticks < ./test/dump.sql
         fi
     else
         echo 'Full build started'

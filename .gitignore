@@ -1,6 +1,3 @@
-.buildpath
-.project
-.settings/
 .buildAllLoad.sh.disable
 cache/*
 log/*
