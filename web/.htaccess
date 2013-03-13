@@ -15,7 +15,7 @@ Options +FollowSymLinks +ExecCGI
   # we check if the .html version is here (caching)
   #RewriteRule ^$ index.html [QSA]
   #RewriteRule ^([^.]+)$ $1.html [QSA]
-  #RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !robots.txt
 
   # no, so we redirect to our front web controller
   RewriteRule ^(.*)$ index.php [QSA,L]
